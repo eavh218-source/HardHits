@@ -216,6 +216,90 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Enhanced badge styles for win/loss/outlier classification */
+        .badge-elite-win {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(251, 191, 36, 0.2));
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+        }
+
+        .badge-solid-win {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(56, 189, 248, 0.2));
+            color: var(--emerald);
+            border: 1px solid var(--emerald);
+        }
+
+        .badge-high-conf-miss {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(244, 63, 94, 0.25));
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Win quality and loss reason styling */
+        .win-quality {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(244, 63, 94, 0.1));
+            color: var(--gold);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 12px 0;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .loss-reason {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(244, 63, 94, 0.1));
+            color: #ff9999;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 12px 0;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Outlier sub-category styling */
+        .outlier-near-miss {
+            border-top: 5px solid #fbbf24 !important;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .outlier-cold-miss {
+            border-top: 5px solid #f59e0b !important;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .outlier-blind-spot {
+            border-top: 5px solid #d97706 !important;
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.3);
+        }
+
+        /* Outlier details section */
+        .outlier-details {
+            padding: 12px 16px;
+            background: rgba(251, 191, 36, 0.05);
+            border-top: 1px solid rgba(251, 191, 36, 0.2);
+            margin-top: 12px;
+        }
+
+        .outlier-type {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--warning);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .outlier-analysis {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body data-nav="hr">
@@ -472,9 +556,9 @@
         });
     }
 
-    function inferModelMissReason(result, modelEntry, modelData) {
+    function inferModelMissReason(result, modelEntry, modelData, outlierSubtype, outlierType) {
         if (!modelEntry) {
-            return 'Missed because not found in model data for this date.';
+            return `Player not found in model data for this date. This represents a complete blind spot where the model had no visibility into this player's HR potential.`;
         }
 
         const threshold = 5.0;
@@ -482,7 +566,39 @@
         const rank = sorted.findIndex(p => p.name === modelEntry.name) + 1 || 'N/A';
         const thresholdTag = modelEntry.probability < threshold ? `below threshold (${threshold}%)` : 'at or above threshold';
 
-        return `Modeled at ${modelEntry.probability}% (rank ${rank}, ${thresholdTag})`;
+        let analysis = `Modeled at ${modelEntry.probability}% (rank ${rank}, ${thresholdTag}). `;
+
+        // Enhanced analysis based on outlier subtype and type
+        if (outlierSubtype === 'Near Miss') {
+            analysis += `Near miss: Player was close to being flagged but fell just short of the ${threshold}% threshold. `;
+            if (outlierType === 'Park Effect') {
+                analysis += `Park factors may have been undervalued - this HR benefited significantly from favorable ballpark conditions.`;
+            } else if (outlierType === 'Hot Streak') {
+                analysis += `Recent form/trend signals were strong but not captured in the probability calculation.`;
+            } else if (outlierType === 'Bullpen Surprise') {
+                analysis += `Pitching matchup changes or bullpen performance exceeded model expectations.`;
+            } else {
+                analysis += `Pure power display that narrowly missed the prediction threshold.`;
+            }
+        } else if (outlierSubtype === 'Cold Miss') {
+            analysis += `Cold miss: Player showed meaningful model signal (${modelEntry.probability}%) but still fell well below the threshold. `;
+            if (outlierType === 'Park Effect') {
+                analysis += `Ballpark advantage was recognized but may have been insufficient to push probability above threshold.`;
+            } else {
+                analysis += `Model correctly identified some potential but underestimated the likelihood of conversion.`;
+            }
+        } else if (outlierSubtype === 'Blind Spot') {
+            analysis += `Blind spot: Player had minimal model visibility (${modelEntry.probability}%) and represents a significant model miss. `;
+            if (outlierType === 'Pure Power') {
+                analysis += `Exceptional power display that wasn't anticipated by current model signals.`;
+            } else if (outlierType === 'Park Effect') {
+                analysis += `Ballpark conditions created an opportunity not fully captured by the model.`;
+            } else {
+                analysis += `Unforeseen circumstances led to this HR outcome.`;
+            }
+        }
+
+        return analysis;
     }
 
     function loadResults(dateStr) {
@@ -524,6 +640,9 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
 
         let successfulPredictions = 0;
         let totalFlagged = 0;
+        let truePositives = 0;
+        let falsePositives = 0;
+        let falseNegatives = 0;
         const allCards = [];
 
         // 2. Map through the Model Predictions
@@ -533,14 +652,52 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
             const isFlagged = p.probability >= 5.0; // Your threshold for a "Pick"
 
             if (isFlagged) totalFlagged++;
-            if (isFlagged && didHit) successfulPredictions++;
+            if (isFlagged && didHit) {
+                successfulPredictions++;
+                truePositives++;
+            } else if (isFlagged && !didHit) {
+                falsePositives++;
+            } else if (!isFlagged && didHit) {
+                falseNegatives++;
+            }
 
             const card = document.createElement('div');
-            const status = didHit ? 'win' : 'loss';
-            card.className = `card ${didHit ? 'status-hit' : 'status-miss'}`;
 
-            const resultText = didHit ? '✓ WIN' : '✗ LOSS';
-            const resultClass = didHit ? 'badge-hit' : 'badge-miss';
+            // Enhanced win/loss classification with quality scoring
+            let status, resultText, resultClass, winQualityScore = null, lossReason = null;
+
+            if (didHit) {
+                status = 'win';
+                resultText = '✓ WIN';
+                resultClass = 'badge-hit';
+
+                // Win quality scoring based on probability/threshold ratio
+                const threshold = 5.0;
+                winQualityScore = p.probability / threshold;
+                if (winQualityScore >= 1.6) {
+                    resultText = '✓ ELITE WIN';
+                    resultClass = 'badge-elite-win';
+                } else if (winQualityScore >= 1.2) {
+                    resultText = '✓ SOLID WIN';
+                    resultClass = 'badge-solid-win';
+                }
+            } else {
+                status = 'loss';
+                resultText = '✗ LOSS';
+                resultClass = 'badge-miss';
+
+                // Loss reason tagging
+                if (p.probability >= 8.0) {
+                    lossReason = 'High Confidence Miss';
+                    resultClass = 'badge-high-conf-miss';
+                } else if (p.probability >= 5.0) {
+                    lossReason = 'Standard Miss';
+                } else {
+                    lossReason = 'Watchlist Miss';
+                }
+            }
+
+            card.className = `card ${didHit ? 'status-hit' : 'status-miss'}`;
 
             card.innerHTML = `
                 <div class="card-header">
@@ -592,14 +749,18 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
                         <div class="stat-value">${actual ? `${actual.dist}'` : 'N/A'}</div>
                     </div>
                 </div>
+                ${winQualityScore ? `<div class="win-quality">Win Quality: ${(winQualityScore).toFixed(1)}x threshold</div>` : ''}
+                ${lossReason ? `<div class="loss-reason">Reason: ${lossReason}</div>` : ''}
             `;
-            allCards.push({ element: card, status });
+            allCards.push({ element: card, status, winQualityScore, lossReason });
         });
 
         // 3. Find "Outliers" (Players who hit HRs but weren't flagged as predictions)
         const predictedNames = new Set(modelData.filter(p => p.probability >= 5.0).map(p => p.name));
         resultsData.forEach(r => {
             if (!predictedNames.has(r.name)) {
+                falseNegatives++;
+
                 const lookupSources = [modelData, typeof hrModelData !== 'undefined' ? hrModelData : [],
                     typeof hrModelHistoricalData !== 'undefined' ? hrModelHistoricalData : []];
 
@@ -612,19 +773,50 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
 
                 const hasModelData = modelEntry && modelEntry.breakdown;
 
-                const missReason = inferModelMissReason(r, modelEntry, modelData);
+                // Enhanced outlier classification with sub-categories and types
+                let outlierSubtype = 'Blind Spot';
+                let outlierType = 'Pure Power';
+                let confidenceBand = 'Watchlist';
+
+                if (hasModelData) {
+                    const prob = modelEntry.probability;
+                    if (prob >= 3.0) {
+                        outlierSubtype = 'Near Miss';
+                        confidenceBand = prob >= 5.0 ? 'Standard' : 'Watchlist';
+                    } else if (prob >= 1.0) {
+                        outlierSubtype = 'Cold Miss';
+                        confidenceBand = 'Watchlist';
+                    } else {
+                        outlierSubtype = 'Blind Spot';
+                        confidenceBand = 'Watchlist';
+                    }
+
+                    // Determine outlier type based on breakdown
+                    const breakdown = modelEntry.breakdown;
+                    if (breakdown.Park >= 70) {
+                        outlierType = 'Park Effect';
+                    } else if (breakdown.Power >= 80) {
+                        outlierType = 'Pure Power';
+                    } else if (breakdown.Form >= 60 || breakdown.Trend >= 60) {
+                        outlierType = 'Hot Streak';
+                    } else {
+                        outlierType = 'Bullpen Surprise';
+                    }
+                }
+
+                const missReason = inferModelMissReason(r, modelEntry, modelData, outlierSubtype, outlierType);
                 const card = document.createElement('div');
-                card.className = `card status-outlier`;
+                card.className = `card status-outlier outlier-${outlierSubtype.toLowerCase().replace(' ', '-')}`;
                 card.innerHTML = `
                     <div class="card-header">
                         <div>
                             <div class="player-name">${r.name}</div>
                             <div class="player-team">Actual HR Hit ${hasModelData ? `• Model: ${modelEntry.probability}%` : ''}</div>
                         </div>
-                        <div class="result-badge badge-outlier">⭐ OUTLIER</div>
+                        <div class="result-badge badge-outlier">⭐ ${outlierSubtype.toUpperCase()}</div>
                     </div>
                     <div class="breakdown-section">
-                        <span class="breakdown-title">${hasModelData ? 'Model Ratings (Low Probability)' : 'Not in Model'}</span>
+                        <span class="breakdown-title">${hasModelData ? `Model Ratings (${confidenceBand} Confidence)` : 'Not in Model'}</span>
                         <div class="breakdown-grid">
                             <div class="b-item">
                                 <span class="b-label">POWER</span>
@@ -661,21 +853,30 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
                             <div class="stat-label">Distance</div>
                             <div class="stat-value">${r.dist}'</div>
                         </div>
-                    </div>                    <div style="padding: 12px 16px; color: var(--text-dim); font-size: 0.75rem; border-top: 1px solid var(--border);">
-                        Missed lookup: ${missReason}
-                    </div>                `;
+                    </div>
+                    <div class="outlier-details">
+                        <div class="outlier-type">Type: ${outlierType}</div>
+                        <div class="outlier-analysis">${missReason}</div>
+                    </div>
+                `;
                 card.style.cursor = 'pointer';
                 card.title = 'Click to inspect outlier model history';
                 card.addEventListener('click', () => openOutlierModal(r.name, dateStr));
 
-                allCards.push({ element: card, status: 'outlier' });
+                allCards.push({ element: card, status: 'outlier', outlierSubtype, outlierType });
             }
         });
 
-        // 4. Sort by status: Win -> Outlier -> Loss
+        // 4. Sort by status: Elite Win -> Solid Win -> Win -> Outlier -> Loss
         allCards.sort((a, b) => {
-            const statusOrder = { 'win': 0, 'outlier': 1, 'loss': 2 };
-            return statusOrder[a.status] - statusOrder[b.status];
+            const statusOrder = {
+                'win': a.winQualityScore >= 1.6 ? 0 : (a.winQualityScore >= 1.2 ? 1 : 2),
+                'outlier': 3,
+                'loss': 4
+            };
+            const aOrder = statusOrder[a.status] !== undefined ? statusOrder[a.status] : 5;
+            const bOrder = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 5;
+            return aOrder - bOrder;
         });
 
         // 5. Append sorted cards to dashboard
@@ -683,16 +884,24 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
             dash.appendChild(element);
         });
 
-        // 6. Render Summary with date context
+        // 6. Render enhanced Summary with advanced metrics
         const rate = totalFlagged > 0 ? ((successfulPredictions / totalFlagged) * 100).toFixed(1) : 0;
         const totalHRs = resultsData.length;
         const predictedHRs = successfulPredictions;
+
+        // Calculate precision, recall, and F1 scores
+        const precision = truePositives > 0 ? ((truePositives / (truePositives + falsePositives)) * 100).toFixed(1) : 0;
+        const recall = truePositives > 0 ? ((truePositives / (truePositives + falseNegatives)) * 100).toFixed(1) : 0;
+        const f1Score = (precision > 0 && recall > 0) ? ((2 * precision * recall) / (precision + recall)).toFixed(1) : 0;
 
         summary.innerHTML = `
             <div class="summary-bar">
                 <div class="summary-item">Flagged <b>${totalFlagged}</b></div>
                 <div class="summary-item">Hits <b>${successfulPredictions}</b></div>
                 <div class="summary-item">Accuracy <b>${rate}%</b></div>
+                <div class="summary-item">Precision <b>${precision}%</b></div>
+                <div class="summary-item">Recall <b>${recall}%</b></div>
+                <div class="summary-item">F1 Score <b>${f1Score}</b></div>
                 <div class="summary-item">Total HRs <b>${totalHRs}</b></div>
                 <div class="summary-item">Predicted <b>${predictedHRs}/${totalHRs}</b></div>
             </div>
