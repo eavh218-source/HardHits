@@ -533,8 +533,14 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
         resultsData.forEach(r => {
             if (!predictedNames.has(r.name)) {
                 // Check if this player exists in model data with low probability
-                const modelEntry = modelData.find(p => p.name === r.name);
-                const hasModelData = modelEntry && modelEntry.breakdown;
+                let modelEntry = modelData.find(p => p.name === r.name);
+                let hasModelData = modelEntry && modelEntry.breakdown;
+                
+                // If not found in date-specific data, check current model data
+                if (!hasModelData && typeof hrModelData !== 'undefined') {
+                    modelEntry = hrModelData.find(p => p.name === r.name);
+                    hasModelData = modelEntry && modelEntry.breakdown;
+                }
                 
                 const card = document.createElement('div');
                 card.className = `card status-outlier`;
