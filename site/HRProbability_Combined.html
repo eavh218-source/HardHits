@@ -588,6 +588,14 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
                     </div>
                     <div class="stat-grid">
                         <div class="stat-item">
+                            <div class="stat-label">Model Prob</div>
+                            <div class="stat-value">${hasModelData ? `${modelEntry.probability}%` : 'N/A'}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Max EV</div>
+                            <div class="stat-value">${hasModelData ? modelEntry.max_ev : 'N/A'}</div>
+                        </div>
+                        <div class="stat-item">
                             <div class="stat-label">Actual EV</div>
                             <div class="stat-value">${r.ev}</div>
                         </div>
