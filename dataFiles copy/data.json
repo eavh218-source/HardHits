@@ -1,0 +1,520 @@
+[
+    {
+        "player_name":"Hurter, Brant",
+        "launch_speed":106.5,
+        "launch_angle":1,
+        "events":"single",
+        "hit_distance_sc":52
+    },
+    {
+        "player_name":"Hurter, Brant",
+        "launch_speed":108.9,
+        "launch_angle":21,
+        "events":"home_run",
+        "hit_distance_sc":431
+    },
+    {
+        "player_name":"Ross, Joe",
+        "launch_speed":107.6,
+        "launch_angle":22,
+        "events":"double",
+        "hit_distance_sc":402
+    },
+    {
+        "player_name":"Verlander, Justin",
+        "launch_speed":115.7,
+        "launch_angle":19,
+        "events":null,
+        "hit_distance_sc":329
+    },
+    {
+        "player_name":"Verlander, Justin",
+        "launch_speed":107.8,
+        "launch_angle":37,
+        "events":"home_run",
+        "hit_distance_sc":403
+    },
+    {
+        "player_name":"Verlander, Justin",
+        "launch_speed":107.4,
+        "launch_angle":22,
+        "events":"triple",
+        "hit_distance_sc":366
+    },
+    {
+        "player_name":"Verlander, Justin",
+        "launch_speed":107.5,
+        "launch_angle":5,
+        "events":"single",
+        "hit_distance_sc":104
+    },
+    {
+        "player_name":"Bummer, Aaron",
+        "launch_speed":106.3,
+        "launch_angle":22,
+        "events":"double",
+        "hit_distance_sc":385
+    },
+    {
+        "player_name":"Elder, Bryce",
+        "launch_speed":108.7,
+        "launch_angle":10,
+        "events":"single",
+        "hit_distance_sc":163
+    },
+    {
+        "player_name":"Elder, Bryce",
+        "launch_speed":110.8,
+        "launch_angle":10,
+        "events":"single",
+        "hit_distance_sc":266
+    },
+    {
+        "player_name":"Lopez, Jacob",
+        "launch_speed":108.2,
+        "launch_angle":11,
+        "events":"single",
+        "hit_distance_sc":210
+    },
+    {
+        "player_name":"Wells, Tyler",
+        "launch_speed":110.2,
+        "launch_angle":12,
+        "events":"double",
+        "hit_distance_sc":233
+    },
+    {
+        "player_name":"Leiter, Jack",
+        "launch_speed":105.3,
+        "launch_angle":34,
+        "events":"home_run",
+        "hit_distance_sc":410
+    },
+    {
+        "player_name":"Rea, Colin",
+        "launch_speed":105.7,
+        "launch_angle":2,
+        "events":"single",
+        "hit_distance_sc":80
+    },
+    {
+        "player_name":"Rea, Colin",
+        "launch_speed":107.6,
+        "launch_angle":14,
+        "events":"field_out",
+        "hit_distance_sc":320
+    },
+    {
+        "player_name":"Rea, Colin",
+        "launch_speed":105.4,
+        "launch_angle":17,
+        "events":"single",
+        "hit_distance_sc":286
+    },
+    {
+        "player_name":"Johnson, Ryan",
+        "launch_speed":105.6,
+        "launch_angle":13,
+        "events":"single",
+        "hit_distance_sc":225
+    },
+    {
+        "player_name":"Johnson, Ryan",
+        "launch_speed":107.5,
+        "launch_angle":9,
+        "events":"single",
+        "hit_distance_sc":154
+    },
+    {
+        "player_name":"Ashcraft, Braxton",
+        "launch_speed":108.2,
+        "launch_angle":2,
+        "events":"single",
+        "hit_distance_sc":59
+    },
+    {
+        "player_name":"Ashcraft, Braxton",
+        "launch_speed":110.1,
+        "launch_angle":-9,
+        "events":"single",
+        "hit_distance_sc":16
+    },
+    {
+        "player_name":"Burns, Chase",
+        "launch_speed":107.1,
+        "launch_angle":-6,
+        "events":null,
+        "hit_distance_sc":19
+    },
+    {
+        "player_name":"Oviedo, Johan",
+        "launch_speed":113.3,
+        "launch_angle":23,
+        "events":null,
+        "hit_distance_sc":383
+    },
+    {
+        "player_name":"Oviedo, Johan",
+        "launch_speed":105.4,
+        "launch_angle":26,
+        "events":"double",
+        "hit_distance_sc":408
+    },
+    {
+        "player_name":"Oviedo, Johan",
+        "launch_speed":110.2,
+        "launch_angle":3,
+        "events":"field_out",
+        "hit_distance_sc":85
+    },
+    {
+        "player_name":"McCullers Jr., Lance",
+        "launch_speed":111.9,
+        "launch_angle":16,
+        "events":"double",
+        "hit_distance_sc":313
+    },
+    {
+        "player_name":"Suarez, Ranger",
+        "launch_speed":111.1,
+        "launch_angle":28,
+        "events":"home_run",
+        "hit_distance_sc":434
+    },
+    {
+        "player_name":"Suarez, Ranger",
+        "launch_speed":108.8,
+        "launch_angle":37,
+        "events":"home_run",
+        "hit_distance_sc":394
+    },
+    {
+        "player_name":"McCullers Jr., Lance",
+        "launch_speed":105.1,
+        "launch_angle":31,
+        "events":null,
+        "hit_distance_sc":401
+    },
+    {
+        "player_name":"Suarez, Ranger",
+        "launch_speed":110.8,
+        "launch_angle":8,
+        "events":"single",
+        "hit_distance_sc":159
+    },
+    {
+        "player_name":"Woods Richardson, Simeon",
+        "launch_speed":105.8,
+        "launch_angle":7,
+        "events":"double_play",
+        "hit_distance_sc":185
+    },
+    {
+        "player_name":"Woods Richardson, Simeon",
+        "launch_speed":106.8,
+        "launch_angle":11,
+        "events":"double",
+        "hit_distance_sc":186
+    },
+    {
+        "player_name":"Bubic, Kris",
+        "launch_speed":108.7,
+        "launch_angle":23,
+        "events":"home_run",
+        "hit_distance_sc":424
+    },
+    {
+        "player_name":"Woods Richardson, Simeon",
+        "launch_speed":109.1,
+        "launch_angle":-2,
+        "events":"field_out",
+        "hit_distance_sc":31
+    },
+    {
+        "player_name":"Wrobleski, Justin",
+        "launch_speed":107.9,
+        "launch_angle":6,
+        "events":"single",
+        "hit_distance_sc":187
+    },
+    {
+        "player_name":"Messick, Parker",
+        "launch_speed":108.3,
+        "launch_angle":5,
+        "events":"grounded_into_double_play",
+        "hit_distance_sc":112
+    },
+    {
+        "player_name":"Sasaki, Roki",
+        "launch_speed":105.3,
+        "launch_angle":-11,
+        "events":"single",
+        "hit_distance_sc":12
+    },
+    {
+        "player_name":"Sasaki, Roki",
+        "launch_speed":105.4,
+        "launch_angle":19,
+        "events":"field_out",
+        "hit_distance_sc":297
+    },
+    {
+        "player_name":"Newcomb, Sean",
+        "launch_speed":106.5,
+        "launch_angle":9,
+        "events":"field_out",
+        "hit_distance_sc":196
+    },
+    {
+        "player_name":"Martin, Davis",
+        "launch_speed":110.3,
+        "launch_angle":-11,
+        "events":"force_out",
+        "hit_distance_sc":8
+    },
+    {
+        "player_name":"Martin, Davis",
+        "launch_speed":105.1,
+        "launch_angle":22,
+        "events":"home_run",
+        "hit_distance_sc":371
+    },
+    {
+        "player_name":"Paddack, Chris",
+        "launch_speed":105.5,
+        "launch_angle":36,
+        "events":"home_run",
+        "hit_distance_sc":402
+    },
+    {
+        "player_name":"Megill, Trevor",
+        "launch_speed":109.7,
+        "launch_angle":-7,
+        "events":"field_out",
+        "hit_distance_sc":23
+    },
+    {
+        "player_name":"Ashby, Aaron",
+        "launch_speed":109.0,
+        "launch_angle":22,
+        "events":"home_run",
+        "hit_distance_sc":438
+    },
+    {
+        "player_name":"Martinez, Nick",
+        "launch_speed":105.6,
+        "launch_angle":5,
+        "events":"single",
+        "hit_distance_sc":107
+    },
+    {
+        "player_name":"Martinez, Nick",
+        "launch_speed":107.0,
+        "launch_angle":33,
+        "events":"home_run",
+        "hit_distance_sc":415
+    },
+    {
+        "player_name":"Ashby, Aaron",
+        "launch_speed":116.9,
+        "launch_angle":8,
+        "events":"single",
+        "hit_distance_sc":172
+    },
+    {
+        "player_name":"Martinez, Nick",
+        "launch_speed":109.4,
+        "launch_angle":-13,
+        "events":"field_out",
+        "hit_distance_sc":9
+    },
+    {
+        "player_name":"Harrison, Kyle",
+        "launch_speed":106.0,
+        "launch_angle":5,
+        "events":"single",
+        "hit_distance_sc":161
+    },
+    {
+        "player_name":"Bowlan, Jonathan",
+        "launch_speed":108.9,
+        "launch_angle":-5,
+        "events":"field_error",
+        "hit_distance_sc":15
+    },
+    {
+        "player_name":"Griffin, Foster",
+        "launch_speed":105.4,
+        "launch_angle":35,
+        "events":null,
+        "hit_distance_sc":399
+    },
+    {
+        "player_name":"Griffin, Foster",
+        "launch_speed":109.7,
+        "launch_angle":18,
+        "events":"double",
+        "hit_distance_sc":321
+    },
+    {
+        "player_name":"Griffin, Foster",
+        "launch_speed":106.4,
+        "launch_angle":12,
+        "events":"single",
+        "hit_distance_sc":254
+    },
+    {
+        "player_name":"Walker, Ryan",
+        "launch_speed":107.4,
+        "launch_angle":38,
+        "events":"home_run",
+        "hit_distance_sc":387
+    },
+    {
+        "player_name":"Buehler, Walker",
+        "launch_speed":107.4,
+        "launch_angle":4,
+        "events":"single",
+        "hit_distance_sc":100
+    },
+    {
+        "player_name":"Roupp, Landen",
+        "launch_speed":105.8,
+        "launch_angle":2,
+        "events":"field_out",
+        "hit_distance_sc":184
+    },
+    {
+        "player_name":"Buehler, Walker",
+        "launch_speed":107.3,
+        "launch_angle":24,
+        "events":"home_run",
+        "hit_distance_sc":408
+    },
+    {
+        "player_name":"Brash, Matt",
+        "launch_speed":107.6,
+        "launch_angle":12,
+        "events":"double",
+        "hit_distance_sc":278
+    },
+    {
+        "player_name":"Blackburn, Paul",
+        "launch_speed":108.1,
+        "launch_angle":0,
+        "events":"field_out",
+        "hit_distance_sc":49
+    },
+    {
+        "player_name":"Ferrer, Jose A.",
+        "launch_speed":105.2,
+        "launch_angle":8,
+        "events":"single",
+        "hit_distance_sc":138
+    },
+    {
+        "player_name":"Weathers, Ryan",
+        "launch_speed":111.3,
+        "launch_angle":10,
+        "events":"single",
+        "hit_distance_sc":219
+    },
+    {
+        "player_name":"Weathers, Ryan",
+        "launch_speed":107.5,
+        "launch_angle":13,
+        "events":"field_out",
+        "hit_distance_sc":304
+    },
+    {
+        "player_name":"Raley, Brooks",
+        "launch_speed":110.0,
+        "launch_angle":9,
+        "events":"single",
+        "hit_distance_sc":218
+    },
+    {
+        "player_name":"Holmes, Clay",
+        "launch_speed":110.3,
+        "launch_angle":39,
+        "events":"home_run",
+        "hit_distance_sc":419
+    },
+    {
+        "player_name":"Svanson, Matt",
+        "launch_speed":105.8,
+        "launch_angle":-16,
+        "events":"field_out",
+        "hit_distance_sc":7
+    },
+    {
+        "player_name":"Leahy, Kyle",
+        "launch_speed":113.5,
+        "launch_angle":15,
+        "events":"double",
+        "hit_distance_sc":357
+    },
+    {
+        "player_name":"Leahy, Kyle",
+        "launch_speed":106.8,
+        "launch_angle":9,
+        "events":"single",
+        "hit_distance_sc":206
+    },
+    {
+        "player_name":"Leahy, Kyle",
+        "launch_speed":107.0,
+        "launch_angle":-10,
+        "events":"single",
+        "hit_distance_sc":12
+    },
+    {
+        "player_name":"Dollander, Chase",
+        "launch_speed":107.7,
+        "launch_angle":36,
+        "events":"home_run",
+        "hit_distance_sc":399
+    },
+    {
+        "player_name":"Heineman, Tyler",
+        "launch_speed":105.6,
+        "launch_angle":18,
+        "events":"field_out",
+        "hit_distance_sc":341
+    },
+    {
+        "player_name":"Rogers, Tyler",
+        "launch_speed":105.0,
+        "launch_angle":-2,
+        "events":"field_out",
+        "hit_distance_sc":41
+    },
+    {
+        "player_name":"Little, Brendon",
+        "launch_speed":105.7,
+        "launch_angle":14,
+        "events":"double",
+        "hit_distance_sc":247
+    },
+    {
+        "player_name":"Miles, Spencer",
+        "launch_speed":106.3,
+        "launch_angle":28,
+        "events":"home_run",
+        "hit_distance_sc":423
+    },
+    {
+        "player_name":"Sugano, Tomoyuki",
+        "launch_speed":112.5,
+        "launch_angle":15,
+        "events":null,
+        "hit_distance_sc":252
+    },
+    {
+        "player_name":"Sugano, Tomoyuki",
+        "launch_speed":105.2,
+        "launch_angle":25,
+        "events":"home_run",
+        "hit_distance_sc":416
+    }
+]

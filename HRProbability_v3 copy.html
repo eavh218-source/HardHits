@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚾ HR Probability Dashboard</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #38bdf8;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        input[type="date"] {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: none;
+            background: var(--accent);
+            color: #0f172a;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover { opacity: 0.9; }
+
+        #dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .player-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .player-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; }
+        .player-team { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 15px; }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-item {
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; }
+        .stat-value { font-size: 1.1rem; font-weight: bold; color: var(--accent); }
+
+        .error-msg {
+            grid-column: 1 / -1;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--danger);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Historical HR Probability</h1>
+        <p style="color: var(--text-dim)">Backdated Statcast Analysis Engine</p>
+    </div>
+
+    <div class="controls">
+        <input type="date" id="datePicker" value="2026-04-01">
+        <button onclick="loadHistoricalData()">Load Model</button>
+    </div>
+
+    <div id="dashboard">
+        </div>
+
+    <script>
+        function renderError(msg) {
+            const dash = document.getElementById('dashboard');
+            dash.innerHTML = `<div class="error-msg"><strong>Data Unavailable</strong><br>${msg}</div>`;
+        }
+
+        function renderDashboard(data, dateStr) {
+            const dash = document.getElementById('dashboard');
+            dash.innerHTML = ''; // Clear previous
+
+            if (!data || data.length === 0) {
+                renderError("No eligible players found for this date.");
+                return;
+            }
+
+            data.forEach(player => {
+                const card = document.createElement('div');
+                card.className = 'player-card';
+                
+                // Color code the probability
+                const probColor = player.probability > 5 ? '#22c55e' : 'var(--accent)';
+                
+                card.innerHTML = `
+                    <div class="player-name">${player.name}</div>
+                    <div class="player-team">${player.team} • HR Prob: <span style="color:${probColor}">${player.probability}%</span></div>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Max EV</div>
+                            <div class="stat-value">${player.max_ev}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">FB EV</div>
+                            <div class="stat-value">${player.fb_ev}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">EV Trend</div>
+                            <div class="stat-value" style="color: ${player.ev_trend_val >= 0 ? '#22c55e' : '#ef4444'}">
+                                ${player.ev_trend_val > 0 ? '+' : ''}${player.ev_trend_val}
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Barrels</div>
+                            <div class="stat-value">---</div>
+                        </div>
+                    </div>
+                `;
+                dash.appendChild(card);
+            });
+        }
+
+        function loadHistoricalData() {
+            const dateVal = document.getElementById('datePicker').value;
+            if (!dateVal) return;
+
+            const dash = document.getElementById('dashboard');
+            dash.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-dim);">Loading Statcast data for ${dateVal}...</p>`;
+
+            // Expected Filename: hr_model_2026-04-01.js
+            const fileName = `dataFiles/hr_model_${dateVal}.js`;
+            
+            // Expected Variable: hrModelData_2026_04_01
+            const varName = `hrModelData_${dateVal.replaceAll('-', '_')}`;
+
+            // 1. Cleanup old scripts
+            const oldScript = document.getElementById('dynamic-data-script');
+            if (oldScript) oldScript.remove();
+
+            // 2. Create new script loader
+            const script = document.createElement('script');
+            script.id = 'dynamic-data-script';
+            script.src = fileName;
+
+            // 3. The "Handshake": Wait for the file to finish downloading
+            script.onload = () => {
+                // Look for the variable on the global 'window' object
+                const data = window[varName];
+                
+                if (data) {
+                    renderDashboard(data, dateVal);
+                } else {
+                    renderError(`File loaded, but "window.${varName}" was not found inside it.`);
+                }
+            };
+
+            script.onerror = () => {
+                renderError(`Could not find file: ${fileName}. Ensure your Python script generated it.`);
+            };
+
+            document.head.appendChild(script);
+        }
+
+        // Optional: Load initial data on page start
+        window.onload = () => {
+            // Uncomment the line below if you want it to auto-load on refresh
+            // loadHistoricalData();
+        };
+    </script>
+</body>
+</html>

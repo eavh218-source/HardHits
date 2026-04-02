@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HardHits | HR Probability Model</title>
+    <script src="dataFiles/hr_model_data.js"></script>
+    <style>
+        :root { 
+            --bg: #0b0f19; --card: #111827; --border: #1e293b; 
+            --accent: #f87171; --text: #e2e8f0; --text-dim: #94a3b8;
+            --fire: #ff4500; --ice: #00f2ff; --gold: #fbbf24;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        
+        nav { 
+            background: #111827; border-bottom: 1px solid var(--border); 
+            padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo { color: var(--accent); font-weight: 900; font-size: 1.4rem; text-decoration: none; letter-spacing: 2px; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        
+        .header-flex { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; }
+        .model-status { font-size: 0.7rem; color: var(--gold); border: 1px solid var(--gold); padding: 4px 8px; border-radius: 4px; text-transform: uppercase; font-weight: 800; }
+
+        /* PROBABILITY CARDS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        
+        .hr-card { 
+            background: var(--card); border: 1px solid var(--border); 
+            border-radius: 12px; overflow: hidden; transition: 0.3s;
+        }
+        .hr-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+        .card-top { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .probability-circle { 
+            width: 60px; height: 60px; border-radius: 50%; border: 4px solid var(--accent);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 1.1rem;
+        }
+
+        .signal-bars { padding: 20px; background: rgba(0,0,0,0.2); }
+        .signal-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.8rem; }
+        .bar-bg { width: 100%; height: 6px; background: #1e293b; border-radius: 3px; margin-top: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--accent); }
+
+        /* EV TREND TAGS */
+        .trend-tag { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; }
+        .hot { background: rgba(255, 69, 0, 0.2); color: var(--fire); border: 1px solid var(--fire); }
+        .cold { background: rgba(0, 242, 255, 0.2); color: var(--ice); border: 1px solid var(--ice); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">HARDHITS</a>
+    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">PROBABILITY MODEL v1.0</div>
+</nav>
+
+<div class="container">
+    <div class="header-flex">
+        <div>
+            <h1 style="margin:0;">Today's HR Forecast</h1>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Signals prioritized by EV Trend & Fly Ball Distance.</p>
+        </div>
+        <div class="model-status">Active Signal: EV Trend</div>
+    </div>
+
+    <div id="model-output" class="grid">
+        </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const display = document.getElementById('model-output');
+        
+        if (typeof hrModelData === 'undefined') {
+            display.innerHTML = "<p>Awaiting Data Feed... Run the EV Signal Engine.</p>";
+            return;
+        }
+
+        hrModelData.forEach(p => {
+            const trendClass = p.ev_trend > 0 ? 'hot' : 'cold';
+            const trendIcon = p.ev_trend > 0 ? '🔥' : '❄️';
+            
+            display.innerHTML += `
+                <div class="hr-card">
+                    <div class="card-top">
+                        <div>
+                            <div style="font-size: 0.7rem; color: var(--accent); font-weight: 800;">${p.team}</div>
+                            <h2 style="margin: 5px 0;">${p.name}</h2>
+                            <span class="trend-tag ${trendClass}">${trendIcon} ${p.ev_trend_label} (${p.ev_trend_val} MPH)</span>
+                        </div>
+                        <div class="probability-circle">
+                            <span style="font-size: 0.5rem; opacity: 0.6;">PROB</span>
+                            ${p.probability}%
+                        </div>
+                    </div>
+                    <div class="signal-bars">
+                        <div class="signal-row">
+                            <span>Max EV (Last 7)</span>
+                            <span style="color: white;">${p.max_ev} MPH</span>
+                        </div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: ${p.max_ev_pct}%"></div></div>
+                        
+                        <div class="signal-row" style="margin-top:15px;">
+                            <span>Fly Ball EV</span>
+                            <span style="color: white;">${p.fb_ev} MPH</span>
+                        </div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: ${p.fb_ev_pct}%; background: var(--gold);"></div></div>
+                    </div>
+                    <div style="padding: 15px 20px; font-size: 0.75rem; color: var(--text-dim); border-top: 1px solid var(--border);">
+                        vs. <strong>${p.opp_pitcher}</strong> (${p.pitcher_hand}) | ${p.park_factor}
+                    </div>
+                </div>
+            `;
+        });
+    });
+</script>
+</body>
+</html>

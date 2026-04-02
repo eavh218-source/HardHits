@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HardHits | Roadmap</title>
+    <script src="dataFiles/projects_data.js"></script>
+    <style>
+        :root { 
+            --bg: #0b0f19; --card: #111827; --border: #1e293b; 
+            --accent: #f87171; --text: #e2e8f0; --text-dim: #94a3b8; 
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        
+        nav { background: #111827; border-bottom: 1px solid var(--border); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { color: var(--accent); font-weight: 900; font-size: 1.4rem; text-decoration: none; letter-spacing: 2px; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .section-title { font-size: 0.85rem; text-transform: uppercase; color: var(--accent); font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+        
+        /* ADD PROJECT FORM */
+        .add-zone { background: #1a2234; border: 1px dashed var(--border); padding: 20px; border-radius: 8px; margin-bottom: 40px; }
+        input, textarea, select { 
+            width: 100%; padding: 10px; margin-bottom: 10px; background: var(--bg); 
+            border: 1px solid var(--border); color: white; border-radius: 4px; box-sizing: border-box;
+        }
+        .btn { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 800; cursor: pointer; }
+        
+        #command-output { 
+            margin-top: 15px; padding: 10px; background: #000; color: #4ade80; 
+            font-family: monospace; font-size: 0.8rem; border-radius: 4px; display: none;
+        }
+
+        /* PROJECT CARDS */
+        .project-card { 
+            background: var(--card); border: 1px solid var(--border); 
+            padding: 20px; border-radius: 8px; margin-bottom: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .status-tag { padding: 4px 10px; border-radius: 4px; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; border: 1px solid #fbbf24; color: #fbbf24; }
+        h3 { margin: 0; font-size: 1.1rem; }
+        p { margin: 5px 0 0; font-size: 0.85rem; color: var(--text-dim); }
+    </style>
+</head>
+<body>
+
+<nav><a href="index.html" class="nav-logo">HARDHITS</a></nav>
+
+<div class="container">
+    <div class="section-title">Add New Project</div>
+    <div class="add-zone">
+        <input type="text" id="p-title" placeholder="Project Title...">
+        <textarea id="p-desc" placeholder="Brief description..."></textarea>
+        <select id="p-status">
+            <option value="Planned">Planned</option>
+            <option value="Researching">Researching</option>
+            <option value="In Progress">In Progress</option>
+        </select>
+        <button class="btn" onclick="generateCommand()">Generate Python Command</button>
+        
+        <div id="command-output"></div>
+    </div>
+
+    <div class="section-title">Development Roadmap</div>
+    <div id="project-list"></div>
+</div>
+
+<script>
+    function generateCommand() {
+        const t = document.getElementById('p-title').value;
+        const d = document.getElementById('p-desc').value;
+        const s = document.getElementById('p-status').value;
+        const out = document.getElementById('command-output');
+        
+        if(!t || !d) { alert("Fill in title and description"); return; }
+        
+        const cmd = `python update_projects.py "${t}" "${d}" "${s}"`;
+        out.innerText = "Copy and run this in your terminal:\n\n" + cmd;
+        out.style.display = "block";
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const list = document.getElementById('project-list');
+        if (typeof projectData === 'undefined') {
+            list.innerHTML = "<p>No data found. Run update_projects.py first.</p>";
+            return;
+        }
+        projectData.forEach(proj => {
+            list.innerHTML += `
+                <div class="project-card">
+                    <div>
+                        <h3>${proj.title}</h3>
+                        <p>${proj.description}</p>
+                    </div>
+                    <div class="status-tag">${proj.status}</div>
+                </div>`;
+        });
+    });
+</script>
+</body>
+</html>

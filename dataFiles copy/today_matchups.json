@@ -1,0 +1,50 @@
+[
+    {
+        "pitcher_name": "Taj Bradley",
+        "pitcher_id": 671737,
+        "pitcher_team": "MIN",
+        "opponent_team": "KC"
+    },
+    {
+        "pitcher_name": "Cole Ragans",
+        "pitcher_id": 666142,
+        "pitcher_team": "KC",
+        "opponent_team": "MIN"
+    },
+    {
+        "pitcher_name": "Reynaldo L\u00f3pez",
+        "pitcher_id": 625643,
+        "pitcher_team": "ATL",
+        "opponent_team": "AZ"
+    },
+    {
+        "pitcher_name": "Ryne Nelson",
+        "pitcher_id": 669194,
+        "pitcher_team": "AZ",
+        "opponent_team": "ATL"
+    },
+    {
+        "pitcher_name": "David Peterson",
+        "pitcher_id": 656849,
+        "pitcher_team": "NYM",
+        "opponent_team": "SF"
+    },
+    {
+        "pitcher_name": "Robbie Ray",
+        "pitcher_id": 592662,
+        "pitcher_team": "SF",
+        "opponent_team": "NYM"
+    },
+    {
+        "pitcher_name": "Dylan Cease",
+        "pitcher_id": 656302,
+        "pitcher_team": "TOR",
+        "opponent_team": "CWS"
+    },
+    {
+        "pitcher_name": "Sean Burke",
+        "pitcher_id": 680732,
+        "pitcher_team": "CWS",
+        "opponent_team": "TOR"
+    }
+]
