@@ -28,7 +28,26 @@ def run_script(script_name: str) -> bool:
 if __name__ == "__main__":
     print("⚾ MLB Data Update Initialized ⚾\n")
 
-    scripts_to_run = ["hardHits.py", "get_starters.py", "BvP.py", "TodaysHomers.py"]
+    scripts_to_run = [
+        # 1. Build daily matchup context first (starting points)
+        "get_starters.py",
+        # 2. Pitcher-vs-batter analysis for situational insight
+        "BvP.py",
+        # 3. Hard hit dashboard details (101+ MPH events)
+        "hardHits.py",
+        # 4. Today's model predictions run
+        "hr_engine.py",
+        # 5. Actual HR results validator for today
+        "hr_validator.py",
+        # 6. Daily home run feed, in case UI needs immediate game updates
+        "TodaysHomers.py",
+        # 7. Historical model batch generation (backfill dates)
+        "generate_historical_data.py",
+        # 8. Historical HR result batch generation (backfill dates)
+        "generate_historical_results.py",
+        # 9. Consolidate / split historical files for UI consumption
+        "consolidate_historical.py",
+    ]
     successful_runs = []
 
     for script in scripts_to_run:
