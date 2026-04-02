@@ -6,8 +6,9 @@ import os
 from datetime import datetime, timedelta
 
 # --- CONFIGURATION ---
-# Set the historical date you want to analyze
-TARGET_DATE_STR = "2026-04-01" 
+# Set the historical date you want to analyze, then run: python hr_engine_historical.py
+# Output is read by HRProbability_Historical.html as dataFiles/hr_model_<date>.js
+TARGET_DATE_STR = "2026-04-01"
 TARGET_DATE = datetime.strptime(TARGET_DATE_STR, '%Y-%m-%d')
 
 PARK_FACTORS = {
@@ -25,7 +26,6 @@ def calculate_barrels(df):
 def get_historical_metrics(mlbid, ref_date):
     """Fetches Statcast data relative to the provided reference date."""
     try:
-        # Looking back 30 days from the Target Date
         end_date_str = ref_date.strftime('%Y-%m-%d')
         start_date_str = (ref_date - timedelta(days=30)).strftime('%Y-%m-%d')
         
@@ -36,7 +36,6 @@ def get_historical_metrics(mlbid, ref_date):
         df = df.dropna(subset=['launch_speed', 'launch_angle'])
         df['game_date'] = pd.to_datetime(df['game_date'])
         
-        # 7-day trend relative to Target Date
         last_7_window = ref_date - timedelta(days=7)
         last_7 = df[df['game_date'] >= last_7_window]
         
@@ -56,18 +55,17 @@ def get_historical_metrics(mlbid, ref_date):
             "fb_ev": fb_ev,
             "ev_trend": ev_trend
         }
-    except Exception as e:
+    except Exception:
         return None
 
 def run_backdated_model():
-    print(f"--- ⚾ Backdated HR Probability Engine (Simulating: {TARGET_DATE_STR}) ---")
+    print(f"--- ⚾ HR Historical Engine (date: {TARGET_DATE_STR}) ---")
     if not os.path.exists('dataFiles'): os.makedirs('dataFiles')
     
-    # Fetch schedule for the specific historical day
     games = statsapi.schedule(date=TARGET_DATE_STR)
     payload = []
 
-    for game in games[:5]:  # Limited to 5 games for performance
+    for game in games[:5]:
         print(f"Analyzing: {game['away_name']} @ {game['home_name']}")
         
         pf = 1.0
@@ -107,20 +105,15 @@ def run_backdated_model():
                         "fb_ev": int(stats['fb_ev'])
                     })
 
-    # --- SAVE LOGIC ---
-    # Filename with DASHES to match HTML request: hr_model_2026-04-01.js
-    output_path = f'dataFiles/hr_model_{TARGET_DATE_STR}.js' 
-    
-    # Variable with UNDERSCORES for JS compatibility: hrModelData_2026_04_01
+    output_path = f'dataFiles/hr_model_{TARGET_DATE_STR}.js'
     var_date = TARGET_DATE_STR.replace('-', '_')
     
     payload = sorted(payload, key=lambda x: x['probability'], reverse=True)
     
     with open(output_path, 'w', encoding='utf-8') as f:
-        # 'window.' ensures the variable is globally accessible to the dashboard
         f.write(f"window.hrModelData_{var_date} = {json.dumps(payload, indent=2)};")
     
-    print(f"\n✅ Historical data for {TARGET_DATE_STR} saved to {output_path}")
+    print(f"\n✅ Saved to {output_path} (open HRProbability_Historical.html)")
 
 if __name__ == "__main__":
     run_backdated_model()

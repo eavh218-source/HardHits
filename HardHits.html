@@ -27,7 +27,7 @@
         .hero h1 { font-size: 4rem; letter-spacing: -2px; margin-bottom: 10px; }
         .hero p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 40px; }
         
-        .portal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: 0 auto; }
+        .portal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto; }
         .portal-card { 
             background: var(--card-bg); 
             border: 1px solid var(--border); 
@@ -50,6 +50,7 @@
             <a href="HardHits.html" class="nav-item active">Home</a>
             <a href="BvP.html" class="nav-item">BvP History</a>
             <a href="DailyHomers.html" class="nav-item">Daily Homers</a>
+            <a href="HRProbability.html" class="nav-item">HR Probability</a>
         </div>
     </div>
 </nav>
@@ -68,6 +69,14 @@
         <a href="DailyHomers.html" class="portal-card">
             <h2>Daily Homers</h2>
             <p>Real-time recap of today's hardest hits and longest bombs.</p>
+        </a>
+        <a href="HRProbability.html" class="portal-card">
+            <h2>HR Probability</h2>
+            <p>Today's Statcast-based home run threat model (run <code style="font-size:0.85em">hr_engine.py</code>).</p>
+        </a>
+        <a href="HRProbability_Historical.html" class="portal-card">
+            <h2>HR Historical</h2>
+            <p>Backtest a specific date from saved <code style="font-size:0.85em">hr_model_*.js</code> files.</p>
         </a>
     </div>
 </div>

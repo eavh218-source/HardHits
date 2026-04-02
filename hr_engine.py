@@ -5,95 +5,127 @@ import json
 import os
 from datetime import datetime, timedelta
 
-# --- 1. THE DATA LOOKUP ENGINE (NOW USING MLBID DIRECTLY) ---
-def get_hitter_stats(mlbid):
-    try:
-        # Pull 2026 Data (Opening Day to Now)
-        df_2026 = pb.statcast_batter("2026-03-20", datetime.now().strftime('%Y-%m-%d'), mlbid)
-        
-        # Pull late 2025 Data (For a reliable baseline)
-        df_2025 = pb.statcast_batter("2025-08-01", "2025-10-01", mlbid)
-        
-        if df_2026.empty and df_2025.empty:
-            return None
+# --- 1. CONFIGURATION & PARK FACTORS ---
+PARK_FACTORS = {
+    'Reds': 1.28, 'Dodgers': 1.21, 'Phillies': 1.16, 
+    'Yankees': 1.12, 'Rockies': 1.11, 'Athletics': 1.09,
+    'Mariners': 0.82, 'Padres': 0.94, 'Giants': 0.83
+}
 
-        all_data = pd.concat([df_2026, df_2025]).dropna(subset=['launch_speed'])
+def calculate_barrels(df):
+    """Statcast Barrel: EV >= 98 & LA between 26-30 degrees"""
+    if df.empty: return 0
+    barrels = df[(df['launch_speed'] >= 98) & (df['launch_angle'].between(26, 30))]
+    return (len(barrels) / len(df)) * 100 if len(df) > 0 else 0
+
+def get_advanced_hitter_metrics(mlbid):
+    try:
+        # Fetch 30 day window
+        end_date = datetime.now().strftime('%Y-%m-%d')
+        start_date = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
         
-        # Calculate Trend: 2026 Avg vs 2025 Avg
-        avg_2026 = df_2026['launch_speed'].mean() if not df_2026.empty else 0
-        avg_2025 = df_2025['launch_speed'].mean() if not df_2025.empty else 0
-        trend = avg_2026 - avg_2025 if avg_2026 > 0 else 0
+        df = pb.statcast_batter(start_date, end_date, mlbid)
         
-        fb_df = all_data[all_data['bb_type'].isin(['fly_ball', 'line_drive'])]
+        # Early season fallback: If no 2026 data, pull end of 2025
+        if df.empty:
+            df = pb.statcast_batter("2025-09-01", "2025-10-01", mlbid)
+            if df.empty: return None
+
+        df = df.dropna(subset=['launch_speed', 'launch_angle'])
+        df['game_date'] = pd.to_datetime(df['game_date'])
+        
+        last_7 = df[df['game_date'] >= (datetime.now() - timedelta(days=7))]
+        
+        # Metrics
+        barrel_pct = calculate_barrels(df)
+        max_ev = df['launch_speed'].max()
+        avg_30 = df['launch_speed'].mean()
+        avg_7 = last_7['launch_speed'].mean() if not last_7.empty else avg_30
+        
+        ev_trend = avg_7 - avg_30
+        
+        fb_df = df[df['bb_type'].isin(['fly_ball', 'line_drive'])]
+        fb_ev = fb_df['launch_speed'].mean() if not fb_df.empty else 85
         
         return {
-            "trend": trend,
-            "max_ev": all_data['launch_speed'].max(),
-            "fb_ev": fb_df['launch_speed'].mean() if not fb_df.empty else 0,
-            "has_recent": not df_2026.empty
+            "barrel_pct": barrel_pct,
+            "max_ev": max_ev,
+            "fb_ev": fb_ev,
+            "ev_trend": ev_trend,
+            "has_recent": not last_7.empty
         }
     except:
         return None
 
-# --- 2. THE MAIN RUNNER ---
-def run_daily_model():
-    print("--- ⚾ HR Probability Engine: Direct ID Mode ---")
+def run_probability_model():
+    print("--- ⚾ HR Probability Engine (daily) ---")
     if not os.path.exists('dataFiles'): os.makedirs('dataFiles')
     
     today = datetime.now().strftime('%Y-%m-%d')
     games = statsapi.schedule(date=today)
-    payload = []
     
-    # Analyze the first 3 games
-    for game in games[:3]:
-        print(f"\nMatchup: {game['away_name']} @ {game['home_name']}")
+    payload = []
+
+    # Analyze first few games
+    for game in games[:4]:
+        print(f"Analyzing: {game['away_name']} @ {game['home_name']}")
         
-        # Get actual lineups or probable rosters
-        for team_type in ['away', 'home']:
-            team_id = game[f'{team_type}_id']
-            # Get roster with IDs included
-            roster = statsapi.get('team_roster', {'teamId': team_id})['roster']
+        pf = 1.0
+        for team, factor in PARK_FACTORS.items():
+            if team in game['home_name']: pf = factor
+
+        for side in ['away', 'home']:
+            team_id = game[f'{side}_id']
+            try:
+                roster = statsapi.get('team_roster', {'teamId': team_id})['roster']
+            except:
+                continue
             
-            # Scan top hitters (avoiding pitchers)
             for p in roster:
-                if p['position']['code'] == '1': continue # Skip Pitchers
+                if p['position']['code'] == '1': continue
                 
                 name = p['person']['fullName']
                 p_id = p['person']['id']
                 
-                print(f"  Analysing {name}...", end="\r")
-                stats = get_hitter_stats(p_id)
+                print(f"  Checking {name}...", end="\r")
+                stats = get_advanced_hitter_metrics(p_id)
                 
-                if stats and stats['max_ev'] > 105:
-                    print(f"  🔥 POWER FOUND: {name} ({int(stats['max_ev'])} MPH)")
-                    
-                    # Probability Logic
-                    prob = 4.0
-                    if stats['has_recent']: prob += 1.5
-                    if stats['trend'] > 1.5: prob += 2.5
-                    if stats['max_ev'] > 112: prob += 4.0
-                    
+                if stats and stats['max_ev'] > 104:
+                    # Normalized scoring
+                    s_power = min(stats['barrel_pct'] / 15 * 100, 100)
+                    s_form = min(max(stats['fb_ev'] - 88, 0) / 12 * 100, 100)
+                    s_trend = min(max(stats['ev_trend'] + 3, 0) / 6 * 100, 100)
+                    s_park = min(((pf - 0.8) / 0.5) * 100, 100)
+
+                    # Final Prob (approx 2% - 14%)
+                    final_prob = round((s_power*0.2 + s_form*0.15 + s_trend*0.1 + s_park*0.05) / 4.5, 1)
+
                     payload.append({
                         "name": name,
-                        "team": game[f'{team_type}_name'][:3].upper(),
-                        "probability": round(prob, 1),
-                        "ev_trend_val": round(stats['trend'], 1),
-                        "ev_trend_label": "Hot" if stats['trend'] > 1 else "Stable",
+                        "team": game[f'{side}_name'][:3].upper(),
+                        "probability": final_prob,
+                        "breakdown": {
+                            "Power": int(s_power),
+                            "Form": int(s_form),
+                            "Trend": int(s_trend),
+                            "Park": int(s_park)
+                        },
+                        "ev_trend_val": round(stats['ev_trend'], 1),
+                        "ev_trend_label": "Heating Up" if stats['ev_trend'] > 1.5 else "Stable",
                         "max_ev": int(stats['max_ev']),
                         "max_ev_pct": int((stats['max_ev'] / 120) * 100),
                         "fb_ev": int(stats['fb_ev']),
                         "fb_ev_pct": int((stats['fb_ev'] / 112) * 100),
-                        "opp_pitcher": game.get('home_probable_pitcher' if team_type=='away' else 'away_probable_pitcher', 'TBD'),
-                        "pitcher_hand": "RHP",
-                        "park_factor": "Neutral"
+                        "opp_pitcher": game.get('home_probable_pitcher' if side=='away' else 'away_probable_pitcher', 'TBD'),
+                        "park_factor": "Launch Pad" if pf > 1.1 else "Neutral"
                     })
 
-    # Save and Sort
+    # Save
     payload = sorted(payload, key=lambda x: x['probability'], reverse=True)
     with open('dataFiles/hr_model_data.js', 'w') as f:
         f.write(f"const hrModelData = {json.dumps(payload, indent=2)};")
     
-    print(f"\n\n✅ Success! {len(payload)} hitters updated in Dashboard.")
+    print(f"\n✅ Success! {len(payload)} threats updated in Dashboard.")
 
 if __name__ == "__main__":
-    run_daily_model()
+    run_probability_model()
