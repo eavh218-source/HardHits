@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Homers | HardHits</title>
+    <link rel="stylesheet" href="Scripts/site-nav.css">
     <script src="dataFiles/todays_hrs.js"></script>
     <style>
         :root {
@@ -19,13 +20,6 @@
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: var(--text-main); margin: 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        .top-nav { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
-        .nav-con { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .nav-logo { color: var(--danger); font-weight: 900; letter-spacing: 2px; }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-item { color: var(--text-muted); text-decoration: none; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; transition: 0.2s; border-bottom: 2px solid transparent; }
-        .nav-item.active { color: var(--danger); border-bottom: 2px solid var(--danger); }
-
         .header { border-left: 5px solid var(--accent); padding-left: 20px; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 12px; overflow: hidden; }
         th { text-align: left; background: #1e293b; color: var(--text-muted); padding: 15px; font-size: 0.75rem; text-transform: uppercase; }
@@ -35,15 +29,7 @@
         .team-tag { font-size: 0.65rem; color: var(--text-muted); border: 1px solid var(--border); padding: 2px 5px; border-radius: 4px; margin-left: 5px; text-transform: uppercase; }
     </style>
 </head>
-<body>
-
-<nav style="background: #111827; border-bottom: 1px solid #1e293b; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;">
-    <a href="HardHits.html" style="color: #f87171; font-weight: 900; font-size: 1.4rem; text-decoration: none; letter-spacing: 2px;">HARDHITS</a>
-    <div style="display: flex; gap: 25px;">
-        <a href="DailyHomers.html" style="color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Daily Homers</a>
-        <a href="BvP.html" style="color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">BvP Matchups</a>
-    </div>
-</nav>
+<body data-nav="daily">
 
 <div class="container">
     <div class="header">
@@ -82,5 +68,6 @@
         });
     });
 </script>
+<script src="Scripts/site-nav.js" defer></script>
 </body>
 </html>

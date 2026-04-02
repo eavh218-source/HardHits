@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | HardHits</title>
+    <link rel="stylesheet" href="Scripts/site-nav.css">
     <style>
         :root {
             --bg-dark: #0b0f19;
@@ -16,13 +17,6 @@
 
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: var(--text-main); margin: 0; padding: 0; }
         .container { max-width: 1200px; margin: 100px auto; text-align: center; }
-
-        .top-nav { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
-        .nav-con { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .nav-logo { color: var(--accent); font-weight: 900; letter-spacing: 2px; }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-item { color: var(--text-muted); text-decoration: none; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; transition: 0.2s; border-bottom: 2px solid transparent; }
-        .nav-item.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
 
         .hero h1 { font-size: 4rem; letter-spacing: -2px; margin-bottom: 10px; }
         .hero p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 40px; }
@@ -41,19 +35,7 @@
         .portal-card h2 { color: var(--accent); margin-top: 0; }
     </style>
 </head>
-<body>
-
-<nav class="top-nav">
-    <div class="nav-con">
-        <div class="nav-logo">HARDHITS</div>
-        <div class="nav-links">
-            <a href="HardHits.html" class="nav-item active">Home</a>
-            <a href="BvP.html" class="nav-item">BvP History</a>
-            <a href="DailyHomers.html" class="nav-item">Daily Homers</a>
-            <a href="HRProbability.html" class="nav-item">HR Probability</a>
-        </div>
-    </div>
-</nav>
+<body data-nav="home">
 
 <div class="container">
     <div class="hero">
@@ -81,5 +63,6 @@
     </div>
 </div>
 
+<script src="Scripts/site-nav.js" defer></script>
 </body>
 </html>

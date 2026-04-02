@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>HardHits | BvP Analytics</title>
+    <link rel="stylesheet" href="Scripts/site-nav.css">
     <script src="dataFiles/bvp_data.js"></script>
     <style>
         :root { 
@@ -12,15 +13,6 @@
 
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
         
-        /* NAVIGATION BAR */
-        nav { 
-            background: #111827; border-bottom: 1px solid var(--border); 
-            padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;
-        }
-        .nav-logo { color: var(--accent); font-weight: 900; font-size: 1.4rem; text-decoration: none; letter-spacing: 2px; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
-        .nav-links a:hover { color: var(--accent); }
-
         .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
 
         /* MATCHUP GRID - ROW OF 5 */
@@ -58,15 +50,7 @@
         @media (max-width: 800px) { .matchup-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
-<body>
-
-<nav style="background: #111827; border-bottom: 1px solid #1e293b; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;">
-    <a href="HardHits.html" style="color: #f87171; font-weight: 900; font-size: 1.4rem; text-decoration: none; letter-spacing: 2px;">HARDHITS</a>
-    <div style="display: flex; gap: 25px;">
-        <a href="DailyHomers.html" style="color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Daily Homers</a>
-        <a href="BvP.html" style="color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">BvP Matchups</a>
-    </div>
-</nav>
+<body data-nav="bvp">
 
 <div class="container">
     <div class="section-title">Daily Matchups</div>
@@ -141,5 +125,6 @@
         });
     });
 </script>
+<script src="Scripts/site-nav.js" defer></script>
 </body>
 </html>

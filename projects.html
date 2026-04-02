@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>HardHits | Roadmap</title>
+    <link rel="stylesheet" href="Scripts/site-nav.css">
     <script src="dataFiles/projects_data.js"></script>
     <style>
         :root { 
@@ -11,9 +12,6 @@
         }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
         
-        nav { background: #111827; border-bottom: 1px solid var(--border); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { color: var(--accent); font-weight: 900; font-size: 1.4rem; text-decoration: none; letter-spacing: 2px; }
-
         .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
         .section-title { font-size: 0.85rem; text-transform: uppercase; color: var(--accent); font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
@@ -42,9 +40,7 @@
         p { margin: 5px 0 0; font-size: 0.85rem; color: var(--text-dim); }
     </style>
 </head>
-<body>
-
-<nav><a href="index.html" class="nav-logo">HARDHITS</a></nav>
+<body data-nav="projects">
 
 <div class="container">
     <div class="section-title">Add New Project</div>
@@ -97,5 +93,6 @@
         });
     });
 </script>
+<script src="Scripts/site-nav.js" defer></script>
 </body>
 </html>

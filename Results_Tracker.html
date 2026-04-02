@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚾ HR Results | Accuracy Tracker</title>
+    <link rel="stylesheet" href="Scripts/site-nav.css">
     <script src="dataFiles/hr_model_data.js"></script>
     <script src="dataFiles/hr_results_data.js"></script>
     <style>
         :root {
             --bg: #0f172a;
             --card-bg: #1e293b;
+            --border: #334155;
             --text: #f8fafc;
             --text-dim: #94a3b8;
             --accent: #38bdf8;
@@ -18,15 +20,17 @@
             --warning: #fbbf24;
         }
 
-        body {
+        .results-page {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
-            padding: 40px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            box-sizing: border-box;
+            min-height: calc(100vh - 56px);
         }
 
         .header { text-align: center; margin-bottom: 40px; }
@@ -93,8 +97,9 @@
         .summary-item b { color: var(--accent); font-size: 1.2rem; }
     </style>
 </head>
-<body>
+<body data-nav="results">
 
+    <div class="results-page">
     <div class="header">
         <h1>Accuracy <span style="color:var(--accent)">Ledger</span></h1>
         <p style="color: var(--text-dim)">v3 Model Performance vs. Statcast Reality</p>
@@ -105,6 +110,7 @@
 
     <div id="dashboard">
         </div>
+    </div>
 
     <script>
         function initTracker() {
@@ -185,5 +191,6 @@
 
         window.onload = initTracker;
     </script>
+    <script src="Scripts/site-nav.js" defer></script>
 </body>
 </html>
