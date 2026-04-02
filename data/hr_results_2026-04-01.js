@@ -1,0 +1,1 @@
+window.hrResultsData_2026_04_01 = [];
