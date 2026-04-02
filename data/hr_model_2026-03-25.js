@@ -1,4 +1,4 @@
-const hrModelData_2026_03_25 = [
+window.hrModelData_2026_03_25 = [
   {
     "name": "Jose Fernandez",
     "team": "ARI",

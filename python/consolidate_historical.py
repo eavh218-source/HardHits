@@ -81,7 +81,7 @@ def main():
         pred_file = DATA_DIR / f'hr_model_{date_str}.js'
         
         with open(pred_file, 'w', encoding='utf-8') as f:
-            f.write(f"const hrModelData_{date_str.replace('-', '_')} = {json.dumps(predictions, indent=2)};")
+            f.write(f"window.hrModelData_{date_str.replace('-', '_')} = {json.dumps(predictions, indent=2)};")
         
         # Create results file
         results = results_by_date.get(date_str, [])

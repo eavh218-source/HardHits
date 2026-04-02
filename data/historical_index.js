@@ -14,9 +14,9 @@ const historicalDates = [
 
 function loadHistoricalData(dateStr) {
     // Dynamically load model data for a specific date
-    const script = document.createElement('script');
-    script.src = `../data/hr_model_${dateStr}.js`;
-    document.head.appendChild(script);
+    const modelScript = document.createElement('script');
+    modelScript.src = `../data/hr_model_${dateStr}.js`;
+    document.head.appendChild(modelScript);
     
     // Dynamically load results data for a specific date
     const resultsScript = document.createElement('script');
@@ -24,6 +24,14 @@ function loadHistoricalData(dateStr) {
     document.head.appendChild(resultsScript);
     
     return new Promise((resolve) => {
-        resultsScript.onload = () => resolve();
+        let loadedCount = 0;
+        const checkLoaded = () => {
+            loadedCount++;
+            if (loadedCount === 2) {
+                resolve();
+            }
+        };
+        modelScript.onload = checkLoaded;
+        resultsScript.onload = checkLoaded;
     });
 }
