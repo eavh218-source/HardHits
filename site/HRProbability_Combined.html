@@ -492,6 +492,28 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
                     <div class="result-badge ${resultClass}">${resultText}</div>
                 </div>
 
+                <div class="breakdown-section">
+                    <span class="breakdown-title">Signal Heatmap</span>
+                    <div class="breakdown-grid">
+                        <div class="b-item">
+                            <span class="b-label">POWER</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Power}%; background: var(--accent);"></div></div>
+                        </div>
+                        <div class="b-item">
+                            <span class="b-label">FORM</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Form}%; background: var(--emerald);"></div></div>
+                        </div>
+                        <div class="b-item">
+                            <span class="b-label">TREND</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Trend}%; background: var(--gold);"></div></div>
+                        </div>
+                        <div class="b-item">
+                            <span class="b-label">PARK</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Park}%; background: var(--sky);"></div></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="stat-grid">
                     <div class="stat-item">
                         <div class="stat-label">Model Prob</div>
