@@ -23,7 +23,7 @@ function loadHistoricalData(dateStr) {
     resultsScript.src = `../data/hr_results_${dateStr}.js`;
     document.head.appendChild(resultsScript);
     
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         let loadedCount = 0;
         const checkLoaded = () => {
             loadedCount++;
@@ -31,7 +31,22 @@ function loadHistoricalData(dateStr) {
                 resolve();
             }
         };
+
+        const errorHandler = (evt) => {
+            reject(new Error(`Failed to load historical data for ${dateStr}`));
+        };
+
         modelScript.onload = checkLoaded;
         resultsScript.onload = checkLoaded;
+
+        modelScript.onerror = errorHandler;
+        resultsScript.onerror = errorHandler;
+
+        // Prevent forever waiting by enforcing timeout
+        setTimeout(() => {
+            if (loadedCount !== 2) {
+                reject(new Error(`Timeout loading historical data for ${dateStr}`));
+            }
+        }, 6000);
     });
 }
