@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/site-nav.css">
     <script src="../data/hr_model_data.js"></script>
     <script src="../data/hr_results_data.js"></script>
+    <script src="../data/hr_model_consolidated.js"></script>
     <script src="../data/historical_index.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -532,16 +533,18 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
         const predictedNames = new Set(modelData.map(p => p.name));
         resultsData.forEach(r => {
             if (!predictedNames.has(r.name)) {
-                // Check if this player exists in model data with low probability
-                let modelEntry = modelData.find(p => p.name === r.name);
-                let hasModelData = modelEntry && modelEntry.breakdown;
-                
-                // If not found in date-specific data, check current model data
-                if (!hasModelData && typeof hrModelData !== 'undefined') {
-                    modelEntry = hrModelData.find(p => p.name === r.name);
-                    hasModelData = modelEntry && modelEntry.breakdown;
+                const lookupSources = [modelData, typeof hrModelData !== 'undefined' ? hrModelData : [],
+                    typeof hrModelHistoricalData !== 'undefined' ? hrModelHistoricalData : []];
+
+                let modelEntry = null;
+                for (const source of lookupSources) {
+                    if (!modelEntry) {
+                        modelEntry = source.find(p => p.name === r.name);
+                    }
                 }
-                
+
+                const hasModelData = modelEntry && modelEntry.breakdown;
+
                 const card = document.createElement('div');
                 card.className = `card status-outlier`;
                 card.innerHTML = `
