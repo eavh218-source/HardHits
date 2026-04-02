@@ -6,7 +6,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.3,
     "max_ev": 114,
     "fb_ev": 99,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 104,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 104.0,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Tyler Stephenson",
@@ -15,7 +26,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.0,
     "max_ev": 111,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Shea Langeliers",
@@ -24,7 +46,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.9,
     "max_ev": 117,
     "fb_ev": 98,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 106,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 106.0,
+    "fb_ev_pct": 98.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Joey Bart",
@@ -33,7 +66,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 2.9,
     "max_ev": 112,
     "fb_ev": 99,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Samuel Basallo",
@@ -42,7 +86,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.3,
     "max_ev": 110,
     "fb_ev": 99,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "J.T. Realmuto",
@@ -51,7 +106,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 3.1,
     "max_ev": 108,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Max Muncy",
@@ -60,7 +126,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.6,
     "max_ev": 112,
     "fb_ev": 101,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 101.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ezequiel Tovar",
@@ -69,7 +146,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.1,
     "max_ev": 108,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Corey Seager",
@@ -78,7 +166,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.9,
     "max_ev": 110,
     "fb_ev": 100,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 100.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Luis Garc\u00eda Jr.",
@@ -87,7 +186,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.9,
     "max_ev": 110,
     "fb_ev": 99,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Kazuma Okamoto",
@@ -96,7 +206,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 3.0,
     "max_ev": 110,
     "fb_ev": 99,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Noelvi Marte",
@@ -105,7 +226,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.1,
     "max_ev": 110,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Curtis Mead",
@@ -114,7 +246,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.9,
     "max_ev": 108,
     "fb_ev": 102,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 102.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Drake Baldwin",
@@ -123,7 +266,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.0,
     "max_ev": 110,
     "fb_ev": 101,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 101.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Eugenio Su\u00e1rez",
@@ -132,7 +286,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.6,
     "max_ev": 109,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Pete Alonso",
@@ -141,7 +306,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.6,
     "max_ev": 113,
     "fb_ev": 98,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 103,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 103.0,
+    "fb_ev_pct": 98.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Sal Stewart",
@@ -150,7 +326,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.3,
     "max_ev": 110,
     "fb_ev": 98,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 98.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Kyle Schwarber",
@@ -159,7 +346,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.3,
     "max_ev": 110,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ezequiel Duran",
@@ -168,7 +366,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -4.4,
     "max_ev": 111,
     "fb_ev": 98,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 98.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Henry Davis",
@@ -177,7 +386,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 2.1,
     "max_ev": 111,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Edouard Julien",
@@ -186,7 +406,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.8,
     "max_ev": 108,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Spencer Steer",
@@ -195,7 +426,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.8,
     "max_ev": 109,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Troy Johnston",
@@ -204,7 +446,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.5,
     "max_ev": 108,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Joc Pederson",
@@ -213,7 +466,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 2.8,
     "max_ev": 109,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Davis Schneider",
@@ -222,7 +486,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 4.9,
     "max_ev": 104,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Adley Rutschman",
@@ -231,7 +506,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 2.6,
     "max_ev": 109,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Matt McLain",
@@ -240,7 +526,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.8,
     "max_ev": 110,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ryan Ritter",
@@ -249,7 +546,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.8,
     "max_ev": 109,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ronald Acu\u00f1a Jr.",
@@ -258,7 +566,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.8,
     "max_ev": 108,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Brandon Nimmo",
@@ -267,7 +586,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.6,
     "max_ev": 107,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Bryan Reynolds",
@@ -276,7 +606,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.4,
     "max_ev": 108,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Matt Olson",
@@ -285,7 +626,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.1,
     "max_ev": 110,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Blaze Alexander",
@@ -294,7 +646,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.6,
     "max_ev": 110,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Elly De La Cruz",
@@ -303,7 +666,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.8,
     "max_ev": 116,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 105,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 105.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Eli White",
@@ -312,7 +686,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.3,
     "max_ev": 109,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Michael Harris II",
@@ -321,7 +706,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.3,
     "max_ev": 111,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Nathaniel Lowe",
@@ -330,7 +726,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.9,
     "max_ev": 114,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 104,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 104.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "George Springer",
@@ -339,7 +746,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.4,
     "max_ev": 111,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jes\u00fas S\u00e1nchez",
@@ -348,7 +766,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.2,
     "max_ev": 113,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 103,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 103.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Nick Kurtz",
@@ -357,7 +786,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -5.0,
     "max_ev": 115,
     "fb_ev": 101,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 105,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 105.0,
+    "fb_ev_pct": 101.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Tyler O'Neill",
@@ -366,7 +806,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.9,
     "max_ev": 109,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ke'Bryan Hayes",
@@ -375,7 +826,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 2.1,
     "max_ev": 110,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Adolis Garc\u00eda",
@@ -384,7 +846,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.9,
     "max_ev": 112,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Trea Turner",
@@ -393,7 +866,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.6,
     "max_ev": 109,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Brenton Doyle",
@@ -402,7 +886,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 3.7,
     "max_ev": 112,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Edmundo Sosa",
@@ -411,7 +906,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.1,
     "max_ev": 112,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Brady House",
@@ -420,7 +926,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.4,
     "max_ev": 110,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Dylan Moore",
@@ -429,7 +946,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.0,
     "max_ev": 106,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Tyler Freeman",
@@ -438,7 +966,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 10.4,
     "max_ev": 108,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Brent Rooker",
@@ -447,7 +986,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.4,
     "max_ev": 109,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jake Burger",
@@ -456,7 +1006,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.1,
     "max_ev": 113,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 103,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 103.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Brandon Lowe",
@@ -465,7 +1026,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -5.9,
     "max_ev": 111,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ryan O'Hearn",
@@ -474,7 +1046,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.4,
     "max_ev": 105,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Bryson Stott",
@@ -483,7 +1066,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.5,
     "max_ev": 108,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Denzel Clarke",
@@ -492,7 +1086,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.5,
     "max_ev": 111,
     "fb_ev": 100,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 100.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Lawrence Butler",
@@ -501,7 +1106,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.6,
     "max_ev": 110,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Andrew McCutchen",
@@ -510,7 +1126,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.6,
     "max_ev": 107,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Evan Carter",
@@ -519,7 +1146,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.8,
     "max_ev": 112,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "James Wood",
@@ -528,7 +1166,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.0,
     "max_ev": 113,
     "fb_ev": 97,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 103,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 103.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Hunter Goodman",
@@ -537,7 +1186,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.2,
     "max_ev": 114,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 104,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 104.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Wyatt Langford",
@@ -546,7 +1206,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -4.0,
     "max_ev": 115,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 105,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 105.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Marcell Ozuna",
@@ -555,7 +1226,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.5,
     "max_ev": 105,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Tyler Soderstrom",
@@ -564,7 +1246,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.7,
     "max_ev": 113,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 103,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 103.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Josh Jung",
@@ -573,7 +1266,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.1,
     "max_ev": 107,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Alec Bohm",
@@ -582,7 +1286,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.8,
     "max_ev": 108,
     "fb_ev": 95,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jose Trevino",
@@ -591,7 +1306,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -11.6,
     "max_ev": 108,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Will Benson",
@@ -600,7 +1326,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -8.8,
     "max_ev": 110,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Daylen Lile",
@@ -609,7 +1346,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.2,
     "max_ev": 108,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Joey Wiemer",
@@ -618,7 +1366,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.3,
     "max_ev": 110,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jake McCarthy",
@@ -627,7 +1386,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 2.4,
     "max_ev": 106,
     "fb_ev": 90,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Daulton Varsho",
@@ -636,7 +1406,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -6.5,
     "max_ev": 112,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Colton Cowser",
@@ -645,7 +1426,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.2,
     "max_ev": 110,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "CJ Abrams",
@@ -654,7 +1446,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.2,
     "max_ev": 110,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jordan Beck",
@@ -663,7 +1466,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.6,
     "max_ev": 108,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jos\u00e9 Tena",
@@ -672,7 +1486,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.6,
     "max_ev": 106,
     "fb_ev": 94,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Andy Ib\u00e1\u00f1ez",
@@ -681,7 +1506,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.6,
     "max_ev": 107,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Austin Riley",
@@ -690,7 +1526,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.4,
     "max_ev": 109,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Billy Cook",
@@ -699,7 +1546,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.0,
     "max_ev": 110,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Brandon Marsh",
@@ -708,7 +1566,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.3,
     "max_ev": 107,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Brett Sullivan",
@@ -717,7 +1586,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -5.0,
     "max_ev": 108,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Kyle Higashioka",
@@ -726,7 +1606,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.7,
     "max_ev": 105,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Justin Crawford",
@@ -735,7 +1626,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.0,
     "max_ev": 109,
     "fb_ev": 90,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Otto Kemp",
@@ -744,7 +1646,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -11.6,
     "max_ev": 111,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Willi Castro",
@@ -753,7 +1666,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.2,
     "max_ev": 113,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 103,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 103.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Addison Barger",
@@ -762,7 +1686,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -6.9,
     "max_ev": 112,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Vladimir Guerrero Jr.",
@@ -771,7 +1706,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.9,
     "max_ev": 112,
     "fb_ev": 96,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Josh Smith",
@@ -780,7 +1726,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -5.4,
     "max_ev": 110,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Nick Gonzales",
@@ -789,7 +1746,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.6,
     "max_ev": 108,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Dane Myers",
@@ -798,7 +1766,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.6,
     "max_ev": 109,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Danny Jansen",
@@ -807,7 +1786,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.0,
     "max_ev": 107,
     "fb_ev": 90,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Leody Taveras",
@@ -816,7 +1806,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.3,
     "max_ev": 110,
     "fb_ev": 90,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Mike Yastrzemski",
@@ -825,7 +1826,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.5,
     "max_ev": 106,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ozzie Albies",
@@ -834,7 +1846,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.1,
     "max_ev": 106,
     "fb_ev": 90,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Dominic Smith",
@@ -843,7 +1866,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.1,
     "max_ev": 105,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Sam Haggerty",
@@ -852,7 +1886,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 2.6,
     "max_ev": 109,
     "fb_ev": 87,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Hot",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 87.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Coby Mayo",
@@ -861,7 +1906,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.1,
     "max_ev": 115,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 105,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 105.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Dylan Beavers",
@@ -870,7 +1926,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.6,
     "max_ev": 108,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Bryce Harper",
@@ -879,7 +1946,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.9,
     "max_ev": 106,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Nathan Lukes",
@@ -888,7 +1966,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.8,
     "max_ev": 107,
     "fb_ev": 93,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Gunnar Henderson",
@@ -897,7 +1986,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.1,
     "max_ev": 107,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "TJ Friedl",
@@ -906,7 +2006,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -5.0,
     "max_ev": 109,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "TJ Rumfield",
@@ -915,7 +2026,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.9,
     "max_ev": 111,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 101,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 101.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Nick Yorke",
@@ -924,7 +2046,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -5.1,
     "max_ev": 106,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Spencer Horwitz",
@@ -933,7 +2066,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 0.3,
     "max_ev": 107,
     "fb_ev": 87,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 87.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Andr\u00e9s Gim\u00e9nez",
@@ -942,7 +2086,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.3,
     "max_ev": 108,
     "fb_ev": 90,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jonah Heim",
@@ -951,7 +2106,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": 1.5,
     "max_ev": 108,
     "fb_ev": 87,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 50,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 87.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jeremiah Jackson",
@@ -960,7 +2126,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -4.4,
     "max_ev": 109,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 99,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 99.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Austin Wynns",
@@ -969,7 +2146,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -6.8,
     "max_ev": 112,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 102,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 102.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jacob Young",
@@ -978,7 +2166,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.2,
     "max_ev": 106,
     "fb_ev": 87,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 87.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Alejandro Kirk",
@@ -987,7 +2186,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -4.1,
     "max_ev": 108,
     "fb_ev": 92,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jorge Mateo",
@@ -996,7 +2206,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.6,
     "max_ev": 108,
     "fb_ev": 89,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 89.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jake Mangum",
@@ -1005,7 +2226,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.6,
     "max_ev": 105,
     "fb_ev": 88,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 88.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Mauricio Dub\u00f3n",
@@ -1014,7 +2246,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -1.0,
     "max_ev": 108,
     "fb_ev": 89,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 98,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 98.0,
+    "fb_ev_pct": 89.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Taylor Ward",
@@ -1023,7 +2266,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -0.7,
     "max_ev": 106,
     "fb_ev": 88,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 96,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 96.0,
+    "fb_ev_pct": 88.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Kyle Karros",
@@ -1032,7 +2286,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -4.0,
     "max_ev": 110,
     "fb_ev": 91,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 100,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 100.0,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Jacob Wilson",
@@ -1041,7 +2306,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.6,
     "max_ev": 105,
     "fb_ev": 89,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 89.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Ryan Mountcastle",
@@ -1050,7 +2326,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.3,
     "max_ev": 104,
     "fb_ev": 87,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 87.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Myles Straw",
@@ -1059,7 +2346,18 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -2.3,
     "max_ev": 107,
     "fb_ev": 85,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 97,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 97.0,
+    "fb_ev_pct": 85.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   },
   {
     "name": "Darell Hernaiz",
@@ -1068,6 +2366,17 @@ window.hrModelData_2026_04_01 = [
     "ev_trend_val": -3.6,
     "max_ev": 105,
     "fb_ev": 88,
-    "date": "2026-04-01"
+    "date": "2026-04-01",
+    "breakdown": {
+      "Power": 95,
+      "Form": 75,
+      "Trend": 25,
+      "Park": 39
+    },
+    "ev_trend_label": "Stable",
+    "max_ev_pct": 95.0,
+    "fb_ev_pct": 88.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   }
 ];
