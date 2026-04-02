@@ -356,13 +356,6 @@
         return `${month} ${day}, ${year}`;
     }
 
-    function getPreviousDate(dateStr) {
-        if (!Array.isArray(historicalDates)) return null;
-        const idx = historicalDates.indexOf(dateStr);
-        if (idx <= 0) return null;
-        return historicalDates[idx - 1];
-    }
-
     function findModelEntryByName(name, modelDataForDate) {
         if (!name) return null;
         const normalized = name.toLowerCase();
@@ -375,21 +368,16 @@
     }
 
     function openOutlierModal(name, dateStr) {
-        const prevDate = getPreviousDate(dateStr); // immediate prior date
         let details = `This outlier is for ${name} (${dateStr}).`;
-        if (!prevDate) {
-            details += '<br>No previous date available for lookup.';
+        const sameDateModel = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || [];
+        const sameEntry = findModelEntryByName(name, sameDateModel);
+        if (sameEntry) {
+            details += `<br><br><b>Same date:</b> ${dateStr}`;
+            details += `<br><b>Model Prob:</b> ${sameEntry.probability}%`;
+            details += `<br><b>Max EV:</b> ${sameEntry.max_ev || 'N/A'}`;
+            details += `<br><b>Breakdown:</b> Power ${sameEntry.breakdown.Power} | Form ${sameEntry.breakdown.Form} | Trend ${sameEntry.breakdown.Trend} | Park ${sameEntry.breakdown.Park}`;
         } else {
-            const prevModel = window[`hrModelData_${prevDate.replace(/-/g, '_')}`] || [];
-            const prevEntry = findModelEntryByName(name, prevModel);
-            if (prevEntry) {
-                details += `<br><br><b>Previous date:</b> ${prevDate}`;
-                details += `<br><b>Model Prob:</b> ${prevEntry.probability}%`;
-                details += `<br><b>Max EV:</b> ${prevEntry.max_ev || 'N/A'}`;
-                details += `<br><b>Breakdown:</b> Power ${prevEntry.breakdown.Power} | Form ${prevEntry.breakdown.Form} | Trend ${prevEntry.breakdown.Trend} | Park ${prevEntry.breakdown.Park}`;
-            } else {
-                details += `<br><br>No model entry found for ${name} on ${prevDate}.`;
-            }
+            details += `<br><br>No model entry found for ${name} on ${dateStr}.`;
         }
 
         const content = document.getElementById('outlier-modal-content');
