@@ -596,8 +596,8 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
             allCards.push({ element: card, status });
         });
 
-        // 3. Find "Outliers" (Players who hit HRs but weren't in your model's Top list)
-        const predictedNames = new Set(modelData.map(p => p.name));
+        // 3. Find "Outliers" (Players who hit HRs but weren't flagged as predictions)
+        const predictedNames = new Set(modelData.filter(p => p.probability >= 5.0).map(p => p.name));
         resultsData.forEach(r => {
             if (!predictedNames.has(r.name)) {
                 const lookupSources = [modelData, typeof hrModelData !== 'undefined' ? hrModelData : [],
