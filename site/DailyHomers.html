@@ -242,7 +242,7 @@
         <button class="toggle-btn" id="table-btn">Table View</button>
     </div>
 
-    <div id="date-selector" style="display: none; margin-bottom: 30px; text-align: center;">
+    <div id="date-selector" style="margin-bottom: 30px; text-align: center;">
         <select id="date-select" style="padding: 10px 15px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-main); border-radius: 8px; font-size: 0.9rem;">
             <option value="">Select Date...</option>
         </select>
@@ -268,7 +268,6 @@
         currentView = view;
         document.getElementById('cards-btn').classList.toggle('active', view === 'cards');
         document.getElementById('table-btn').classList.toggle('active', view === 'table');
-        document.getElementById('date-selector').style.display = 'none';
 
         if (view === 'cards' || view === 'table') {
             currentDate = null;
