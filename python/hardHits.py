@@ -4,8 +4,9 @@ from datetime import datetime, timedelta
 import os
 import json
 
+from paths import DATA_DIR
+
 # --- CONFIGURATION ---
-SAVE_PATH = r"C:\code\HardHits\dataFiles"
 FILENAME = "data.js" # Changed to .js to bypass browser security
 
 def update_dashboard():
@@ -41,13 +42,12 @@ def update_dashboard():
         ]].to_dict(orient='records')
 
         # 5. Create the JavaScript File
-        if not os.path.exists(SAVE_PATH):
-            os.makedirs(SAVE_PATH)
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
             
         js_content = f"const reportDate = '{display_date}';\n"
         js_content += f"const statcastData = {json.dumps(dashboard_list, indent=4)};"
         
-        with open(os.path.join(SAVE_PATH, FILENAME), 'w', encoding='utf-8') as f:
+        with open(DATA_DIR / FILENAME, 'w', encoding='utf-8') as f:
             f.write(js_content)
             
         print(f"✅ Created data.js with {len(dashboard_list)} hits.")

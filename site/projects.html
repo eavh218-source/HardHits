@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>HardHits | Roadmap</title>
-    <link rel="stylesheet" href="Scripts/site-nav.css">
-    <script src="dataFiles/projects_data.js"></script>
+    <link rel="stylesheet" href="../assets/site-nav.css">
+    <script src="../data/projects_data.js"></script>
     <style>
         :root { 
             --bg: #0b0f19; --card: #111827; --border: #1e293b; 
@@ -70,7 +70,7 @@
         
         if(!t || !d) { alert("Fill in title and description"); return; }
         
-        const cmd = `python update_projects.py "${t}" "${d}" "${s}"`;
+        const cmd = `python python/update_projects.py "${t}" "${d}" "${s}"`;
         out.innerText = "Copy and run this in your terminal:\n\n" + cmd;
         out.style.display = "block";
     }
@@ -78,7 +78,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         const list = document.getElementById('project-list');
         if (typeof projectData === 'undefined') {
-            list.innerHTML = "<p>No data found. Run update_projects.py first.</p>";
+            list.innerHTML = "<p>No data found. Run python python/update_projects.py from the repo root first.</p>";
             return;
         }
         projectData.forEach(proj => {
@@ -93,6 +93,6 @@
         });
     });
 </script>
-<script src="Scripts/site-nav.js" defer></script>
+<script src="../assets/site-nav.js" defer></script>
 </body>
 </html>

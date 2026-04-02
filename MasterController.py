@@ -1,11 +1,20 @@
+"""Run from repo root: python MasterController.py"""
 import subprocess
 import sys
+from pathlib import Path
 
-def run_script(script_name):
+ROOT = Path(__file__).resolve().parent
+PY = ROOT / "python"
+
+
+def run_script(script_name: str) -> bool:
     print(f"--- Starting: {script_name} ---")
     try:
-        # Runs the script and displays output in real-time
-        subprocess.run([sys.executable, script_name], check=True)
+        subprocess.run(
+            [sys.executable, str(PY / script_name)],
+            check=True,
+            cwd=str(ROOT),
+        )
         print(f"--- Finished: {script_name} successfully ---\n")
         return True
     except subprocess.CalledProcessError as e:
@@ -15,15 +24,15 @@ def run_script(script_name):
         print(f"⚠️ Unexpected error: {e}\n")
         return False
 
+
 if __name__ == "__main__":
     print("⚾ MLB Data Update Initialized ⚾\n")
-    
+
     scripts_to_run = ["hardHits.py", "get_starters.py", "BvP.py", "TodaysHomers.py"]
     successful_runs = []
 
     for script in scripts_to_run:
-        success = run_script(script)
-        if success:
+        if run_script(script):
             successful_runs.append(script)
 
     print("---------------------------------------")

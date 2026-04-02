@@ -4,7 +4,8 @@ from datetime import datetime
 import os
 import json
 
-SAVE_PATH = r"C:\code\HardHits\dataFiles"
+from paths import DATA_DIR
+
 FILENAME = "today_matchups.json"
 
 def fetch_probables():
@@ -42,8 +43,8 @@ def fetch_probables():
                         'opponent_team': away['team']['abbreviation']
                     })
 
-        if not os.path.exists(SAVE_PATH): os.makedirs(SAVE_PATH)
-        with open(os.path.join(SAVE_PATH, FILENAME), 'w') as f:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        with open(DATA_DIR / FILENAME, 'w') as f:
             json.dump(matchups, f, indent=4)
             
         print(f"✅ Found {len(matchups)} probable starters for today.")

@@ -1,7 +1,8 @@
 import pybaseball as pb
 import json
-import os
 import pandas as pd
+
+from paths import DATA_DIR
 import re
 from datetime import datetime, timedelta
 
@@ -10,8 +11,7 @@ def run_validator():
     yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     print(f"--- 🔍 HR Validator | Checking Results for: {yesterday} ---")
     
-    if not os.path.exists('dataFiles'):
-        os.makedirs('dataFiles')
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     # 2. Fetch Statcast data
     try:
@@ -50,7 +50,7 @@ def run_validator():
         })
 
     # 4. Save with window scope for easy HTML access
-    with open('dataFiles/hr_results_data.js', 'w', encoding='utf-8') as f:
+    with open(DATA_DIR / 'hr_results_data.js', 'w', encoding='utf-8') as f:
         f.write(f"window.hrResultsData = {json.dumps(results, indent=2)};")
     
     print(f"✅ Success! Logged {len(results)} actual Home Runs hit by BATTERS.")

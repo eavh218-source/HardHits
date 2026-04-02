@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardHits | HR Historical</title>
-    <link rel="stylesheet" href="Scripts/site-nav.css">
+    <link rel="stylesheet" href="../assets/site-nav.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -117,7 +117,7 @@
 <div class="container">
     <div style="margin-bottom: 30px;">
         <h1 id="pageTitle" style="font-size: 2.2rem; margin: 0; letter-spacing: -1px;">HR Probability (historical)</h1>
-        <p style="color: var(--text-dim); margin-top: 5px;">Loads <code>dataFiles/hr_model_&lt;date&gt;.js</code> from <code>python hr_engine_historical.py</code> (set <code>TARGET_DATE_STR</code> in the script).</p>
+        <p style="color: var(--text-dim); margin-top: 5px;">Loads <code>data/hr_model_&lt;date&gt;.js</code> from <code>python python/hr_engine_historical.py</code> (set <code>TARGET_DATE_STR</code> in the script).</p>
     </div>
 
     <div id="dashboard" class="grid">
@@ -201,7 +201,7 @@
         const dateVal = document.getElementById('datePicker').value;
         if (!dateVal) return;
 
-        const fileName = `dataFiles/hr_model_${dateVal}.js`;
+        const fileName = `../data/hr_model_${dateVal}.js`;
         const varName = `hrModelData_${dateVal.replaceAll('-', '_')}`;
 
         const oldScript = document.getElementById('dynamic-data-script');
@@ -222,7 +222,7 @@
         };
 
         script.onerror = () => {
-            showError(`No file at ${fileName}. Run python hr_engine_historical.py with TARGET_DATE_STR="${dateVal}" to generate it.`);
+            showError(`No file at ${fileName}. Run python python/hr_engine_historical.py with TARGET_DATE_STR="${dateVal}" to generate it.`);
         };
 
         document.head.appendChild(script);
@@ -236,6 +236,6 @@
             </div>`;
     }
 </script>
-<script src="Scripts/site-nav.js" defer></script>
+<script src="../assets/site-nav.js" defer></script>
 </body>
 </html>

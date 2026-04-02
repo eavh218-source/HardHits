@@ -2,15 +2,11 @@ import statsapi
 import pybaseball as pb
 import pandas as pd
 import json
-import os
 from datetime import datetime, timedelta
 
-# --- CONFIGURATION ---
-# Set the historical date you want to analyze, then run: python hr_engine_historical.py
-# Output is read by HRProbability_Historical.html as dataFiles/hr_model_<date>.js
-TARGET_DATE_STR = "2026-04-01"
-TARGET_DATE = datetime.strptime(TARGET_DATE_STR, '%Y-%m-%d')
+from paths import DATA_DIR
 
+# --- 1. CONFIGURATION & PARK FACTORS ---
 PARK_FACTORS = {
     'Reds': 1.28, 'Dodgers': 1.21, 'Phillies': 1.16, 
     'Yankees': 1.12, 'Rockies': 1.11, 'Athletics': 1.09,
@@ -23,22 +19,25 @@ def calculate_barrels(df):
     barrels = df[(df['launch_speed'] >= 98) & (df['launch_angle'].between(26, 30))]
     return (len(barrels) / len(df)) * 100 if len(df) > 0 else 0
 
-def get_historical_metrics(mlbid, ref_date):
-    """Fetches Statcast data relative to the provided reference date."""
+def get_advanced_hitter_metrics(mlbid):
     try:
-        end_date_str = ref_date.strftime('%Y-%m-%d')
-        start_date_str = (ref_date - timedelta(days=30)).strftime('%Y-%m-%d')
+        # Fetch 30 day window
+        end_date = datetime.now().strftime('%Y-%m-%d')
+        start_date = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
         
-        df = pb.statcast_batter(start_date_str, end_date_str, mlbid)
+        df = pb.statcast_batter(start_date, end_date, mlbid)
         
-        if df.empty: return None
+        # Early season fallback: If no 2026 data, pull end of 2025
+        if df.empty:
+            df = pb.statcast_batter("2025-09-01", "2025-10-01", mlbid)
+            if df.empty: return None
 
         df = df.dropna(subset=['launch_speed', 'launch_angle'])
         df['game_date'] = pd.to_datetime(df['game_date'])
         
-        last_7_window = ref_date - timedelta(days=7)
-        last_7 = df[df['game_date'] >= last_7_window]
+        last_7 = df[df['game_date'] >= (datetime.now() - timedelta(days=7))]
         
+        # Metrics
         barrel_pct = calculate_barrels(df)
         max_ev = df['launch_speed'].max()
         avg_30 = df['launch_speed'].mean()
@@ -53,19 +52,23 @@ def get_historical_metrics(mlbid, ref_date):
             "barrel_pct": barrel_pct,
             "max_ev": max_ev,
             "fb_ev": fb_ev,
-            "ev_trend": ev_trend
+            "ev_trend": ev_trend,
+            "has_recent": not last_7.empty
         }
-    except Exception:
+    except:
         return None
 
-def run_backdated_model():
-    print(f"--- ⚾ HR Historical Engine (date: {TARGET_DATE_STR}) ---")
-    if not os.path.exists('dataFiles'): os.makedirs('dataFiles')
+def run_probability_model():
+    print("--- ⚾ HR Probability Engine (daily) ---")
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     
-    games = statsapi.schedule(date=TARGET_DATE_STR)
+    today = datetime.now().strftime('%Y-%m-%d')
+    games = statsapi.schedule(date=today)
+    
     payload = []
 
-    for game in games[:5]:
+    # Analyze first few games
+    for game in games[:4]:
         print(f"Analyzing: {game['away_name']} @ {game['home_name']}")
         
         pf = 1.0
@@ -86,34 +89,44 @@ def run_backdated_model():
                 p_id = p['person']['id']
                 
                 print(f"  Checking {name}...", end="\r")
-                stats = get_historical_metrics(p_id, TARGET_DATE)
+                stats = get_advanced_hitter_metrics(p_id)
                 
                 if stats and stats['max_ev'] > 104:
+                    # Normalized scoring
                     s_power = min(stats['barrel_pct'] / 15 * 100, 100)
                     s_form = min(max(stats['fb_ev'] - 88, 0) / 12 * 100, 100)
                     s_trend = min(max(stats['ev_trend'] + 3, 0) / 6 * 100, 100)
                     s_park = min(((pf - 0.8) / 0.5) * 100, 100)
 
+                    # Final Prob (approx 2% - 14%)
                     final_prob = round((s_power*0.2 + s_form*0.15 + s_trend*0.1 + s_park*0.05) / 4.5, 1)
 
                     payload.append({
                         "name": name,
                         "team": game[f'{side}_name'][:3].upper(),
                         "probability": final_prob,
+                        "breakdown": {
+                            "Power": int(s_power),
+                            "Form": int(s_form),
+                            "Trend": int(s_trend),
+                            "Park": int(s_park)
+                        },
                         "ev_trend_val": round(stats['ev_trend'], 1),
+                        "ev_trend_label": "Heating Up" if stats['ev_trend'] > 1.5 else "Stable",
                         "max_ev": int(stats['max_ev']),
-                        "fb_ev": int(stats['fb_ev'])
+                        "max_ev_pct": int((stats['max_ev'] / 120) * 100),
+                        "fb_ev": int(stats['fb_ev']),
+                        "fb_ev_pct": int((stats['fb_ev'] / 112) * 100),
+                        "opp_pitcher": game.get('home_probable_pitcher' if side=='away' else 'away_probable_pitcher', 'TBD'),
+                        "park_factor": "Launch Pad" if pf > 1.1 else "Neutral"
                     })
 
-    output_path = f'dataFiles/hr_model_{TARGET_DATE_STR}.js'
-    var_date = TARGET_DATE_STR.replace('-', '_')
-    
+    # Save
     payload = sorted(payload, key=lambda x: x['probability'], reverse=True)
+    with open(DATA_DIR / 'hr_model_data.js', 'w') as f:
+        f.write(f"const hrModelData = {json.dumps(payload, indent=2)};")
     
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(f"window.hrModelData_{var_date} = {json.dumps(payload, indent=2)};")
-    
-    print(f"\n✅ Saved to {output_path} (open HRProbability_Historical.html)")
+    print(f"\n✅ Success! {len(payload)} threats updated in Dashboard.")
 
 if __name__ == "__main__":
-    run_backdated_model()
+    run_probability_model()

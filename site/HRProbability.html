@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardHits | HR Probability</title>
-    <link rel="stylesheet" href="Scripts/site-nav.css">
-    <script src="dataFiles/hr_model_data.js"></script>
+    <link rel="stylesheet" href="../assets/site-nav.css">
+    <script src="../data/hr_model_data.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -102,7 +102,7 @@
         if (typeof hrModelData === 'undefined' || hrModelData.length === 0) {
             dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
                 <h2 style="color: var(--text-dim)">No Data Found</h2>
-                <p>Run <code>python hr_engine.py</code> to generate <code>dataFiles/hr_model_data.js</code>.</p>
+                <p>Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/hr_model_data.js</code>.</p>
             </div>`;
             return;
         }
@@ -176,6 +176,6 @@
         });
     });
 </script>
-<script src="Scripts/site-nav.js" defer></script>
+<script src="../assets/site-nav.js" defer></script>
 </body>
 </html>

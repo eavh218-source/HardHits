@@ -1,8 +1,10 @@
 import json
 import os
 
+from paths import DATA_DIR
+
 def add_project(title, description, status="Planned"):
-    file_path = 'dataFiles/projects.json'
+    file_path = DATA_DIR / 'projects.json'
     
     # 1. Load existing data
     if os.path.exists(file_path):
@@ -23,7 +25,7 @@ def add_project(title, description, status="Planned"):
         json.dump(projects, f, indent=2)
     
     # 4. Also wrap it in a .js file for easy HTML import
-    with open('dataFiles/projects_data.js', 'w') as f:
+    with open(DATA_DIR / 'projects_data.js', 'w') as f:
         f.write(f"const projectData = {json.dumps(projects, indent=2)};")
 
     print(f"✅ Added: {title}")

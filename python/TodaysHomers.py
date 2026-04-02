@@ -2,6 +2,8 @@ import requests
 import json
 from datetime import datetime, timedelta
 
+from paths import DATA_DIR
+
 def fetch_hr_data(date_str):
     print(f"--- Fetching LIVE Statcast Data for {date_str} ---")
     sched_url = f"https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&date={date_str}"
@@ -84,7 +86,7 @@ if not hr_list:
     target_date = yesterday
 
 # --- EXPORT ---
-output_path = 'dataFiles/todays_hrs.js'
+output_path = DATA_DIR / 'todays_hrs.js'
 with open(output_path, 'w') as f:
     f.write(f"const hrUpdateDate = '{target_date}';\n")
     f.write(f"const todaysHRData = {json.dumps(hr_list, indent=2)};")

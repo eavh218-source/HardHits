@@ -4,6 +4,8 @@ import pandas as pd
 import json
 from datetime import datetime
 
+from paths import DATA_DIR
+
 # 1. Team Abbreviation Mapping
 TEAM_MAP = {
     'Arizona Diamondbacks': 'ARI', 'Atlanta Braves': 'ATL', 'Baltimore Orioles': 'BAL',
@@ -112,7 +114,7 @@ for game in sched:
             print(f"Error on {m['p']}: {e}")
 
 # Save to JS file
-output_path = 'dataFiles/bvp_data.js'
+output_path = DATA_DIR / 'bvp_data.js'
 with open(output_path, 'w') as f:
     f.write(f"const bvpDate = '{target_date}';\n")
     f.write(f"const dailyMatchups = {json.dumps(daily_matchups, indent=2)};\n")
