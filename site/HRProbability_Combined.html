@@ -532,34 +532,38 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
         const predictedNames = new Set(modelData.map(p => p.name));
         resultsData.forEach(r => {
             if (!predictedNames.has(r.name)) {
+                // Check if this player exists in model data with low probability
+                const modelEntry = modelData.find(p => p.name === r.name);
+                const hasModelData = modelEntry && modelEntry.breakdown;
+                
                 const card = document.createElement('div');
                 card.className = `card status-outlier`;
                 card.innerHTML = `
                     <div class="card-header">
                         <div>
                             <div class="player-name">${r.name}</div>
-                            <div class="player-team">Actual HR Hit</div>
+                            <div class="player-team">Actual HR Hit ${hasModelData ? `• Model: ${modelEntry.probability}%` : ''}</div>
                         </div>
                         <div class="result-badge badge-outlier">⭐ OUTLIER</div>
                     </div>
                     <div class="breakdown-section">
-                        <span class="breakdown-title">Not Predicted by Model</span>
+                        <span class="breakdown-title">${hasModelData ? 'Model Ratings (Low Probability)' : 'Not in Model'}</span>
                         <div class="breakdown-grid">
                             <div class="b-item">
                                 <span class="b-label">POWER</span>
-                                <div class="b-track"><div class="b-fill" style="width:0%; background: var(--accent);"></div></div>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Power : 0}%; background: var(--accent);"></div></div>
                             </div>
                             <div class="b-item">
                                 <span class="b-label">FORM</span>
-                                <div class="b-track"><div class="b-fill" style="width:0%; background: var(--emerald);"></div></div>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Form : 0}%; background: var(--emerald);"></div></div>
                             </div>
                             <div class="b-item">
                                 <span class="b-label">TREND</span>
-                                <div class="b-track"><div class="b-fill" style="width:0%; background: var(--gold);"></div></div>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Trend : 0}%; background: var(--gold);"></div></div>
                             </div>
                             <div class="b-item">
                                 <span class="b-label">PARK</span>
-                                <div class="b-track"><div class="b-fill" style="width:0%; background: var(--sky);"></div></div>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Park : 0}%; background: var(--sky);"></div></div>
                             </div>
                         </div>
                     </div>
