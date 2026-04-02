@@ -463,6 +463,7 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
 
         // 1. Create a Set of names who ACTUALLY hit HRs for fast lookup
         const actualHRNames = new Set(resultsData.map(r => r.name));
+        const resultsByName = new Map(resultsData.map(r => [r.name, r]));
 
         let successfulPredictions = 0;
         let totalFlagged = 0;
@@ -470,7 +471,8 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
 
         // 2. Map through the Model Predictions
         modelData.forEach(p => {
-            const didHit = actualHRNames.has(p.name);
+            const actual = resultsByName.get(p.name);
+            const didHit = !!actual;
             const isFlagged = p.probability >= 5.0; // Your threshold for a "Pick"
 
             if (isFlagged) totalFlagged++;
@@ -523,6 +525,14 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
                     <div class="stat-item">
                         <div class="stat-label">Max EV</div>
                         <div class="stat-value">${p.max_ev || 'N/A'}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Actual EV</div>
+                        <div class="stat-value">${actual ? actual.ev : 'N/A'}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Distance</div>
+                        <div class="stat-value">${actual ? `${actual.dist}'` : 'N/A'}</div>
                     </div>
                 </div>
             `;
