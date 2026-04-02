@@ -4,9 +4,7 @@
     { href: 'HardHits.html', label: 'Home', id: 'home' },
     { href: 'BvP.html', label: 'BvP', id: 'bvp' },
     { href: 'DailyHomers.html', label: 'Daily Homers', id: 'daily' },
-    { href: 'HRProbability.html', label: 'HR Probability', id: 'hr' },
-    { href: 'HRProbability_Historical.html', label: 'HR Historical', id: 'hrhist' },
-    { href: 'Results_Tracker.html', label: 'Results', id: 'results' },
+    { href: 'HRProbability_Combined.html', label: 'HR Probability', id: 'hr' },
     { href: 'projects.html', label: 'Roadmap', id: 'projects' }
   ];
 
