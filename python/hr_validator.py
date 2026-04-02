@@ -55,5 +55,45 @@ def run_validator():
     
     print(f"✅ Success! Logged {len(results)} actual Home Runs hit by BATTERS.")
 
+def fetch_hrs_for_date(target_date):
+    """Fetch home runs for a specific date"""
+    print(f"--- 🔍 Fetching HRs for: {target_date} ---")
+    
+    try:
+        data = pb.statcast(start_dt=target_date, end_dt=target_date)
+        # Filter for home runs
+        hrs = data[data['events'] == 'home_run'].copy()
+    except Exception as e:
+        print(f"Error fetching data for {target_date}: {e}")
+        return []
+
+    if hrs.empty:
+        print(f"No home runs recorded on {target_date}.")
+        return []
+
+    # Extract BATTER names from the play description
+    results = []
+    for _, row in hrs.iterrows():
+        description = row['des']
+        match = re.match(r"^(.*?) homers", description)
+        
+        if match:
+            batter_name = match.group(1)
+        else:
+            name_parts = row['player_name'].split(", ")
+            batter_name = f"{name_parts[1]} {name_parts[0]}" if len(name_parts) > 1 else row['player_name']
+        
+        results.append({
+            "name": batter_name,
+            "ev": int(row['launch_speed']) if pd.notnull(row['launch_speed']) else 0,
+            "dist": int(row['hit_distance_sc']) if pd.notnull(row['hit_distance_sc']) else 0,
+            "launch_angle": int(row['launch_angle']) if pd.notnull(row['launch_angle']) else 0,
+            "status": "🎯 HOME RUN",
+            "date": target_date
+        })
+    
+    print(f"✅ Found {len(results)} home runs for {target_date}")
+    return results
+
 if __name__ == "__main__":
     run_validator()
