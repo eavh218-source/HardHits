@@ -428,6 +428,19 @@
         });
     }
 
+    function inferModelMissReason(result, modelEntry, modelData) {
+        if (!modelEntry) {
+            return 'Missed because not found in model data for this date.';
+        }
+
+        const threshold = 5.0;
+        const sorted = (modelData || []).slice().sort((a, b) => b.probability - a.probability);
+        const rank = sorted.findIndex(p => p.name === modelEntry.name) + 1 || 'N/A';
+        const thresholdTag = modelEntry.probability < threshold ? `below threshold (${threshold}%)` : 'at or above threshold';
+
+        return `Modeled at ${modelEntry.probability}% (rank ${rank}, ${thresholdTag})`;
+    }
+
     function loadResults(dateStr) {
         currentDate = dateStr;
         const dash = document.getElementById('dashboard');
@@ -555,6 +568,7 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
 
                 const hasModelData = modelEntry && modelEntry.breakdown;
 
+                const missReason = inferModelMissReason(r, modelEntry, modelData);
                 const card = document.createElement('div');
                 card.className = `card status-outlier`;
                 card.innerHTML = `
@@ -603,8 +617,9 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
                             <div class="stat-label">Distance</div>
                             <div class="stat-value">${r.dist}'</div>
                         </div>
-                    </div>
-                `;
+                    </div>                    <div style="padding: 12px 16px; color: var(--text-dim); font-size: 0.75rem; border-top: 1px solid var(--border);">
+                        Missed lookup: ${missReason}
+                    </div>                `;
                 allCards.push({ element: card, status: 'outlier' });
             }
         });
