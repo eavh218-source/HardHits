@@ -102,6 +102,7 @@ def run_probability_model():
                     final_prob = round((s_power*0.2 + s_form*0.15 + s_trend*0.1 + s_park*0.05) / 4.5, 1)
 
                     payload.append({
+                        "date": today,
                         "name": name,
                         "team": game[f'{side}_name'][:3].upper(),
                         "probability": final_prob,
@@ -123,10 +124,17 @@ def run_probability_model():
 
     # Save
     payload = sorted(payload, key=lambda x: x['probability'], reverse=True)
-    with open(DATA_DIR / 'hr_model_data.js', 'w') as f:
+    dated_output = DATA_DIR / f"hr_model_{today}.js"
+    date_key = today.replace('-', '_')
+
+    with open(DATA_DIR / 'hr_model_data.js', 'w', encoding='utf-8') as f:
         f.write(f"const hrModelData = {json.dumps(payload, indent=2)};")
+
+    with open(dated_output, 'w', encoding='utf-8') as f:
+        f.write(f"window.hrModelData_{date_key} = {json.dumps(payload, indent=2)};")
     
     print(f"\n✅ Success! {len(payload)} threats updated in Dashboard.")
+    print(f"Saved: hr_model_data.js and {dated_output.name}")
 
 if __name__ == "__main__":
     run_probability_model()

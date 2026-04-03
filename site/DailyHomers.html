@@ -269,7 +269,13 @@
         document.getElementById('cards-btn').classList.toggle('active', view === 'cards');
         document.getElementById('table-btn').classList.toggle('active', view === 'table');
 
-        if (view === 'cards' || view === 'table') {
+        const dateSelect = document.getElementById('date-select');
+        const selectedDate = dateSelect ? dateSelect.value : '';
+
+        if (selectedDate && selectedDate !== 'today') {
+            currentDate = selectedDate;
+            loadHistoricalResults(selectedDate);
+        } else {
             currentDate = null;
             loadDailyHomers();
         }
@@ -279,33 +285,49 @@
         const dateSelect = document.getElementById('date-select');
         const dateSummary = document.getElementById('date-summary');
 
-        // Clear existing options except the first
         while (dateSelect.children.length > 1) {
             dateSelect.removeChild(dateSelect.lastChild);
         }
 
-        // Add available historical dates
+        if (typeof hrUpdateDate !== 'undefined') {
+            const todayOption = document.createElement('option');
+            todayOption.value = 'today';
+            todayOption.textContent = `Today (${formatDateForDisplay(hrUpdateDate)})`;
+            dateSelect.appendChild(todayOption);
+        }
+
         if (typeof historicalDates !== 'undefined') {
             historicalDates.forEach(dateStr => {
+                if (typeof hrUpdateDate !== 'undefined' && dateStr === hrUpdateDate) {
+                    return;
+                }
                 const option = document.createElement('option');
                 option.value = dateStr;
                 option.textContent = formatDateForDisplay(dateStr);
                 dateSelect.appendChild(option);
             });
-
-            // Auto-select most recent available date
-            if (historicalDates.length > 0) {
-                dateSelect.value = historicalDates[historicalDates.length - 1];
-                loadHistoricalResults(historicalDates[historicalDates.length - 1]);
-            }
         } else {
             dateSummary.textContent = 'No historical data available';
         }
 
-        // Add change listener
+        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0 && typeof hrUpdateDate !== 'undefined') {
+            dateSelect.value = 'today';
+            dateSummary.textContent = `Showing current results for ${formatDateForDisplay(hrUpdateDate)}`;
+        } else if (typeof historicalDates !== 'undefined' && historicalDates.length > 0) {
+            const latestHistoricalDate = historicalDates[historicalDates.length - 1];
+            dateSelect.value = latestHistoricalDate;
+            loadHistoricalResults(latestHistoricalDate);
+        }
+
         dateSelect.addEventListener('change', (e) => {
             const selectedDate = e.target.value;
-            if (selectedDate) {
+            if (selectedDate === 'today') {
+                currentDate = null;
+                dateSummary.textContent = typeof hrUpdateDate !== 'undefined'
+                    ? `Showing current results for ${formatDateForDisplay(hrUpdateDate)}`
+                    : 'Showing current results';
+                loadDailyHomers();
+            } else if (selectedDate) {
                 loadHistoricalResults(selectedDate);
             }
         });
@@ -629,20 +651,12 @@
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
-        // Make sure we can load either today or historical data
-        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0) {
-            loadDailyHomers();
-        } else {
-            // auto-load latest historical date if todays data is missing
-            if (typeof historicalDates !== 'undefined' && historicalDates.length > 0) {
-                currentDate = historicalDates[historicalDates.length - 1];
-                loadHistoricalResults(currentDate);
-            }
-        }
-
         initializeDateSelector();
 
-        if (typeof historicalDates !== 'undefined' && historicalDates.length === 0) {
+        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0) {
+            currentDate = null;
+            loadDailyHomers();
+        } else if (typeof historicalDates !== 'undefined' && historicalDates.length === 0) {
             document.getElementById('date-summary').innerText = 'No historical dates available.';
         }
     });

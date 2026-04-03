@@ -9,7 +9,7 @@ from paths import DATA_DIR
 
 # --- CONFIGURATION ---
 START_DATE = datetime(2026, 3, 25)
-END_DATE = datetime(2026, 4, 2)  # April 2 is today
+END_DATE = datetime.now()  # include the current day automatically
 
 PARK_FACTORS = {
     'Reds': 1.28, 'Dodgers': 1.21, 'Phillies': 1.16, 
@@ -206,7 +206,7 @@ def run_historical_generation():
     all_results = []
     
     current_date = START_DATE
-    while current_date < END_DATE:
+    while current_date.date() <= END_DATE.date():
         print(f"\n[{current_date.strftime('%Y-%m-%d')}]")
         
         # Generate predictions

@@ -42,6 +42,7 @@ def run_validator():
             batter_name = f"{name_parts[1]} {name_parts[0]}" if len(name_parts) > 1 else row['player_name']
         
         results.append({
+            "date": yesterday,
             "name": batter_name,
             "ev": int(row['launch_speed']) if pd.notnull(row['launch_speed']) else 0,
             "dist": int(row['hit_distance_sc']) if pd.notnull(row['hit_distance_sc']) else 0,
@@ -50,10 +51,17 @@ def run_validator():
         })
 
     # 4. Save with window scope for easy HTML access
+    dated_output = DATA_DIR / f"hr_results_{yesterday}.js"
+    date_key = yesterday.replace('-', '_')
+
     with open(DATA_DIR / 'hr_results_data.js', 'w', encoding='utf-8') as f:
         f.write(f"window.hrResultsData = {json.dumps(results, indent=2)};")
+
+    with open(dated_output, 'w', encoding='utf-8') as f:
+        f.write(f"window.hrResultsData_{date_key} = {json.dumps(results, indent=2)};")
     
     print(f"✅ Success! Logged {len(results)} actual Home Runs hit by BATTERS.")
+    print(f"Saved: hr_results_data.js and {dated_output.name}")
 
 def fetch_hrs_for_date(target_date):
     """Fetch home runs for a specific date"""

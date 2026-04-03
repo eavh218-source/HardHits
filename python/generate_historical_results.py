@@ -13,13 +13,13 @@ DATA_DIR = Path("data")
 def main():
     print("=== 🏏 Historical HR Results Generator ===\n")
 
-    # Date range: March 25 to April 1, 2026
+    # Date range: March 25 through the current day
     dates_to_fetch = []
     start = datetime(2026, 3, 25)
-    end = datetime(2026, 4, 2)
+    end = datetime.now()
 
     current = start
-    while current < end:
+    while current.date() <= end.date():
         dates_to_fetch.append(current.strftime('%Y-%m-%d'))
         current += timedelta(days=1)
 

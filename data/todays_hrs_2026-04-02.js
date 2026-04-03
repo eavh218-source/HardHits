@@ -1,5 +1,5 @@
-const hrUpdateDate = '2026-04-02';
-const todaysHRData = [
+window.hrUpdateDate_2026_04_02 = '2026-04-02';
+window.todaysHRData_2026_04_02 = [
   {
     "batter": "Matt Wallner",
     "batter_team": "Minnesota Twins",

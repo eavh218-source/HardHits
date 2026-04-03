@@ -31,10 +31,10 @@ def main():
     # Start with existing files and fill gaps
     dates_to_check = []
     start = datetime(2026, 3, 25)
-    end = datetime(2026, 4, 2)
+    end = datetime.now()
     
     current = start
-    while current < end:
+    while current.date() <= end.date():
         dates_to_check.append(current.strftime('%Y-%m-%d'))
         current += timedelta(days=1)
     
