@@ -325,19 +325,23 @@
         currentDate = dateStr;
         const dateSummary = document.getElementById('date-summary');
         dateSummary.textContent = `Loading data for ${formatDateForDisplay(dateStr)}...`;
+        document.getElementById('page-title').innerText = 'HISTORICAL HOMER ANALYSIS';
+        document.getElementById('date-label').innerText = `Historical Date: ${formatDateForDisplay(dateStr)}`;
 
         return loadHistoricalData(dateStr).then(() => {
             const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || [];
             const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || [];
-            
+
             if (currentView === 'table') {
-                renderTableView(resultsData);
+                renderTableView(resultsData, modelData);
             } else {
                 renderCardView(resultsData, modelData);
             }
+
             dateSummary.textContent = `Showing results for ${formatDateForDisplay(dateStr)}`;
         }).catch(() => {
             dateSummary.textContent = `Error loading data for ${formatDateForDisplay(dateStr)}`;
+            document.getElementById('content-area').innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-muted);">Failed to load historical data</div>';
         });
     }
 
@@ -368,6 +372,13 @@
                 onLoadIfReady();
             };
             document.head.appendChild(resultsScript);
+
+            // Failsafe, reject after 5s
+            setTimeout(() => {
+                if (!modelLoaded || !resultsLoaded) {
+                    reject('Timeout loading historical scripts');
+                }
+            }, 5000);
         });
     }
 
@@ -375,8 +386,12 @@
         const contentArea = document.getElementById('content-area');
         const summaryContainer = document.getElementById('summary-container');
 
-        // Set date label
-        if (typeof hrUpdateDate !== 'undefined') {
+        // Set date label (today's data)
+        if (typeof currentDate === 'string' && currentDate) {
+            document.getElementById('page-title').innerText = 'HISTORICAL HOMER ANALYSIS';
+            document.getElementById('date-label').innerText = `Historical Date: ${formatDateForDisplay(currentDate)}`;
+        } else if (typeof hrUpdateDate !== 'undefined') {
+            document.getElementById('page-title').innerText = 'DAILY HOMER ANALYSIS';
             document.getElementById('date-label').innerText = `Statcast Live Feed: ${hrUpdateDate}`;
         }
 
@@ -386,7 +401,7 @@
                 contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">No Data Found</h2></div>';
                 return;
             }
-            renderTableView(todaysHRData);
+            renderTableView(todaysHRData, typeof hrModelData !== 'undefined' ? hrModelData : []);
         } else {
             // Check if todaysHRData exists
             if (typeof todaysHRData === 'undefined' || todaysHRData.length === 0) {
@@ -398,11 +413,12 @@
         }
     }
 
-    function renderTableView(hrsData) {
+    function renderTableView(hrsData, modelData = []) {
         const contentArea = document.getElementById('content-area');
         const summaryContainer = document.getElementById('summary-container');
+        const modelMap = new Map((modelData || []).map(p => [p.name.toLowerCase(), p]));
         summaryContainer.innerHTML = '';
-        const sorted = [...hrsData].sort((a,b) => b.distance - a.distance);
+        const sorted = [...hrsData].sort((a, b) => ((b.distance ?? b.dist ?? 0) - (a.distance ?? a.dist ?? 0)));
 
         contentArea.innerHTML = `
             <table>
@@ -415,13 +431,16 @@
 
         const body = document.getElementById('hr-body');
         sorted.forEach(hr => {
+            const modelEntry = modelMap.get((hr.batter || hr.name || '').toLowerCase());
             const batter = hr.batter || hr.name || 'Unknown';
-            const batterTeam = hr.batter_team || hr.team || 'N/A';
-            const pitcher = hr.pitcher || 'N/A';
-            const pitcherTeam = hr.pitcher_team || 'N/A';
-            const exitVelo = hr.exit_velo || hr.ev || 'N/A';
+            const batterTeam = hr.batter_team || hr.team || modelEntry?.team || 'N/A';
+            const pitcher = (hr.pitcher && hr.pitcher !== 'TBD')
+                ? hr.pitcher
+                : ((modelEntry?.opp_pitcher && modelEntry.opp_pitcher !== 'TBD') ? modelEntry.opp_pitcher : 'Matchup unavailable');
+            const pitcherTeam = hr.pitcher_team || (modelEntry?.park_factor ? `Park: ${modelEntry.park_factor}` : 'Historical result');
+            const exitVelo = hr.exit_velo || hr.ev || modelEntry?.max_ev || 'N/A';
             const launchAngle = hr.launch_angle || 'N/A';
-            const distance = hr.distance || 'N/A';
+            const distance = hr.distance || hr.dist || 'N/A';
 
             body.innerHTML += `
                 <tr>
@@ -507,8 +526,10 @@
     }
 
     function getModelRank(player, modelData) {
+        if (!player || !player.name) return 'N/A';
         const sorted = modelData.slice().sort((a, b) => b.probability - a.probability);
-        return sorted.findIndex(p => p.name === player.name) + 1;
+        const rank = sorted.findIndex(p => p.name === player.name) + 1;
+        return rank > 0 ? rank : 'N/A';
     }
 
     function renderCards(results, contentArea) {
@@ -529,11 +550,14 @@
             const badgeText = hr.classification === 'win' ? '✓ PREDICTED' : `⭐ ${hr.subtype.toUpperCase()}`;
 
             const batter = hr.batter || hr.name || 'Unknown';
-            const batterTeam = hr.batter_team || hr.team || 'N/A';
-            const pitcher = hr.pitcher || 'N/A';
-            const pitcherTeam = hr.pitcher_team || 'N/A';
-            const exitVelo = hr.exit_velo || hr.ev || 'N/A';
+            const batterTeam = hr.batter_team || hr.team || hr.modelEntry?.team || 'N/A';
+            const pitcher = (hr.pitcher && hr.pitcher !== 'TBD')
+                ? hr.pitcher
+                : ((hr.modelEntry?.opp_pitcher && hr.modelEntry.opp_pitcher !== 'TBD') ? hr.modelEntry.opp_pitcher : 'Matchup unavailable');
+            const pitcherTeam = hr.pitcher_team || (hr.modelEntry?.park_factor ? `Park: ${hr.modelEntry.park_factor}` : 'Historical result');
+            const exitVelo = hr.exit_velo || hr.ev || hr.modelEntry?.max_ev || 'N/A';
             const launchAngle = hr.launch_angle || 'N/A';
+            const distance = hr.distance || hr.dist || 'N/A';
 
             contentArea.innerHTML += `
                 <div class="${cardClass}">
@@ -561,7 +585,7 @@
                         </div>
                         <div class="stat-item">
                             <span class="stat-label">Distance</span>
-                            <span class="stat-value">${hr.distance}</span>
+                            <span class="stat-value">${distance}</span>
                         </div>
                     </div>
 
@@ -592,12 +616,35 @@
                 <div class="summary-item">Prediction Rate <b>${results.predictionRate}%</b></div>
             </div>
         `;
+
+        const dateLabel = document.getElementById('date-label');
+        if (currentDate) {
+            dateLabel.innerText = `Historical Date: ${formatDateForDisplay(currentDate)}`;
+        } else if (typeof hrUpdateDate !== 'undefined') {
+            dateLabel.innerText = `Statcast Live Feed: ${hrUpdateDate}`;
+        } else {
+            dateLabel.innerText = `Date: ${formatDateForDisplay(new Date().toISOString().split('T')[0])}`;
+        }
     }
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
-        loadDailyHomers();
+        // Make sure we can load either today or historical data
+        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0) {
+            loadDailyHomers();
+        } else {
+            // auto-load latest historical date if todays data is missing
+            if (typeof historicalDates !== 'undefined' && historicalDates.length > 0) {
+                currentDate = historicalDates[historicalDates.length - 1];
+                loadHistoricalResults(currentDate);
+            }
+        }
+
         initializeDateSelector();
+
+        if (typeof historicalDates !== 'undefined' && historicalDates.length === 0) {
+            document.getElementById('date-summary').innerText = 'No historical dates available.';
+        }
     });
 </script>
 <script src="../assets/site-nav.js" defer></script>
