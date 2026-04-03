@@ -102,7 +102,7 @@ def main():
 const historicalDates = [
 """
     
-    for date_str in dates_to_check:
+    for date_str in reversed(dates_to_check):
         index_content += f'  "{date_str}",\n'
     
     index_content += """];

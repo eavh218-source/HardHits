@@ -297,7 +297,8 @@
         }
 
         if (typeof historicalDates !== 'undefined') {
-            historicalDates.forEach(dateStr => {
+            const orderedDates = [...historicalDates].sort((a, b) => b.localeCompare(a));
+            orderedDates.forEach(dateStr => {
                 if (typeof hrUpdateDate !== 'undefined' && dateStr === hrUpdateDate) {
                     return;
                 }
@@ -314,7 +315,7 @@
             dateSelect.value = 'today';
             dateSummary.textContent = `Showing current results for ${formatDateForDisplay(hrUpdateDate)}`;
         } else if (typeof historicalDates !== 'undefined' && historicalDates.length > 0) {
-            const latestHistoricalDate = historicalDates[historicalDates.length - 1];
+            const latestHistoricalDate = [...historicalDates].sort((a, b) => b.localeCompare(a))[0];
             dateSelect.value = latestHistoricalDate;
             loadHistoricalResults(latestHistoricalDate);
         }

@@ -381,38 +381,45 @@
         const dateSelect = document.getElementById('date-select');
         const dateSummary = document.getElementById('date-summary');
 
-        // Clear existing options except the first
         while (dateSelect.children.length > 1) {
             dateSelect.removeChild(dateSelect.lastChild);
         }
 
-        // Add available historical dates
+        const todayModelDate = (typeof hrModelData !== 'undefined' && hrModelData.length > 0 && hrModelData[0].date)
+            ? hrModelData[0].date
+            : null;
+
+        if (todayModelDate) {
+            const todayOption = document.createElement('option');
+            todayOption.value = todayModelDate;
+            todayOption.textContent = `Today (${formatDateForDisplay(todayModelDate)})`;
+            dateSelect.appendChild(todayOption);
+        }
+
         if (typeof historicalDates !== 'undefined') {
-            historicalDates.forEach(dateStr => {
+            const orderedDates = [...historicalDates].sort((a, b) => b.localeCompare(a));
+            orderedDates.forEach(dateStr => {
+                if (todayModelDate && dateStr === todayModelDate) return;
                 const option = document.createElement('option');
                 option.value = dateStr;
                 option.textContent = formatDateForDisplay(dateStr);
                 dateSelect.appendChild(option);
             });
 
-            // Auto-select yesterday if available
-            const yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1);
-            const yesterdayStr = yesterday.toISOString().split('T')[0];
-
-            if (historicalDates.includes(yesterdayStr)) {
-                dateSelect.value = yesterdayStr;
-                loadResults(yesterdayStr);
-            } else if (historicalDates.length > 0) {
-                // Select the most recent available date
-                dateSelect.value = historicalDates[historicalDates.length - 1];
-                loadResults(historicalDates[historicalDates.length - 1]);
+            if (todayModelDate) {
+                dateSelect.value = todayModelDate;
+                loadResults(todayModelDate);
+            } else if (orderedDates.length > 0) {
+                dateSelect.value = orderedDates[0];
+                loadResults(orderedDates[0]);
             }
+        } else if (todayModelDate) {
+            dateSelect.value = todayModelDate;
+            loadResults(todayModelDate);
         } else {
             dateSummary.textContent = 'No historical data available';
         }
 
-        // Add change listener
         dateSelect.addEventListener('change', (e) => {
             const selectedDate = e.target.value;
             if (selectedDate) {
