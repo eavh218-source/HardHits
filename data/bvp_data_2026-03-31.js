@@ -1,5 +1,6 @@
-const bvpDate = 'March 31, 2026';
-const bvpData = [
+window.bvpDate_2026_03_31 = '2026-03-31';
+window.dailyMatchups_2026_03_31 = [];
+window.bvpData_2026_03_31 = [
     {
         "batter_name": "Pete Alonso",
         "pitcher_name": "Jacob deGrom",

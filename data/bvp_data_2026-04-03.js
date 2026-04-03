@@ -1,5 +1,5 @@
-const bvpDate = '2026-04-03';
-const dailyMatchups = [
+window.bvpDate_2026_04_03 = '2026-04-03';
+window.dailyMatchups_2026_04_03 = [
   {
     "date": "2026-04-03",
     "time": "1:05 PM ET",
@@ -121,7 +121,7 @@ const dailyMatchups = [
     "home_p": "Mahle"
   }
 ];
-const bvpData = [
+window.bvpData_2026_04_03 = [
   {
     "date": "2026-04-03",
     "pitcher_name": "Bryan Woo",
