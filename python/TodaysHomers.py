@@ -60,13 +60,19 @@ def fetch_hr_data(date_str):
                     if ev > 0 or dist > 0:
                         print(f"   ✅ Found Stats: {batter} - {dist} FT / {ev} MPH")
                         found_hrs.append({
+                            "date": date_str,
                             "batter": batter,
+                            "name": batter,
                             "batter_team": b_team,
+                            "team": b_team,
                             "pitcher": pitcher,
                             "pitcher_team": p_team,
                             "exit_velo": ev,
+                            "ev": ev,
                             "launch_angle": la,
-                            "distance": dist
+                            "distance": dist,
+                            "dist": dist,
+                            "status": "🎯 HOME RUN"
                         })
         except Exception as e:
             print(f"   Error: {e}")
@@ -88,6 +94,7 @@ if not hr_list:
 # --- EXPORT ---
 output_path = DATA_DIR / 'todays_hrs.js'
 dated_output_path = DATA_DIR / f"todays_hrs_{target_date}.js"
+dated_results_path = DATA_DIR / f"hr_results_{target_date}.js"
 date_key = target_date.replace('-', '_')
 
 with open(output_path, 'w', encoding='utf-8') as f:
@@ -98,5 +105,8 @@ with open(dated_output_path, 'w', encoding='utf-8') as f:
     f.write(f"window.hrUpdateDate_{date_key} = '{target_date}';\n")
     f.write(f"window.todaysHRData_{date_key} = {json.dumps(hr_list, indent=2)};")
 
+with open(dated_results_path, 'w', encoding='utf-8') as f:
+    f.write(f"window.hrResultsData_{date_key} = {json.dumps(hr_list, indent=2)};")
+
 print(f"\nSUCCESS: Captured {len(hr_list)} entries for {target_date}.")
-print(f"Saved: {output_path.name} and {dated_output_path.name}")
+print(f"Saved: {output_path.name}, {dated_output_path.name}, and {dated_results_path.name}")

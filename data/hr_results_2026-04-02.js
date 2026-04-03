@@ -1,5 +1,4 @@
-window.hrUpdateDate_2026_04_02 = '2026-04-02';
-window.todaysHRData_2026_04_02 = [
+window.hrResultsData_2026_04_02 = [
   {
     "date": "2026-04-02",
     "batter": "Matt Wallner",

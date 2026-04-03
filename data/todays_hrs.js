@@ -1,66 +1,123 @@
 const hrUpdateDate = '2026-04-02';
 const todaysHRData = [
   {
+    "date": "2026-04-02",
     "batter": "Matt Wallner",
+    "name": "Matt Wallner",
     "batter_team": "Minnesota Twins",
+    "team": "Minnesota Twins",
     "pitcher": "Steven Cruz",
     "pitcher_team": "Kansas City Royals",
     "exit_velo": 106.8,
+    "ev": 106.8,
     "launch_angle": 20.0,
-    "distance": 405.0
+    "distance": 405.0,
+    "dist": 405.0,
+    "status": "\ud83c\udfaf HOME RUN"
   },
   {
+    "date": "2026-04-02",
     "batter": "Kody Clemens",
+    "name": "Kody Clemens",
     "batter_team": "Minnesota Twins",
+    "team": "Minnesota Twins",
     "pitcher": "Steven Cruz",
     "pitcher_team": "Kansas City Royals",
     "exit_velo": 102.0,
+    "ev": 102.0,
     "launch_angle": 27.0,
-    "distance": 391.0
+    "distance": 391.0,
+    "dist": 391.0,
+    "status": "\ud83c\udfaf HOME RUN"
   },
   {
+    "date": "2026-04-02",
     "batter": "Josh Bell",
+    "name": "Josh Bell",
     "batter_team": "Minnesota Twins",
+    "team": "Minnesota Twins",
     "pitcher": "Steven Cruz",
     "pitcher_team": "Kansas City Royals",
     "exit_velo": 104.8,
+    "ev": 104.8,
     "launch_angle": 27.0,
-    "distance": 393.0
+    "distance": 393.0,
+    "dist": 393.0,
+    "status": "\ud83c\udfaf HOME RUN"
   },
   {
+    "date": "2026-04-02",
     "batter": "Matt Olson",
+    "name": "Matt Olson",
     "batter_team": "Atlanta Braves",
+    "team": "Atlanta Braves",
     "pitcher": "Ryne Nelson",
     "pitcher_team": "Arizona Diamondbacks",
     "exit_velo": 108.0,
+    "ev": 108.0,
     "launch_angle": 31.0,
-    "distance": 430.0
+    "distance": 430.0,
+    "dist": 430.0,
+    "status": "\ud83c\udfaf HOME RUN"
   },
   {
+    "date": "2026-04-02",
     "batter": "Dominic Smith",
+    "name": "Dominic Smith",
     "batter_team": "Atlanta Braves",
+    "team": "Atlanta Braves",
     "pitcher": "Ryne Nelson",
     "pitcher_team": "Arizona Diamondbacks",
     "exit_velo": 109.1,
+    "ev": 109.1,
     "launch_angle": 33.0,
-    "distance": 430.0
+    "distance": 430.0,
+    "dist": 430.0,
+    "status": "\ud83c\udfaf HOME RUN"
   },
   {
+    "date": "2026-04-02",
     "batter": "Jordan Lawlar",
+    "name": "Jordan Lawlar",
     "batter_team": "Arizona Diamondbacks",
+    "team": "Arizona Diamondbacks",
     "pitcher": "Reynaldo L\u00f3pez",
     "pitcher_team": "Atlanta Braves",
     "exit_velo": 105.5,
+    "ev": 105.5,
     "launch_angle": 28.0,
-    "distance": 424.0
+    "distance": 424.0,
+    "dist": 424.0,
+    "status": "\ud83c\udfaf HOME RUN"
   },
   {
+    "date": "2026-04-02",
+    "batter": "Mauricio Dub\u00f3n",
+    "name": "Mauricio Dub\u00f3n",
+    "batter_team": "Atlanta Braves",
+    "team": "Atlanta Braves",
+    "pitcher": "Joe Ross",
+    "pitcher_team": "Arizona Diamondbacks",
+    "exit_velo": 101.7,
+    "ev": 101.7,
+    "launch_angle": 25.0,
+    "distance": 413.0,
+    "dist": 413.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-02",
     "batter": "Mark Vientos",
+    "name": "Mark Vientos",
     "batter_team": "New York Mets",
+    "team": "New York Mets",
     "pitcher": "Robbie Ray",
     "pitcher_team": "San Francisco Giants",
     "exit_velo": 108.6,
+    "ev": 108.6,
     "launch_angle": 30.0,
-    "distance": 406.0
+    "distance": 406.0,
+    "dist": 406.0,
+    "status": "\ud83c\udfaf HOME RUN"
   }
 ];
