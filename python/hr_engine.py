@@ -2,6 +2,7 @@ import statsapi
 import pybaseball as pb
 import pandas as pd
 import json
+import re
 from datetime import datetime, timedelta
 
 from paths import DATA_DIR
@@ -18,6 +19,54 @@ def calculate_barrels(df):
     if df.empty: return 0
     barrels = df[(df['launch_speed'] >= 98) & (df['launch_angle'].between(26, 30))]
     return (len(barrels) / len(df)) * 100 if len(df) > 0 else 0
+
+def normalize_name(name):
+    return str(name or '').strip().lower()
+
+def load_bvp_data():
+    bvp_path = DATA_DIR / 'bvp_data.js'
+    if not bvp_path.exists():
+        return []
+
+    try:
+        content = bvp_path.read_text(encoding='utf-8')
+        match = re.search(r'const bvpData = (\[.*\]);', content, re.S)
+        if not match:
+            return []
+        return json.loads(match.group(1))
+    except Exception as e:
+        print(f"Warning: failed to load BvP data: {e}")
+        return []
+
+def calculate_bvp_boost(hitter_name, pitcher_name, bvp_data):
+    if not hitter_name or not pitcher_name or pitcher_name == 'TBD' or not bvp_data:
+        return 0.0, ''
+
+    matches = [
+        row for row in bvp_data
+        if normalize_name(row.get('batter_name')) == normalize_name(hitter_name)
+        and normalize_name(row.get('pitcher_name')) == normalize_name(pitcher_name)
+    ]
+
+    if not matches:
+        return 0.0, ''
+
+    hr_count = sum(1 for row in matches if 'home run' in str(row.get('events', '')).lower())
+    hard_hit_count = sum(1 for row in matches if float(row.get('launch_speed', 0) or 0) >= 100)
+    avg_ev = sum(float(row.get('launch_speed', 0) or 0) for row in matches) / len(matches)
+
+    boost = 0.0
+    boost += min(hr_count * 0.45, 0.9)
+    boost += min(max(hard_hit_count - hr_count, 0) * 0.20, 0.4)
+
+    if avg_ev >= 105:
+        boost += 0.15
+    elif avg_ev >= 100:
+        boost += 0.10
+
+    boost = round(min(boost, 1.2), 2)
+    summary = f"{hr_count} HR, {hard_hit_count} hard-hit events vs {pitcher_name}"
+    return boost, summary
 
 def get_advanced_hitter_metrics(mlbid):
     try:
@@ -58,22 +107,17 @@ def get_advanced_hitter_metrics(mlbid):
     except:
         return None
 
-def run_probability_model():
-    print("--- ⚾ HR Probability Engine (daily) ---")
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    
-    today = datetime.now().strftime('%Y-%m-%d')
-    games = statsapi.schedule(date=today)
-    
+def generate_probability_payload(target_date, bvp_data):
+    games = statsapi.schedule(date=target_date)
     payload = []
 
-    # Analyze first few games
     for game in games[:4]:
         print(f"Analyzing: {game['away_name']} @ {game['home_name']}")
-        
+
         pf = 1.0
         for team, factor in PARK_FACTORS.items():
-            if team in game['home_name']: pf = factor
+            if team in game['home_name']:
+                pf = factor
 
         for side in ['away', 'home']:
             team_id = game[f'{side}_id']
@@ -81,28 +125,31 @@ def run_probability_model():
                 roster = statsapi.get('team_roster', {'teamId': team_id})['roster']
             except:
                 continue
-            
+
             for p in roster:
-                if p['position']['code'] == '1': continue
-                
+                if p['position']['code'] == '1':
+                    continue
+
                 name = p['person']['fullName']
                 p_id = p['person']['id']
-                
+
                 print(f"  Checking {name}...", end="\r")
                 stats = get_advanced_hitter_metrics(p_id)
-                
+
                 if stats and stats['max_ev'] > 104:
-                    # Normalized scoring
                     s_power = min(stats['barrel_pct'] / 15 * 100, 100)
                     s_form = min(max(stats['fb_ev'] - 88, 0) / 12 * 100, 100)
                     s_trend = min(max(stats['ev_trend'] + 3, 0) / 6 * 100, 100)
                     s_park = min(((pf - 0.8) / 0.5) * 100, 100)
 
-                    # Final Prob (approx 2% - 14%)
-                    final_prob = round((s_power*0.2 + s_form*0.15 + s_trend*0.1 + s_park*0.05) / 4.5, 1)
+                    opp_pitcher = game.get('home_probable_pitcher' if side == 'away' else 'away_probable_pitcher', 'TBD')
+                    bvp_boost, bvp_summary = calculate_bvp_boost(name, opp_pitcher, bvp_data)
+
+                    base_prob = (s_power * 0.2 + s_form * 0.15 + s_trend * 0.1 + s_park * 0.05) / 4.5
+                    final_prob = round(min(base_prob + bvp_boost, 14.0), 1)
 
                     payload.append({
-                        "date": today,
+                        "date": target_date,
                         "name": name,
                         "team": game[f'{side}_name'][:3].upper(),
                         "probability": final_prob,
@@ -118,23 +165,50 @@ def run_probability_model():
                         "max_ev_pct": int((stats['max_ev'] / 120) * 100),
                         "fb_ev": int(stats['fb_ev']),
                         "fb_ev_pct": int((stats['fb_ev'] / 112) * 100),
-                        "opp_pitcher": game.get('home_probable_pitcher' if side=='away' else 'away_probable_pitcher', 'TBD'),
-                        "park_factor": "Launch Pad" if pf > 1.1 else "Neutral"
+                        "opp_pitcher": opp_pitcher,
+                        "park_factor": "Launch Pad" if pf > 1.1 else "Neutral",
+                        "bvp_boost": bvp_boost,
+                        "bvp_summary": bvp_summary
                     })
 
-    # Save
-    payload = sorted(payload, key=lambda x: x['probability'], reverse=True)
-    dated_output = DATA_DIR / f"hr_model_{today}.js"
-    date_key = today.replace('-', '_')
+    return sorted(payload, key=lambda x: x['probability'], reverse=True)
 
-    with open(DATA_DIR / 'hr_model_data.js', 'w', encoding='utf-8') as f:
-        f.write(f"const hrModelData = {json.dumps(payload, indent=2)};")
+
+def save_probability_payload(payload, target_date, default_filename=None, default_var_name=None):
+    date_key = target_date.replace('-', '_')
+    dated_output = DATA_DIR / f"hr_model_{target_date}.js"
 
     with open(dated_output, 'w', encoding='utf-8') as f:
         f.write(f"window.hrModelData_{date_key} = {json.dumps(payload, indent=2)};")
-    
-    print(f"\n✅ Success! {len(payload)} threats updated in Dashboard.")
-    print(f"Saved: hr_model_data.js and {dated_output.name}")
+
+    if default_filename and default_var_name:
+        with open(DATA_DIR / default_filename, 'w', encoding='utf-8') as f:
+            f.write(f"const {default_var_name} = {json.dumps(payload, indent=2)};")
+
+    return dated_output
+
+
+def run_probability_model():
+    print("--- ⚾ HR Probability Engine (daily) ---")
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    today = datetime.now().strftime('%Y-%m-%d')
+    tomorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+    bvp_data = load_bvp_data()
+
+    if bvp_data:
+        print(f"Loaded {len(bvp_data)} BvP records for matchup-aware boosts")
+
+    print(f"\nBuilding today's predictions for {today}")
+    today_payload = generate_probability_payload(today, bvp_data)
+    today_output = save_probability_payload(today_payload, today, 'hr_model_data.js', 'hrModelData')
+
+    print(f"\nBuilding tomorrow's predictions for {tomorrow}")
+    tomorrow_payload = generate_probability_payload(tomorrow, bvp_data)
+    tomorrow_output = save_probability_payload(tomorrow_payload, tomorrow, 'hr_model_tomorrow.js', 'hrModelTomorrowData')
+
+    print(f"\n✅ Success! {len(today_payload)} threats updated for today and {len(tomorrow_payload)} for tomorrow.")
+    print(f"Saved: hr_model_data.js, {today_output.name}, hr_model_tomorrow.js, and {tomorrow_output.name}")
 
 if __name__ == "__main__":
     run_probability_model()

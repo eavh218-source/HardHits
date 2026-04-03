@@ -6,6 +6,7 @@
     <title>HardHits | HR Probability & Results</title>
     <link rel="stylesheet" href="../assets/site-nav.css">
     <script src="../data/hr_model_data.js"></script>
+    <script src="../data/hr_model_tomorrow.js"></script>
     <script src="../data/hr_results_data.js"></script>
     <script src="../data/hr_model_consolidated.js"></script>
     <script src="../data/historical_index.js"></script>
@@ -44,6 +45,9 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .card:hover { transform: translateY(-8px); border-color: #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
@@ -86,7 +90,13 @@
         .b-track { height: 4px; background: #334155; border-radius: 2px; overflow: hidden; }
         .b-fill { height: 100%; border-radius: 2px; transition: width 1s ease-out; }
 
-        .stats-section { padding: 0 24px 24px; }
+        .stats-section {
+            padding: 0 24px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
         .stat-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
         .stat-value { font-size: 0.85rem; font-weight: 700; }
@@ -98,14 +108,40 @@
             background: rgba(0,0,0,0.15);
             padding: 16px 24px;
             border-top: 1px solid var(--border);
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.75rem; font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: auto;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pitcher-info {
+            color: var(--text-dim);
+            flex: 1 1 220px;
+            min-width: 0;
+            line-height: 1.4;
+        }
+
+        .pitcher-info span {
+            color: white;
+            white-space: normal;
+            word-break: break-word;
         }
         .trend-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; }
         .hot-trend { background: rgba(244, 63, 94, 0.1); color: var(--accent); border: 1px solid var(--accent); }
         .neutral-trend { background: rgba(16, 185, 129, 0.1); color: var(--emerald); border: 1px solid var(--emerald); }
 
-        .park-info { color: var(--sky); text-transform: uppercase; font-size: 0.65rem; }
+        .park-info {
+            color: var(--sky);
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            margin-left: auto;
+            text-align: right;
+            white-space: nowrap;
+        }
 
         /* View toggle */
         .view-toggle {
@@ -313,6 +349,7 @@
     <div class="view-toggle">
         <button class="toggle-btn active" id="predictions-btn">Today's Predictions</button>
         <button class="toggle-btn" id="results-btn">Historical Results</button>
+        <button class="toggle-btn" id="tomorrow-btn">Tomorrow's Predictions</button>
     </div>
 
     <div id="date-selector" style="display: none; margin-bottom: 30px; text-align: center;">
@@ -351,12 +388,17 @@
         setView('results');
     });
 
+    document.getElementById('tomorrow-btn').addEventListener('click', () => {
+        setView('tomorrow');
+    });
+
     function setView(view) {
         currentView = view;
 
         // Update toggle buttons
         document.getElementById('predictions-btn').classList.toggle('active', view === 'predictions');
         document.getElementById('results-btn').classList.toggle('active', view === 'results');
+        document.getElementById('tomorrow-btn').classList.toggle('active', view === 'tomorrow');
 
         // Update header
         const title = document.querySelector('h1');
@@ -368,6 +410,14 @@
             document.getElementById('summary-container').style.display = 'none';
             document.getElementById('date-selector').style.display = 'none';
             loadPredictions();
+        } else if (view === 'tomorrow') {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            title.textContent = 'Tomorrow HR Probability';
+            subtitle.textContent = `${formatDate(tomorrow)} • projected using current power, form, trend, park, and matchup history`;
+            document.getElementById('summary-container').style.display = 'none';
+            document.getElementById('date-selector').style.display = 'none';
+            loadTomorrowPredictions();
         } else {
             title.textContent = 'Probability Results';
             subtitle.textContent = 'Historical model performance by date';
@@ -482,19 +532,19 @@
         document.getElementById('outlier-modal').style.display = 'none';
     });
 
-    function loadPredictions() {
+    function renderPredictionCards(predictionData, emptyFileName) {
         const dash = document.getElementById('dashboard');
         dash.innerHTML = '';
 
-        if (typeof hrModelData === 'undefined' || hrModelData.length === 0) {
+        if (!predictionData || predictionData.length === 0) {
             dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
                 <h2 style="color: var(--text-dim)">No Data Found</h2>
-                <p>Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/hr_model_data.js</code>.</p>
+                <p>Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/${emptyFileName}</code>.</p>
             </div>`;
             return;
         }
 
-        hrModelData.forEach(p => {
+        predictionData.forEach(p => {
             const isElite = p.probability >= 8.5;
             const isSolid = p.probability >= 5.5 && p.probability < 8.5;
             const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
@@ -561,6 +611,14 @@
                 </article>
             `;
         });
+    }
+
+    function loadPredictions() {
+        renderPredictionCards(typeof hrModelData !== 'undefined' ? hrModelData : [], 'hr_model_data.js');
+    }
+
+    function loadTomorrowPredictions() {
+        renderPredictionCards(typeof hrModelTomorrowData !== 'undefined' ? hrModelTomorrowData : [], 'hr_model_tomorrow.js');
     }
 
     function inferModelMissReason(result, modelEntry, modelData, outlierSubtype, outlierType) {

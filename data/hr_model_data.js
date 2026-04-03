@@ -17,7 +17,9 @@ const hrModelData = [
     "fb_ev": 99,
     "fb_ev_pct": 88,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -37,7 +39,9 @@ const hrModelData = [
     "fb_ev": 96,
     "fb_ev_pct": 86,
     "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -57,7 +61,9 @@ const hrModelData = [
     "fb_ev": 99,
     "fb_ev_pct": 88,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -77,7 +83,31 @@ const hrModelData = [
     "fb_ev": 96,
     "fb_ev_pct": 86,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Byron Buxton",
+    "team": "MIN",
+    "probability": 5.5,
+    "breakdown": {
+      "Power": 38,
+      "Form": 60,
+      "Trend": 44,
+      "Park": 39
+    },
+    "ev_trend_val": -0.3,
+    "ev_trend_label": "Stable",
+    "max_ev": 106,
+    "max_ev_pct": 88,
+    "fb_ev": 95,
+    "fb_ev_pct": 85,
+    "opp_pitcher": "Cole Ragans",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.35,
+    "bvp_summary": "0 HR, 1 hard-hit events vs Cole Ragans"
   },
   {
     "date": "2026-04-02",
@@ -97,7 +127,9 @@ const hrModelData = [
     "fb_ev": 101,
     "fb_ev_pct": 90,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -117,7 +149,9 @@ const hrModelData = [
     "fb_ev": 98,
     "fb_ev_pct": 88,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -137,27 +171,53 @@ const hrModelData = [
     "fb_ev": 97,
     "fb_ev_pct": 86,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
-    "name": "Byron Buxton",
-    "team": "MIN",
+    "name": "Salvador Perez",
+    "team": "KAN",
     "probability": 5.1,
     "breakdown": {
-      "Power": 38,
-      "Form": 60,
-      "Trend": 44,
+      "Power": 29,
+      "Form": 71,
+      "Trend": 20,
       "Park": 39
     },
-    "ev_trend_val": -0.3,
+    "ev_trend_val": -1.7,
     "ev_trend_label": "Stable",
-    "max_ev": 106,
-    "max_ev_pct": 88,
-    "fb_ev": 95,
-    "fb_ev_pct": 85,
-    "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "max_ev": 110,
+    "max_ev_pct": 91,
+    "fb_ev": 96,
+    "fb_ev_pct": 86,
+    "opp_pitcher": "Taj Bradley",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.5,
+    "bvp_summary": "0 HR, 2 hard-hit events vs Taj Bradley"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Matt Olson",
+    "team": "ATL",
+    "probability": 5.1,
+    "breakdown": {
+      "Power": 31,
+      "Form": 76,
+      "Trend": 0,
+      "Park": 39
+    },
+    "ev_trend_val": -3.1,
+    "ev_trend_label": "Stable",
+    "max_ev": 110,
+    "max_ev_pct": 92,
+    "fb_ev": 97,
+    "fb_ev_pct": 86,
+    "opp_pitcher": "Ryne Nelson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.75,
+    "bvp_summary": "1 HR, 2 hard-hit events vs Ryne Nelson"
   },
   {
     "date": "2026-04-02",
@@ -177,7 +237,53 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Harrison Bader",
+    "team": "SAN",
+    "probability": 4.9,
+    "breakdown": {
+      "Power": 17,
+      "Form": 49,
+      "Trend": 90,
+      "Park": 5
+    },
+    "ev_trend_val": 2.4,
+    "ev_trend_label": "Heating Up",
+    "max_ev": 107,
+    "max_ev_pct": 89,
+    "fb_ev": 93,
+    "fb_ev_pct": 83,
+    "opp_pitcher": "David Peterson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.35,
+    "bvp_summary": "0 HR, 1 hard-hit events vs David Peterson"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Royce Lewis",
+    "team": "MIN",
+    "probability": 4.8,
+    "breakdown": {
+      "Power": 35,
+      "Form": 67,
+      "Trend": 0,
+      "Park": 39
+    },
+    "ev_trend_val": -3.1,
+    "ev_trend_label": "Stable",
+    "max_ev": 110,
+    "max_ev_pct": 91,
+    "fb_ev": 96,
+    "fb_ev_pct": 85,
+    "opp_pitcher": "Cole Ragans",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.55,
+    "bvp_summary": "1 HR, 1 hard-hit events vs Cole Ragans"
   },
   {
     "date": "2026-04-02",
@@ -197,7 +303,9 @@ const hrModelData = [
     "fb_ev": 96,
     "fb_ev_pct": 86,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -217,7 +325,9 @@ const hrModelData = [
     "fb_ev": 97,
     "fb_ev_pct": 86,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -237,27 +347,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Salvador Perez",
-    "team": "KAN",
-    "probability": 4.6,
-    "breakdown": {
-      "Power": 29,
-      "Form": 71,
-      "Trend": 20,
-      "Park": 39
-    },
-    "ev_trend_val": -1.7,
-    "ev_trend_label": "Stable",
-    "max_ev": 110,
-    "max_ev_pct": 91,
-    "fb_ev": 96,
-    "fb_ev_pct": 86,
-    "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -277,7 +369,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 84,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -297,7 +391,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -317,7 +413,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -337,7 +435,9 @@ const hrModelData = [
     "fb_ev": 97,
     "fb_ev_pct": 87,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -357,7 +457,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 85,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -377,27 +479,9 @@ const hrModelData = [
     "fb_ev": 97,
     "fb_ev_pct": 86,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Harrison Bader",
-    "team": "SAN",
-    "probability": 4.5,
-    "breakdown": {
-      "Power": 17,
-      "Form": 49,
-      "Trend": 90,
-      "Park": 5
-    },
-    "ev_trend_val": 2.4,
-    "ev_trend_label": "Heating Up",
-    "max_ev": 107,
-    "max_ev_pct": 89,
-    "fb_ev": 93,
-    "fb_ev_pct": 83,
-    "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -417,27 +501,31 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
-    "name": "Matt Olson",
-    "team": "ATL",
+    "name": "Matt Chapman",
+    "team": "SAN",
     "probability": 4.4,
     "breakdown": {
-      "Power": 31,
-      "Form": 76,
-      "Trend": 0,
-      "Park": 39
+      "Power": 10,
+      "Form": 90,
+      "Trend": 15,
+      "Park": 5
     },
-    "ev_trend_val": -3.1,
+    "ev_trend_val": -2.0,
     "ev_trend_label": "Stable",
-    "max_ev": 110,
-    "max_ev_pct": 92,
-    "fb_ev": 97,
-    "fb_ev_pct": 86,
-    "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "max_ev": 115,
+    "max_ev_pct": 96,
+    "fb_ev": 98,
+    "fb_ev_pct": 88,
+    "opp_pitcher": "David Peterson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.55,
+    "bvp_summary": "0 HR, 2 hard-hit events vs David Peterson"
   },
   {
     "date": "2026-04-02",
@@ -457,7 +545,9 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -477,7 +567,9 @@ const hrModelData = [
     "fb_ev": 96,
     "fb_ev_pct": 85,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -497,7 +589,9 @@ const hrModelData = [
     "fb_ev": 90,
     "fb_ev_pct": 80,
     "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -517,7 +611,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 84,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -537,7 +633,9 @@ const hrModelData = [
     "fb_ev": 94,
     "fb_ev_pct": 84,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -557,7 +655,9 @@ const hrModelData = [
     "fb_ev": 94,
     "fb_ev_pct": 84,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -577,27 +677,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 84,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Royce Lewis",
-    "team": "MIN",
-    "probability": 4.2,
-    "breakdown": {
-      "Power": 35,
-      "Form": 67,
-      "Trend": 0,
-      "Park": 39
-    },
-    "ev_trend_val": -3.1,
-    "ev_trend_label": "Stable",
-    "max_ev": 110,
-    "max_ev_pct": 91,
-    "fb_ev": 96,
-    "fb_ev_pct": 85,
-    "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -617,7 +699,31 @@ const hrModelData = [
     "fb_ev": 94,
     "fb_ev_pct": 84,
     "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Jonathan India",
+    "team": "KAN",
+    "probability": 4.2,
+    "breakdown": {
+      "Power": 12,
+      "Form": 80,
+      "Trend": 0,
+      "Park": 39
+    },
+    "ev_trend_val": -5.8,
+    "ev_trend_label": "Stable",
+    "max_ev": 110,
+    "max_ev_pct": 92,
+    "fb_ev": 97,
+    "fb_ev_pct": 87,
+    "opp_pitcher": "Taj Bradley",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.5,
+    "bvp_summary": "0 HR, 3 hard-hit events vs Taj Bradley"
   },
   {
     "date": "2026-04-02",
@@ -637,7 +743,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 85,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -657,7 +765,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -677,7 +787,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 85,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -697,7 +809,9 @@ const hrModelData = [
     "fb_ev": 90,
     "fb_ev_pct": 80,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -717,27 +831,31 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 84,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
-    "name": "Matt Chapman",
-    "team": "SAN",
+    "name": "Matt Wallner",
+    "team": "MIN",
     "probability": 3.9,
     "breakdown": {
-      "Power": 10,
-      "Form": 90,
-      "Trend": 15,
-      "Park": 5
+      "Power": 9,
+      "Form": 71,
+      "Trend": 12,
+      "Park": 39
     },
-    "ev_trend_val": -2.0,
+    "ev_trend_val": -2.3,
     "ev_trend_label": "Stable",
-    "max_ev": 115,
-    "max_ev_pct": 96,
-    "fb_ev": 98,
-    "fb_ev_pct": 88,
-    "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "max_ev": 109,
+    "max_ev_pct": 91,
+    "fb_ev": 96,
+    "fb_ev_pct": 86,
+    "opp_pitcher": "Cole Ragans",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.35,
+    "bvp_summary": "0 HR, 1 hard-hit events vs Cole Ragans"
   },
   {
     "date": "2026-04-02",
@@ -757,27 +875,9 @@ const hrModelData = [
     "fb_ev": 90,
     "fb_ev_pct": 80,
     "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Jonathan India",
-    "team": "KAN",
-    "probability": 3.7,
-    "breakdown": {
-      "Power": 12,
-      "Form": 80,
-      "Trend": 0,
-      "Park": 39
-    },
-    "ev_trend_val": -5.8,
-    "ev_trend_label": "Stable",
-    "max_ev": 110,
-    "max_ev_pct": 92,
-    "fb_ev": 97,
-    "fb_ev_pct": 87,
-    "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -797,27 +897,53 @@ const hrModelData = [
     "fb_ev": 97,
     "fb_ev_pct": 86,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
-    "name": "Matt Wallner",
-    "team": "MIN",
-    "probability": 3.5,
+    "name": "Austin Riley",
+    "team": "ATL",
+    "probability": 3.6,
     "breakdown": {
-      "Power": 9,
-      "Form": 71,
-      "Trend": 12,
+      "Power": 17,
+      "Form": 34,
+      "Trend": 27,
       "Park": 39
     },
-    "ev_trend_val": -2.3,
+    "ev_trend_val": -1.4,
     "ev_trend_label": "Stable",
     "max_ev": 109,
     "max_ev_pct": 91,
-    "fb_ev": 96,
-    "fb_ev_pct": 86,
-    "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "fb_ev": 92,
+    "fb_ev_pct": 82,
+    "opp_pitcher": "Ryne Nelson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.6,
+    "bvp_summary": "1 HR, 1 hard-hit events vs Ryne Nelson"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Willy Adames",
+    "team": "SAN",
+    "probability": 3.5,
+    "breakdown": {
+      "Power": 9,
+      "Form": 46,
+      "Trend": 39,
+      "Park": 5
+    },
+    "ev_trend_val": -0.7,
+    "ev_trend_label": "Stable",
+    "max_ev": 108,
+    "max_ev_pct": 90,
+    "fb_ev": 93,
+    "fb_ev_pct": 83,
+    "opp_pitcher": "David Peterson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.55,
+    "bvp_summary": "0 HR, 2 hard-hit events vs David Peterson"
   },
   {
     "date": "2026-04-02",
@@ -837,7 +963,31 @@ const hrModelData = [
     "fb_ev": 99,
     "fb_ev_pct": 88,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Ryan Jeffers",
+    "team": "MIN",
+    "probability": 3.4,
+    "breakdown": {
+      "Power": 19,
+      "Form": 16,
+      "Trend": 52,
+      "Park": 39
+    },
+    "ev_trend_val": 0.1,
+    "ev_trend_label": "Stable",
+    "max_ev": 109,
+    "max_ev_pct": 91,
+    "fb_ev": 89,
+    "fb_ev_pct": 80,
+    "opp_pitcher": "Cole Ragans",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.35,
+    "bvp_summary": "0 HR, 1 hard-hit events vs Cole Ragans"
   },
   {
     "date": "2026-04-02",
@@ -857,7 +1007,31 @@ const hrModelData = [
     "fb_ev": 94,
     "fb_ev_pct": 84,
     "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Lane Thomas",
+    "team": "KAN",
+    "probability": 3.4,
+    "breakdown": {
+      "Power": 14,
+      "Form": 47,
+      "Trend": 18,
+      "Park": 39
+    },
+    "ev_trend_val": -1.9,
+    "ev_trend_label": "Stable",
+    "max_ev": 109,
+    "max_ev_pct": 91,
+    "fb_ev": 93,
+    "fb_ev_pct": 83,
+    "opp_pitcher": "Taj Bradley",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.3,
+    "bvp_summary": "0 HR, 1 hard-hit events vs Taj Bradley"
   },
   {
     "date": "2026-04-02",
@@ -877,7 +1051,9 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -897,7 +1073,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -917,7 +1095,9 @@ const hrModelData = [
     "fb_ev": 97,
     "fb_ev_pct": 87,
     "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -937,7 +1117,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -957,7 +1139,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -977,67 +1161,53 @@ const hrModelData = [
     "fb_ev": 94,
     "fb_ev_pct": 83,
     "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
-    "name": "Lane Thomas",
-    "team": "KAN",
+    "name": "Mark Vientos",
+    "team": "NEW",
     "probability": 3.1,
     "breakdown": {
-      "Power": 14,
-      "Form": 47,
-      "Trend": 18,
-      "Park": 39
+      "Power": 0,
+      "Form": 55,
+      "Trend": 39,
+      "Park": 5
     },
-    "ev_trend_val": -1.9,
+    "ev_trend_val": -0.6,
     "ev_trend_label": "Stable",
-    "max_ev": 109,
-    "max_ev_pct": 91,
-    "fb_ev": 93,
-    "fb_ev_pct": 83,
-    "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "max_ev": 107,
+    "max_ev_pct": 89,
+    "fb_ev": 94,
+    "fb_ev_pct": 84,
+    "opp_pitcher": "Robbie Ray",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.35,
+    "bvp_summary": "0 HR, 1 hard-hit events vs Robbie Ray"
   },
   {
     "date": "2026-04-02",
-    "name": "Ryan Jeffers",
-    "team": "MIN",
+    "name": "Casey Schmitt",
+    "team": "SAN",
     "probability": 3.0,
     "breakdown": {
-      "Power": 19,
-      "Form": 16,
-      "Trend": 52,
-      "Park": 39
+      "Power": 0,
+      "Form": 14,
+      "Trend": 84,
+      "Park": 5
     },
-    "ev_trend_val": 0.1,
-    "ev_trend_label": "Stable",
-    "max_ev": 109,
-    "max_ev_pct": 91,
+    "ev_trend_val": 2.1,
+    "ev_trend_label": "Heating Up",
+    "max_ev": 108,
+    "max_ev_pct": 90,
     "fb_ev": 89,
     "fb_ev_pct": 80,
-    "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Austin Riley",
-    "team": "ATL",
-    "probability": 3.0,
-    "breakdown": {
-      "Power": 17,
-      "Form": 34,
-      "Trend": 27,
-      "Park": 39
-    },
-    "ev_trend_val": -1.4,
-    "ev_trend_label": "Stable",
-    "max_ev": 109,
-    "max_ev_pct": 91,
-    "fb_ev": 92,
-    "fb_ev_pct": 82,
-    "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "opp_pitcher": "David Peterson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.55,
+    "bvp_summary": "0 HR, 3 hard-hit events vs David Peterson"
   },
   {
     "date": "2026-04-02",
@@ -1057,7 +1227,9 @@ const hrModelData = [
     "fb_ev": 94,
     "fb_ev_pct": 84,
     "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1077,7 +1249,9 @@ const hrModelData = [
     "fb_ev": 97,
     "fb_ev_pct": 86,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1097,7 +1271,31 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Ozzie Albies",
+    "team": "ATL",
+    "probability": 2.9,
+    "breakdown": {
+      "Power": 8,
+      "Form": 22,
+      "Trend": 48,
+      "Park": 39
+    },
+    "ev_trend_val": -0.1,
+    "ev_trend_label": "Stable",
+    "max_ev": 106,
+    "max_ev_pct": 88,
+    "fb_ev": 90,
+    "fb_ev_pct": 80,
+    "opp_pitcher": "Ryne Nelson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.3,
+    "bvp_summary": "0 HR, 1 hard-hit events vs Ryne Nelson"
   },
   {
     "date": "2026-04-02",
@@ -1117,27 +1315,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 84,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Willy Adames",
-    "team": "SAN",
-    "probability": 2.9,
-    "breakdown": {
-      "Power": 9,
-      "Form": 46,
-      "Trend": 39,
-      "Park": 5
-    },
-    "ev_trend_val": -0.7,
-    "ev_trend_label": "Stable",
-    "max_ev": 108,
-    "max_ev_pct": 90,
-    "fb_ev": 93,
-    "fb_ev_pct": 83,
-    "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1157,7 +1337,9 @@ const hrModelData = [
     "fb_ev": 96,
     "fb_ev_pct": 86,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1177,7 +1359,9 @@ const hrModelData = [
     "fb_ev": 94,
     "fb_ev_pct": 84,
     "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1197,7 +1381,9 @@ const hrModelData = [
     "fb_ev": 88,
     "fb_ev_pct": 79,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1217,27 +1403,9 @@ const hrModelData = [
     "fb_ev": 95,
     "fb_ev_pct": 85,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Mark Vientos",
-    "team": "NEW",
-    "probability": 2.8,
-    "breakdown": {
-      "Power": 0,
-      "Form": 55,
-      "Trend": 39,
-      "Park": 5
-    },
-    "ev_trend_val": -0.6,
-    "ev_trend_label": "Stable",
-    "max_ev": 107,
-    "max_ev_pct": 89,
-    "fb_ev": 94,
-    "fb_ev_pct": 84,
-    "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1257,7 +1425,53 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Vinnie Pasquantino",
+    "team": "KAN",
+    "probability": 2.7,
+    "breakdown": {
+      "Power": 0,
+      "Form": 46,
+      "Trend": 18,
+      "Park": 39
+    },
+    "ev_trend_val": -1.9,
+    "ev_trend_label": "Stable",
+    "max_ev": 107,
+    "max_ev_pct": 89,
+    "fb_ev": 93,
+    "fb_ev_pct": 83,
+    "opp_pitcher": "Taj Bradley",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.3,
+    "bvp_summary": "0 HR, 1 hard-hit events vs Taj Bradley"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Heliot Ramos",
+    "team": "SAN",
+    "probability": 2.7,
+    "breakdown": {
+      "Power": 0,
+      "Form": 31,
+      "Trend": 44,
+      "Park": 5
+    },
+    "ev_trend_val": -0.3,
+    "ev_trend_label": "Stable",
+    "max_ev": 109,
+    "max_ev_pct": 91,
+    "fb_ev": 91,
+    "fb_ev_pct": 81,
+    "opp_pitcher": "David Peterson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.55,
+    "bvp_summary": "0 HR, 4 hard-hit events vs David Peterson"
   },
   {
     "date": "2026-04-02",
@@ -1277,7 +1491,9 @@ const hrModelData = [
     "fb_ev": 96,
     "fb_ev_pct": 85,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1297,7 +1513,9 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 82,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1317,7 +1535,31 @@ const hrModelData = [
     "fb_ev": 90,
     "fb_ev_pct": 80,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Jonah Heim",
+    "team": "ATL",
+    "probability": 2.6,
+    "breakdown": {
+      "Power": 0,
+      "Form": 0,
+      "Trend": 77,
+      "Park": 39
+    },
+    "ev_trend_val": 1.7,
+    "ev_trend_label": "Heating Up",
+    "max_ev": 105,
+    "max_ev_pct": 87,
+    "fb_ev": 87,
+    "fb_ev_pct": 77,
+    "opp_pitcher": "Ryne Nelson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.45,
+    "bvp_summary": "1 HR, 0 hard-hit events vs Ryne Nelson"
   },
   {
     "date": "2026-04-02",
@@ -1337,27 +1579,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Ozzie Albies",
-    "team": "ATL",
-    "probability": 2.6,
-    "breakdown": {
-      "Power": 8,
-      "Form": 22,
-      "Trend": 48,
-      "Park": 39
-    },
-    "ev_trend_val": -0.1,
-    "ev_trend_label": "Stable",
-    "max_ev": 106,
-    "max_ev_pct": 88,
-    "fb_ev": 90,
-    "fb_ev_pct": 80,
-    "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1377,7 +1601,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1397,27 +1623,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Vinnie Pasquantino",
-    "team": "KAN",
-    "probability": 2.4,
-    "breakdown": {
-      "Power": 0,
-      "Form": 46,
-      "Trend": 18,
-      "Park": 39
-    },
-    "ev_trend_val": -1.9,
-    "ev_trend_label": "Stable",
-    "max_ev": 107,
-    "max_ev_pct": 89,
-    "fb_ev": 93,
-    "fb_ev_pct": 83,
-    "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1437,7 +1645,9 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1457,27 +1667,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Casey Schmitt",
-    "team": "SAN",
-    "probability": 2.4,
-    "breakdown": {
-      "Power": 0,
-      "Form": 14,
-      "Trend": 84,
-      "Park": 5
-    },
-    "ev_trend_val": 2.1,
-    "ev_trend_label": "Heating Up",
-    "max_ev": 108,
-    "max_ev_pct": 90,
-    "fb_ev": 89,
-    "fb_ev_pct": 80,
-    "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1497,7 +1689,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1517,27 +1711,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Jonah Heim",
-    "team": "ATL",
-    "probability": 2.2,
-    "breakdown": {
-      "Power": 0,
-      "Form": 0,
-      "Trend": 77,
-      "Park": 39
-    },
-    "ev_trend_val": 1.7,
-    "ev_trend_label": "Heating Up",
-    "max_ev": 105,
-    "max_ev_pct": 87,
-    "fb_ev": 87,
-    "fb_ev_pct": 77,
-    "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1557,7 +1733,9 @@ const hrModelData = [
     "fb_ev": 90,
     "fb_ev_pct": 81,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1577,27 +1755,9 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Heliot Ramos",
-    "team": "SAN",
-    "probability": 2.1,
-    "breakdown": {
-      "Power": 0,
-      "Form": 31,
-      "Trend": 44,
-      "Park": 5
-    },
-    "ev_trend_val": -0.3,
-    "ev_trend_label": "Stable",
-    "max_ev": 109,
-    "max_ev_pct": 91,
-    "fb_ev": 91,
-    "fb_ev_pct": 81,
-    "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1617,7 +1777,31 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Patrick Bailey",
+    "team": "SAN",
+    "probability": 2.0,
+    "breakdown": {
+      "Power": 0,
+      "Form": 13,
+      "Trend": 48,
+      "Park": 5
+    },
+    "ev_trend_val": -0.1,
+    "ev_trend_label": "Stable",
+    "max_ev": 105,
+    "max_ev_pct": 88,
+    "fb_ev": 89,
+    "fb_ev_pct": 80,
+    "opp_pitcher": "David Peterson",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.35,
+    "bvp_summary": "0 HR, 1 hard-hit events vs David Peterson"
   },
   {
     "date": "2026-04-02",
@@ -1637,7 +1821,9 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1657,7 +1843,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1677,7 +1865,31 @@ const hrModelData = [
     "fb_ev": 89,
     "fb_ev_pct": 79,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Trevor Larnach",
+    "team": "MIN",
+    "probability": 1.6,
+    "breakdown": {
+      "Power": 12,
+      "Form": 0,
+      "Trend": 0,
+      "Park": 39
+    },
+    "ev_trend_val": -4.5,
+    "ev_trend_label": "Stable",
+    "max_ev": 113,
+    "max_ev_pct": 94,
+    "fb_ev": 86,
+    "fb_ev_pct": 77,
+    "opp_pitcher": "Cole Ragans",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.55,
+    "bvp_summary": "0 HR, 2 hard-hit events vs Cole Ragans"
   },
   {
     "date": "2026-04-02",
@@ -1697,27 +1909,9 @@ const hrModelData = [
     "fb_ev": 89,
     "fb_ev_pct": 80,
     "opp_pitcher": "Ryne Nelson",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Patrick Bailey",
-    "team": "SAN",
-    "probability": 1.6,
-    "breakdown": {
-      "Power": 0,
-      "Form": 13,
-      "Trend": 48,
-      "Park": 5
-    },
-    "ev_trend_val": -0.1,
-    "ev_trend_label": "Stable",
-    "max_ev": 105,
-    "max_ev_pct": 88,
-    "fb_ev": 89,
-    "fb_ev_pct": 80,
-    "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1737,7 +1931,9 @@ const hrModelData = [
     "fb_ev": 93,
     "fb_ev_pct": 83,
     "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1757,7 +1953,9 @@ const hrModelData = [
     "fb_ev": 92,
     "fb_ev_pct": 82,
     "opp_pitcher": "Dylan Cease",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1777,7 +1975,9 @@ const hrModelData = [
     "fb_ev": 89,
     "fb_ev_pct": 80,
     "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1797,7 +1997,31 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "Robbie Ray",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Starling Marte",
+    "team": "KAN",
+    "probability": 1.4,
+    "breakdown": {
+      "Power": 0,
+      "Form": 0,
+      "Trend": 19,
+      "Park": 39
+    },
+    "ev_trend_val": -1.8,
+    "ev_trend_label": "Stable",
+    "max_ev": 108,
+    "max_ev_pct": 90,
+    "fb_ev": 87,
+    "fb_ev_pct": 78,
+    "opp_pitcher": "Taj Bradley",
+    "park_factor": "Neutral",
+    "bvp_boost": 0.55,
+    "bvp_summary": "0 HR, 2 hard-hit events vs Taj Bradley"
   },
   {
     "date": "2026-04-02",
@@ -1817,7 +2041,9 @@ const hrModelData = [
     "fb_ev": 90,
     "fb_ev_pct": 80,
     "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1837,27 +2063,9 @@ const hrModelData = [
     "fb_ev": 86,
     "fb_ev_pct": 77,
     "opp_pitcher": "Reynaldo L\u00f3pez",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Trevor Larnach",
-    "team": "MIN",
-    "probability": 1.0,
-    "breakdown": {
-      "Power": 12,
-      "Form": 0,
-      "Trend": 0,
-      "Park": 39
-    },
-    "ev_trend_val": -4.5,
-    "ev_trend_label": "Stable",
-    "max_ev": 113,
-    "max_ev_pct": 94,
-    "fb_ev": 86,
-    "fb_ev_pct": 77,
-    "opp_pitcher": "Cole Ragans",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1877,27 +2085,9 @@ const hrModelData = [
     "fb_ev": 91,
     "fb_ev_pct": 81,
     "opp_pitcher": "David Peterson",
-    "park_factor": "Neutral"
-  },
-  {
-    "date": "2026-04-02",
-    "name": "Starling Marte",
-    "team": "KAN",
-    "probability": 0.9,
-    "breakdown": {
-      "Power": 0,
-      "Form": 0,
-      "Trend": 19,
-      "Park": 39
-    },
-    "ev_trend_val": -1.8,
-    "ev_trend_label": "Stable",
-    "max_ev": 108,
-    "max_ev_pct": 90,
-    "fb_ev": 87,
-    "fb_ev_pct": 78,
-    "opp_pitcher": "Taj Bradley",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   },
   {
     "date": "2026-04-02",
@@ -1917,6 +2107,8 @@ const hrModelData = [
     "fb_ev": 87,
     "fb_ev_pct": 78,
     "opp_pitcher": "Sean Burke",
-    "park_factor": "Neutral"
+    "park_factor": "Neutral",
+    "bvp_boost": 0.0,
+    "bvp_summary": ""
   }
 ];
