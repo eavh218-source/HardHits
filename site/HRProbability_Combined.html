@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardHits | HR Probability & Results</title>
-    <link rel="stylesheet" href="../assets/site-nav.css">
+    <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260404-2">
     <script src="../data/hr_model_data.js"></script>
     <script src="../data/hr_model_tomorrow.js"></script>
     <script src="../data/hr_results_data.js"></script>
@@ -378,6 +378,19 @@
 <script>
     let currentView = 'predictions';
     let currentDate = null;
+    const startedTeamsCache = {};
+    const TEAM_ABBR_MAP = {
+        'Arizona Diamondbacks': 'ARI', 'Atlanta Braves': 'ATL', 'Baltimore Orioles': 'BAL',
+        'Boston Red Sox': 'BOS', 'Chicago Cubs': 'CHC', 'Chicago White Sox': 'CHW',
+        'Cincinnati Reds': 'CIN', 'Cleveland Guardians': 'CLE', 'Colorado Rockies': 'COL',
+        'Detroit Tigers': 'DET', 'Houston Astros': 'HOU', 'Kansas City Royals': 'KCR',
+        'Los Angeles Angels': 'LAA', 'Los Angeles Dodgers': 'LAD', 'Miami Marlins': 'MIA',
+        'Milwaukee Brewers': 'MIL', 'Minnesota Twins': 'MIN', 'New York Mets': 'NYM',
+        'New York Yankees': 'NYY', 'Oakland Athletics': 'OAK', 'Philadelphia Phillies': 'PHI',
+        'Pittsburgh Pirates': 'PIT', 'San Diego Padres': 'SDP', 'San Francisco Giants': 'SFG',
+        'Seattle Mariners': 'SEA', 'St. Louis Cardinals': 'STL', 'Tampa Bay Rays': 'TBR',
+        'Texas Rangers': 'TEX', 'Toronto Blue Jays': 'TOR', 'Washington Nationals': 'WSH'
+    };
 
     // View toggle functionality
     document.getElementById('predictions-btn').addEventListener('click', () => {
@@ -532,14 +545,15 @@
         document.getElementById('outlier-modal').style.display = 'none';
     });
 
-    function renderPredictionCards(predictionData, emptyFileName) {
+    function renderPredictionCards(predictionData, emptyFileName, emptyMessage) {
         const dash = document.getElementById('dashboard');
         dash.innerHTML = '';
 
         if (!predictionData || predictionData.length === 0) {
+            const message = emptyMessage || `Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/${emptyFileName}</code>.`;
             dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
                 <h2 style="color: var(--text-dim)">No Data Found</h2>
-                <p>Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/${emptyFileName}</code>.</p>
+                <p>${message}</p>
             </div>`;
             return;
         }
@@ -605,7 +619,7 @@
                     </div>
 
                     <footer class="card-footer">
-                        <div class="pitcher-info">vs <span style="color:white">${p.opp_pitcher}</span></div>
+                        <div class="pitcher-info">vs <span style="color:white">${p.opp_pitcher_full || p.opp_pitcher || 'TBD'}</span></div>
                         <div class="park-info">${p.park_factor}</div>
                     </footer>
                 </article>
@@ -613,8 +627,62 @@
         });
     }
 
-    function loadPredictions() {
-        renderPredictionCards(typeof hrModelData !== 'undefined' ? hrModelData : [], 'hr_model_data.js');
+    function getTeamAbbr(teamName) {
+        return TEAM_ABBR_MAP[teamName] || '';
+    }
+
+    async function getStartedTeamsForDate(dateStr) {
+        if (!dateStr) return new Set();
+        if (startedTeamsCache[dateStr]) return startedTeamsCache[dateStr];
+
+        const startedTeams = new Set();
+        try {
+            const response = await fetch(`https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=${dateStr}`);
+            const payload = await response.json();
+            const games = (payload.dates && payload.dates[0] && payload.dates[0].games) ? payload.dates[0].games : [];
+
+            games.forEach(game => {
+                const abstractState = ((game.status && game.status.abstractGameState) || '').toLowerCase();
+                const isFinal = abstractState === 'final';
+                if (!isFinal) return;
+
+                const awayName = game.teams && game.teams.away && game.teams.away.team ? game.teams.away.team.name : '';
+                const homeName = game.teams && game.teams.home && game.teams.home.team ? game.teams.home.team.name : '';
+                const awayAbbr = getTeamAbbr(awayName);
+                const homeAbbr = getTeamAbbr(homeName);
+
+                if (awayAbbr) startedTeams.add(awayAbbr);
+                if (homeAbbr) startedTeams.add(homeAbbr);
+            });
+        } catch (err) {
+            console.warn('Unable to load schedule for display filtering:', err);
+        }
+
+        startedTeamsCache[dateStr] = startedTeams;
+        return startedTeams;
+    }
+
+    async function loadPredictions() {
+        const allPredictions = typeof hrModelData !== 'undefined' ? hrModelData : [];
+        if (!allPredictions.length) {
+            renderPredictionCards([], 'hr_model_data.js');
+            return;
+        }
+
+        const dateStr = allPredictions[0].date;
+        const startedTeams = await getStartedTeamsForDate(dateStr);
+        const filteredPredictions = allPredictions.filter(p => !startedTeams.has(p.team));
+
+        if (!filteredPredictions.length) {
+            renderPredictionCards(
+                [],
+                'hr_model_data.js',
+                'All games for this slate are Final, so today\'s display is intentionally empty.'
+            );
+            return;
+        }
+
+        renderPredictionCards(filteredPredictions, 'hr_model_data.js');
     }
 
     function loadTomorrowPredictions() {
@@ -978,7 +1046,6 @@ function processResultsData(modelData, resultsData, dash, summary, dateStr) {
         loadPredictions();
     });
 </script>
-<script src="../assets/site-nav.js" defer></script>
+<script src="../assets/site-nav.js?v=stable-20260404-2" defer></script>
 </body>
-</html></content>
-<parameter name="filePath">c:\code\HardHits\site\HRProbability_Combined.html
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HardHits | Starting Lineups</title>
+    <link rel="stylesheet" href="../../assets/site-nav.css">
+    <script src="../../data/starting_lineups.js"></script>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: #111827;
+            --border: #1e293b;
+            --accent: #38bdf8;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --success: #22c55e;
+            --warning: #fbbf24;
+            --danger: #f87171;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px 40px;
+        }
+
+        .hero {
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            margin: 8px 0 0;
+            color: var(--text-dim);
+        }
+
+        .summary-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+            margin: 24px 0 28px;
+        }
+
+        .summary-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+        }
+
+        .summary-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+        }
+
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-top: 6px;
+        }
+
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 18px;
+        }
+
+        .matchup-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .matchup-header {
+            padding: 16px 18px 12px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .matchup-title {
+            font-size: 1.05rem;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .matchup-meta {
+            margin-top: 4px;
+            color: var(--text-dim);
+            font-size: 0.82rem;
+        }
+
+        .status-badge {
+            font-size: 0.68rem;
+            font-weight: 900;
+            border-radius: 999px;
+            padding: 6px 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+
+        .status-live, .status-final {
+            background: rgba(34, 197, 94, 0.14);
+            color: var(--success);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .status-preview {
+            background: rgba(251, 191, 36, 0.14);
+            color: var(--warning);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+
+        .status-other {
+            background: rgba(148, 163, 184, 0.14);
+            color: var(--text-dim);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        .eligibility {
+            padding: 10px 18px 0;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .teams {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            padding: 14px 18px 18px;
+        }
+
+        .team-panel {
+            background: rgba(0, 0, 0, 0.18);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .team-name {
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .lineup-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lineup-list li {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+            font-size: 0.82rem;
+        }
+
+        .lineup-list li:last-child {
+            border-bottom: none;
+        }
+
+        .slot {
+            color: var(--warning);
+            font-weight: 900;
+            min-width: 18px;
+        }
+
+        .player-name {
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .pos {
+            color: var(--text-dim);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .empty-lineup {
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        .empty-state {
+            background: var(--card);
+            border: 1px dashed var(--border);
+            border-radius: 16px;
+            padding: 50px 20px;
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 720px) {
+            .teams {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+<style id="dev-stage-style">
+  .dev-stage-banner {
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+  .dev-stage-banner code {
+    background: rgba(255,255,255,0.16);
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #fff;
+  }
+</style>
+</head>
+<body data-nav="lineups">
+<div class="dev-stage-banner">DEV STAGE · Test changes safely here. Stable pages remain in <code>/site</code>.</div>
+
+<div class="container">
+    <div class="hero">
+        <h1>Starting Lineups</h1>
+        <p id="subtitle">Today’s posted 1–9 batting orders for games within the 2-hour pregame window.</p>
+    </div>
+
+    <div id="summary" class="summary-bar"></div>
+    <div id="lineup-grid" class="lineup-grid"></div>
+</div>
+
+<script>
+    function getStatusClass(status) {
+        const value = String(status || '').toLowerCase();
+        if (value.includes('live')) return 'status-live';
+        if (value.includes('final')) return 'status-final';
+        if (value.includes('preview')) return 'status-preview';
+        return 'status-other';
+    }
+
+    function renderSummary(data) {
+        const root = document.getElementById('summary');
+        const totalGames = data.length;
+        const eligibleGames = data.filter(g => g.eligible).length;
+        const postedGames = data.filter(g => (g.away_lineup || []).length || (g.home_lineup || []).length).length;
+        const pendingGames = data.filter(g => g.eligible && !(g.away_lineup || []).length && !(g.home_lineup || []).length).length;
+
+        root.innerHTML = `
+            <div class="summary-card">
+                <div class="summary-label">Update Date</div>
+                <div class="summary-value">${typeof lineupUpdateDate !== 'undefined' ? lineupUpdateDate : 'N/A'}</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Last Completed</div>
+                <div class="summary-value">${typeof lineupLastCompleted !== 'undefined' ? lineupLastCompleted : 'N/A'}</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Games Tracked</div>
+                <div class="summary-value">${totalGames}</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Eligible Now</div>
+                <div class="summary-value">${eligibleGames}</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Posted Lineups</div>
+                <div class="summary-value">${postedGames}</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Pending</div>
+                <div class="summary-value">${pendingGames}</div>
+            </div>
+        `;
+    }
+
+    function renderTeamPanel(title, lineup, reason) {
+        if (!lineup || lineup.length === 0) {
+            return `
+                <div class="team-panel">
+                    <div class="team-name">${title}</div>
+                    <div class="empty-lineup">Lineup not posted yet.<br>${reason || ''}</div>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="team-panel">
+                <div class="team-name">${title}</div>
+                <ol class="lineup-list">
+                    ${lineup.map(player => `
+                        <li>
+                            <span class="slot">${player.slot}</span>
+                            <span class="player-name">${player.name}</span>
+                            <span class="pos">${player.position || ''}</span>
+                        </li>
+                    `).join('')}
+                </ol>
+            </div>
+        `;
+    }
+
+    function renderLineups(data) {
+        const grid = document.getElementById('lineup-grid');
+
+        if (!data || data.length === 0) {
+            grid.innerHTML = `
+                <div class="empty-state">
+                    <h2>No lineup data found</h2>
+                    <p>Run <code>python python/get_starting_lineups.py</code> from the repo root to generate <code>data/starting_lineups.js</code>.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const sorted = [...data].sort((a, b) => {
+            if (a.eligible !== b.eligible) return a.eligible ? -1 : 1;
+            const aHas = (a.away_lineup || []).length + (a.home_lineup || []).length;
+            const bHas = (b.away_lineup || []).length + (b.home_lineup || []).length;
+            return bHas - aHas;
+        });
+
+        grid.innerHTML = sorted.map(game => `
+            <article class="matchup-card">
+                <div class="matchup-header">
+                    <div>
+                        <h2 class="matchup-title">${game.matchup}</h2>
+                        <div class="matchup-meta">${game.game_time_et} • ${game.status}</div>
+                    </div>
+                    <span class="status-badge ${getStatusClass(game.status)}">${game.status}</span>
+                </div>
+                <div class="eligibility">${game.reason || ''}</div>
+                <div class="teams">
+                    ${renderTeamPanel(game.away_team, game.away_lineup, game.reason)}
+                    ${renderTeamPanel(game.home_team, game.home_lineup, game.reason)}
+                </div>
+            </article>
+        `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const data = typeof startingLineups !== 'undefined' ? startingLineups : [];
+        renderSummary(data);
+        renderLineups(data);
+
+        if (typeof lineupUpdateDate !== 'undefined') {
+            document.getElementById('subtitle').textContent = `Updated for ${lineupUpdateDate}${typeof lineupLastCompleted !== 'undefined' ? ` • Last completed ${lineupLastCompleted}` : ''}`;
+        }
+    });
+</script>
+<script src="../../assets/site-nav-dev.js" defer></script>
+</body>
+</html>

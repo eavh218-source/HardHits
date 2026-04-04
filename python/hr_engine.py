@@ -14,6 +14,19 @@ PARK_FACTORS = {
     'Mariners': 0.82, 'Padres': 0.94, 'Giants': 0.83
 }
 
+TEAM_MAP = {
+    'Arizona Diamondbacks': 'ARI', 'Atlanta Braves': 'ATL', 'Baltimore Orioles': 'BAL',
+    'Boston Red Sox': 'BOS', 'Chicago Cubs': 'CHC', 'Chicago White Sox': 'CHW',
+    'Cincinnati Reds': 'CIN', 'Cleveland Guardians': 'CLE', 'Colorado Rockies': 'COL',
+    'Detroit Tigers': 'DET', 'Houston Astros': 'HOU', 'Kansas City Royals': 'KCR',
+    'Los Angeles Angels': 'LAA', 'Los Angeles Dodgers': 'LAD', 'Miami Marlins': 'MIA',
+    'Milwaukee Brewers': 'MIL', 'Minnesota Twins': 'MIN', 'New York Mets': 'NYM',
+    'New York Yankees': 'NYY', 'Oakland Athletics': 'OAK', 'Philadelphia Phillies': 'PHI',
+    'Pittsburgh Pirates': 'PIT', 'San Diego Padres': 'SDP', 'San Francisco Giants': 'SFG',
+    'Seattle Mariners': 'SEA', 'St. Louis Cardinals': 'STL', 'Tampa Bay Rays': 'TBR',
+    'Texas Rangers': 'TEX', 'Toronto Blue Jays': 'TOR', 'Washington Nationals': 'WSH'
+}
+
 def calculate_barrels(df):
     """Statcast Barrel: EV >= 98 & LA between 26-30 degrees"""
     if df.empty: return 0
@@ -22,6 +35,14 @@ def calculate_barrels(df):
 
 def normalize_name(name):
     return str(name or '').strip().lower()
+
+
+def get_team_abbr(team_name):
+    team_name = str(team_name or '').strip()
+    if not team_name:
+        return 'TBD'
+    return TEAM_MAP.get(team_name, team_name[:3].upper())
+
 
 def load_bvp_data():
     bvp_path = DATA_DIR / 'bvp_data.js'
@@ -111,7 +132,7 @@ def generate_probability_payload(target_date, bvp_data):
     games = statsapi.schedule(date=target_date)
     payload = []
 
-    for game in games[:4]:
+    for game in games:
         print(f"Analyzing: {game['away_name']} @ {game['home_name']}")
 
         pf = 1.0
@@ -142,7 +163,7 @@ def generate_probability_payload(target_date, bvp_data):
                     s_trend = min(max(stats['ev_trend'] + 3, 0) / 6 * 100, 100)
                     s_park = min(((pf - 0.8) / 0.5) * 100, 100)
 
-                    opp_pitcher = game.get('home_probable_pitcher' if side == 'away' else 'away_probable_pitcher', 'TBD')
+                    opp_pitcher = game.get('home_probable_pitcher' if side == 'away' else 'away_probable_pitcher') or 'TBD'
                     bvp_boost, bvp_summary = calculate_bvp_boost(name, opp_pitcher, bvp_data)
 
                     base_prob = (s_power * 0.2 + s_form * 0.15 + s_trend * 0.1 + s_park * 0.05) / 4.5
@@ -151,7 +172,7 @@ def generate_probability_payload(target_date, bvp_data):
                     payload.append({
                         "date": target_date,
                         "name": name,
-                        "team": game[f'{side}_name'][:3].upper(),
+                        "team": get_team_abbr(game.get(f'{side}_name')),
                         "probability": final_prob,
                         "breakdown": {
                             "Power": int(s_power),
@@ -166,6 +187,7 @@ def generate_probability_payload(target_date, bvp_data):
                         "fb_ev": int(stats['fb_ev']),
                         "fb_ev_pct": int((stats['fb_ev'] / 112) * 100),
                         "opp_pitcher": opp_pitcher,
+                        "opp_pitcher_full": opp_pitcher,
                         "park_factor": "Launch Pad" if pf > 1.1 else "Neutral",
                         "bvp_boost": bvp_boost,
                         "bvp_summary": bvp_summary

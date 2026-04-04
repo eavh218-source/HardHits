@@ -28,5 +28,15 @@ const projectData = [
     "title": "Bullpen Fatigue Tracker",
     "description": "Track pitches thrown over the last 3 days for every reliever.",
     "status": "Planned"
+  },
+  {
+    "title": "Advanced Probability Engine",
+    "description": "Next-gen forecasting using pitcher pitch percentages correlated with hitter avg and slg vs specific pitch types.",
+    "status": "Active"
+  },
+  {
+    "title": "HardHits Core v3.0",
+    "description": "Base Statcast engine tracking Exit Velocity trends, Launch Angles, and Barrel percentages.",
+    "status": "Stable"
   }
 ];

@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PY = ROOT / "python"
+STATUS_SCRIPT = PY / "site_status.py"
 
 
 def run_script(script_name: str) -> bool:
@@ -18,15 +19,35 @@ def run_script(script_name: str) -> bool:
         print(f"--- Finished: {script_name} successfully ---\n")
         return True
     except subprocess.CalledProcessError as e:
-        print(f"❌ Error running {script_name}: {e}\n")
+        print(f"[ERROR] Error running {script_name}: {e}\n")
         return False
     except Exception as e:
-        print(f"⚠️ Unexpected error: {e}\n")
+        print(f"[WARN] Unexpected error: {e}\n")
         return False
+
+
+def write_site_status(success: bool, detail: str) -> None:
+    try:
+        subprocess.run(
+            [
+                sys.executable,
+                str(STATUS_SCRIPT),
+                "--job-name",
+                "mastercontroller",
+                "--success",
+                "true" if success else "false",
+                "--detail",
+                detail,
+            ],
+            check=False,
+            cwd=str(ROOT),
+        )
+    except Exception as e:
+        print(f"[WARN] Could not update site status: {e}")
 
 
 if __name__ == "__main__":
-    print("⚾ MLB Data Update Initialized ⚾\n")
+    print("MLB Data Update Initialized\n")
 
     scripts_to_run = [
         # 1. Build daily matchup context first (starting points)
@@ -41,12 +62,8 @@ if __name__ == "__main__":
         "hr_validator.py",
         # 6. Daily home run feed, in case UI needs immediate game updates
         "TodaysHomers.py",
-        # 7. Historical model batch generation (backfill dates)
-        "generate_historical_data.py",
-        # 8. Historical HR result batch generation (backfill dates)
-        "generate_historical_results.py",
-        # 9. Consolidate / split historical files for UI consumption
-        "consolidate_historical.py",
+        # 7. Sync project tracker JSON -> JS for the projects page
+        "update_projects.py",
     ]
     successful_runs = []
 
@@ -56,8 +73,12 @@ if __name__ == "__main__":
 
     print("---------------------------------------")
     if len(successful_runs) == len(scripts_to_run):
-        print("✅ All dashboards are now up to date.")
+        detail = "All stable dashboard refresh scripts completed successfully."
+        print("[OK] All dashboards are now up to date.")
+        write_site_status(True, detail)
     else:
         failed_count = len(scripts_to_run) - len(successful_runs)
-        print(f"⚠️ Update Incomplete: {failed_count} script(s) failed. Check errors above.")
+        detail = f"{failed_count} stable refresh script(s) failed. Check logs for details."
+        print(f"[WARN] Update Incomplete: {failed_count} script(s) failed. Check errors above.")
+        write_site_status(False, detail)
     print("---------------------------------------")

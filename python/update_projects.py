@@ -1,34 +1,42 @@
 import json
-import os
 
 from paths import DATA_DIR
 
-def add_project(title, description, status="Planned"):
-    file_path = DATA_DIR / 'projects.json'
-    
-    # 1. Load existing data
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as f:
-            projects = json.load(f)
-    else:
-        projects = []
+PROJECTS_JSON = DATA_DIR / 'projects.json'
+PROJECTS_JS = DATA_DIR / 'projects_data.js'
 
-    # 2. Add new project
+
+def load_projects():
+    if PROJECTS_JSON.exists():
+        with open(PROJECTS_JSON, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return []
+
+
+def save_projects(projects):
+    with open(PROJECTS_JSON, 'w', encoding='utf-8') as f:
+        json.dump(projects, f, indent=2)
+
+    with open(PROJECTS_JS, 'w', encoding='utf-8') as f:
+        f.write(f"const projectData = {json.dumps(projects, indent=2)};")
+
+
+def sync_projects_data():
+    projects = load_projects()
+    save_projects(projects)
+    print(f"✅ Synced {len(projects)} projects to projects_data.js")
+
+
+def add_project(title, description, status="Planned"):
+    projects = load_projects()
     projects.append({
         "title": title,
         "description": description,
         "status": status
     })
-
-    # 3. Save back to JSON
-    with open(file_path, 'w') as f:
-        json.dump(projects, f, indent=2)
-    
-    # 4. Also wrap it in a .js file for easy HTML import
-    with open(DATA_DIR / 'projects_data.js', 'w') as f:
-        f.write(f"const projectData = {json.dumps(projects, indent=2)};")
-
+    save_projects(projects)
     print(f"✅ Added: {title}")
 
-# Example Usage:
-# add_project("Bullpen Fatigue Tracker", "Track pitches thrown over the last 3 days for every reliever.")
+
+if __name__ == "__main__":
+    sync_projects_data()

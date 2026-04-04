@@ -107,6 +107,21 @@ window.todaysHRData_2026_04_02 = [
   },
   {
     "date": "2026-04-02",
+    "batter": "Jorge Mateo",
+    "name": "Jorge Mateo",
+    "batter_team": "Atlanta Braves",
+    "team": "Atlanta Braves",
+    "pitcher": "James McCann",
+    "pitcher_team": "Arizona Diamondbacks",
+    "exit_velo": 104.6,
+    "ev": 104.6,
+    "launch_angle": 24.0,
+    "distance": 353.0,
+    "dist": 353.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-02",
     "batter": "Mark Vientos",
     "name": "Mark Vientos",
     "batter_team": "New York Mets",
@@ -118,6 +133,21 @@ window.todaysHRData_2026_04_02 = [
     "launch_angle": 30.0,
     "distance": 406.0,
     "dist": 406.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-02",
+    "batter": "Rafael Devers",
+    "name": "Rafael Devers",
+    "batter_team": "San Francisco Giants",
+    "team": "San Francisco Giants",
+    "pitcher": "Sean Manaea",
+    "pitcher_team": "New York Mets",
+    "exit_velo": 105.5,
+    "ev": 105.5,
+    "launch_angle": 29.0,
+    "distance": 404.0,
+    "dist": 404.0,
     "status": "\ud83c\udfaf HOME RUN"
   }
 ];

@@ -4,9 +4,9 @@ window.dailyMatchups_2026_04_03 = [
     "date": "2026-04-03",
     "time": "1:05 PM ET",
     "away_abbr": "LAD",
-    "away_p": "TBD",
+    "away_p": "Sheehan",
     "home_abbr": "WSH",
-    "home_p": "TBD"
+    "home_p": "Mikolas"
   },
   {
     "date": "2026-04-03",
@@ -52,7 +52,7 @@ window.dailyMatchups_2026_04_03 = [
     "date": "2026-04-03",
     "time": "4:10 PM ET",
     "away_abbr": "CHC",
-    "away_p": "TBD",
+    "away_p": "Horton",
     "home_abbr": "CLE",
     "home_p": "Cantillo"
   },
@@ -79,14 +79,6 @@ window.dailyMatchups_2026_04_03 = [
     "away_p": "Bradish",
     "home_abbr": "PIT",
     "home_p": "Keller"
-  },
-  {
-    "date": "2026-04-03",
-    "time": "7:45 PM ET",
-    "away_abbr": "MIL",
-    "away_p": "Patrick",
-    "home_abbr": "KCR",
-    "home_p": "Avila"
   },
   {
     "date": "2026-04-03",
@@ -154,6 +146,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Max Muncy",
+    "launch_speed": 108.8,
+    "distance": 416,
+    "events": "Home Run",
+    "game_date": "2025-08-05"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Aaron Nola",
     "opponent_team": "Colorado Rockies",
     "batter_name": "Brenton Doyle",
@@ -161,6 +163,26 @@ window.bvpData_2026_04_03 = [
     "distance": 413,
     "events": "Home Run",
     "game_date": "2023-05-14"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Cade Horton",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Angel Mart\u00ednez",
+    "launch_speed": 101.8,
+    "distance": 413,
+    "events": "Field Out",
+    "game_date": "2026-03-16"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Freddie Freeman",
+    "launch_speed": 101.7,
+    "distance": 409,
+    "events": "Home Run",
+    "game_date": "2024-03-28"
   },
   {
     "date": "2026-04-03",
@@ -174,6 +196,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Mookie Betts",
+    "launch_speed": 104.6,
+    "distance": 406,
+    "events": "Home Run",
+    "game_date": "2024-03-28"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Bryan Woo",
     "opponent_team": "Los Angeles Angels",
     "batter_name": "Jo Adell",
@@ -181,6 +213,16 @@ window.bvpData_2026_04_03 = [
     "distance": 405,
     "events": "Home Run",
     "game_date": "2024-08-31"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Max Muncy",
+    "launch_speed": 102.8,
+    "distance": 404,
+    "events": "Home Run",
+    "game_date": "2025-08-05"
   },
   {
     "date": "2026-04-03",
@@ -244,6 +286,26 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Emmet Sheehan",
+    "opponent_team": "Washington Nationals",
+    "batter_name": "Cj Abrams",
+    "launch_speed": 103.3,
+    "distance": 397,
+    "events": "Home Run",
+    "game_date": "2023-09-08"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Mookie Betts",
+    "launch_speed": 101.7,
+    "distance": 396,
+    "events": "Home Run",
+    "game_date": "2024-08-16"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Sonny Gray",
     "opponent_team": "San Diego Padres",
     "batter_name": "Nick Castellanos",
@@ -271,6 +333,16 @@ window.bvpData_2026_04_03 = [
     "distance": 391,
     "events": "Field Out",
     "game_date": "2025-08-27"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Emmet Sheehan",
+    "opponent_team": "Washington Nationals",
+    "batter_name": "Keibert Ruiz",
+    "launch_speed": 99.1,
+    "distance": 391,
+    "events": "Home Run",
+    "game_date": "2023-09-08"
   },
   {
     "date": "2026-04-03",
@@ -364,6 +436,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Teoscar Hern\u00e1ndez",
+    "launch_speed": 98.8,
+    "distance": 378,
+    "events": "Home Run",
+    "game_date": "2025-08-05"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Kyle Bradish",
     "opponent_team": "Pittsburgh Pirates",
     "batter_name": "Marcell Ozuna",
@@ -391,26 +473,6 @@ window.bvpData_2026_04_03 = [
     "distance": 373,
     "events": "Triple",
     "game_date": "2025-09-12"
-  },
-  {
-    "date": "2026-04-03",
-    "pitcher_name": "Chad Patrick",
-    "opponent_team": "Kansas City Royals",
-    "batter_name": "Bobby Witt",
-    "launch_speed": 104.1,
-    "distance": 371,
-    "events": "Field Out",
-    "game_date": "2025-04-01"
-  },
-  {
-    "date": "2026-04-03",
-    "pitcher_name": "Dylan Cease",
-    "opponent_team": "Chicago White Sox",
-    "batter_name": "Miguel Vargas",
-    "launch_speed": 100.3,
-    "distance": 371,
-    "events": "Home Run",
-    "game_date": "2025-09-19"
   },
   {
     "date": "2026-04-03",
@@ -471,6 +533,16 @@ window.bvpData_2026_04_03 = [
     "distance": 356,
     "events": "Field Error",
     "game_date": "2023-05-23"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Miguel Rojas",
+    "launch_speed": 101.7,
+    "distance": 356,
+    "events": "Double",
+    "game_date": "2024-08-16"
   },
   {
     "date": "2026-04-03",
@@ -594,6 +666,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Cade Horton",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Cj Kayfus",
+    "launch_speed": 105.2,
+    "distance": 294,
+    "events": "Field Out",
+    "game_date": "2026-03-16"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Brady Singer",
     "opponent_team": "Texas Rangers",
     "batter_name": "Corey Seager",
@@ -644,16 +726,6 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
-    "pitcher_name": "Chad Patrick",
-    "opponent_team": "Kansas City Royals",
-    "batter_name": "Jonathan India",
-    "launch_speed": 101.8,
-    "distance": 227,
-    "events": "Double",
-    "game_date": "2025-04-01"
-  },
-  {
-    "date": "2026-04-03",
     "pitcher_name": "Brady Singer",
     "opponent_team": "Texas Rangers",
     "batter_name": "Josh Smith",
@@ -661,6 +733,16 @@ window.bvpData_2026_04_03 = [
     "distance": 217,
     "events": "Single",
     "game_date": "2024-06-21"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Emmet Sheehan",
+    "opponent_team": "Washington Nationals",
+    "batter_name": "Cj Abrams",
+    "launch_speed": 105.1,
+    "distance": 216,
+    "events": "Single",
+    "game_date": "2023-09-08"
   },
   {
     "date": "2026-04-03",
@@ -701,6 +783,16 @@ window.bvpData_2026_04_03 = [
     "distance": 210,
     "events": "Double",
     "game_date": "2025-05-31"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Kyle Tucker",
+    "launch_speed": 104.4,
+    "distance": 207,
+    "events": "Single",
+    "game_date": "2023-06-28"
   },
   {
     "date": "2026-04-03",
@@ -784,6 +876,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 106.8,
+    "distance": 161,
+    "events": "Field Out",
+    "game_date": "2024-08-16"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Sonny Gray",
     "opponent_team": "San Diego Padres",
     "batter_name": "Fernando Tatis",
@@ -801,6 +903,16 @@ window.bvpData_2026_04_03 = [
     "distance": 147,
     "events": "Single",
     "game_date": "2025-09-23"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 108.3,
+    "distance": 141,
+    "events": "Double",
+    "game_date": "2025-08-05"
   },
   {
     "date": "2026-04-03",
@@ -844,6 +956,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Cade Horton",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Austin Hedges",
+    "launch_speed": 107.8,
+    "distance": 130,
+    "events": "Single",
+    "game_date": "2026-03-16"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Mitch Keller",
     "opponent_team": "Baltimore Orioles",
     "batter_name": "Ryan Mountcastle",
@@ -864,6 +986,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 113.0,
+    "distance": 121,
+    "events": "Single",
+    "game_date": "2024-03-28"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Grant Holmes",
     "opponent_team": "Arizona Diamondbacks",
     "batter_name": "Ketel Marte",
@@ -871,16 +1003,6 @@ window.bvpData_2026_04_03 = [
     "distance": 119,
     "events": "Field Out",
     "game_date": "2024-07-08"
-  },
-  {
-    "date": "2026-04-03",
-    "pitcher_name": "Chad Patrick",
-    "opponent_team": "Kansas City Royals",
-    "batter_name": "Carter Jensen",
-    "launch_speed": 109.6,
-    "distance": 114,
-    "events": "Force Out",
-    "game_date": "2026-03-01"
   },
   {
     "date": "2026-04-03",
@@ -994,6 +1116,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 108.8,
+    "distance": 56,
+    "events": "Single",
+    "game_date": "2023-05-03"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Mitch Keller",
     "opponent_team": "Baltimore Orioles",
     "batter_name": "Pete Alonso",
@@ -1041,16 +1173,6 @@ window.bvpData_2026_04_03 = [
     "distance": 30,
     "events": "Field Out",
     "game_date": "2025-07-03"
-  },
-  {
-    "date": "2026-04-03",
-    "pitcher_name": "Dylan Cease",
-    "opponent_team": "Chicago White Sox",
-    "batter_name": "Edgar Quero",
-    "launch_speed": 101.8,
-    "distance": 28,
-    "events": "Field Out",
-    "game_date": "2025-09-19"
   },
   {
     "date": "2026-04-03",
@@ -1144,6 +1266,16 @@ window.bvpData_2026_04_03 = [
   },
   {
     "date": "2026-04-03",
+    "pitcher_name": "Miles Mikolas",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 107.2,
+    "distance": 11,
+    "events": "Single",
+    "game_date": "2023-05-03"
+  },
+  {
+    "date": "2026-04-03",
     "pitcher_name": "Bryan Woo",
     "opponent_team": "Los Angeles Angels",
     "batter_name": "Zach Neto",
@@ -1161,6 +1293,16 @@ window.bvpData_2026_04_03 = [
     "distance": 9,
     "events": "Field Out",
     "game_date": "2026-02-27"
+  },
+  {
+    "date": "2026-04-03",
+    "pitcher_name": "Cade Horton",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Daniel Schneemann",
+    "launch_speed": 103.3,
+    "distance": 7,
+    "events": "Single",
+    "game_date": "2025-07-03"
   },
   {
     "date": "2026-04-03",

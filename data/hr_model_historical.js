@@ -9898,5 +9898,2145 @@ const hrModelHistoricalData = [
     "fb_ev_pct": 97.0,
     "opp_pitcher": "TBD",
     "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Austin Martin",
+    "team": "MIN",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 93.0,
+      "Form": 0.0,
+      "Trend": 2.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.75,
+    "ev_trend_label": "Stable",
+    "max_ev": 102.2,
+    "max_ev_pct": 93.0,
+    "fb_ev": 89.1,
+    "fb_ev_pct": 89.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Brooks Lee",
+    "team": "MIN",
+    "probability": 7.0,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 3.0,
+      "Trend": 3.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 1.31,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.9,
+    "max_ev_pct": 100.0,
+    "fb_ev": 92.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Byron Buxton",
+    "team": "MIN",
+    "probability": 7.6,
+    "breakdown": {
+      "Power": 96.0,
+      "Form": 9.0,
+      "Trend": 3.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 1.45,
+    "ev_trend_label": "Stable",
+    "max_ev": 106.0,
+    "max_ev_pct": 96.0,
+    "fb_ev": 95.3,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "James Outman",
+    "team": "MIN",
+    "probability": 8.8,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 5.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 10.89,
+    "ev_trend_label": "Hot",
+    "max_ev": 112.0,
+    "max_ev_pct": 102.0,
+    "fb_ev": 90.3,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Bobby Witt Jr.",
+    "team": "KCR",
+    "probability": 5.9,
+    "breakdown": {
+      "Power": 96.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.34,
+    "ev_trend_label": "Stable",
+    "max_ev": 106.2,
+    "max_ev_pct": 96.0,
+    "fb_ev": 94.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Carter Jensen",
+    "team": "KCR",
+    "probability": 6.4,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -4.8,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.4,
+    "max_ev_pct": 101.0,
+    "fb_ev": 89.8,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Isaac Collins",
+    "team": "KCR",
+    "probability": 6.8,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 0.0,
+      "Trend": 4.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 2.04,
+    "ev_trend_label": "Hot",
+    "max_ev": 110.9,
+    "max_ev_pct": 101.0,
+    "fb_ev": 94.8,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Jac Caglianone",
+    "team": "KCR",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.13,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.1,
+    "max_ev_pct": 100.0,
+    "fb_ev": 94.9,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Austin Riley",
+    "team": "ATL",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.35,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.7,
+    "max_ev_pct": 100.0,
+    "fb_ev": 92.1,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Dominic Smith",
+    "team": "ATL",
+    "probability": 5.8,
+    "breakdown": {
+      "Power": 96.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.14,
+    "ev_trend_label": "Stable",
+    "max_ev": 105.2,
+    "max_ev_pct": 96.0,
+    "fb_ev": 92.8,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Drake Baldwin",
+    "team": "ATL",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.04,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.6,
+    "max_ev_pct": 100.0,
+    "fb_ev": 101.1,
+    "fb_ev_pct": 101.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Eli White",
+    "team": "ATL",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 3.0,
+      "Trend": 1.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.32,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.3,
+    "max_ev_pct": 99.0,
+    "fb_ev": 95.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Alek Thomas",
+    "team": "ARI",
+    "probability": 6.6,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 3.0,
+      "Trend": 1.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.35,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.2,
+    "max_ev_pct": 99.0,
+    "fb_ev": 97.2,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Carlos Santana",
+    "team": "ARI",
+    "probability": 5.9,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.4,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.2,
+    "max_ev_pct": 98.0,
+    "fb_ev": 86.6,
+    "fb_ev_pct": 87.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Corbin Carroll",
+    "team": "ARI",
+    "probability": 6.6,
+    "breakdown": {
+      "Power": 103.0,
+      "Form": 0.0,
+      "Trend": 2.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 1.25,
+    "ev_trend_label": "Stable",
+    "max_ev": 113.6,
+    "max_ev_pct": 103.0,
+    "fb_ev": 95.3,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Gabriel Moreno",
+    "team": "ARI",
+    "probability": 7.2,
+    "breakdown": {
+      "Power": 105.0,
+      "Form": 7.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.95,
+    "ev_trend_label": "Stable",
+    "max_ev": 115.7,
+    "max_ev_pct": 105.0,
+    "fb_ev": 95.8,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Geraldo Perdomo",
+    "team": "ARI",
+    "probability": 5.9,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.16,
+    "ev_trend_label": "Stable",
+    "max_ev": 106.3,
+    "max_ev_pct": 97.0,
+    "fb_ev": 95.0,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Ildemaro Vargas",
+    "team": "ARI",
+    "probability": 6.7,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 3.0,
+      "Trend": 2.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.88,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.0,
+    "max_ev_pct": 101.0,
+    "fb_ev": 98.6,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Bo Bichette",
+    "team": "NYM",
+    "probability": 5.7,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": -1.55,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.3,
+    "max_ev_pct": 100.0,
+    "fb_ev": 92.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Brett Baty",
+    "team": "NYM",
+    "probability": 6.4,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 6.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": -1.08,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.1,
+    "max_ev_pct": 99.0,
+    "fb_ev": 96.6,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Carson Benge",
+    "team": "NYM",
+    "probability": 5.6,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": -0.41,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.9,
+    "max_ev_pct": 99.0,
+    "fb_ev": 92.2,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Francisco Alvarez",
+    "team": "NYM",
+    "probability": 6.1,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": -1.02,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.5,
+    "max_ev_pct": 101.0,
+    "fb_ev": 95.7,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Francisco Lindor",
+    "team": "NYM",
+    "probability": 5.5,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": -0.26,
+    "ev_trend_label": "Stable",
+    "max_ev": 106.5,
+    "max_ev_pct": 97.0,
+    "fb_ev": 97.1,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Casey Schmitt",
+    "team": "SFG",
+    "probability": 6.4,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 0.0,
+      "Trend": 4.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": 2.08,
+    "ev_trend_label": "Hot",
+    "max_ev": 108.7,
+    "max_ev_pct": 99.0,
+    "fb_ev": 89.7,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Christian Koss",
+    "team": "SFG",
+    "probability": 5.7,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": 0.0,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.5,
+    "max_ev_pct": 100.0,
+    "fb_ev": 91.2,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Daniel Susac",
+    "team": "SFG",
+    "probability": 5.7,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": 0.0,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.0,
+    "max_ev_pct": 100.0,
+    "fb_ev": 94.6,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Harrison Bader",
+    "team": "SFG",
+    "probability": 7.0,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 4.0,
+      "Trend": 5.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": 2.41,
+    "ev_trend_label": "Hot",
+    "max_ev": 107.3,
+    "max_ev_pct": 98.0,
+    "fb_ev": 94.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Heliot Ramos",
+    "team": "SFG",
+    "probability": 5.7,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 21.0
+    },
+    "ev_trend_val": -0.35,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.9,
+    "max_ev_pct": 100.0,
+    "fb_ev": 91.8,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Unfavorable"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Addison Barger",
+    "team": "TOR",
+    "probability": 6.7,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -7.14,
+    "ev_trend_label": "Stable",
+    "max_ev": 112.4,
+    "max_ev_pct": 102.0,
+    "fb_ev": 93.3,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Alejandro Kirk",
+    "team": "TOR",
+    "probability": 5.9,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -4.08,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.3,
+    "max_ev_pct": 98.0,
+    "fb_ev": 92.8,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Andr\u00e9s Gim\u00e9nez",
+    "team": "TOR",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.34,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.9,
+    "max_ev_pct": 99.0,
+    "fb_ev": 90.9,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Daulton Varsho",
+    "team": "TOR",
+    "probability": 7.2,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 8.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -6.48,
+    "ev_trend_label": "Stable",
+    "max_ev": 112.3,
+    "max_ev_pct": 102.0,
+    "fb_ev": 92.3,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Davis Schneider",
+    "team": "TOR",
+    "probability": 8.3,
+    "breakdown": {
+      "Power": 95.0,
+      "Form": 4.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 5.17,
+    "ev_trend_label": "Hot",
+    "max_ev": 104.6,
+    "max_ev_pct": 95.0,
+    "fb_ev": 91.5,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Andrew Benintendi",
+    "team": "CHW",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 2.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.22,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.1,
+    "max_ev_pct": 98.0,
+    "fb_ev": 95.4,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Austin Hays",
+    "team": "CHW",
+    "probability": 6.1,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -6.39,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.9,
+    "max_ev_pct": 102.0,
+    "fb_ev": 97.1,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Chase Meidroth",
+    "team": "CHW",
+    "probability": 7.0,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 3.0,
+      "Trend": 3.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 1.51,
+    "ev_trend_label": "Hot",
+    "max_ev": 107.7,
+    "max_ev_pct": 98.0,
+    "fb_ev": 95.1,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Colson Montgomery",
+    "team": "CHW",
+    "probability": 6.4,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -2.47,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.7,
+    "max_ev_pct": 99.0,
+    "fb_ev": 91.1,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Derek Hill",
+    "team": "CHW",
+    "probability": 8.4,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 4.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 6.95,
+    "ev_trend_label": "Hot",
+    "max_ev": 106.6,
+    "max_ev_pct": 97.0,
+    "fb_ev": 90.5,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Alex Call",
+    "team": "LAD",
+    "probability": 5.8,
+    "breakdown": {
+      "Power": 95.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.0,
+    "ev_trend_label": "Stable",
+    "max_ev": 104.3,
+    "max_ev_pct": 95.0,
+    "fb_ev": 88.9,
+    "fb_ev_pct": 89.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Alex Freeland",
+    "team": "LAD",
+    "probability": 8.4,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 5.0,
+      "Trend": 9.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 4.53,
+    "ev_trend_label": "Hot",
+    "max_ev": 106.7,
+    "max_ev_pct": 97.0,
+    "fb_ev": 92.8,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Andy Pages",
+    "team": "LAD",
+    "probability": 7.0,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 2.0,
+      "Trend": 4.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 1.87,
+    "ev_trend_label": "Hot",
+    "max_ev": 108.6,
+    "max_ev_pct": 99.0,
+    "fb_ev": 92.6,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Dalton Rushing",
+    "team": "LAD",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -29.14,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.7,
+    "max_ev_pct": 99.0,
+    "fb_ev": 99.2,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Brady House",
+    "team": "WSH",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 2.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -2.18,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.8,
+    "max_ev_pct": 101.0,
+    "fb_ev": 93.9,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "CJ Abrams",
+    "team": "WSH",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.91,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.8,
+    "max_ev_pct": 101.0,
+    "fb_ev": 92.9,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Curtis Mead",
+    "team": "WSH",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 0.0,
+      "Trend": 2.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.86,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.9,
+    "max_ev_pct": 99.0,
+    "fb_ev": 102.2,
+    "fb_ev_pct": 102.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Alec Burleson",
+    "team": "STL",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.78,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.0,
+    "max_ev_pct": 101.0,
+    "fb_ev": 94.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Iv\u00e1n Herrera",
+    "team": "STL",
+    "probability": 8.4,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 5.0,
+      "Trend": 8.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 4.08,
+    "ev_trend_label": "Hot",
+    "max_ev": 111.8,
+    "max_ev_pct": 102.0,
+    "fb_ev": 100.6,
+    "fb_ev_pct": 101.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "JJ Wetherholt",
+    "team": "STL",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 96.0,
+      "Form": 5.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.52,
+    "ev_trend_label": "Stable",
+    "max_ev": 105.9,
+    "max_ev_pct": 96.0,
+    "fb_ev": 95.5,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Colt Keith",
+    "team": "DET",
+    "probability": 6.4,
+    "breakdown": {
+      "Power": 104.0,
+      "Form": 2.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.37,
+    "ev_trend_label": "Stable",
+    "max_ev": 114.1,
+    "max_ev_pct": 104.0,
+    "fb_ev": 94.8,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Dillon Dingler",
+    "team": "DET",
+    "probability": 6.6,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.13,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.0,
+    "max_ev_pct": 99.0,
+    "fb_ev": 95.6,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Gleyber Torres",
+    "team": "DET",
+    "probability": 7.1,
+    "breakdown": {
+      "Power": 91.0,
+      "Form": 10.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.09,
+    "ev_trend_label": "Stable",
+    "max_ev": 100.3,
+    "max_ev_pct": 91.0,
+    "fb_ev": 94.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Agust\u00edn Ram\u00edrez",
+    "team": "MIA",
+    "probability": 6.4,
+    "breakdown": {
+      "Power": 104.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": 0.11,
+    "ev_trend_label": "Stable",
+    "max_ev": 114.4,
+    "max_ev_pct": 104.0,
+    "fb_ev": 97.1,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Austin Slater",
+    "team": "MIA",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 95.0,
+      "Form": 0.0,
+      "Trend": 1.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": 0.69,
+    "ev_trend_label": "Stable",
+    "max_ev": 104.5,
+    "max_ev_pct": 95.0,
+    "fb_ev": 97.0,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Connor Norby",
+    "team": "MIA",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 94.0,
+      "Form": 2.0,
+      "Trend": 0.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": -1.06,
+    "ev_trend_label": "Stable",
+    "max_ev": 104.0,
+    "max_ev_pct": 94.0,
+    "fb_ev": 92.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Graham Pauley",
+    "team": "MIA",
+    "probability": 6.6,
+    "breakdown": {
+      "Power": 96.0,
+      "Form": 0.0,
+      "Trend": 3.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": 1.47,
+    "ev_trend_label": "Stable",
+    "max_ev": 105.1,
+    "max_ev_pct": 96.0,
+    "fb_ev": 90.8,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Aaron Judge",
+    "team": "NYY",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": -0.54,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.7,
+    "max_ev_pct": 102.0,
+    "fb_ev": 103.6,
+    "fb_ev_pct": 104.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Amed Rosario",
+    "team": "NYY",
+    "probability": 6.2,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": -6.76,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.2,
+    "max_ev_pct": 100.0,
+    "fb_ev": 95.9,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Austin Wells",
+    "team": "NYY",
+    "probability": 6.7,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 0.0,
+      "Trend": 3.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": 1.58,
+    "ev_trend_label": "Hot",
+    "max_ev": 106.6,
+    "max_ev_pct": 97.0,
+    "fb_ev": 94.3,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Ben Rice",
+    "team": "NYY",
+    "probability": 7.1,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 6.0,
+      "Trend": 0.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": -0.45,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.4,
+    "max_ev_pct": 101.0,
+    "fb_ev": 99.2,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Cody Bellinger",
+    "team": "NYY",
+    "probability": 6.2,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 28.0
+    },
+    "ev_trend_val": -2.24,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.5,
+    "max_ev_pct": 99.0,
+    "fb_ev": 93.4,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Favorable"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Bryce Johnson",
+    "team": "SDP",
+    "probability": 7.0,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 9.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -4.29,
+    "ev_trend_label": "Stable",
+    "max_ev": 106.7,
+    "max_ev_pct": 97.0,
+    "fb_ev": 94.6,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Fernando Tatis Jr.",
+    "team": "SDP",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.04,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.3,
+    "max_ev_pct": 98.0,
+    "fb_ev": 98.8,
+    "fb_ev_pct": 99.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Freddy Fermin",
+    "team": "SDP",
+    "probability": 7.9,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 5.27,
+    "ev_trend_label": "Hot",
+    "max_ev": 108.3,
+    "max_ev_pct": 98.0,
+    "fb_ev": 91.1,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Gavin Sheets",
+    "team": "SDP",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -4.04,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.3,
+    "max_ev_pct": 101.0,
+    "fb_ev": 97.8,
+    "fb_ev_pct": 98.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Jackson Merrill",
+    "team": "SDP",
+    "probability": 6.2,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 1.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.88,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.3,
+    "max_ev_pct": 101.0,
+    "fb_ev": 95.6,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Andruw Monasterio",
+    "team": "BOS",
+    "probability": 7.9,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 6.52,
+    "ev_trend_label": "Hot",
+    "max_ev": 107.5,
+    "max_ev_pct": 98.0,
+    "fb_ev": 90.3,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Caleb Durbin",
+    "team": "BOS",
+    "probability": 5.8,
+    "breakdown": {
+      "Power": 95.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.46,
+    "ev_trend_label": "Stable",
+    "max_ev": 104.9,
+    "max_ev_pct": 95.0,
+    "fb_ev": 92.2,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Carlos Narv\u00e1ez",
+    "team": "BOS",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.21,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.6,
+    "max_ev_pct": 100.0,
+    "fb_ev": 94.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Ceddanne Rafaela",
+    "team": "BOS",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -4.32,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.7,
+    "max_ev_pct": 98.0,
+    "fb_ev": 89.9,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Connor Wong",
+    "team": "BOS",
+    "probability": 7.9,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 4.84,
+    "ev_trend_label": "Hot",
+    "max_ev": 108.2,
+    "max_ev_pct": 98.0,
+    "fb_ev": 93.3,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Addison Barger",
+    "team": "TOR",
+    "probability": 6.7,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -7.14,
+    "ev_trend_label": "Stable",
+    "max_ev": 112.4,
+    "max_ev_pct": 102.0,
+    "fb_ev": 93.3,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Alejandro Kirk",
+    "team": "TOR",
+    "probability": 5.9,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -4.08,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.3,
+    "max_ev_pct": 98.0,
+    "fb_ev": 92.8,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Andr\u00e9s Gim\u00e9nez",
+    "team": "TOR",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.34,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.9,
+    "max_ev_pct": 99.0,
+    "fb_ev": 90.9,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Daulton Varsho",
+    "team": "TOR",
+    "probability": 7.2,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 8.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -6.48,
+    "ev_trend_label": "Stable",
+    "max_ev": 112.3,
+    "max_ev_pct": 102.0,
+    "fb_ev": 92.3,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Davis Schneider",
+    "team": "TOR",
+    "probability": 8.3,
+    "breakdown": {
+      "Power": 95.0,
+      "Form": 4.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 5.17,
+    "ev_trend_label": "Hot",
+    "max_ev": 104.6,
+    "max_ev_pct": 95.0,
+    "fb_ev": 91.5,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Andrew Benintendi",
+    "team": "CHW",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 2.0,
+      "Trend": 1.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.39,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.1,
+    "max_ev_pct": 98.0,
+    "fb_ev": 95.4,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Austin Hays",
+    "team": "CHW",
+    "probability": 6.1,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -8.23,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.9,
+    "max_ev_pct": 102.0,
+    "fb_ev": 97.1,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Chase Meidroth",
+    "team": "CHW",
+    "probability": 6.8,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 4.0,
+      "Trend": 2.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.94,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.7,
+    "max_ev_pct": 98.0,
+    "fb_ev": 95.4,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Colson Montgomery",
+    "team": "CHW",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.0,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.7,
+    "max_ev_pct": 99.0,
+    "fb_ev": 91.3,
+    "fb_ev_pct": 91.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Derek Hill",
+    "team": "CHW",
+    "probability": 8.4,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 4.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 16.53,
+    "ev_trend_label": "Hot",
+    "max_ev": 106.6,
+    "max_ev_pct": 97.0,
+    "fb_ev": 89.6,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Dane Myers",
+    "team": "CIN",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -2.77,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.5,
+    "max_ev_pct": 100.0,
+    "fb_ev": 92.3,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Elly De La Cruz",
+    "team": "CIN",
+    "probability": 6.8,
+    "breakdown": {
+      "Power": 106.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.12,
+    "ev_trend_label": "Stable",
+    "max_ev": 116.8,
+    "max_ev_pct": 106.0,
+    "fb_ev": 95.9,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Andrew McCutchen",
+    "team": "TEX",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.37,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.6,
+    "max_ev_pct": 98.0,
+    "fb_ev": 94.8,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Brandon Nimmo",
+    "team": "TEX",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.25,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.0,
+    "max_ev_pct": 97.0,
+    "fb_ev": 97.3,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Corey Seager",
+    "team": "TEX",
+    "probability": 7.1,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 6.0,
+      "Trend": 1.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.62,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.3,
+    "max_ev_pct": 100.0,
+    "fb_ev": 100.7,
+    "fb_ev_pct": 101.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Danny Jansen",
+    "team": "TEX",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -2.13,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.9,
+    "max_ev_pct": 98.0,
+    "fb_ev": 90.0,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Evan Carter",
+    "team": "TEX",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.01,
+    "ev_trend_label": "Stable",
+    "max_ev": 112.6,
+    "max_ev_pct": 102.0,
+    "fb_ev": 93.2,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Ezequiel Duran",
+    "team": "TEX",
+    "probability": 7.4,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 10.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -2.34,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.8,
+    "max_ev_pct": 102.0,
+    "fb_ev": 98.2,
+    "fb_ev_pct": 98.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Alex Bregman",
+    "team": "CHC",
+    "probability": 6.8,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 7.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.79,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.3,
+    "max_ev_pct": 98.0,
+    "fb_ev": 100.0,
+    "fb_ev_pct": 100.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Carson Kelly",
+    "team": "CHC",
+    "probability": 6.2,
+    "breakdown": {
+      "Power": 96.0,
+      "Form": 3.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.36,
+    "ev_trend_label": "Stable",
+    "max_ev": 105.2,
+    "max_ev_pct": 96.0,
+    "fb_ev": 93.7,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Dansby Swanson",
+    "team": "CHC",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 2.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 1.2,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.6,
+    "max_ev_pct": 100.0,
+    "fb_ev": 97.1,
+    "fb_ev_pct": 97.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Dylan Carlson",
+    "team": "CHC",
+    "probability": 6.4,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 0.0,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.3,
+    "max_ev_pct": 98.0,
+    "fb_ev": 93.1,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Angel Mart\u00ednez",
+    "team": "CLE",
+    "probability": 6.5,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.28,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.3,
+    "max_ev_pct": 101.0,
+    "fb_ev": 94.0,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Austin Hedges",
+    "team": "CLE",
+    "probability": 6.8,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 6.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.58,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.8,
+    "max_ev_pct": 98.0,
+    "fb_ev": 90.4,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Bo Naylor",
+    "team": "CLE",
+    "probability": 6.3,
+    "breakdown": {
+      "Power": 99.0,
+      "Form": 2.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.69,
+    "ev_trend_label": "Stable",
+    "max_ev": 108.7,
+    "max_ev_pct": 99.0,
+    "fb_ev": 93.6,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Brayan Rocchio",
+    "team": "CLE",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -3.04,
+    "ev_trend_label": "Stable",
+    "max_ev": 109.4,
+    "max_ev_pct": 100.0,
+    "fb_ev": 93.2,
+    "fb_ev_pct": 93.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "CJ Kayfus",
+    "team": "CLE",
+    "probability": 6.2,
+    "breakdown": {
+      "Power": 97.0,
+      "Form": 2.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -6.35,
+    "ev_trend_label": "Stable",
+    "max_ev": 107.1,
+    "max_ev_pct": 97.0,
+    "fb_ev": 96.0,
+    "fb_ev_pct": 96.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Chase DeLauter",
+    "team": "CLE",
+    "probability": 6.7,
+    "breakdown": {
+      "Power": 105.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -2.94,
+    "ev_trend_label": "Stable",
+    "max_ev": 115.3,
+    "max_ev_pct": 105.0,
+    "fb_ev": 95.4,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Daniel Schneemann",
+    "team": "CLE",
+    "probability": 6.6,
+    "breakdown": {
+      "Power": 98.0,
+      "Form": 0.0,
+      "Trend": 4.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 1.79,
+    "ev_trend_label": "Hot",
+    "max_ev": 107.2,
+    "max_ev_pct": 98.0,
+    "fb_ev": 92.0,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Ben Williamson",
+    "team": "TBR",
+    "probability": 6.6,
+    "breakdown": {
+      "Power": 101.0,
+      "Form": 4.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -1.3,
+    "ev_trend_label": "Stable",
+    "max_ev": 111.1,
+    "max_ev_pct": 101.0,
+    "fb_ev": 94.2,
+    "fb_ev_pct": 94.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Carson Williams",
+    "team": "TBR",
+    "probability": 6.0,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -6.39,
+    "ev_trend_label": "Stable",
+    "max_ev": 110.2,
+    "max_ev_pct": 100.0,
+    "fb_ev": 98.3,
+    "fb_ev_pct": 98.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Cedric Mullins",
+    "team": "TBR",
+    "probability": 8.1,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 3.0,
+      "Trend": 9.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 4.41,
+    "ev_trend_label": "Hot",
+    "max_ev": 109.4,
+    "max_ev_pct": 100.0,
+    "fb_ev": 91.5,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Chandler Simpson",
+    "team": "TBR",
+    "probability": 5.6,
+    "breakdown": {
+      "Power": 91.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -3.75,
+    "ev_trend_label": "Stable",
+    "max_ev": 100.1,
+    "max_ev_pct": 91.0,
+    "fb_ev": 84.7,
+    "fb_ev_pct": 85.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Austin Martin",
+    "team": "MIN",
+    "probability": 5.7,
+    "breakdown": {
+      "Power": 93.0,
+      "Form": 0.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.18,
+    "ev_trend_label": "Stable",
+    "max_ev": 102.2,
+    "max_ev_pct": 93.0,
+    "fb_ev": 89.1,
+    "fb_ev_pct": 89.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Brooks Lee",
+    "team": "MIN",
+    "probability": 8.5,
+    "breakdown": {
+      "Power": 100.0,
+      "Form": 4.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 5.69,
+    "ev_trend_label": "Hot",
+    "max_ev": 109.9,
+    "max_ev_pct": 100.0,
+    "fb_ev": 91.8,
+    "fb_ev_pct": 92.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Byron Buxton",
+    "team": "MIN",
+    "probability": 7.0,
+    "breakdown": {
+      "Power": 96.0,
+      "Form": 9.0,
+      "Trend": 0.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": -0.32,
+    "ev_trend_label": "Stable",
+    "max_ev": 106.0,
+    "max_ev_pct": 96.0,
+    "fb_ev": 95.3,
+    "fb_ev_pct": 95.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
+  },
+  {
+    "date": "2026-04-03",
+    "name": "James Outman",
+    "team": "MIN",
+    "probability": 8.8,
+    "breakdown": {
+      "Power": 102.0,
+      "Form": 6.0,
+      "Trend": 10.0,
+      "Park": 25.0
+    },
+    "ev_trend_val": 10.9,
+    "ev_trend_label": "Hot",
+    "max_ev": 112.0,
+    "max_ev_pct": 102.0,
+    "fb_ev": 90.1,
+    "fb_ev_pct": 90.0,
+    "opp_pitcher": "TBD",
+    "park_factor": "Neutral"
   }
 ];

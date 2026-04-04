@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚾ HR Results | Accuracy Tracker</title>
+    <link rel="stylesheet" href="../../assets/site-nav.css">
+    <script src="../../data/hr_model_data.js"></script>
+    <script src="../../data/hr_results_data.js"></script>
+    <script src="../../data/historical_index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --card: #0f172a;
+            --border: #1e293b;
+            --accent: #f43f5e;
+            --gold: #fbbf24;
+            --emerald: #10b981;
+            --sky: #38bdf8;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --warning: #fbbf24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .results-page {
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            min-height: calc(100vh - 56px);
+        }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+
+        .header { margin-bottom: 30px; }
+        .header h1 { 
+            font-size: 2.2rem; 
+            margin: 0; 
+            letter-spacing: -1px; 
+            font-weight: 900;
+        }
+        .header p { 
+            color: var(--text-dim); 
+            margin-top: 5px; 
+            font-size: 0.95rem;
+        }
+        
+        #dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .player-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .player-card:hover {
+            transform: translateY(-8px);
+            border-color: #334155;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Border colors based on success/fail - using top border like HRProbability */
+        .status-hit { border-top: 5px solid var(--success); }
+        .status-miss { border-top: 5px solid var(--danger); }
+        .status-outlier { border-top: 5px solid var(--warning); }
+
+        .card-header {
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .player-name { 
+            font-size: 1.4rem; 
+            font-weight: 800; 
+            margin: 0 0 4px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .player-team {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .result-badge { 
+            font-size: 0.65rem; 
+            font-weight: 900; 
+            padding: 6px 12px; 
+            border-radius: 12px; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-hit { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
+        .badge-miss { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid var(--danger); }
+        .badge-outlier { background: rgba(251, 191, 36, 0.15); color: var(--warning); border: 1px solid var(--warning); }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+            background: rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label { 
+            font-size: 0.65rem; 
+            color: var(--text-dim); 
+            text-transform: uppercase; 
+            font-weight: 800;
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        .stat-value { 
+            font-size: 1.1rem; 
+            font-weight: 900; 
+            color: var(--gold);
+        }
+
+        .summary-bar {
+            background: var(--card);
+            padding: 20px 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 40px;
+            border: 1px solid var(--border);
+        }
+
+        .summary-item { 
+            font-size: 0.85rem; 
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+
+        .summary-item b { 
+            color: var(--gold); 
+            font-size: 1.3rem;
+            font-weight: 900;
+            display: block;
+            margin-top: 4px;
+        }
+    </style>
+
+<style id="dev-stage-style">
+  .dev-stage-banner {
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+  .dev-stage-banner code {
+    background: rgba(255,255,255,0.16);
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #fff;
+  }
+</style>
+</head>
+<body data-nav="results">
+<div class="dev-stage-banner">DEV STAGE · Test changes safely here. Stable pages remain in <code>/site</code>.</div>
+
+
+<div class="container">
+    <div class="header">
+        <h1>Probability <span style="color:var(--accent)">Results</span></h1>
+        <p id="dateSubtitle">v3 Model Performance vs. Statcast Reality</p>
+    </div>
+
+    <div class="summary-bar" id="summary"></div>
+
+    <div id="dashboard"></div>
+</div>
+
+<script>
+        function formatDate(date) {
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                              'July', 'August', 'September', 'October', 'November', 'December'];
+            const month = monthNames[date.getMonth()];
+            const day = date.getDate();
+            const year = date.getFullYear();
+            return `${month} ${day}, ${year}`;
+        }
+
+        function initTracker() {
+            const dash = document.getElementById('dashboard');
+            const summary = document.getElementById('summary');
+            
+            // Set date to yesterday (when the home runs were hit)
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const dateStr = yesterday.toISOString().split('T')[0]; // YYYY-MM-DD format
+            document.getElementById('dateSubtitle').innerText = `${formatDate(yesterday)} • v3 Model Performance vs. Statcast Reality`;
+            
+            // Load historical data for this date
+            loadHistoricalData(dateStr).then(() => {
+                // Use the loaded historical data
+                const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || hrModelData;
+                const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || hrResultsData;
+                
+                processData(modelData, resultsData, dash, summary);
+            }).catch(() => {
+                // Fallback to current data if historical load fails
+                console.log('Using current data as fallback');
+                processData(hrModelData, hrResultsData, dash, summary);
+            });
+        }
+
+        function processData(modelData, resultsData, dash, summary) {
+            // 1. Create a Set of names who ACTUALLY hit HRs for fast lookup
+            const actualHRNames = new Set(resultsData.map(r => r.name));
+            
+            let successfulPredictions = 0;
+            let totalFlagged = 0;
+            const allCards = [];
+
+            // 2. Map through the Model Predictions
+            modelData.forEach(p => {
+                const didHit = actualHRNames.has(p.name);
+                const isFlagged = p.probability >= 5.0; // Your threshold for a "Pick"
+                
+                if (isFlagged) totalFlagged++;
+                if (isFlagged && didHit) successfulPredictions++;
+
+                const card = document.createElement('div');
+                const status = didHit ? 'win' : 'loss';
+                card.className = `player-card ${didHit ? 'status-hit' : 'status-miss'}`;
+                
+                const resultText = didHit ? '✓ WIN' : '✗ LOSS';
+                const resultClass = didHit ? 'badge-hit' : 'badge-miss';
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div>
+                            <div class="player-name">${p.name}</div>
+                            <div class="player-team">${p.team} • Pred: ${p.probability}%</div>
+                        </div>
+                        <div class="result-badge ${resultClass}">${resultText}</div>
+                    </div>
+                    
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Model Prob</div>
+                            <div class="stat-value">${p.probability}%</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Max EV</div>
+                            <div class="stat-value">${p.max_ev || 'N/A'}</div>
+                        </div>
+                    </div>
+                `;
+                allCards.push({ element: card, status });
+            });
+
+            // 3. Find "Outliers" (Players who hit HRs but weren't in your model's Top list)
+            const predictedNames = new Set(modelData.map(p => p.name));
+            resultsData.forEach(r => {
+                if (!predictedNames.has(r.name)) {
+                    const card = document.createElement('div');
+                    card.className = `player-card status-outlier`;
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <div>
+                                <div class="player-name">${r.name}</div>
+                                <div class="player-team">Actual HR Hit</div>
+                            </div>
+                            <div class="result-badge badge-outlier">⭐ OUTLIER</div>
+                        </div>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <div class="stat-label">Actual EV</div>
+                                <div class="stat-value">${r.ev}</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Distance</div>
+                                <div class="stat-value">${r.dist}'</div>
+                            </div>
+                        </div>
+                    `;
+                    allCards.push({ element: card, status: 'outlier' });
+                }
+            });
+
+            // 4. Sort by status: Win -> Outlier -> Loss
+            allCards.sort((a, b) => {
+                const statusOrder = { 'win': 0, 'outlier': 1, 'loss': 2 };
+                return statusOrder[a.status] - statusOrder[b.status];
+            });
+
+            // 5. Append sorted cards to dashboard
+            allCards.forEach(({ element }) => {
+                dash.appendChild(element);
+            });
+
+            // 6. Render Summary
+            const rate = totalFlagged > 0 ? ((successfulPredictions / totalFlagged) * 100).toFixed(1) : 0;
+            summary.innerHTML = `
+                <div class="summary-item">Flagged <b>${totalFlagged}</b></div>
+                <div class="summary-item">Hits <b>${successfulPredictions}</b></div>
+                <div class="summary-item">Accuracy <b>${rate}%</b></div>
+            `;
+        }
+
+        window.onload = initTracker;
+    </script>
+    <script src="../../assets/site-nav-dev.js" defer></script>
+</body>
+</html>

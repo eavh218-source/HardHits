@@ -1,0 +1,24 @@
+const siteStatus = {
+  "site": "stable",
+  "repo_root": "c:\\code\\HardHits",
+  "homepage": "site/HardHits.html",
+  "generated_at_utc": null,
+  "status": "healthy",
+  "jobs": {
+    "mastercontroller": {
+      "label": "Full dashboard refresh",
+      "success": null,
+      "detail": "Pending first run",
+      "last_run_utc": null,
+      "log_file": "logs/mastercontroller_job.log"
+    },
+    "hr_engine_job": {
+      "label": "Live HR + lineups refresh",
+      "success": null,
+      "detail": "Pending first run",
+      "last_run_utc": null,
+      "log_file": "logs/hr_engine_job.log"
+    }
+  }
+};
+window.siteStatus = siteStatus;

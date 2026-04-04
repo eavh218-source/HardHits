@@ -19,6 +19,12 @@
   gap: 12px 20px;
 }
 
+.site-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .site-nav__logo {
   color: #f87171;
   font-weight: 900;
@@ -30,6 +36,21 @@
 
 .site-nav__logo:hover {
   color: #fca5a5;
+}
+
+.site-nav__env-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #f87171;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 14px rgba(248, 113, 113, 0.14);
 }
 
 .site-nav__links {

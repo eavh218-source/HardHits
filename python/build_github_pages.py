@@ -1,10 +1,11 @@
-"""Build a GitHub Pages-ready static bundle for HardHits.
+"""Build a GitHub Pages-ready static bundle for the stable HardHits site.
 
 Usage:
     python python/build_github_pages.py
 
-This copies the public site assets into `pages-dist/`, writes a root redirect to
-`site/HardHits.html`, and adds `.nojekyll` so GitHub Pages serves the bundle as-is.
+This copies the stable public site assets into `pages-dist/`, writes a root
+redirect to `site/HardHits.html`, and adds `.nojekyll` so GitHub Pages serves
+the bundle as-is.
 """
 
 from __future__ import annotations
@@ -58,7 +59,13 @@ def copy_site() -> None:
 
 
 def copy_static_dir(source: Path, name: str) -> None:
-    shutil.copytree(source, OUTPUT_DIR / name, dirs_exist_ok=True)
+    destination = OUTPUT_DIR / name
+    shutil.copytree(source, destination, dirs_exist_ok=True)
+
+    if name == "assets":
+        dev_nav = destination / "site-nav-dev.js"
+        if dev_nav.exists():
+            dev_nav.unlink()
 
 
 def write_root_files() -> None:
@@ -78,7 +85,7 @@ def main() -> int:
     copy_static_dir(DATA_DIR, "data")
     write_root_files()
 
-    print(f"[OK] GitHub Pages bundle created at: {OUTPUT_DIR}")
+    print(f"[OK] Stable GitHub Pages bundle created at: {OUTPUT_DIR}")
     print("[OK] Entry point: pages-dist/index.html -> site/HardHits.html")
     return 0
 

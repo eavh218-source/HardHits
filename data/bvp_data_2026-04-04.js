@@ -12,17 +12,33 @@ window.dailyMatchups_2026_04_04 = [
     "date": "2026-04-04",
     "time": "2:10 PM ET",
     "away_abbr": "TOR",
-    "away_p": "Lauer",
+    "away_p": "Fluharty",
     "home_abbr": "CHW",
-    "home_p": "Kay"
+    "home_p": "Taylor"
+  },
+  {
+    "date": "2026-04-04",
+    "time": "2:10 PM ET",
+    "away_abbr": "MIL",
+    "away_p": "Patrick",
+    "home_abbr": "KCR",
+    "home_p": "Avila"
+  },
+  {
+    "date": "2026-04-04",
+    "time": "7:10 PM ET",
+    "away_abbr": "MIL",
+    "away_p": "Sproat",
+    "home_abbr": "KCR",
+    "home_p": "Lugo"
   },
   {
     "date": "2026-04-04",
     "time": "4:05 PM ET",
     "away_abbr": "LAD",
-    "away_p": "TBD",
+    "away_p": "Glasnow",
     "home_abbr": "WSH",
-    "home_p": "TBD"
+    "home_p": "Irvin"
   },
   {
     "date": "2026-04-04",
@@ -50,19 +66,11 @@ window.dailyMatchups_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
-    "time": "4:10 PM ET",
-    "away_abbr": "MIL",
-    "away_p": "Sproat",
-    "home_abbr": "KCR",
-    "home_p": "Lugo"
-  },
-  {
-    "date": "2026-04-04",
     "time": "7:05 PM ET",
     "away_abbr": "CIN",
     "away_p": "Lowder",
     "home_abbr": "TEX",
-    "home_p": "TBD"
+    "home_p": "Rocker"
   },
   {
     "date": "2026-04-04",
@@ -84,7 +92,7 @@ window.dailyMatchups_2026_04_04 = [
     "date": "2026-04-04",
     "time": "7:15 PM ET",
     "away_abbr": "CHC",
-    "away_p": "TBD",
+    "away_p": "Imanaga",
     "home_abbr": "CLE",
     "home_p": "Cecconi"
   },
@@ -124,6 +132,16 @@ window.dailyMatchups_2026_04_04 = [
 window.bvpData_2026_04_04 = [
   {
     "date": "2026-04-04",
+    "pitcher_name": "Kumar Rocker",
+    "opponent_team": "Cincinnati Reds",
+    "batter_name": "Elly De",
+    "launch_speed": 107.2,
+    "distance": 418,
+    "events": "Home Run",
+    "game_date": "2025-03-31"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Max Meyer",
     "opponent_team": "New York Yankees",
     "batter_name": "Cody Bellinger",
@@ -144,6 +162,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Tyler Glasnow",
+    "opponent_team": "Washington Nationals",
+    "batter_name": "Cj Abrams",
+    "launch_speed": 99.3,
+    "distance": 404,
+    "events": "Home Run",
+    "game_date": "2024-04-15"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Jes\u00fas Luzardo",
     "opponent_team": "Colorado Rockies",
     "batter_name": "Brenton Doyle",
@@ -151,6 +179,36 @@ window.bvpData_2026_04_04 = [
     "distance": 403,
     "events": "Home Run",
     "game_date": "2023-07-23"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Will Smith",
+    "launch_speed": 104.3,
+    "distance": 402,
+    "events": "Home Run",
+    "game_date": "2025-06-21"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Kumar Rocker",
+    "opponent_team": "Cincinnati Reds",
+    "batter_name": "Matt Mclain",
+    "launch_speed": 106.9,
+    "distance": 397,
+    "events": "Home Run",
+    "game_date": "2025-03-31"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Teoscar Hern\u00e1ndez",
+    "launch_speed": 105.5,
+    "distance": 397,
+    "events": "Home Run",
+    "game_date": "2025-04-09"
   },
   {
     "date": "2026-04-04",
@@ -184,6 +242,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Andy Pages",
+    "launch_speed": 100.0,
+    "distance": 383,
+    "events": "Home Run",
+    "game_date": "2025-06-21"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Carmen Mlodzinski",
     "opponent_team": "Baltimore Orioles",
     "batter_name": "Adley Rutschman",
@@ -204,6 +272,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Tyler Glasnow",
+    "opponent_team": "Washington Nationals",
+    "batter_name": "Luis Garc\u00eda",
+    "launch_speed": 103.9,
+    "distance": 376,
+    "events": "Home Run",
+    "game_date": "2024-04-15"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Michael Soroka",
     "opponent_team": "Atlanta Braves",
     "batter_name": "Drake Baldwin",
@@ -214,6 +292,26 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Will Smith",
+    "launch_speed": 103.4,
+    "distance": 375,
+    "events": "Double",
+    "game_date": "2024-04-24"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Steven Kwan",
+    "launch_speed": 99.9,
+    "distance": 373,
+    "events": "Home Run",
+    "game_date": "2024-08-12"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Jack Kochanowicz",
     "opponent_team": "Seattle Mariners",
     "batter_name": "Cal Raleigh",
@@ -221,6 +319,16 @@ window.bvpData_2026_04_04 = [
     "distance": 372,
     "events": "Home Run",
     "game_date": "2025-06-07"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Chad Patrick",
+    "opponent_team": "Kansas City Royals",
+    "batter_name": "Bobby Witt",
+    "launch_speed": 104.1,
+    "distance": 371,
+    "events": "Field Out",
+    "game_date": "2025-04-01"
   },
   {
     "date": "2026-04-04",
@@ -254,6 +362,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "David Fry",
+    "launch_speed": 100.1,
+    "distance": 366,
+    "events": "Home Run",
+    "game_date": "2025-07-02"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Clay Holmes",
     "opponent_team": "San Francisco Giants",
     "batter_name": "Rafael Devers",
@@ -271,6 +389,16 @@ window.bvpData_2026_04_04 = [
     "distance": 361,
     "events": "Home Run",
     "game_date": "2024-07-11"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Max Muncy",
+    "launch_speed": 108.0,
+    "distance": 361,
+    "events": "Double",
+    "game_date": "2024-04-24"
   },
   {
     "date": "2026-04-04",
@@ -294,6 +422,26 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Tyler Glasnow",
+    "opponent_team": "Washington Nationals",
+    "batter_name": "Luis Garc\u00eda",
+    "launch_speed": 102.9,
+    "distance": 357,
+    "events": "Field Out",
+    "game_date": "2024-04-15"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Kyle Tucker",
+    "launch_speed": 108.7,
+    "distance": 356,
+    "events": "Double",
+    "game_date": "2025-06-05"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Slade Cecconi",
     "opponent_team": "Chicago Cubs",
     "batter_name": "Michael Conforto",
@@ -304,6 +452,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Max Muncy",
+    "launch_speed": 103.8,
+    "distance": 354,
+    "events": "Field Out",
+    "game_date": "2025-06-21"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Emerson Hancock",
     "opponent_team": "Los Angeles Angels",
     "batter_name": "Jorge Soler",
@@ -311,6 +469,26 @@ window.bvpData_2026_04_04 = [
     "distance": 349,
     "events": "Home Run",
     "game_date": "2025-04-30"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Teoscar Hern\u00e1ndez",
+    "launch_speed": 104.3,
+    "distance": 347,
+    "events": "Field Out",
+    "game_date": "2025-04-09"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Mookie Betts",
+    "launch_speed": 102.2,
+    "distance": 347,
+    "events": "Field Out",
+    "game_date": "2023-05-30"
   },
   {
     "date": "2026-04-04",
@@ -331,6 +509,16 @@ window.bvpData_2026_04_04 = [
     "distance": 338,
     "events": "Field Out",
     "game_date": "2024-08-28"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 115.6,
+    "distance": 323,
+    "events": "Double",
+    "game_date": "2024-04-24"
   },
   {
     "date": "2026-04-04",
@@ -424,6 +612,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "David Fry",
+    "launch_speed": 103.8,
+    "distance": 279,
+    "events": "Single",
+    "game_date": "2024-08-12"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Landen Roupp",
     "opponent_team": "New York Mets",
     "batter_name": "Luis Garc\u00eda",
@@ -444,6 +642,36 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 107.9,
+    "distance": 270,
+    "events": "Single",
+    "game_date": "2024-04-17"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 106.7,
+    "distance": 244,
+    "events": "Single",
+    "game_date": "2024-04-17"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Chad Patrick",
+    "opponent_team": "Kansas City Royals",
+    "batter_name": "Jonathan India",
+    "launch_speed": 101.8,
+    "distance": 227,
+    "events": "Double",
+    "game_date": "2025-04-01"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Carmen Mlodzinski",
     "opponent_team": "Baltimore Orioles",
     "batter_name": "Blaze Alexander",
@@ -451,6 +679,16 @@ window.bvpData_2026_04_04 = [
     "distance": 223,
     "events": "Single",
     "game_date": "2026-03-14"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Mookie Betts",
+    "launch_speed": 106.7,
+    "distance": 208,
+    "events": "Single",
+    "game_date": "2023-05-30"
   },
   {
     "date": "2026-04-04",
@@ -481,6 +719,26 @@ window.bvpData_2026_04_04 = [
     "distance": 200,
     "events": "Double",
     "game_date": "2025-09-10"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Shohei Ohtani",
+    "launch_speed": 106.7,
+    "distance": 200,
+    "events": "Single",
+    "game_date": "2025-04-09"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Mookie Betts",
+    "launch_speed": 109.2,
+    "distance": 197,
+    "events": "Single",
+    "game_date": "2023-05-30"
   },
   {
     "date": "2026-04-04",
@@ -554,6 +812,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Will Smith",
+    "launch_speed": 101.5,
+    "distance": 149,
+    "events": "Single",
+    "game_date": "2024-04-24"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Max Meyer",
     "opponent_team": "New York Yankees",
     "batter_name": "Trent Grisham",
@@ -561,6 +829,36 @@ window.bvpData_2026_04_04 = [
     "distance": 122,
     "events": "Field Out",
     "game_date": "2025-03-25"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Kumar Rocker",
+    "opponent_team": "Cincinnati Reds",
+    "batter_name": "Elly De",
+    "launch_speed": 103.2,
+    "distance": 116,
+    "events": "Single",
+    "game_date": "2025-03-31"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Chad Patrick",
+    "opponent_team": "Kansas City Royals",
+    "batter_name": "Carter Jensen",
+    "launch_speed": 109.6,
+    "distance": 114,
+    "events": "Force Out",
+    "game_date": "2026-03-01"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Mookie Betts",
+    "launch_speed": 101.5,
+    "distance": 106,
+    "events": "Force Out",
+    "game_date": "2025-04-09"
   },
   {
     "date": "2026-04-04",
@@ -591,6 +889,16 @@ window.bvpData_2026_04_04 = [
     "distance": 100,
     "events": "Grounded Into Double Play",
     "game_date": "2025-04-01"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Brayan Rocchio",
+    "launch_speed": 101.0,
+    "distance": 96,
+    "events": "Force Out",
+    "game_date": "2025-07-02"
   },
   {
     "date": "2026-04-04",
@@ -631,6 +939,36 @@ window.bvpData_2026_04_04 = [
     "distance": 68,
     "events": "Single",
     "game_date": "2025-07-29"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Will Smith",
+    "launch_speed": 105.2,
+    "distance": 63,
+    "events": "Single",
+    "game_date": "2024-04-24"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Will Smith",
+    "launch_speed": 108.6,
+    "distance": 57,
+    "events": "Field Out",
+    "game_date": "2023-09-09"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Shane Baz",
+    "opponent_team": "Pittsburgh Pirates",
+    "batter_name": "Konnor Griffin",
+    "launch_speed": 107.6,
+    "distance": 56,
+    "events": "Field Out",
+    "game_date": "2026-02-27"
   },
   {
     "date": "2026-04-04",
@@ -694,6 +1032,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Freddie Freeman",
+    "launch_speed": 102.5,
+    "distance": 35,
+    "events": "Field Out",
+    "game_date": "2024-04-17"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Jack Flaherty",
     "opponent_team": "St. Louis Cardinals",
     "batter_name": "Masyn Winn",
@@ -744,6 +1092,36 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Kumar Rocker",
+    "opponent_team": "Cincinnati Reds",
+    "batter_name": "Jose Trevino",
+    "launch_speed": 103.0,
+    "distance": 9,
+    "events": "Single",
+    "game_date": "2025-03-31"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Jos\u00e9 Ram\u00edrez",
+    "launch_speed": 101.3,
+    "distance": 8,
+    "events": "Field Error",
+    "game_date": "2024-08-12"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Jake Irvin",
+    "opponent_team": "Los Angeles Dodgers",
+    "batter_name": "Mookie Betts",
+    "launch_speed": 102.8,
+    "distance": 7,
+    "events": "Single",
+    "game_date": "2024-04-24"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Carmen Mlodzinski",
     "opponent_team": "Baltimore Orioles",
     "batter_name": "Pete Alonso",
@@ -761,6 +1139,16 @@ window.bvpData_2026_04_04 = [
     "distance": 6,
     "events": "Force Out",
     "game_date": "2025-04-29"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Tyler Glasnow",
+    "opponent_team": "Washington Nationals",
+    "batter_name": "Curtis Mead",
+    "launch_speed": 109.0,
+    "distance": 5,
+    "events": "Field Out",
+    "game_date": "2026-02-26"
   },
   {
     "date": "2026-04-04",

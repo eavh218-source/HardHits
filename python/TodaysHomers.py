@@ -1,6 +1,7 @@
 import requests
 import json
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from paths import DATA_DIR
 
@@ -80,7 +81,9 @@ def fetch_hr_data(date_str):
     return found_hrs
 
 # --- MAIN LOGIC ---
-today = datetime.now().strftime('%Y-%m-%d')
+now_et = datetime.now(ZoneInfo('America/New_York'))
+today = now_et.strftime('%Y-%m-%d')
+last_completed_time = now_et.strftime('%I:%M %p ET').lstrip('0')
 hr_list = fetch_hr_data(today)
 target_date = today
 
@@ -99,10 +102,12 @@ date_key = target_date.replace('-', '_')
 
 with open(output_path, 'w', encoding='utf-8') as f:
     f.write(f"const hrUpdateDate = '{target_date}';\n")
+    f.write(f"const hrLastCompleted = '{last_completed_time}';\n")
     f.write(f"const todaysHRData = {json.dumps(hr_list, indent=2)};")
 
 with open(dated_output_path, 'w', encoding='utf-8') as f:
     f.write(f"window.hrUpdateDate_{date_key} = '{target_date}';\n")
+    f.write(f"window.hrLastCompleted_{date_key} = '{last_completed_time}';\n")
     f.write(f"window.todaysHRData_{date_key} = {json.dumps(hr_list, indent=2)};")
 
 with open(dated_results_path, 'w', encoding='utf-8') as f:

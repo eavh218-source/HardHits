@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Homers | HardHits</title>
-    <link rel="stylesheet" href="../assets/site-nav.css">
+    <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260404-2">
     <script src="../data/todays_hrs.js"></script>
     <script src="../data/hr_model_data.js"></script>
     <script src="../data/historical_index.js"></script>
@@ -405,6 +405,14 @@
         });
     }
 
+    function buildLiveLabel(dateStr) {
+        const liveDate = dateStr || hrUpdateDate;
+        const lastCompleted = (typeof hrLastCompleted !== 'undefined' && hrLastCompleted)
+            ? ` • Last completed ${hrLastCompleted}`
+            : '';
+        return `Statcast Live: ${liveDate}${lastCompleted}`;
+    }
+
     function loadDailyHomers() {
         const contentArea = document.getElementById('content-area');
         const summaryContainer = document.getElementById('summary-container');
@@ -415,7 +423,7 @@
             document.getElementById('date-label').innerText = `Historical Date: ${formatDateForDisplay(currentDate)}`;
         } else if (typeof hrUpdateDate !== 'undefined') {
             document.getElementById('page-title').innerText = 'DAILY HOMER ANALYSIS';
-            document.getElementById('date-label').innerText = `Statcast Live Feed: ${hrUpdateDate}`;
+            document.getElementById('date-label').innerText = buildLiveLabel(hrUpdateDate);
         }
 
         if (currentView === 'table') {
@@ -644,7 +652,7 @@
         if (currentDate) {
             dateLabel.innerText = `Historical Date: ${formatDateForDisplay(currentDate)}`;
         } else if (typeof hrUpdateDate !== 'undefined') {
-            dateLabel.innerText = `Statcast Live Feed: ${hrUpdateDate}`;
+            dateLabel.innerText = buildLiveLabel(hrUpdateDate);
         } else {
             dateLabel.innerText = `Date: ${formatDateForDisplay(new Date().toISOString().split('T')[0])}`;
         }
@@ -662,6 +670,6 @@
         }
     });
 </script>
-<script src="../assets/site-nav.js" defer></script>
+<script src="../assets/site-nav.js?v=stable-20260404-2" defer></script>
 </body>
 </html>
