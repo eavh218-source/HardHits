@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HardHits | HRR+ Probability</title>
+    <link rel="stylesheet" href="../assets/site-nav.css">
+    <script src="../data/hrbi_model_data.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f3f7fb;
+            --card: #ffffff;
+            --border: #dbe4ee;
+            --accent: #2563eb;
+            --emerald: #059669;
+            --orange: #ea580c;
+            --gold: #b45309;
+            --text: #0f172a;
+            --text-dim: #475569;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background: radial-gradient(circle at 20% 0%, #ffffff, #eef4fb 45%, #e5eef8 100%);
+            color: var(--text);
+        }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 16px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .high { border-top: 5px solid #7c3aed; }
+        .std { border-top: 5px solid var(--accent); }
+        .watch { border-top: 5px solid #64748b; }
+
+        .card-header { padding: 20px; display: flex; justify-content: space-between; gap: 14px; }
+        .player-name { margin: 6px 0; font-size: 1.3rem; }
+        .team-tag { color: var(--accent); font-size: 0.7rem; font-weight: 900; letter-spacing: .08em; }
+
+        .score-box { min-width: 84px; text-align: center; border: 1px solid var(--border); border-radius: 12px; padding: 8px; }
+        .score-val { font-size: 1.5rem; font-weight: 900; color: var(--orange); display: block; line-height: 1; }
+        .score-label { font-size: 0.62rem; color: var(--text-dim); font-weight: 700; letter-spacing: .08em; }
+
+        .band { display: inline-flex; padding: 4px 10px; border-radius: 999px; font-size: 0.65rem; font-weight: 800; background: #e2e8f0; color: #1e293b; }
+
+        .section { padding: 0 20px 18px; }
+        .title { font-size: 0.72rem; color: var(--text-dim); font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+
+        .breakdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .b-item { border: 1px solid var(--border); border-radius: 10px; padding: 8px; }
+        .b-label { font-size: 0.62rem; color: var(--text-dim); font-weight: 800; display: block; margin-bottom: 6px; }
+        .track { height: 6px; background: #e2e8f0; border-radius: 8px; overflow: hidden; }
+        .fill { height: 100%; background: linear-gradient(90deg, #0ea5e9, #2563eb); }
+
+        .detail-row { display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.82rem; }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            background: #f8fbff;
+            padding: 14px 20px;
+            font-size: 0.74rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body data-nav="hrbi">
+<div class="container">
+    <div style="margin-bottom: 26px;">
+        <h1 style="margin:0; font-size:2rem; letter-spacing:-0.02em;">HRR+ Probability</h1>
+        <p style="margin:6px 0 0; color:var(--text-dim);">Target condition: player reaches 3+ combined Hits + Runs + RBI.</p>
+    </div>
+
+    <div id="dashboard" class="grid"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dash = document.getElementById('dashboard');
+
+        if (typeof hrbiModelData === 'undefined' || !hrbiModelData.length) {
+            dash.innerHTML = '<div style="grid-column:1/-1; padding:60px; text-align:center; border:2px dashed #cbd5e1; border-radius:16px; background:#fff;">' +
+                '<h2 style="margin:0 0 8px;">No HRR+ Data Found</h2>' +
+                '<p style="margin:0; color:#64748b;">Run <code>python python/hrbi_engine.py</code> from the repo root to generate <code>data/hrbi_model_data.js</code>.</p>' +
+                '</div>';
+            return;
+        }
+
+        hrbiModelData.forEach(function (p) {
+            const tierClass = p.probability >= 8.0 ? 'high' : (p.probability >= 5.0 ? 'std' : 'watch');
+            const breakdown = p.breakdown || {};
+
+            dash.innerHTML +=
+                '<article class="card ' + tierClass + '">' +
+                    '<div class="card-header">' +
+                        '<div>' +
+                            '<div class="team-tag">' + (p.team || 'TBD') + '</div>' +
+                            '<h2 class="player-name">' + (p.name || 'Unknown') + '</h2>' +
+                            '<span class="band">' + (p.confidence_band || 'Watchlist') + '</span>' +
+                        '</div>' +
+                        '<div class="score-box">' +
+                            '<span class="score-val">' + (p.probability || 0) + '%</span>' +
+                            '<span class="score-label">PROBABILITY</span>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="section">' +
+                        '<div class="title">Signal Breakdown</div>' +
+                        '<div class="breakdown-grid">' +
+                            signalBlock('CONTACT', breakdown.Contact) +
+                            signalBlock('FORM', breakdown.Form) +
+                            signalBlock('PITCHER', breakdown.Pitcher) +
+                            signalBlock('RBI', breakdown.RBI) +
+                            signalBlock('RUNS', breakdown.Runs) +
+                            signalBlock('PARK', breakdown.Park) +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="section">' +
+                        detailRow('Lineup Slot', String(p.lineup_slot || 9)) +
+                        detailRow('Expected PA', String(p.expected_pa || 3.5)) +
+                        detailRow('Season AVG', String(p.season_avg_display || 'N/A')) +
+                        detailRow('Last 5 AVG', String(p.last_5_avg_display || 'N/A')) +
+                        detailRow('Vs Starter AVG', String(p.vs_starter_avg_display || 'N/A')) +
+                        detailRow('LD Rate', String(p.ld_rate || 0) + '%') +
+                        detailRow('Line Drive EV', String(p.ld_ev || 0) + ' MPH') +
+                        detailRow('EV Trend', String(p.ev_trend_val || 0) + ' (' + (p.ev_trend_label || 'Stable') + ')') +
+                        detailRow('BABIP Trend', String(p.babip_trend_val || 0) + ' (' + (p.babip_trend_label || 'Stable') + ')') +
+                    '</div>' +
+
+                    '<div class="footer">' +
+                        '<span>vs ' + (p.opp_pitcher || 'TBD') + '</span>' +
+                        '<span>' + (p.target || 'H+R+RBI >= 3') + '</span>' +
+                    '</div>' +
+                '</article>';
+        });
+
+        function signalBlock(label, value) {
+            const safeVal = Math.max(0, Math.min(100, value || 0));
+            return '<div class="b-item">' +
+                '<span class="b-label">' + label + '</span>' +
+                '<div class="track"><div class="fill" style="width:' + safeVal + '%"></div></div>' +
+            '</div>';
+        }
+
+        function detailRow(label, value) {
+            return '<div class="detail-row"><span>' + label + '</span><strong>' + value + '</strong></div>';
+        }
+    });
+</script>
+<script src="../assets/site-nav.js" defer></script>
+</body>
+</html>

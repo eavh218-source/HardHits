@@ -58,6 +58,8 @@ if __name__ == "__main__":
         "hardHits.py",
         # 4. Today's model predictions run
         "hr_engine.py",
+        # 4b. Stable HRR+ model predictions
+        "hrbi_engine.py",
         # 5. Actual HR results validator for today
         "hr_validator.py",
         # 6. Daily home run feed, in case UI needs immediate game updates

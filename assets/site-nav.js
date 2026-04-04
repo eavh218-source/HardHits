@@ -6,6 +6,7 @@
     { href: 'DailyHomers.html', label: 'Daily Homers', id: 'daily' },
     { href: 'StartingLineups.html', label: 'Lineups', id: 'lineups' },
     { href: 'HRProbability_Combined.html', label: 'HR Probability', id: 'hr' },
+    { href: 'HRRBIProbability.html', label: 'HRR+', id: 'hrbi' },
     { href: 'projects.html', label: 'Roadmap', id: 'projects' }
   ];
 
