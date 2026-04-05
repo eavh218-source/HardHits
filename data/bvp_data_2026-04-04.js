@@ -28,7 +28,7 @@ window.dailyMatchups_2026_04_04 = [
     "date": "2026-04-04",
     "time": "7:10 PM ET",
     "away_abbr": "MIL",
-    "away_p": "Sproat",
+    "away_p": "Henderson",
     "home_abbr": "KCR",
     "home_p": "Lugo"
   },
@@ -91,14 +91,6 @@ window.dailyMatchups_2026_04_04 = [
   {
     "date": "2026-04-04",
     "time": "7:15 PM ET",
-    "away_abbr": "CHC",
-    "away_p": "Imanaga",
-    "home_abbr": "CLE",
-    "home_p": "Cecconi"
-  },
-  {
-    "date": "2026-04-04",
-    "time": "7:15 PM ET",
     "away_abbr": "ATL",
     "away_p": "Elder",
     "home_abbr": "ARI",
@@ -110,7 +102,7 @@ window.dailyMatchups_2026_04_04 = [
     "away_abbr": "PHI",
     "away_p": "Luzardo",
     "home_abbr": "COL",
-    "home_p": "TBD"
+    "home_p": "Bernardino"
   },
   {
     "date": "2026-04-04",
@@ -192,6 +184,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Brennan Bernardino",
+    "opponent_team": "Philadelphia Phillies",
+    "batter_name": "Trea Turner",
+    "launch_speed": 103.4,
+    "distance": 399,
+    "events": "Home Run",
+    "game_date": "2023-05-06"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Kumar Rocker",
     "opponent_team": "Cincinnati Reds",
     "batter_name": "Matt Mclain",
@@ -229,16 +231,6 @@ window.bvpData_2026_04_04 = [
     "distance": 385,
     "events": "Home Run",
     "game_date": "2024-08-27"
-  },
-  {
-    "date": "2026-04-04",
-    "pitcher_name": "Slade Cecconi",
-    "opponent_team": "Chicago Cubs",
-    "batter_name": "Michael Conforto",
-    "launch_speed": 105.1,
-    "distance": 384,
-    "events": "Field Out",
-    "game_date": "2024-04-21"
   },
   {
     "date": "2026-04-04",
@@ -302,16 +294,6 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
-    "pitcher_name": "Shota Imanaga",
-    "opponent_team": "Cleveland Guardians",
-    "batter_name": "Steven Kwan",
-    "launch_speed": 99.9,
-    "distance": 373,
-    "events": "Home Run",
-    "game_date": "2024-08-12"
-  },
-  {
-    "date": "2026-04-04",
     "pitcher_name": "Jack Kochanowicz",
     "opponent_team": "Seattle Mariners",
     "batter_name": "Cal Raleigh",
@@ -359,16 +341,6 @@ window.bvpData_2026_04_04 = [
     "distance": 369,
     "events": "Field Out",
     "game_date": "2024-05-07"
-  },
-  {
-    "date": "2026-04-04",
-    "pitcher_name": "Shota Imanaga",
-    "opponent_team": "Cleveland Guardians",
-    "batter_name": "David Fry",
-    "launch_speed": 100.1,
-    "distance": 366,
-    "events": "Home Run",
-    "game_date": "2025-07-02"
   },
   {
     "date": "2026-04-04",
@@ -439,16 +411,6 @@ window.bvpData_2026_04_04 = [
     "distance": 356,
     "events": "Double",
     "game_date": "2025-06-05"
-  },
-  {
-    "date": "2026-04-04",
-    "pitcher_name": "Slade Cecconi",
-    "opponent_team": "Chicago Cubs",
-    "batter_name": "Michael Conforto",
-    "launch_speed": 105.0,
-    "distance": 355,
-    "events": "Field Out",
-    "game_date": "2023-08-02"
   },
   {
     "date": "2026-04-04",
@@ -609,16 +571,6 @@ window.bvpData_2026_04_04 = [
     "distance": 285,
     "events": "Double",
     "game_date": "2023-07-23"
-  },
-  {
-    "date": "2026-04-04",
-    "pitcher_name": "Shota Imanaga",
-    "opponent_team": "Cleveland Guardians",
-    "batter_name": "David Fry",
-    "launch_speed": 103.8,
-    "distance": 279,
-    "events": "Single",
-    "game_date": "2024-08-12"
   },
   {
     "date": "2026-04-04",
@@ -892,16 +844,6 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
-    "pitcher_name": "Shota Imanaga",
-    "opponent_team": "Cleveland Guardians",
-    "batter_name": "Brayan Rocchio",
-    "launch_speed": 101.0,
-    "distance": 96,
-    "events": "Force Out",
-    "game_date": "2025-07-02"
-  },
-  {
-    "date": "2026-04-04",
     "pitcher_name": "Bryce Elder",
     "opponent_team": "Arizona Diamondbacks",
     "batter_name": "Corbin Carroll",
@@ -1072,6 +1014,16 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
+    "pitcher_name": "Brennan Bernardino",
+    "opponent_team": "Philadelphia Phillies",
+    "batter_name": "Adolis Garc\u00eda",
+    "launch_speed": 103.2,
+    "distance": 23,
+    "events": "Single",
+    "game_date": "2025-05-06"
+  },
+  {
+    "date": "2026-04-04",
     "pitcher_name": "Seth Lugo",
     "opponent_team": "Milwaukee Brewers",
     "batter_name": "William Contreras",
@@ -1102,16 +1054,6 @@ window.bvpData_2026_04_04 = [
   },
   {
     "date": "2026-04-04",
-    "pitcher_name": "Shota Imanaga",
-    "opponent_team": "Cleveland Guardians",
-    "batter_name": "Jos\u00e9 Ram\u00edrez",
-    "launch_speed": 101.3,
-    "distance": 8,
-    "events": "Field Error",
-    "game_date": "2024-08-12"
-  },
-  {
-    "date": "2026-04-04",
     "pitcher_name": "Jake Irvin",
     "opponent_team": "Los Angeles Dodgers",
     "batter_name": "Mookie Betts",
@@ -1129,6 +1071,26 @@ window.bvpData_2026_04_04 = [
     "distance": 7,
     "events": "Field Out",
     "game_date": "2025-06-29"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Brennan Bernardino",
+    "opponent_team": "Philadelphia Phillies",
+    "batter_name": "Kyle Schwarber",
+    "launch_speed": 102.6,
+    "distance": 7,
+    "events": "Field Out",
+    "game_date": "2025-07-22"
+  },
+  {
+    "date": "2026-04-04",
+    "pitcher_name": "Brennan Bernardino",
+    "opponent_team": "Philadelphia Phillies",
+    "batter_name": "Alec Bohm",
+    "launch_speed": 102.4,
+    "distance": 6,
+    "events": "Field Out",
+    "game_date": "2024-06-12"
   },
   {
     "date": "2026-04-04",
@@ -1179,15 +1141,5 @@ window.bvpData_2026_04_04 = [
     "distance": 0,
     "events": "Home Run",
     "game_date": "2024-03-19"
-  },
-  {
-    "date": "2026-04-04",
-    "pitcher_name": "Slade Cecconi",
-    "opponent_team": "Chicago Cubs",
-    "batter_name": "Michael Conforto",
-    "launch_speed": 0.0,
-    "distance": 0,
-    "events": "Home Run",
-    "game_date": "2023-03-04"
   }
 ];

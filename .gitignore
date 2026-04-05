@@ -7,3 +7,5 @@ venv/
 .DS_Store
 Thumbs.db
 pages-dist/
+.pages-publish-stable/
+.pages-publish-stable-refresh/

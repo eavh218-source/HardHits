@@ -177,6 +177,8 @@ def extract_statcast_windows(player_id):
 
         avg_ev_30 = safe_float(df["launch_speed"].mean(), 88.0)
         avg_ev_7 = safe_float(last_7["launch_speed"].mean(), avg_ev_30)
+        avg_launch_angle_30 = safe_float(df["launch_angle"].mean(), 12.0)
+        avg_launch_angle_7 = safe_float(last_7["launch_angle"].mean(), avg_launch_angle_30)
         ev_trend = avg_ev_7 - avg_ev_30
 
         ld_ev = safe_float(line_drives["launch_speed"].mean(), avg_ev_30)
@@ -199,6 +201,8 @@ def extract_statcast_windows(player_id):
             "hard_hit_rate": hard_hit_rate,
             "avg_ev_30": avg_ev_30,
             "avg_ev_7": avg_ev_7,
+            "avg_launch_angle_30": avg_launch_angle_30,
+            "avg_launch_angle_7": avg_launch_angle_7,
             "ld_ev": ld_ev,
             "ev_trend": ev_trend,
             "babip_30": babip_30,
@@ -209,14 +213,15 @@ def extract_statcast_windows(player_id):
         return None
 
 
-def compute_last_5_avg_from_logs(game_log_splits):
+def compute_last_5_summary(game_log_splits):
     if not game_log_splits:
-        return None
+        return {"avg": None, "hits": 0, "at_bats": 0}
 
     recent = game_log_splits[:5]
     total_hits = sum(int(safe_float(split.get("stat", {}).get("hits"), 0)) for split in recent)
     total_ab = sum(int(safe_float(split.get("stat", {}).get("atBats"), 0)) for split in recent)
-    return round(total_hits / total_ab, 3) if total_ab > 0 else None
+    avg = round(total_hits / total_ab, 3) if total_ab > 0 else None
+    return {"avg": avg, "hits": total_hits, "at_bats": total_ab}
 
 
 def get_hitting_profile(player_id, pitcher_id=None):
@@ -229,8 +234,14 @@ def get_hitting_profile(player_id, pitcher_id=None):
         "avg_display": format_avg_display(0.245),
         "last_5_avg": None,
         "last_5_avg_display": "N/A",
+        "last_5_hits": 0,
+        "last_5_ab": 0,
         "vs_starter_avg": None,
         "vs_starter_avg_display": "N/A",
+        "vs_starter_hits": 0,
+        "vs_starter_ab": 0,
+        "vs_starter_hr": 0,
+        "vs_starter_rbi": 0,
         "obp": 0.315,
         "sprint_speed_score": 50,
         "risp_proxy": 50,
@@ -272,17 +283,38 @@ def get_hitting_profile(player_id, pitcher_id=None):
         risp_proxy = clamp((avg - 0.200) / 0.140 * 100)
         team_obp_score = clamp((obp - 0.280) / 0.090 * 100)
 
-        last_5_avg = compute_last_5_avg_from_logs(game_logs)
+        last_5_summary = compute_last_5_summary(game_logs)
+        last_5_avg = last_5_summary["avg"]
+        last_5_hits = last_5_summary["hits"]
+        last_5_ab = last_5_summary["at_bats"]
+
         vs_starter_ab = int(safe_float(vs_total_stats.get("atBats"), 0)) if vs_total_stats else 0
+        vs_starter_hits = int(safe_float(vs_total_stats.get("hits"), 0)) if vs_total_stats else 0
+        vs_starter_hr = int(safe_float(vs_total_stats.get("homeRuns"), 0)) if vs_total_stats else 0
+        vs_starter_rbi = int(safe_float(vs_total_stats.get("rbi"), 0)) if vs_total_stats else 0
         vs_starter_avg = round(safe_float(vs_total_stats.get("avg"), 0.0), 3) if vs_starter_ab > 0 else None
+
+        if vs_starter_ab > 0:
+            vs_starter_avg_display = f"{format_avg_display(vs_starter_avg)} ({vs_starter_hits} H / {vs_starter_ab} AB"
+            if vs_starter_hr > 0:
+                vs_starter_avg_display += f", {vs_starter_hr} HR"
+            vs_starter_avg_display += ")"
+        else:
+            vs_starter_avg_display = "N/A"
 
         profile = {
             "avg": avg,
             "avg_display": format_avg_display(avg),
             "last_5_avg": last_5_avg,
             "last_5_avg_display": format_avg_display(last_5_avg),
+            "last_5_hits": last_5_hits,
+            "last_5_ab": last_5_ab,
             "vs_starter_avg": vs_starter_avg,
-            "vs_starter_avg_display": f"{format_avg_display(vs_starter_avg)} ({vs_starter_ab} AB)" if vs_starter_ab > 0 else "N/A",
+            "vs_starter_avg_display": vs_starter_avg_display,
+            "vs_starter_hits": vs_starter_hits,
+            "vs_starter_ab": vs_starter_ab,
+            "vs_starter_hr": vs_starter_hr,
+            "vs_starter_rbi": vs_starter_rbi,
             "obp": obp,
             "sprint_speed_score": sprint_speed_score,
             "risp_proxy": risp_proxy,
@@ -422,9 +454,19 @@ def build_player_row(game, side, roster_player, lineup_context):
         "season_avg_display": profile["avg_display"],
         "last_5_avg": profile["last_5_avg"],
         "last_5_avg_display": profile["last_5_avg_display"],
+        "last_5_hits": profile["last_5_hits"],
+        "last_5_ab": profile["last_5_ab"],
         "vs_starter_avg": profile["vs_starter_avg"],
         "vs_starter_avg_display": profile["vs_starter_avg_display"],
+        "vs_starter_hits": profile["vs_starter_hits"],
+        "vs_starter_ab": profile["vs_starter_ab"],
+        "vs_starter_hr": profile["vs_starter_hr"],
+        "vs_starter_rbi": profile["vs_starter_rbi"],
         "opp_pitcher": opp_pitcher,
+        "avg_ev": round(statcast["avg_ev_30"], 1),
+        "recent_avg_ev": round(statcast["avg_ev_7"], 1),
+        "avg_launch_angle": round(statcast["avg_launch_angle_30"], 1),
+        "recent_launch_angle": round(statcast["avg_launch_angle_7"], 1),
         "ev_trend_val": round(statcast["ev_trend"], 2),
         "ev_trend_label": signal_label(statcast["ev_trend"], 2.0, -2.0),
         "babip_trend_val": round(statcast["babip_trend"], 3),

@@ -36,8 +36,8 @@
         "opponent_team": "MIL"
     },
     {
-        "pitcher_name": "Brandon Sproat",
-        "pitcher_id": 687075,
+        "pitcher_name": "Logan Henderson",
+        "pitcher_id": 701656,
         "pitcher_team": "MIL",
         "opponent_team": "KC"
     },
@@ -132,18 +132,6 @@
         "opponent_team": "TB"
     },
     {
-        "pitcher_name": "Shota Imanaga",
-        "pitcher_id": 684007,
-        "pitcher_team": "CHC",
-        "opponent_team": "CLE"
-    },
-    {
-        "pitcher_name": "Slade Cecconi",
-        "pitcher_id": 677944,
-        "pitcher_team": "CLE",
-        "opponent_team": "CHC"
-    },
-    {
         "pitcher_name": "Bryce Elder",
         "pitcher_id": 693821,
         "pitcher_team": "ATL",
@@ -160,6 +148,12 @@
         "pitcher_id": 666200,
         "pitcher_team": "PHI",
         "opponent_team": "COL"
+    },
+    {
+        "pitcher_name": "Brennan Bernardino",
+        "pitcher_id": 657514,
+        "pitcher_team": "COL",
+        "opponent_team": "PHI"
     },
     {
         "pitcher_name": "Clay Holmes",
@@ -184,5 +178,17 @@
         "pitcher_id": 686799,
         "pitcher_team": "LAA",
         "opponent_team": "SEA"
+    },
+    {
+        "pitcher_name": "Shota Imanaga",
+        "pitcher_id": 684007,
+        "pitcher_team": "CHC",
+        "opponent_team": "CLE"
+    },
+    {
+        "pitcher_name": "Slade Cecconi",
+        "pitcher_id": 677944,
+        "pitcher_team": "CLE",
+        "opponent_team": "CHC"
     }
 ]
