@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import datetime, timedelta
 
 import statsapi
@@ -28,15 +29,22 @@ def load_hrbi_model_for_date(target_date: str):
         return None
 
     text = path.read_text(encoding="utf-8")
-    marker = "="
-    if marker not in text:
-        return None
+    key = target_date.replace("-", "_")
+    patterns = [
+        rf"window\.hrbiModelData_{re.escape(key)}\s*=\s*(\[.*\]);",
+        r"const\s+hrbiModelData\s*=\s*(\[.*\]);",
+    ]
 
-    json_blob = text.split("=", 1)[1].strip().rstrip(";")
-    try:
-        return json.loads(json_blob)
-    except Exception:
-        return None
+    for pattern in patterns:
+        match = re.search(pattern, text, re.S)
+        if not match:
+            continue
+        try:
+            return json.loads(match.group(1))
+        except Exception:
+            continue
+
+    return None
 
 
 def get_boxscore_totals_for_date(target_date: str):
@@ -151,6 +159,78 @@ def evaluate_date(target_date: str):
     return evaluated, summary
 
 
+def write_historical_index():
+    dates = sorted(
+        [
+            match.group(1)
+            for path in DATA_DIR.glob("hrbi_results_*.js")
+            for match in [re.match(r"hrbi_results_(\d{4}-\d{2}-\d{2})\.js$", path.name)]
+            if match
+        ],
+        reverse=True,
+    )
+
+    index_text = """// H+R+RBI Historical Results Index
+// Load specific H+R+RBI model/results files as needed
+
+const hrbiHistoricalDates = __DATES__;
+
+function loadHrbiHistoricalData(dateStr) {
+    return new Promise((resolve, reject) => {
+        if (!dateStr) {
+            reject(new Error('Missing H+R+RBI date.'));
+            return;
+        }
+
+        const key = dateStr.replace(/-/g, '_');
+        let modelLoaded = Boolean(window[`hrbiModelData_${key}`]);
+        let resultsLoaded = Boolean(window[`hrbiResultsData_${key}`] && window[`hrbiResultsSummary_${key}`]);
+
+        function finalize() {
+            if (modelLoaded && resultsLoaded) {
+                resolve();
+            }
+        }
+
+        if (modelLoaded && resultsLoaded) {
+            resolve();
+            return;
+        }
+
+        if (!modelLoaded) {
+            const modelScript = document.createElement('script');
+            modelScript.src = `../data/hrbi_model_${dateStr}.js`;
+            modelScript.onload = () => {
+                modelLoaded = true;
+                finalize();
+            };
+            modelScript.onerror = () => reject(new Error(`Failed to load H+R+RBI model for ${dateStr}`));
+            document.head.appendChild(modelScript);
+        }
+
+        if (!resultsLoaded) {
+            const resultsScript = document.createElement('script');
+            resultsScript.src = `../data/hrbi_results_${dateStr}.js`;
+            resultsScript.onload = () => {
+                resultsLoaded = true;
+                finalize();
+            };
+            resultsScript.onerror = () => reject(new Error(`Failed to load H+R+RBI results for ${dateStr}`));
+            document.head.appendChild(resultsScript);
+        }
+
+        setTimeout(() => {
+            if (!modelLoaded || !resultsLoaded) {
+                reject(new Error(`Timeout loading H+R+RBI historical data for ${dateStr}`));
+            }
+        }, 10000);
+    });
+}
+""".replace("__DATES__", json.dumps(dates, indent=2))
+
+    (DATA_DIR / "hrbi_results_index.js").write_text(index_text, encoding="utf-8")
+
+
 def save_outputs(target_date: str, evaluated_rows, summary):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     key = target_date.replace("-", "_")
@@ -173,6 +253,8 @@ def save_outputs(target_date: str, evaluated_rows, summary):
         ]),
         encoding="utf-8",
     )
+
+    write_historical_index()
 
 
 def parse_args():
