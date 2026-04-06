@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardHits | HR Probability & Results</title>
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260406-admingear">
-    <script src="../data/hr_model_data.js?v=stable-20260406-livefix"></script>
-    <script src="../data/hr_model_tomorrow.js?v=stable-20260406-livefix"></script>
-    <script src="../data/hr_results_data.js?v=stable-20260406-livefix"></script>
-    <script src="../data/hr_model_consolidated.js?v=stable-20260406-livefix"></script>
-    <script src="../data/historical_index.js?v=stable-20260406-livefix"></script>
+    <script src="../data/hr_model_data.js?v=stable-20260406-lastrun"></script>
+    <script src="../data/hr_model_tomorrow.js?v=stable-20260406-lastrun"></script>
+    <script src="../data/hr_results_data.js?v=stable-20260406-lastrun"></script>
+    <script src="../data/hr_model_consolidated.js?v=stable-20260406-lastrun"></script>
+    <script src="../data/historical_index.js?v=stable-20260406-lastrun"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -391,6 +391,22 @@
         'Seattle Mariners': 'SEA', 'St. Louis Cardinals': 'STL', 'Tampa Bay Rays': 'TBR',
         'Texas Rangers': 'TEX', 'Toronto Blue Jays': 'TOR', 'Washington Nationals': 'WSH'
     };
+    const predictionsSubtitleBase = 'Unified model: power, form, EV trend, pitcher risk, park, platoon, H2H, weather + lineup PA multiplier';
+    const tomorrowSubtitleBase = 'projected using the unified power, pitcher, park, platoon, weather, and lineup model';
+
+    function buildPredictionSubtitle(dateStr, lastRunTime, suffixText) {
+        const parts = [];
+        if (dateStr) {
+            parts.push(formatDate(new Date(`${dateStr}T00:00:00`)));
+        }
+        if (lastRunTime) {
+            parts.push(`Last run ${lastRunTime}`);
+        }
+        if (suffixText) {
+            parts.push(suffixText);
+        }
+        return parts.join(' • ') || predictionsSubtitleBase;
+    }
 
     // View toggle functionality
     document.getElementById('predictions-btn').addEventListener('click', () => {
@@ -419,15 +435,21 @@
 
         if (view === 'predictions') {
             title.textContent = 'Home Run Probability';
-            subtitle.textContent = 'Unified model: power, form, EV trend, pitcher risk, park, platoon, H2H, weather + lineup PA multiplier';
+            subtitle.textContent = buildPredictionSubtitle(
+                typeof hrModelUpdateDate !== 'undefined' ? hrModelUpdateDate : '',
+                typeof hrModelLastRunTime !== 'undefined' ? hrModelLastRunTime : '',
+                predictionsSubtitleBase,
+            );
             document.getElementById('summary-container').style.display = 'none';
             document.getElementById('date-selector').style.display = 'none';
             loadPredictions();
         } else if (view === 'tomorrow') {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
             title.textContent = 'Tomorrow HR Probability';
-            subtitle.textContent = `${formatDate(tomorrow)} • projected using the unified power, pitcher, park, platoon, weather, and lineup model`;
+            subtitle.textContent = buildPredictionSubtitle(
+                typeof hrModelTomorrowUpdateDate !== 'undefined' ? hrModelTomorrowUpdateDate : '',
+                typeof hrModelTomorrowLastRunTime !== 'undefined' ? hrModelTomorrowLastRunTime : '',
+                tomorrowSubtitleBase,
+            );
             document.getElementById('summary-container').style.display = 'none';
             document.getElementById('date-selector').style.display = 'none';
             loadTomorrowPredictions();
@@ -670,6 +692,11 @@
         }
 
         const dateStr = allPredictions[0].date;
+        document.getElementById('subtitle').textContent = buildPredictionSubtitle(
+            dateStr,
+            typeof hrModelLastRunTime !== 'undefined' ? hrModelLastRunTime : '',
+            predictionsSubtitleBase,
+        );
         const startedTeams = await getStartedTeamsForDate(dateStr);
         const filteredPredictions = allPredictions.filter(p => !startedTeams.has(p.team));
 
@@ -686,7 +713,17 @@
     }
 
     function loadTomorrowPredictions() {
-        renderPredictionCards(typeof hrModelTomorrowData !== 'undefined' ? hrModelTomorrowData : [], 'hr_model_tomorrow.js');
+        const tomorrowPredictions = typeof hrModelTomorrowData !== 'undefined' ? hrModelTomorrowData : [];
+        const tomorrowDate = (typeof hrModelTomorrowUpdateDate !== 'undefined' && hrModelTomorrowUpdateDate)
+            ? hrModelTomorrowUpdateDate
+            : (tomorrowPredictions[0] && tomorrowPredictions[0].date ? tomorrowPredictions[0].date : '');
+
+        document.getElementById('subtitle').textContent = buildPredictionSubtitle(
+            tomorrowDate,
+            typeof hrModelTomorrowLastRunTime !== 'undefined' ? hrModelTomorrowLastRunTime : '',
+            tomorrowSubtitleBase,
+        );
+        renderPredictionCards(tomorrowPredictions, 'hr_model_tomorrow.js');
     }
 
     function inferModelMissReason(result, modelEntry, modelData, outlierSubtype, outlierType) {

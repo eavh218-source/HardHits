@@ -1,5 +1,5 @@
 window.lineupUpdateDate_2026_04_06 = '2026-04-06';
-window.lineupLastCompleted_2026_04_06 = '12:42 PM ET';
+window.lineupLastCompleted_2026_04_06 = '1:42 PM ET';
 window.startingLineups_2026_04_06 = [
   {
     "date": "2026-04-06",
@@ -10,8 +10,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "4:10 PM ET",
     "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (207 minutes to first pitch)",
-    "minutes_to_first_pitch": 207,
+    "reason": "too early (147 minutes to first pitch)",
+    "minutes_to_first_pitch": 147,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -24,8 +24,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "6:10 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (327 minutes to first pitch)",
-    "minutes_to_first_pitch": 327,
+    "reason": "too early (267 minutes to first pitch)",
+    "minutes_to_first_pitch": 267,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -38,8 +38,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "6:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (357 minutes to first pitch)",
-    "minutes_to_first_pitch": 357,
+    "reason": "too early (297 minutes to first pitch)",
+    "minutes_to_first_pitch": 297,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -52,8 +52,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "6:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (357 minutes to first pitch)",
-    "minutes_to_first_pitch": 357,
+    "reason": "too early (297 minutes to first pitch)",
+    "minutes_to_first_pitch": 297,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -66,8 +66,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "6:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (362 minutes to first pitch)",
-    "minutes_to_first_pitch": 362,
+    "reason": "too early (302 minutes to first pitch)",
+    "minutes_to_first_pitch": 302,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -80,8 +80,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "6:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (362 minutes to first pitch)",
-    "minutes_to_first_pitch": 362,
+    "reason": "too early (302 minutes to first pitch)",
+    "minutes_to_first_pitch": 302,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -94,8 +94,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "7:07 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (384 minutes to first pitch)",
-    "minutes_to_first_pitch": 384,
+    "reason": "too early (324 minutes to first pitch)",
+    "minutes_to_first_pitch": 324,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -108,8 +108,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "7:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (417 minutes to first pitch)",
-    "minutes_to_first_pitch": 417,
+    "reason": "too early (357 minutes to first pitch)",
+    "minutes_to_first_pitch": 357,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -122,8 +122,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "7:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (417 minutes to first pitch)",
-    "minutes_to_first_pitch": 417,
+    "reason": "too early (357 minutes to first pitch)",
+    "minutes_to_first_pitch": 357,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -136,8 +136,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "8:05 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (442 minutes to first pitch)",
-    "minutes_to_first_pitch": 442,
+    "reason": "too early (382 minutes to first pitch)",
+    "minutes_to_first_pitch": 382,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -150,8 +150,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "8:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (477 minutes to first pitch)",
-    "minutes_to_first_pitch": 477,
+    "reason": "too early (417 minutes to first pitch)",
+    "minutes_to_first_pitch": 417,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -164,8 +164,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "9:38 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (535 minutes to first pitch)",
-    "minutes_to_first_pitch": 535,
+    "reason": "too early (475 minutes to first pitch)",
+    "minutes_to_first_pitch": 475,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -178,8 +178,8 @@ window.startingLineups_2026_04_06 = [
     "game_time_et": "9:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (542 minutes to first pitch)",
-    "minutes_to_first_pitch": 542,
+    "reason": "too early (482 minutes to first pitch)",
+    "minutes_to_first_pitch": 482,
     "away_lineup": [],
     "home_lineup": []
   }
