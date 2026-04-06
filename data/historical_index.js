@@ -2,6 +2,9 @@
 // Load specific date files as needed
 
 const historicalDates = [
+  "2026-04-06",
+  "2026-04-05",
+  "2026-04-04",
   "2026-04-03",
   "2026-04-02",
   "2026-04-01",
@@ -11,21 +14,57 @@ const historicalDates = [
   "2026-03-28",
   "2026-03-27",
   "2026-03-26",
-  "2026-03-25",
+  "2026-03-25"
 ];
 
 function loadHistoricalData(dateStr) {
-    // Dynamically load model data for a specific date
-    const script = document.createElement('script');
-    script.src = `../data/hr_model_${dateStr}.js`;
-    document.head.appendChild(script);
-    
-    // Dynamically load results data for a specific date
-    const resultsScript = document.createElement('script');
-    resultsScript.src = `../data/hr_results_${dateStr}.js`;
-    document.head.appendChild(resultsScript);
-    
-    return new Promise((resolve) => {
-        resultsScript.onload = () => resolve();
+    return new Promise((resolve, reject) => {
+        if (!dateStr) {
+            reject(new Error('Missing historical date.'));
+            return;
+        }
+
+        const key = dateStr.replace(/-/g, '_');
+        let modelLoaded = Boolean(window[`hrModelData_${key}`]);
+        let resultsLoaded = Boolean(window[`hrResultsData_${key}`]);
+
+        function finalize() {
+            if (modelLoaded && resultsLoaded) {
+                resolve();
+            }
+        }
+
+        if (modelLoaded && resultsLoaded) {
+            resolve();
+            return;
+        }
+
+        if (!modelLoaded) {
+            const modelScript = document.createElement('script');
+            modelScript.src = `../data/hr_model_${dateStr}.js`;
+            modelScript.onload = () => {
+                modelLoaded = true;
+                finalize();
+            };
+            modelScript.onerror = () => reject(new Error(`Failed to load HR model data for ${dateStr}`));
+            document.head.appendChild(modelScript);
+        }
+
+        if (!resultsLoaded) {
+            const resultsScript = document.createElement('script');
+            resultsScript.src = `../data/hr_results_${dateStr}.js`;
+            resultsScript.onload = () => {
+                resultsLoaded = true;
+                finalize();
+            };
+            resultsScript.onerror = () => reject(new Error(`Failed to load HR results data for ${dateStr}`));
+            document.head.appendChild(resultsScript);
+        }
+
+        setTimeout(() => {
+            if (!modelLoaded || !resultsLoaded) {
+                reject(new Error(`Timeout loading historical data for ${dateStr}`));
+            }
+        }, 10000);
     });
 }

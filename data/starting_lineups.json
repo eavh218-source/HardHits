@@ -9,7 +9,7 @@
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live",
-    "minutes_to_first_pitch": -63,
+    "minutes_to_first_pitch": -93,
     "away_lineup": [
       {
         "slot": 1,
@@ -69,10 +69,10 @@
       },
       {
         "slot": 9,
-        "name": "Miguel Amaya",
+        "name": "Michael Conforto",
         "position": "DH",
-        "jersey": "9",
-        "player_id": 665804
+        "jersey": "20",
+        "player_id": 624424
       }
     ],
     "home_lineup": [
@@ -150,8 +150,8 @@
     "game_time_et": "6:10 PM ET",
     "status": "Pre-Game",
     "eligible": true,
-    "reason": "within 57 minutes of first pitch",
-    "minutes_to_first_pitch": 57,
+    "reason": "within 27 minutes of first pitch",
+    "minutes_to_first_pitch": 27,
     "away_lineup": [
       {
         "slot": 1,
@@ -292,8 +292,8 @@
     "game_time_et": "6:40 PM ET",
     "status": "Pre-Game",
     "eligible": true,
-    "reason": "within 87 minutes of first pitch",
-    "minutes_to_first_pitch": 87,
+    "reason": "within 57 minutes of first pitch",
+    "minutes_to_first_pitch": 57,
     "away_lineup": [
       {
         "slot": 1,
@@ -434,8 +434,8 @@
     "game_time_et": "6:40 PM ET",
     "status": "Pre-Game",
     "eligible": true,
-    "reason": "within 87 minutes of first pitch",
-    "minutes_to_first_pitch": 87,
+    "reason": "within 57 minutes of first pitch",
+    "minutes_to_first_pitch": 57,
     "away_lineup": [
       {
         "slot": 1,
@@ -576,8 +576,8 @@
     "game_time_et": "6:45 PM ET",
     "status": "Pre-Game",
     "eligible": true,
-    "reason": "within 92 minutes of first pitch",
-    "minutes_to_first_pitch": 92,
+    "reason": "within 62 minutes of first pitch",
+    "minutes_to_first_pitch": 62,
     "away_lineup": [
       {
         "slot": 1,
@@ -718,8 +718,8 @@
     "game_time_et": "6:45 PM ET",
     "status": "Pre-Game",
     "eligible": true,
-    "reason": "within 92 minutes of first pitch",
-    "minutes_to_first_pitch": 92,
+    "reason": "within 62 minutes of first pitch",
+    "minutes_to_first_pitch": 62,
     "away_lineup": [
       {
         "slot": 1,
@@ -860,8 +860,8 @@
     "game_time_et": "7:07 PM ET",
     "status": "Pre-Game",
     "eligible": true,
-    "reason": "within 114 minutes of first pitch",
-    "minutes_to_first_pitch": 114,
+    "reason": "within 84 minutes of first pitch",
+    "minutes_to_first_pitch": 84,
     "away_lineup": [
       {
         "slot": 1,
@@ -1001,11 +1001,139 @@
     "home_team": "Minnesota Twins",
     "game_time_et": "7:40 PM ET",
     "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (147 minutes to first pitch)",
-    "minutes_to_first_pitch": 147,
-    "away_lineup": [],
-    "home_lineup": []
+    "eligible": true,
+    "reason": "within 117 minutes of first pitch",
+    "minutes_to_first_pitch": 117,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Kevin McGonigle",
+        "position": "SS",
+        "jersey": "7",
+        "player_id": 805808
+      },
+      {
+        "slot": 2,
+        "name": "Gleyber Torres",
+        "position": "2B",
+        "jersey": "25",
+        "player_id": 650402
+      },
+      {
+        "slot": 3,
+        "name": "Colt Keith",
+        "position": "3B",
+        "jersey": "33",
+        "player_id": 690993
+      },
+      {
+        "slot": 4,
+        "name": "Riley Greene",
+        "position": "DH",
+        "jersey": "31",
+        "player_id": 682985
+      },
+      {
+        "slot": 5,
+        "name": "Spencer Torkelson",
+        "position": "1B",
+        "jersey": "20",
+        "player_id": 679529
+      },
+      {
+        "slot": 6,
+        "name": "Zach McKinstry",
+        "position": "RF",
+        "jersey": "39",
+        "player_id": 656716
+      },
+      {
+        "slot": 7,
+        "name": "Matt Vierling",
+        "position": "LF",
+        "jersey": "8",
+        "player_id": 663837
+      },
+      {
+        "slot": 8,
+        "name": "Parker Meadows",
+        "position": "CF",
+        "jersey": "22",
+        "player_id": 678009
+      },
+      {
+        "slot": 9,
+        "name": "Jake Rogers",
+        "position": "C",
+        "jersey": "34",
+        "player_id": 668670
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Byron Buxton",
+        "position": "DH",
+        "jersey": "25",
+        "player_id": 621439
+      },
+      {
+        "slot": 2,
+        "name": "Trevor Larnach",
+        "position": "LF",
+        "jersey": "9",
+        "player_id": 663616
+      },
+      {
+        "slot": 3,
+        "name": "Luke Keaschall",
+        "position": "2B",
+        "jersey": "15",
+        "player_id": 807712
+      },
+      {
+        "slot": 4,
+        "name": "Josh Bell",
+        "position": "1B",
+        "jersey": "56",
+        "player_id": 605137
+      },
+      {
+        "slot": 5,
+        "name": "Victor Caratini",
+        "position": "C",
+        "jersey": "37",
+        "player_id": 605170
+      },
+      {
+        "slot": 6,
+        "name": "Matt Wallner",
+        "position": "RF",
+        "jersey": "38",
+        "player_id": 670242
+      },
+      {
+        "slot": 7,
+        "name": "Royce Lewis",
+        "position": "3B",
+        "jersey": "23",
+        "player_id": 668904
+      },
+      {
+        "slot": 8,
+        "name": "James Outman",
+        "position": "CF",
+        "jersey": "30",
+        "player_id": 681546
+      },
+      {
+        "slot": 9,
+        "name": "Brooks Lee",
+        "position": "SS",
+        "jersey": "22",
+        "player_id": 686797
+      }
+    ]
   },
   {
     "date": "2026-04-06",
@@ -1015,11 +1143,139 @@
     "home_team": "Chicago White Sox",
     "game_time_et": "7:40 PM ET",
     "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (147 minutes to first pitch)",
-    "minutes_to_first_pitch": 147,
-    "away_lineup": [],
-    "home_lineup": []
+    "eligible": true,
+    "reason": "within 117 minutes of first pitch",
+    "minutes_to_first_pitch": 117,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Taylor Ward",
+        "position": "LF",
+        "jersey": "3",
+        "player_id": 621493
+      },
+      {
+        "slot": 2,
+        "name": "Gunnar Henderson",
+        "position": "SS",
+        "jersey": "2",
+        "player_id": 683002
+      },
+      {
+        "slot": 3,
+        "name": "Pete Alonso",
+        "position": "1B",
+        "jersey": "25",
+        "player_id": 624413
+      },
+      {
+        "slot": 4,
+        "name": "Adley Rutschman",
+        "position": "C",
+        "jersey": "35",
+        "player_id": 668939
+      },
+      {
+        "slot": 5,
+        "name": "Tyler O'Neill",
+        "position": "RF",
+        "jersey": "9",
+        "player_id": 641933
+      },
+      {
+        "slot": 6,
+        "name": "Ryan Mountcastle",
+        "position": "DH",
+        "jersey": "6",
+        "player_id": 663624
+      },
+      {
+        "slot": 7,
+        "name": "Colton Cowser",
+        "position": "CF",
+        "jersey": "17",
+        "player_id": 681297
+      },
+      {
+        "slot": 8,
+        "name": "Coby Mayo",
+        "position": "3B",
+        "jersey": "16",
+        "player_id": 691723
+      },
+      {
+        "slot": 9,
+        "name": "Jeremiah Jackson",
+        "position": "2B",
+        "jersey": "82",
+        "player_id": 669236
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Chase Meidroth",
+        "position": "2B",
+        "jersey": "10",
+        "player_id": 805367
+      },
+      {
+        "slot": 2,
+        "name": "Munetaka Murakami",
+        "position": "1B",
+        "jersey": "5",
+        "player_id": 808959
+      },
+      {
+        "slot": 3,
+        "name": "Miguel Vargas",
+        "position": "3B",
+        "jersey": "20",
+        "player_id": 678246
+      },
+      {
+        "slot": 4,
+        "name": "Colson Montgomery",
+        "position": "SS",
+        "jersey": "12",
+        "player_id": 695657
+      },
+      {
+        "slot": 5,
+        "name": "Austin Hays",
+        "position": "LF",
+        "jersey": "21",
+        "player_id": 669720
+      },
+      {
+        "slot": 6,
+        "name": "Andrew Benintendi",
+        "position": "DH",
+        "jersey": "23",
+        "player_id": 643217
+      },
+      {
+        "slot": 7,
+        "name": "Edgar Quero",
+        "position": "C",
+        "jersey": "26",
+        "player_id": 700337
+      },
+      {
+        "slot": 8,
+        "name": "Tristan Peters",
+        "position": "RF",
+        "jersey": "29",
+        "player_id": 671976
+      },
+      {
+        "slot": 9,
+        "name": "Luisangel Acu\u00f1a",
+        "position": "CF",
+        "jersey": "0",
+        "player_id": 682668
+      }
+    ]
   },
   {
     "date": "2026-04-06",
@@ -1030,8 +1286,8 @@
     "game_time_et": "8:05 PM ET",
     "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (172 minutes to first pitch)",
-    "minutes_to_first_pitch": 172,
+    "reason": "too early (142 minutes to first pitch)",
+    "minutes_to_first_pitch": 142,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -1044,8 +1300,8 @@
     "game_time_et": "8:40 PM ET",
     "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (207 minutes to first pitch)",
-    "minutes_to_first_pitch": 207,
+    "reason": "too early (177 minutes to first pitch)",
+    "minutes_to_first_pitch": 177,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -1056,10 +1312,10 @@
     "away_team": "Atlanta Braves",
     "home_team": "Los Angeles Angels",
     "game_time_et": "9:38 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (265 minutes to first pitch)",
-    "minutes_to_first_pitch": 265,
+    "reason": "too early (235 minutes to first pitch)",
+    "minutes_to_first_pitch": 235,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -1072,8 +1328,8 @@
     "game_time_et": "9:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (272 minutes to first pitch)",
-    "minutes_to_first_pitch": 272,
+    "reason": "too early (242 minutes to first pitch)",
+    "minutes_to_first_pitch": 242,
     "away_lineup": [],
     "home_lineup": []
   }
