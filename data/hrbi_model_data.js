@@ -1,3 +1,5 @@
+const hrbiModelUpdateDate = '2026-04-06';
+const hrbiModelLastRunTime = '1:36 PM ET';
 const hrbiModelData = [
   {
     "date": "2026-04-06",

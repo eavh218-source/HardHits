@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import pybaseball as pb
@@ -453,16 +454,33 @@ def generate_probability_payload(target_date, bvp_data, max_games=None, referenc
     return sorted(payload, key=lambda x: x['probability'], reverse=True)
 
 
-def save_probability_payload(payload, target_date, default_filename=None, default_var_name=None):
+def save_probability_payload(
+    payload,
+    target_date,
+    default_filename=None,
+    default_var_name=None,
+    default_date_var_name=None,
+    default_time_var_name=None,
+    run_time_label='',
+):
     date_key = target_date.replace('-', '_')
     dated_output = DATA_DIR / f"hr_model_{target_date}.js"
 
-    with open(dated_output, 'w', encoding='utf-8') as file_obj:
-        file_obj.write(f"window.hrModelData_{date_key} = {json.dumps(payload, indent=2)};")
+    dated_lines = [
+        f"window.hrModelUpdateDate_{date_key} = '{target_date}';",
+        f"window.hrModelLastRunTime_{date_key} = '{run_time_label}';",
+        f"window.hrModelData_{date_key} = {json.dumps(payload, indent=2)};",
+    ]
+    dated_output.write_text("\n".join(dated_lines), encoding='utf-8')
 
     if default_filename and default_var_name:
-        with open(DATA_DIR / default_filename, 'w', encoding='utf-8') as file_obj:
-            file_obj.write(f"const {default_var_name} = {json.dumps(payload, indent=2)};")
+        default_lines = []
+        if default_date_var_name:
+            default_lines.append(f"const {default_date_var_name} = '{target_date}';")
+        if default_time_var_name:
+            default_lines.append(f"const {default_time_var_name} = '{run_time_label}';")
+        default_lines.append(f"const {default_var_name} = {json.dumps(payload, indent=2)};")
+        (DATA_DIR / default_filename).write_text("\n".join(default_lines), encoding='utf-8')
 
     return dated_output
 
@@ -471,8 +489,10 @@ def run_probability_model(max_games=None):
     print('--- ⚾ HR Probability Engine (Unified) ---')
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    today = datetime.now().strftime('%Y-%m-%d')
-    tomorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+    now_et = datetime.now(ZoneInfo('America/New_York'))
+    run_time_label = now_et.strftime('%I:%M %p ET').lstrip('0')
+    today = now_et.strftime('%Y-%m-%d')
+    tomorrow = (now_et + timedelta(days=1)).strftime('%Y-%m-%d')
     bvp_data = load_bvp_data()
 
     if bvp_data:
@@ -480,11 +500,27 @@ def run_probability_model(max_games=None):
 
     print(f"\nBuilding today's predictions for {today}")
     today_payload = generate_probability_payload(today, bvp_data, max_games=max_games)
-    today_output = save_probability_payload(today_payload, today, 'hr_model_data.js', 'hrModelData')
+    today_output = save_probability_payload(
+        today_payload,
+        today,
+        'hr_model_data.js',
+        'hrModelData',
+        'hrModelUpdateDate',
+        'hrModelLastRunTime',
+        run_time_label,
+    )
 
     print(f"\nBuilding tomorrow's predictions for {tomorrow}")
     tomorrow_payload = generate_probability_payload(tomorrow, bvp_data, max_games=max_games)
-    tomorrow_output = save_probability_payload(tomorrow_payload, tomorrow, 'hr_model_tomorrow.js', 'hrModelTomorrowData')
+    tomorrow_output = save_probability_payload(
+        tomorrow_payload,
+        tomorrow,
+        'hr_model_tomorrow.js',
+        'hrModelTomorrowData',
+        'hrModelTomorrowUpdateDate',
+        'hrModelTomorrowLastRunTime',
+        run_time_label,
+    )
 
     print(f"\n✅ Success! {len(today_payload)} threats updated for today and {len(tomorrow_payload)} for tomorrow.")
     print(f"Saved: hr_model_data.js, {today_output.name}, hr_model_tomorrow.js, and {tomorrow_output.name}")

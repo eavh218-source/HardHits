@@ -62,9 +62,14 @@ class RegressionDataChecks(unittest.TestCase):
 
     def test_hr_model_data_shape(self):
         text = read_text(DATA_DIR / "hr_model_data.js")
+        update_date = extract_string_assignment(text, "hrModelUpdateDate")
+        last_run_time = extract_string_assignment(text, "hrModelLastRunTime")
         data = extract_json_assignment(text, "hrModelData")
         self.assertIsInstance(data, list)
         self.assertGreater(len(data), 0)
+
+        self.assertRegex(update_date, r"\d{4}-\d{2}-\d{2}")
+        self.assertTrue(last_run_time)
 
         sample = data[0]
         for key in ["date", "name", "team", "probability", "breakdown", "opp_pitcher"]:

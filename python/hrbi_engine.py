@@ -2,6 +2,7 @@ import json
 import re
 import argparse
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import pybaseball as pb
@@ -513,20 +514,33 @@ def generate_probability_payload(target_date, max_games=None):
     return sorted(payload, key=lambda x: x["probability"], reverse=True)
 
 
-def save_probability_payload(payload, target_date, default_filename=None, default_var_name=None):
+def save_probability_payload(
+    payload,
+    target_date,
+    default_filename=None,
+    default_var_name=None,
+    default_date_var_name=None,
+    default_time_var_name=None,
+    run_time_label='',
+):
     date_key = target_date.replace("-", "_")
     dated_output = DATA_DIR / f"hrbi_model_{target_date}.js"
 
-    dated_output.write_text(
+    dated_lines = [
+        f"window.hrbiModelUpdateDate_{date_key} = '{target_date}';",
+        f"window.hrbiModelLastRunTime_{date_key} = '{run_time_label}';",
         f"window.hrbiModelData_{date_key} = {json.dumps(payload, indent=2)};",
-        encoding="utf-8",
-    )
+    ]
+    dated_output.write_text("\n".join(dated_lines), encoding="utf-8")
 
     if default_filename and default_var_name:
-        (DATA_DIR / default_filename).write_text(
-            f"const {default_var_name} = {json.dumps(payload, indent=2)};",
-            encoding="utf-8",
-        )
+        default_lines = []
+        if default_date_var_name:
+            default_lines.append(f"const {default_date_var_name} = '{target_date}';")
+        if default_time_var_name:
+            default_lines.append(f"const {default_time_var_name} = '{run_time_label}';")
+        default_lines.append(f"const {default_var_name} = {json.dumps(payload, indent=2)};")
+        (DATA_DIR / default_filename).write_text("\n".join(default_lines), encoding="utf-8")
 
     return dated_output
 
@@ -535,12 +549,22 @@ def run_hrbi_model(max_games=None):
     print("--- H+R+RBI Probability Engine (stable) ---")
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    today = datetime.now().strftime("%Y-%m-%d")
-    tomorrow = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+    now_et = datetime.now(ZoneInfo('America/New_York'))
+    run_time_label = now_et.strftime('%I:%M %p ET').lstrip('0')
+    today = now_et.strftime("%Y-%m-%d")
+    tomorrow = (now_et + timedelta(days=1)).strftime("%Y-%m-%d")
 
     print(f"Building today's H+R+RBI predictions for {today}")
     today_payload = generate_probability_payload(today, max_games=max_games)
-    today_output = save_probability_payload(today_payload, today, "hrbi_model_data.js", "hrbiModelData")
+    today_output = save_probability_payload(
+        today_payload,
+        today,
+        "hrbi_model_data.js",
+        "hrbiModelData",
+        "hrbiModelUpdateDate",
+        "hrbiModelLastRunTime",
+        run_time_label,
+    )
 
     print(f"Building tomorrow's H+R+RBI predictions for {tomorrow}")
     tomorrow_payload = generate_probability_payload(tomorrow, max_games=max_games)
@@ -549,6 +573,9 @@ def run_hrbi_model(max_games=None):
         tomorrow,
         "hrbi_model_tomorrow.js",
         "hrbiModelTomorrowData",
+        "hrbiModelTomorrowUpdateDate",
+        "hrbiModelTomorrowLastRunTime",
+        run_time_label,
     )
 
     print(

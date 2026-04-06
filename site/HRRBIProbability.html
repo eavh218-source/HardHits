@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardHits | MLB HRR+ (Hits + Runs + RBIs) Probability Model</title>
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260406-admingear">
-    <script src="../data/hrbi_model_data.js?v=stable-20260406-livefix"></script>
+    <script src="../data/hrbi_model_data.js?v=stable-20260406-lastrun"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -230,7 +230,7 @@
 <div class="container">
     <div style="margin-bottom: 26px;">
         <h1 style="margin:0; font-size:2rem; letter-spacing:-0.02em;">MLB HRR+ (Hits + Runs + RBIs) Probability Model</h1>
-        <p style="margin:6px 0 0; color:var(--text-dim);">Target condition: player records 3+ combined HRR+ / Hits + Runs + RBIs.</p>
+        <p id="subtitle" style="margin:6px 0 0; color:var(--text-dim);">Target condition: player records 3+ combined HRR+ / Hits + Runs + RBIs.</p>
     </div>
 
     <div id="dashboard" class="grid"></div>
@@ -249,8 +249,33 @@
         const modal = document.getElementById('player-modal');
         const modalContent = document.getElementById('player-modal-content');
         const closeBtn = document.getElementById('player-modal-close');
+        const subtitle = document.getElementById('subtitle');
         const sourcePlayers = typeof hrbiModelData !== 'undefined' ? hrbiModelData : window.hrbiModelData;
         const players = Array.isArray(sourcePlayers) ? sourcePlayers : [];
+
+        function formatLongDate(dateStr) {
+            if (!dateStr) {
+                return '';
+            }
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+
+        const modelDate = (typeof hrbiModelUpdateDate !== 'undefined' && hrbiModelUpdateDate)
+            ? hrbiModelUpdateDate
+            : (players[0] && players[0].date ? players[0].date : '');
+        const lastRunTime = typeof hrbiModelLastRunTime !== 'undefined' ? hrbiModelLastRunTime : '';
+        if (subtitle) {
+            const subtitleParts = [];
+            if (modelDate) {
+                subtitleParts.push(`Updated for ${formatLongDate(modelDate)}`);
+            }
+            if (lastRunTime) {
+                subtitleParts.push(`Last run ${lastRunTime}`);
+            }
+            subtitleParts.push('Target condition: player records 3+ combined HRR+ / Hits + Runs + RBIs.');
+            subtitle.textContent = subtitleParts.join(' • ');
+        }
 
         function escapeHtml(value) {
             return String(value == null ? '' : value)
