@@ -1,21 +1,24 @@
-// Historical Data Index
+"""Refresh `data/historical_index.js` from the dated HR model/result files on disk.
+
+Usage:
+    python python/refresh_historical_index.py
+"""
+
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+from paths import DATA_DIR
+
+DATE_PATTERN = re.compile(r"hr_(model|results)_(\d{4}-\d{2}-\d{2})\.js$")
+INDEX_PATH = DATA_DIR / "historical_index.js"
+
+INDEX_TEMPLATE = """// Historical Data Index
 // Load specific date files as needed
 
-const historicalDates = [
-  "2026-04-06",
-  "2026-04-05",
-  "2026-04-04",
-  "2026-04-03",
-  "2026-04-02",
-  "2026-04-01",
-  "2026-03-31",
-  "2026-03-30",
-  "2026-03-29",
-  "2026-03-28",
-  "2026-03-27",
-  "2026-03-26",
-  "2026-03-25"
-];
+const historicalDates = __DATES__;
 
 function loadHistoricalData(dateStr) {
     return new Promise((resolve, reject) => {
@@ -68,3 +71,33 @@ function loadHistoricalData(dateStr) {
         }, 10000);
     });
 }
+"""
+
+
+def collect_available_dates() -> list[str]:
+    model_dates: set[str] = set()
+    result_dates: set[str] = set()
+
+    for path in DATA_DIR.glob("hr_*.js"):
+        match = DATE_PATTERN.match(path.name)
+        if not match:
+            continue
+        file_type, date_str = match.groups()
+        if file_type == "model":
+            model_dates.add(date_str)
+        elif file_type == "results":
+            result_dates.add(date_str)
+
+    return sorted(model_dates & result_dates, reverse=True)
+
+
+def write_historical_index() -> Path:
+    dates = collect_available_dates()
+    content = INDEX_TEMPLATE.replace("__DATES__", json.dumps(dates, indent=2))
+    INDEX_PATH.write_text(content, encoding="utf-8")
+    return INDEX_PATH
+
+
+if __name__ == "__main__":
+    output = write_historical_index()
+    print(f"Updated {output} with {len(collect_available_dates())} historical HR dates.")
