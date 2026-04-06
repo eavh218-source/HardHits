@@ -85,6 +85,14 @@
   background: rgba(248, 113, 113, 0.06);
 }
 
+.site-nav__link--icon {
+  min-width: 40px;
+  padding: 8px 10px;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
 @media (max-width: 720px) {
   .site-nav__inner {
     flex-direction: column;

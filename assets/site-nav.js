@@ -7,7 +7,7 @@
     { href: 'StartingLineups.html', label: 'Lineups', id: 'lineups' },
     { href: 'HRProbability_Combined.html', label: 'HR Probability', id: 'hr' },
     { href: 'HRRBIProbability.html', label: 'HRR+', id: 'hrbi' },
-    { href: 'projects.html', label: 'Roadmap', id: 'projects' }
+    { href: 'admin.html', label: '⚙', id: 'admin', title: 'Admin', icon: true }
   ];
 
   var nav = document.createElement('nav');
@@ -39,8 +39,10 @@
   items.forEach(function (item) {
     var a = document.createElement('a');
     a.href = item.href;
-    a.className = 'site-nav__link' + (active === item.id ? ' site-nav__link--active' : '');
+    a.className = 'site-nav__link' + (active === item.id ? ' site-nav__link--active' : '') + (item.icon ? ' site-nav__link--icon' : '');
     a.textContent = item.label;
+    a.title = item.title || item.label;
+    a.setAttribute('aria-label', item.title || item.label);
     links.appendChild(a);
   });
 
