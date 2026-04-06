@@ -1,4 +1,4 @@
-const hrbiResultsData = [
+window.hrbiResultsData_2026_04_05 = [
   {
     "date": "2026-04-05",
     "name": "Ildemaro Vargas",
@@ -5824,7 +5824,7 @@ const hrbiResultsData = [
     "classification": "NotFlagged"
   }
 ];
-const hrbiResultsSummary = {
+window.hrbiResultsSummary_2026_04_05 = {
   "date": "2026-04-05",
   "wins": 99,
   "losses": 315,

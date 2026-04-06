@@ -4,7 +4,7 @@ window.dailyMatchups_2026_04_06 = [
     "date": "2026-04-06",
     "time": "4:10 PM ET",
     "away_abbr": "CHC",
-    "away_p": "TBD",
+    "away_p": "Taillon",
     "home_abbr": "TBR",
     "home_p": "McClanahan"
   },
@@ -70,7 +70,7 @@ window.dailyMatchups_2026_04_06 = [
     "away_abbr": "BAL",
     "away_p": "TBD",
     "home_abbr": "CHW",
-    "home_p": "Fedde"
+    "home_p": "Taylor"
   },
   {
     "date": "2026-04-06",
@@ -84,7 +84,7 @@ window.dailyMatchups_2026_04_06 = [
     "date": "2026-04-06",
     "time": "8:40 PM ET",
     "away_abbr": "HOU",
-    "away_p": "TBD",
+    "away_p": "Bolton",
     "home_abbr": "COL",
     "home_p": "Feltner"
   },
@@ -198,16 +198,6 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Leody Taveras",
-    "launch_speed": 104.7,
-    "distance": 411,
-    "events": "Home Run",
-    "game_date": "2024-07-22"
-  },
-  {
-    "date": "2026-04-06",
     "pitcher_name": "Ryan Feltner",
     "opponent_team": "Houston Astros",
     "batter_name": "Christian Walker",
@@ -275,6 +265,16 @@ window.bvpData_2026_04_06 = [
     "distance": 399,
     "events": "Home Run",
     "game_date": "2025-04-13"
+  },
+  {
+    "date": "2026-04-06",
+    "pitcher_name": "Jameson Taillon",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Nick Fortes",
+    "launch_speed": 101.9,
+    "distance": 399,
+    "events": "Home Run",
+    "game_date": "2025-05-20"
   },
   {
     "date": "2026-04-06",
@@ -388,16 +388,6 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Pete Alonso",
-    "launch_speed": 103.9,
-    "distance": 385,
-    "events": "Double",
-    "game_date": "2025-05-04"
-  },
-  {
-    "date": "2026-04-06",
     "pitcher_name": "Logan Gilbert",
     "opponent_team": "Texas Rangers",
     "batter_name": "Josh Jung",
@@ -508,26 +498,6 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Adley Rutschman",
-    "launch_speed": 101.6,
-    "distance": 361,
-    "events": "Field Out",
-    "game_date": "2024-05-25"
-  },
-  {
-    "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Blaze Alexander",
-    "launch_speed": 98.5,
-    "distance": 361,
-    "events": "Home Run",
-    "game_date": "2025-08-27"
-  },
-  {
-    "date": "2026-04-06",
     "pitcher_name": "Tanner Bibee",
     "opponent_team": "Kansas City Royals",
     "batter_name": "Salvador Perez",
@@ -598,6 +568,16 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
+    "pitcher_name": "Jameson Taillon",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Yandy D\u00edaz",
+    "launch_speed": 114.0,
+    "distance": 330,
+    "events": "Field Out",
+    "game_date": "2024-06-11"
+  },
+  {
+    "date": "2026-04-06",
     "pitcher_name": "Michael Wacha",
     "opponent_team": "Cleveland Guardians",
     "batter_name": "Bo Naylor",
@@ -648,16 +628,6 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Pete Alonso",
-    "launch_speed": 102.1,
-    "distance": 291,
-    "events": "Double",
-    "game_date": "2025-05-04"
-  },
-  {
-    "date": "2026-04-06",
     "pitcher_name": "Janson Junk",
     "opponent_team": "Cincinnati Reds",
     "batter_name": "Elly De",
@@ -665,6 +635,16 @@ window.bvpData_2026_04_06 = [
     "distance": 277,
     "events": "Field Out",
     "game_date": "2025-07-07"
+  },
+  {
+    "date": "2026-04-06",
+    "pitcher_name": "Jameson Taillon",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Jake Fraley",
+    "launch_speed": 102.6,
+    "distance": 277,
+    "events": "Field Out",
+    "game_date": "2023-05-27"
   },
   {
     "date": "2026-04-06",
@@ -765,16 +745,6 @@ window.bvpData_2026_04_06 = [
     "distance": 232,
     "events": "Single",
     "game_date": "2025-05-10"
-  },
-  {
-    "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Gunnar Henderson",
-    "launch_speed": 107.1,
-    "distance": 229,
-    "events": "Single",
-    "game_date": "2025-05-26"
   },
   {
     "date": "2026-04-06",
@@ -1118,16 +1088,6 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Leody Taveras",
-    "launch_speed": 106.3,
-    "distance": 56,
-    "events": "Field Out",
-    "game_date": "2024-07-22"
-  },
-  {
-    "date": "2026-04-06",
     "pitcher_name": "Tanner Bibee",
     "opponent_team": "Kansas City Royals",
     "batter_name": "Maikel Garcia",
@@ -1175,6 +1135,16 @@ window.bvpData_2026_04_06 = [
     "distance": 33,
     "events": "Grounded Into Double Play",
     "game_date": "2025-08-04"
+  },
+  {
+    "date": "2026-04-06",
+    "pitcher_name": "Jameson Taillon",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Nick Fortes",
+    "launch_speed": 104.5,
+    "distance": 30,
+    "events": "Field Out",
+    "game_date": "2025-05-14"
   },
   {
     "date": "2026-04-06",
@@ -1278,16 +1248,6 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
-    "pitcher_name": "Erick Fedde",
-    "opponent_team": "Baltimore Orioles",
-    "batter_name": "Ryan Mountcastle",
-    "launch_speed": 108.6,
-    "distance": 17,
-    "events": "Field Out",
-    "game_date": "2024-05-25"
-  },
-  {
-    "date": "2026-04-06",
     "pitcher_name": "Tanner Bibee",
     "opponent_team": "Kansas City Royals",
     "batter_name": "Vinnie Pasquantino",
@@ -1358,6 +1318,16 @@ window.bvpData_2026_04_06 = [
   },
   {
     "date": "2026-04-06",
+    "pitcher_name": "Jameson Taillon",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Jake Fraley",
+    "launch_speed": 101.9,
+    "distance": 9,
+    "events": "Field Out",
+    "game_date": "2024-09-27"
+  },
+  {
+    "date": "2026-04-06",
     "pitcher_name": "Logan Gilbert",
     "opponent_team": "Texas Rangers",
     "batter_name": "Evan Carter",
@@ -1405,6 +1375,16 @@ window.bvpData_2026_04_06 = [
     "distance": 4,
     "events": "Field Out",
     "game_date": "2024-09-13"
+  },
+  {
+    "date": "2026-04-06",
+    "pitcher_name": "Jameson Taillon",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Nick Fortes",
+    "launch_speed": 101.7,
+    "distance": 4,
+    "events": "Field Out",
+    "game_date": "2025-05-14"
   },
   {
     "date": "2026-04-06",

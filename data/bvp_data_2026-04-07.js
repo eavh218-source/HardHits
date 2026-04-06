@@ -1,5 +1,5 @@
-const bvpTomorrowDate = '2026-04-07';
-const tomorrowMatchups = [
+window.bvpDate_2026_04_07 = '2026-04-07';
+window.dailyMatchups_2026_04_07 = [
   {
     "date": "2026-04-07",
     "time": "6:10 PM ET",
@@ -121,7 +121,7 @@ const tomorrowMatchups = [
     "home_p": "Ray"
   }
 ];
-const bvpTomorrowData = [
+window.bvpData_2026_04_07 = [
   {
     "date": "2026-04-07",
     "pitcher_name": "Aaron Civale",

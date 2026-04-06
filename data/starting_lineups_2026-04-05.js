@@ -1,5 +1,5 @@
 window.lineupUpdateDate_2026_04_05 = '2026-04-05';
-window.lineupLastCompleted_2026_04_05 = '9:42 PM ET';
+window.lineupLastCompleted_2026_04_05 = '11:42 PM ET';
 window.startingLineups_2026_04_05 = [
   {
     "date": "2026-04-05",
@@ -11,7 +11,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -513,
+    "minutes_to_first_pitch": -633,
     "away_lineup": [
       {
         "slot": 1,
@@ -153,7 +153,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -508,
+    "minutes_to_first_pitch": -628,
     "away_lineup": [
       {
         "slot": 1,
@@ -295,7 +295,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -488,
+    "minutes_to_first_pitch": -608,
     "away_lineup": [
       {
         "slot": 1,
@@ -437,7 +437,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -488,
+    "minutes_to_first_pitch": -608,
     "away_lineup": [
       {
         "slot": 1,
@@ -579,7 +579,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -488,
+    "minutes_to_first_pitch": -608,
     "away_lineup": [
       {
         "slot": 1,
@@ -721,7 +721,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -488,
+    "minutes_to_first_pitch": -608,
     "away_lineup": [
       {
         "slot": 1,
@@ -863,7 +863,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -453,
+    "minutes_to_first_pitch": -573,
     "away_lineup": [
       {
         "slot": 1,
@@ -1005,7 +1005,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -453,
+    "minutes_to_first_pitch": -573,
     "away_lineup": [
       {
         "slot": 1,
@@ -1147,7 +1147,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -453,
+    "minutes_to_first_pitch": -573,
     "away_lineup": [
       {
         "slot": 1,
@@ -1289,7 +1289,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -428,
+    "minutes_to_first_pitch": -548,
     "away_lineup": [
       {
         "slot": 1,
@@ -1431,7 +1431,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -393,
+    "minutes_to_first_pitch": -513,
     "away_lineup": [
       {
         "slot": 1,
@@ -1573,7 +1573,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -338,
+    "minutes_to_first_pitch": -458,
     "away_lineup": [
       {
         "slot": 1,
@@ -1715,7 +1715,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -338,
+    "minutes_to_first_pitch": -458,
     "away_lineup": [
       {
         "slot": 1,
@@ -1857,7 +1857,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -336,
+    "minutes_to_first_pitch": -456,
     "away_lineup": [
       {
         "slot": 1,
@@ -1999,7 +1999,7 @@ window.startingLineups_2026_04_05 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -333,
+    "minutes_to_first_pitch": -453,
     "away_lineup": [
       {
         "slot": 1,
@@ -2138,10 +2138,10 @@ window.startingLineups_2026_04_05 = [
     "away_team": "St. Louis Cardinals",
     "home_team": "Detroit Tigers",
     "game_time_et": "7:20 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -143,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -263,
     "away_lineup": [
       {
         "slot": 1,
@@ -2173,10 +2173,10 @@ window.startingLineups_2026_04_05 = [
       },
       {
         "slot": 5,
-        "name": "Nolan Gorman",
+        "name": "Ram\u00f3n Ur\u00edas",
         "position": "3B",
-        "jersey": "16",
-        "player_id": 669357
+        "jersey": "29",
+        "player_id": 602104
       },
       {
         "slot": 6,

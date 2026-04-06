@@ -2,6 +2,7 @@
 // Load specific BvP date files as needed
 
 const bvpHistoricalDates = [
+  "2026-04-07",
   "2026-04-06",
   "2026-04-05",
   "2026-04-04",
