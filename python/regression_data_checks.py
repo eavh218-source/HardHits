@@ -52,6 +52,8 @@ class RegressionDataChecks(unittest.TestCase):
             DATA_DIR / "hr_model_data.js",
             DATA_DIR / "hr_model_tomorrow.js",
             DATA_DIR / "hr_results_data.js",
+            DATA_DIR / "hrbi_results_data.js",
+            DATA_DIR / "hrbi_results_index.js",
             DATA_DIR / "todays_hrs.js",
             DATA_DIR / "starting_lineups.js",
             DATA_DIR / "bvp_data.js",
@@ -121,6 +123,20 @@ class RegressionDataChecks(unittest.TestCase):
             sample = hits[0]
             for key in ["pitcher_name", "batter_name", "launch_speed", "distance"]:
                 self.assertIn(key, sample)
+
+    def test_hrbi_results_shape(self):
+        text = read_text(DATA_DIR / "hrbi_results_data.js")
+        data = extract_json_assignment(text, "hrbiResultsData")
+        summary = extract_json_assignment(text, "hrbiResultsSummary")
+
+        self.assertIsInstance(data, list)
+        self.assertGreater(len(data), 0)
+        sample = data[0]
+        for key in ["date", "name", "team", "probability", "actual_total", "classification"]:
+            self.assertIn(key, sample)
+
+        for key in ["date", "wins", "losses", "outliers", "precision", "recall", "f1_score"]:
+            self.assertIn(key, summary)
 
     def test_projects_data_shape(self):
         text = read_text(DATA_DIR / "projects_data.js")

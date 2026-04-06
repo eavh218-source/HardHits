@@ -37,6 +37,13 @@ class RegressionSiteChecks(unittest.TestCase):
         self.assertIn("../data/hr_model_tomorrow.js", text)
         self.assertIn('data-nav="hr"', text)
 
+    def test_hrrbi_page_includes_results_and_verification(self):
+        text = read_text(SITE_DIR / "HRRBIProbability.html")
+        self.assertIn("../data/hrbi_results_data.js", text)
+        self.assertIn("Historical Results", text)
+        self.assertIn("Verification", text)
+        self.assertIn('data-nav="hrbi"', text)
+
     def test_daily_homers_page_uses_live_feed(self):
         text = read_text(SITE_DIR / "DailyHomers.html")
         self.assertIn("../data/todays_hrs.js", text)
