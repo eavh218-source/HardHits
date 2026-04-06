@@ -1,5 +1,5 @@
 window.hrUpdateDate_2026_04_03 = '2026-04-03';
-window.hrLastCompleted_2026_04_03 = '10:42 AM ET';
+window.hrLastCompleted_2026_04_03 = '1:12 PM ET';
 window.todaysHRData_2026_04_03 = [
   {
     "date": "2026-04-03",

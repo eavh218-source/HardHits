@@ -1,0 +1,13 @@
+const systemSettings = {
+  "environment": "stable",
+  "updated_at_utc": "2026-04-06T10:54:57Z",
+  "jobIntervals": {
+    "mastercontroller_minutes": 60,
+    "hr_engine_job_minutes": 30
+  },
+  "taskScheduler": {
+    "mastercontroller_task_name": "",
+    "hr_engine_job_task_name": ""
+  }
+};
+window.systemSettings = systemSettings;

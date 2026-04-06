@@ -2,6 +2,22 @@ window.bvpDate_2026_04_05 = '2026-04-05';
 window.dailyMatchups_2026_04_05 = [
   {
     "date": "2026-04-05",
+    "time": "1:10 PM ET",
+    "away_abbr": "CHC",
+    "away_p": "Cabrera",
+    "home_abbr": "CLE",
+    "home_p": "Cecconi"
+  },
+  {
+    "date": "2026-04-05",
+    "time": "1:15 PM ET",
+    "away_abbr": "CHC",
+    "away_p": "Imanaga",
+    "home_abbr": "CLE",
+    "home_p": "Messick"
+  },
+  {
+    "date": "2026-04-05",
     "time": "1:35 PM ET",
     "away_abbr": "LAD",
     "away_p": "Sasaki",
@@ -28,17 +44,9 @@ window.dailyMatchups_2026_04_05 = [
     "date": "2026-04-05",
     "time": "1:35 PM ET",
     "away_abbr": "MIA",
-    "away_p": "Paddack",
+    "away_p": "Fairbanks",
     "home_abbr": "NYY",
     "home_p": "Fried"
-  },
-  {
-    "date": "2026-04-05",
-    "time": "1:40 PM ET",
-    "away_abbr": "CHC",
-    "away_p": "Cabrera",
-    "home_abbr": "CLE",
-    "home_p": "Messick"
   },
   {
     "date": "2026-04-05",
@@ -102,13 +110,13 @@ window.dailyMatchups_2026_04_05 = [
     "away_abbr": "SEA",
     "away_p": "Castillo",
     "home_abbr": "LAA",
-    "home_p": "Johnson"
+    "home_p": "Klassen"
   },
   {
     "date": "2026-04-05",
     "time": "4:10 PM ET",
     "away_abbr": "ATL",
-    "away_p": "TBD",
+    "away_p": "P\u00e9rez",
     "home_abbr": "ARI",
     "home_p": "Pfaadt"
   },
@@ -118,7 +126,7 @@ window.dailyMatchups_2026_04_05 = [
     "away_abbr": "STL",
     "away_p": "Leahy",
     "home_abbr": "DET",
-    "home_p": "Verlander"
+    "home_p": "Montero"
   }
 ];
 window.bvpData_2026_04_05 = [
@@ -134,23 +142,23 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Chris Paddack",
-    "opponent_team": "New York Yankees",
-    "batter_name": "Ryan Mcmahon",
-    "launch_speed": 105.1,
-    "distance": 436,
+    "pitcher_name": "Mart\u00edn P\u00e9rez",
+    "opponent_team": "Arizona Diamondbacks",
+    "batter_name": "Ketel Marte",
+    "launch_speed": 112.9,
+    "distance": 443,
     "events": "Home Run",
-    "game_date": "2025-07-18"
+    "game_date": "2024-09-29"
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Chris Paddack",
+    "pitcher_name": "Pete Fairbanks",
     "opponent_team": "New York Yankees",
-    "batter_name": "Giancarlo Stanton",
-    "launch_speed": 114.0,
-    "distance": 427,
+    "batter_name": "Austin Wells",
+    "launch_speed": 107.3,
+    "distance": 423,
     "events": "Home Run",
-    "game_date": "2024-05-14"
+    "game_date": "2025-08-20"
   },
   {
     "date": "2026-04-05",
@@ -204,26 +212,6 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Iv\u00e1n Herrera",
-    "launch_speed": 108.4,
-    "distance": 412,
-    "events": "Home Run",
-    "game_date": "2025-09-22"
-  },
-  {
-    "date": "2026-04-05",
-    "pitcher_name": "Chris Paddack",
-    "opponent_team": "New York Yankees",
-    "batter_name": "Paul Goldschmidt",
-    "launch_speed": 105.5,
-    "distance": 410,
-    "events": "Home Run",
-    "game_date": "2024-03-05"
-  },
-  {
-    "date": "2026-04-05",
     "pitcher_name": "Kodai Senga",
     "opponent_team": "San Francisco Giants",
     "batter_name": "Matt Chapman",
@@ -244,16 +232,6 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Nolan Gorman",
-    "launch_speed": 106.1,
-    "distance": 407,
-    "events": "Home Run",
-    "game_date": "2024-06-03"
-  },
-  {
-    "date": "2026-04-05",
     "pitcher_name": "Chris Bassitt",
     "opponent_team": "Pittsburgh Pirates",
     "batter_name": "Brandon Lowe",
@@ -271,16 +249,6 @@ window.bvpData_2026_04_05 = [
     "distance": 404,
     "events": "Double",
     "game_date": "2024-02-27"
-  },
-  {
-    "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Nolan Gorman",
-    "launch_speed": 103.4,
-    "distance": 397,
-    "events": "Home Run",
-    "game_date": "2024-06-03"
   },
   {
     "date": "2026-04-05",
@@ -354,6 +322,36 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Pete Fairbanks",
+    "opponent_team": "New York Yankees",
+    "batter_name": "Giancarlo Stanton",
+    "launch_speed": 108.1,
+    "distance": 384,
+    "events": "Home Run",
+    "game_date": "2025-08-20"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Slade Cecconi",
+    "opponent_team": "Chicago Cubs",
+    "batter_name": "Michael Conforto",
+    "launch_speed": 105.1,
+    "distance": 384,
+    "events": "Field Out",
+    "game_date": "2024-04-21"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Mart\u00edn P\u00e9rez",
+    "opponent_team": "Arizona Diamondbacks",
+    "batter_name": "Gabriel Moreno",
+    "launch_speed": 110.1,
+    "distance": 381,
+    "events": "Double",
+    "game_date": "2024-09-29"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Kodai Senga",
     "opponent_team": "San Francisco Giants",
     "batter_name": "Rafael Devers",
@@ -394,6 +392,26 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Pete Fairbanks",
+    "opponent_team": "New York Yankees",
+    "batter_name": "Austin Wells",
+    "launch_speed": 102.7,
+    "distance": 373,
+    "events": "Field Out",
+    "game_date": "2025-07-28"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Steven Kwan",
+    "launch_speed": 99.9,
+    "distance": 373,
+    "events": "Home Run",
+    "game_date": "2024-08-12"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Kodai Senga",
     "opponent_team": "San Francisco Giants",
     "batter_name": "Rafael Devers",
@@ -414,23 +432,13 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Chris Paddack",
-    "opponent_team": "New York Yankees",
-    "batter_name": "Ben Rice",
-    "launch_speed": 101.4,
-    "distance": 364,
-    "events": "Field Out",
-    "game_date": "2025-09-09"
-  },
-  {
-    "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Alec Burleson",
-    "launch_speed": 100.6,
-    "distance": 363,
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "David Fry",
+    "launch_speed": 100.1,
+    "distance": 366,
     "events": "Home Run",
-    "game_date": "2024-06-03"
+    "game_date": "2025-07-02"
   },
   {
     "date": "2026-04-05",
@@ -471,6 +479,16 @@ window.bvpData_2026_04_05 = [
     "distance": 356,
     "events": "Sac Fly",
     "game_date": "2024-06-01"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Slade Cecconi",
+    "opponent_team": "Chicago Cubs",
+    "batter_name": "Michael Conforto",
+    "launch_speed": 105.0,
+    "distance": 355,
+    "events": "Field Out",
+    "game_date": "2023-08-02"
   },
   {
     "date": "2026-04-05",
@@ -534,16 +552,6 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Chris Paddack",
-    "opponent_team": "New York Yankees",
-    "batter_name": "Aaron Judge",
-    "launch_speed": 115.1,
-    "distance": 326,
-    "events": "Field Out",
-    "game_date": "2024-05-14"
-  },
-  {
-    "date": "2026-04-05",
     "pitcher_name": "Kodai Senga",
     "opponent_team": "San Francisco Giants",
     "batter_name": "Heliot Ramos",
@@ -551,6 +559,16 @@ window.bvpData_2026_04_05 = [
     "distance": 321,
     "events": "Field Out",
     "game_date": "2025-08-02"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Mart\u00edn P\u00e9rez",
+    "opponent_team": "Arizona Diamondbacks",
+    "batter_name": "Carlos Santana",
+    "launch_speed": 111.3,
+    "distance": 318,
+    "events": "Double",
+    "game_date": "2023-08-19"
   },
   {
     "date": "2026-04-05",
@@ -574,16 +592,6 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Alec Burleson",
-    "launch_speed": 104.0,
-    "distance": 317,
-    "events": "Double",
-    "game_date": "2023-03-15"
-  },
-  {
-    "date": "2026-04-05",
     "pitcher_name": "Logan Webb",
     "opponent_team": "New York Mets",
     "batter_name": "Juan Soto",
@@ -604,6 +612,16 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Keider Montero",
+    "opponent_team": "St. Louis Cardinals",
+    "batter_name": "Alec Burleson",
+    "launch_speed": 102.2,
+    "distance": 290,
+    "events": "Double",
+    "game_date": "2025-05-19"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Jacob Lopez",
     "opponent_team": "Houston Astros",
     "batter_name": "Jake Meyers",
@@ -611,6 +629,16 @@ window.bvpData_2026_04_05 = [
     "distance": 287,
     "events": "Field Out",
     "game_date": "2025-06-19"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "David Fry",
+    "launch_speed": 103.8,
+    "distance": 279,
+    "events": "Single",
+    "game_date": "2024-08-12"
   },
   {
     "date": "2026-04-05",
@@ -641,16 +669,6 @@ window.bvpData_2026_04_05 = [
     "distance": 260,
     "events": "Single",
     "game_date": "2025-08-14"
-  },
-  {
-    "date": "2026-04-05",
-    "pitcher_name": "Chris Paddack",
-    "opponent_team": "New York Yankees",
-    "batter_name": "Giancarlo Stanton",
-    "launch_speed": 115.5,
-    "distance": 254,
-    "events": "Single",
-    "game_date": "2024-06-05"
   },
   {
     "date": "2026-04-05",
@@ -704,6 +722,16 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Keider Montero",
+    "opponent_team": "St. Louis Cardinals",
+    "batter_name": "Ram\u00f3n Ur\u00edas",
+    "launch_speed": 101.0,
+    "distance": 239,
+    "events": "Single",
+    "game_date": "2025-03-07"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Chris Bassitt",
     "opponent_team": "Pittsburgh Pirates",
     "batter_name": "Brandon Lowe",
@@ -721,6 +749,26 @@ window.bvpData_2026_04_05 = [
     "distance": 204,
     "events": "Single",
     "game_date": "2025-07-02"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Mart\u00edn P\u00e9rez",
+    "opponent_team": "Arizona Diamondbacks",
+    "batter_name": "Carlos Santana",
+    "launch_speed": 107.9,
+    "distance": 191,
+    "events": "Double",
+    "game_date": "2024-08-20"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Pete Fairbanks",
+    "opponent_team": "New York Yankees",
+    "batter_name": "Ryan Mcmahon",
+    "launch_speed": 109.0,
+    "distance": 181,
+    "events": "Single",
+    "game_date": "2025-07-28"
   },
   {
     "date": "2026-04-05",
@@ -814,6 +862,16 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Pete Fairbanks",
+    "opponent_team": "New York Yankees",
+    "batter_name": "Randal Grichuk",
+    "launch_speed": 110.6,
+    "distance": 140,
+    "events": "Field Out",
+    "game_date": "2024-08-16"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Chris Bassitt",
     "opponent_team": "Pittsburgh Pirates",
     "batter_name": "Jake Mangum",
@@ -834,13 +892,13 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Chris Paddack",
+    "pitcher_name": "Pete Fairbanks",
     "opponent_team": "New York Yankees",
-    "batter_name": "Ryan Mcmahon",
-    "launch_speed": 107.2,
-    "distance": 100,
-    "events": "Grounded Into Double Play",
-    "game_date": "2024-06-10"
+    "batter_name": "Austin Wells",
+    "launch_speed": 107.6,
+    "distance": 105,
+    "events": "Field Out",
+    "game_date": "2025-05-03"
   },
   {
     "date": "2026-04-05",
@@ -854,6 +912,26 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Brayan Rocchio",
+    "launch_speed": 101.0,
+    "distance": 96,
+    "events": "Force Out",
+    "game_date": "2025-07-02"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Mart\u00edn P\u00e9rez",
+    "opponent_team": "Arizona Diamondbacks",
+    "batter_name": "Corbin Carroll",
+    "launch_speed": 104.3,
+    "distance": 92,
+    "events": "Single",
+    "game_date": "2023-10-28"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Logan Webb",
     "opponent_team": "New York Mets",
     "batter_name": "Brett Baty",
@@ -861,16 +939,6 @@ window.bvpData_2026_04_05 = [
     "distance": 88,
     "events": "Single",
     "game_date": "2025-07-25"
-  },
-  {
-    "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Masyn Winn",
-    "launch_speed": 103.5,
-    "distance": 79,
-    "events": "Single",
-    "game_date": "2024-06-03"
   },
   {
     "date": "2026-04-05",
@@ -924,6 +992,16 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Keider Montero",
+    "opponent_team": "St. Louis Cardinals",
+    "batter_name": "Masyn Winn",
+    "launch_speed": 101.3,
+    "distance": 52,
+    "events": "Single",
+    "game_date": "2025-05-19"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Brandon Pfaadt",
     "opponent_team": "Atlanta Braves",
     "batter_name": "Ronald Acu\u00f1a",
@@ -974,6 +1052,16 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
+    "pitcher_name": "Pete Fairbanks",
+    "opponent_team": "New York Yankees",
+    "batter_name": "Ben Rice",
+    "launch_speed": 107.0,
+    "distance": 36,
+    "events": "Field Out",
+    "game_date": "2025-04-17"
+  },
+  {
+    "date": "2026-04-05",
     "pitcher_name": "Brandon Pfaadt",
     "opponent_team": "Atlanta Braves",
     "batter_name": "Austin Riley",
@@ -984,13 +1072,13 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Jordan Walker",
-    "launch_speed": 103.3,
-    "distance": 27,
+    "pitcher_name": "Mart\u00edn P\u00e9rez",
+    "opponent_team": "Arizona Diamondbacks",
+    "batter_name": "Corbin Carroll",
+    "launch_speed": 106.5,
+    "distance": 34,
     "events": "Field Out",
-    "game_date": "2025-09-06"
+    "game_date": "2024-09-29"
   },
   {
     "date": "2026-04-05",
@@ -1011,6 +1099,16 @@ window.bvpData_2026_04_05 = [
     "distance": 18,
     "events": "Single",
     "game_date": "2025-07-03"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Mart\u00edn P\u00e9rez",
+    "opponent_team": "Arizona Diamondbacks",
+    "batter_name": "Ketel Marte",
+    "launch_speed": 107.2,
+    "distance": 17,
+    "events": "Single",
+    "game_date": "2024-09-29"
   },
   {
     "date": "2026-04-05",
@@ -1084,13 +1182,23 @@ window.bvpData_2026_04_05 = [
   },
   {
     "date": "2026-04-05",
-    "pitcher_name": "Justin Verlander",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Alec Burleson",
-    "launch_speed": 101.9,
+    "pitcher_name": "Shota Imanaga",
+    "opponent_team": "Cleveland Guardians",
+    "batter_name": "Jos\u00e9 Ram\u00edrez",
+    "launch_speed": 101.3,
+    "distance": 8,
+    "events": "Field Error",
+    "game_date": "2024-08-12"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Pete Fairbanks",
+    "opponent_team": "New York Yankees",
+    "batter_name": "Randal Grichuk",
+    "launch_speed": 101.0,
     "distance": 8,
     "events": "Field Out",
-    "game_date": "2024-06-03"
+    "game_date": "2023-08-18"
   },
   {
     "date": "2026-04-05",
@@ -1131,5 +1239,15 @@ window.bvpData_2026_04_05 = [
     "distance": 0,
     "events": "Home Run",
     "game_date": "2024-03-13"
+  },
+  {
+    "date": "2026-04-05",
+    "pitcher_name": "Slade Cecconi",
+    "opponent_team": "Chicago Cubs",
+    "batter_name": "Michael Conforto",
+    "launch_speed": 0.0,
+    "distance": 0,
+    "events": "Home Run",
+    "game_date": "2023-03-04"
   }
 ];

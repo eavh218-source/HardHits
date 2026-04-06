@@ -1,6 +1,6 @@
-const hrUpdateDate = '2026-04-05';
-const hrLastCompleted = '11:12 AM ET';
-const todaysHRData = [
+window.hrUpdateDate_2026_04_05 = '2026-04-05';
+window.hrLastCompleted_2026_04_05 = '11:12 AM ET';
+window.todaysHRData_2026_04_05 = [
   {
     "date": "2026-04-05",
     "batter": "Matt Shaw",

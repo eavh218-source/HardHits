@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HardHits | MLB HRR+ (Hits + Runs + RBIs) Probability Model</title>
+    <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260406-livefix">
+    <script src="../data/hrbi_model_data.js?v=stable-20260406-livefix"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --card: #0f172a;
+            --card-soft: #111827;
+            --border: #1e293b;
+            --accent: #f43f5e;
+            --accent-2: #38bdf8;
+            --emerald: #10b981;
+            --orange: #fb7185;
+            --gold: #fbbf24;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            line-height: 1.5;
+            background:
+                radial-gradient(circle at top, rgba(244, 63, 94, 0.12), transparent 0, transparent 38%),
+                radial-gradient(circle at right top, rgba(56, 189, 248, 0.12), transparent 0, transparent 30%),
+                var(--bg);
+            color: var(--text);
+        }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px 32px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+
+        .card {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(9, 13, 24, 0.98));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.26);
+        }
+
+        .high { border-top: 5px solid #a855f7; }
+        .std { border-top: 5px solid var(--accent); }
+        .watch { border-top: 5px solid var(--accent-2); }
+
+        .card-header { padding: 20px; display: flex; justify-content: space-between; gap: 14px; }
+        .player-name { margin: 6px 0; font-size: 1.3rem; }
+        .team-tag { color: var(--accent); font-size: 0.7rem; font-weight: 900; letter-spacing: .08em; }
+
+        .score-box {
+            min-width: 84px;
+            text-align: center;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px;
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .score-val { font-size: 1.5rem; font-weight: 900; color: var(--gold); display: block; line-height: 1; }
+        .score-label { font-size: 0.62rem; color: var(--text-dim); font-weight: 700; letter-spacing: .08em; }
+
+        .band {
+            display: inline-flex;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            background: rgba(244, 63, 94, 0.12);
+            color: #fecdd3;
+            border: 1px solid rgba(244, 63, 94, 0.28);
+        }
+
+        .section { padding: 0 20px 18px; }
+        .title { font-size: 0.72rem; color: var(--text-dim); font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+
+        .breakdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .b-item {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 8px;
+            background: rgba(15, 23, 42, 0.55);
+        }
+        .b-label { font-size: 0.62rem; color: var(--text-dim); font-weight: 800; display: block; margin-bottom: 6px; }
+        .track { height: 6px; background: #334155; border-radius: 8px; overflow: hidden; }
+        .fill { height: 100%; background: linear-gradient(90deg, var(--accent-2), var(--accent)); }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 8px 0;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        .detail-row strong {
+            color: var(--text);
+            text-align: right;
+        }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            background: rgba(2, 6, 23, 0.45);
+            padding: 14px 20px;
+            font-size: 0.74rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .card--interactive {
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card--interactive:hover {
+            transform: translateY(-4px);
+            border-color: #334155;
+            box-shadow: 0 22px 40px rgba(0, 0, 0, 0.34);
+        }
+
+        .card--interactive:focus-visible {
+            outline: 2px solid var(--accent-2);
+            outline-offset: 2px;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 3000;
+        }
+
+        .modal-backdrop.is-open {
+            display: flex;
+        }
+
+        .modal-card {
+            width: min(760px, 100%);
+            max-height: 85vh;
+            overflow-y: auto;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(8, 12, 21, 0.98));
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+            padding: 22px;
+        }
+
+        .modal-close {
+            border: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-left: auto;
+            display: block;
+        }
+
+        .modal-close:hover {
+            border-color: #475569;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 10px 0 18px;
+        }
+
+        .modal-title {
+            margin: 6px 0;
+            font-size: 1.6rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+        }
+
+        .modal-section {
+            margin-top: 16px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+            background: rgba(2, 6, 23, 0.42);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .stat-pill {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.78);
+            padding: 10px 12px;
+        }
+
+        .stat-pill-label {
+            display: block;
+            font-size: 0.68rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .stat-pill-value {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+    </style>
+</head>
+<body data-nav="hrbi">
+<div class="container">
+    <div style="margin-bottom: 26px;">
+        <h1 style="margin:0; font-size:2rem; letter-spacing:-0.02em;">MLB HRR+ (Hits + Runs + RBIs) Probability Model</h1>
+        <p style="margin:6px 0 0; color:var(--text-dim);">Target condition: player records 3+ combined HRR+ / Hits + Runs + RBIs.</p>
+    </div>
+
+    <div id="dashboard" class="grid"></div>
+</div>
+
+<div id="player-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Player stat lookup">
+        <button id="player-modal-close" class="modal-close" type="button">Close</button>
+        <div id="player-modal-content"></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dash = document.getElementById('dashboard');
+        const modal = document.getElementById('player-modal');
+        const modalContent = document.getElementById('player-modal-content');
+        const closeBtn = document.getElementById('player-modal-close');
+        const sourcePlayers = typeof hrbiModelData !== 'undefined' ? hrbiModelData : window.hrbiModelData;
+        const players = Array.isArray(sourcePlayers) ? sourcePlayers : [];
+
+        function escapeHtml(value) {
+            return String(value == null ? '' : value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function signalBlock(label, value) {
+            const safeVal = Math.max(0, Math.min(100, value || 0));
+            return '<div class="b-item">' +
+                '<span class="b-label">' + label + '</span>' +
+                '<div class="track"><div class="fill" style="width:' + safeVal + '%"></div></div>' +
+            '</div>';
+        }
+
+        function detailRow(label, value) {
+            return '<div class="detail-row"><span>' + escapeHtml(label) + '</span><strong>' + escapeHtml(value) + '</strong></div>';
+        }
+
+        function statPill(label, value) {
+            return '<div class="stat-pill">' +
+                '<span class="stat-pill-label">' + escapeHtml(label) + '</span>' +
+                '<span class="stat-pill-value">' + escapeHtml(value) + '</span>' +
+            '</div>';
+        }
+
+        function normalizeKey(value) {
+            return String(value == null ? '' : value).trim().toLowerCase();
+        }
+
+        function formatMetric(value, suffix) {
+            const numericValue = Number(value);
+            return Number.isFinite(numericValue) ? String(numericValue) + (suffix || '') : 'N/A';
+        }
+
+        function getPlayerFromCard(card) {
+            const index = Number(card.getAttribute('data-player-index'));
+            if (Number.isInteger(index) && players[index]) {
+                return players[index];
+            }
+
+            const playerName = normalizeKey(card.getAttribute('data-player-name'));
+            const playerTeam = normalizeKey(card.getAttribute('data-player-team'));
+
+            return players.find(function (candidate) {
+                return normalizeKey(candidate.name) === playerName && normalizeKey(candidate.team) === playerTeam;
+            }) || null;
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function openModal(player) {
+            const showPitcherHistory = Number(player.vs_starter_ab || 0) > 0;
+            const lastFiveSummary = Number(player.last_5_ab || 0) > 0
+                ? (player.last_5_avg_display || 'N/A') + ' (' + (player.last_5_hits || 0) + ' H / ' + (player.last_5_ab || 0) + ' AB)'
+                : (player.last_5_avg_display || 'N/A');
+
+            modalContent.innerHTML =
+                '<div class="modal-header">' +
+                    '<div>' +
+                        '<div class="team-tag">' + escapeHtml(player.team || 'TBD') + '</div>' +
+                        '<h2 class="modal-title">' + escapeHtml(player.name || 'Unknown') + '</h2>' +
+                        '<div class="modal-subtitle">Detailed lookup for ' + escapeHtml(player.opp_pitcher || 'TBD') + '</div>' +
+                    '</div>' +
+                    '<div class="score-box">' +
+                        '<span class="score-val">' + escapeHtml(String(player.probability || 0)) + '%</span>' +
+                        '<span class="score-label">HRR+ PROB</span>' +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="modal-section">' +
+                    '<div class="title">Bat + Ball Snapshot</div>' +
+                    '<div class="modal-grid">' +
+                        statPill('Season AVG', player.season_avg_display || 'N/A') +
+                        statPill('Last 5 AVG', lastFiveSummary) +
+                        statPill('Avg EV', formatMetric(player.avg_ev, ' MPH')) +
+                        statPill('Avg Launch Angle', formatMetric(player.avg_launch_angle, '°')) +
+                        statPill('Recent EV', formatMetric(player.recent_avg_ev, ' MPH')) +
+                        statPill('Recent Launch Angle', formatMetric(player.recent_launch_angle, '°')) +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="modal-section">' +
+                    '<div class="title">Form + Context</div>' +
+                    detailRow('Expected PA', String(player.expected_pa || 3.5)) +
+                    detailRow('Lineup Slot', String(player.lineup_slot || 9)) +
+                    detailRow('Hard-Hit Rate', formatMetric(player.hard_hit_rate, '%')) +
+                    detailRow('Line Drive Rate', formatMetric(player.ld_rate, '%')) +
+                    detailRow('Line Drive EV', formatMetric(player.ld_ev, ' MPH')) +
+                    detailRow('EV Trend', formatMetric(player.ev_trend_val) + ' (' + (player.ev_trend_label || 'Stable') + ')') +
+                    detailRow('BABIP Trend', formatMetric(player.babip_trend_val) + ' (' + (player.babip_trend_label || 'Stable') + ')') +
+                '</div>' +
+
+                (showPitcherHistory
+                    ? '<div class="modal-section">' +
+                        '<div class="title">Vs Opposing Starter</div>' +
+                        detailRow('Pitcher', player.opp_pitcher || 'TBD') +
+                        detailRow('AVG', player.vs_starter_avg_display || 'N/A') +
+                        detailRow('Hits / AB', String(player.vs_starter_hits || 0) + ' / ' + String(player.vs_starter_ab || 0)) +
+                        (Number(player.vs_starter_hr || 0) > 0 ? detailRow('HR', String(player.vs_starter_hr || 0)) : '') +
+                        (Number(player.vs_starter_rbi || 0) > 0 ? detailRow('RBI', String(player.vs_starter_rbi || 0)) : '') +
+                      '</div>'
+                    : '');
+
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            closeBtn.focus();
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        if (!players.length) {
+            dash.innerHTML = '<div style="grid-column:1/-1; padding:60px; text-align:center; border:2px dashed #334155; border-radius:16px; background:rgba(15,23,42,0.92); color:#f8fafc;">' +
+                '<h2 style="margin:0 0 8px;">No H+R+RBI Data Found</h2>' +
+                '<p style="margin:0; color:#94a3b8;">Run <code>python python/hrbi_engine.py</code> from the repo root to generate <code>data/hrbi_model_data.js</code>.</p>' +
+                '</div>';
+            return;
+        }
+
+        dash.innerHTML = players.map(function (p, index) {
+            const tierClass = p.probability >= 8.0 ? 'high' : (p.probability >= 5.0 ? 'std' : 'watch');
+            const breakdown = p.breakdown || {};
+            const safeName = escapeHtml(p.name || 'Unknown');
+
+            return '' +
+                '<article class="card card--interactive ' + tierClass + '" data-player-index="' + index + '" data-player-name="' + safeName + '" data-player-team="' + escapeHtml(p.team || '') + '" tabindex="0" role="button" aria-label="Open stats for ' + safeName + '">' +
+                    '<div class="card-header">' +
+                        '<div>' +
+                            '<div class="team-tag">' + escapeHtml(p.team || 'TBD') + '</div>' +
+                            '<h2 class="player-name">' + safeName + '</h2>' +
+                            '<span class="band">' + escapeHtml(p.confidence_band || 'Watchlist') + '</span>' +
+                        '</div>' +
+                        '<div class="score-box">' +
+                            '<span class="score-val">' + escapeHtml(String(p.probability || 0)) + '%</span>' +
+                            '<span class="score-label">PROBABILITY</span>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="section">' +
+                        '<div class="title">Signal Breakdown</div>' +
+                        '<div class="breakdown-grid">' +
+                            signalBlock('CONTACT', breakdown.Contact) +
+                            signalBlock('FORM', breakdown.Form) +
+                            signalBlock('PITCHER', breakdown.Pitcher) +
+                            signalBlock('RBI', breakdown.RBI) +
+                            signalBlock('RUNS', breakdown.Runs) +
+                            signalBlock('PARK', breakdown.Park) +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="section">' +
+                        detailRow('Lineup Slot', String(p.lineup_slot || 9)) +
+                        detailRow('Expected PA', String(p.expected_pa || 3.5)) +
+                        detailRow('Season AVG', String(p.season_avg_display || 'N/A')) +
+                        detailRow('Last 5 AVG', String(p.last_5_avg_display || 'N/A')) +
+                        detailRow('Avg EV', formatMetric(p.avg_ev, ' MPH')) +
+                        detailRow('Avg Launch Angle', formatMetric(p.avg_launch_angle, '°')) +
+                    '</div>' +
+
+                    '<div class="footer">' +
+                        '<span>vs ' + escapeHtml(p.opp_pitcher || 'TBD') + '</span>' +
+                        '<span>' + escapeHtml(p.target || 'H+R+RBI >= 3') + '</span>' +
+                    '</div>' +
+                '</article>';
+        }).join('');
+
+        Array.from(dash.querySelectorAll('.card--interactive')).forEach(function (card) {
+            card.addEventListener('click', function () {
+                const player = getPlayerFromCard(card);
+                if (player) {
+                    openModal(player);
+                }
+            });
+
+            card.addEventListener('keydown', function (event) {
+                if (event.key !== 'Enter' && event.key !== ' ') {
+                    return;
+                }
+
+                event.preventDefault();
+                const player = getPlayerFromCard(card);
+                if (player) {
+                    openModal(player);
+                }
+            });
+        });
+    });
+</script>
+<script src="../assets/site-nav.js?v=stable-20260406-livefix" defer></script>
+</body>
+</html>

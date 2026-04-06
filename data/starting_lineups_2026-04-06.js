@@ -1,4 +1,6 @@
-[
+window.lineupUpdateDate_2026_04_06 = '2026-04-06';
+window.lineupLastCompleted_2026_04_06 = '11:12 AM ET';
+window.startingLineups_2026_04_06 = [
   {
     "date": "2026-04-06",
     "game_pk": 823002,
@@ -181,4 +183,4 @@
     "away_lineup": [],
     "home_lineup": []
   }
-]
+];
