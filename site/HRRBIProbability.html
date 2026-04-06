@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HardHits | MLB Hits + Runs + RBIs (H+R+RBI) Probability Model</title>
+    <title>HardHits | MLB HRR+ (Hits + Runs + RBIs) Probability Model</title>
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260404-clickfix">
     <script src="../data/hrbi_model_data.js?v=stable-20260404-clickfix"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -229,8 +229,8 @@
 <body data-nav="hrbi">
 <div class="container">
     <div style="margin-bottom: 26px;">
-        <h1 style="margin:0; font-size:2rem; letter-spacing:-0.02em;">MLB Hits + Runs + RBIs (H+R+RBI) Probability Model</h1>
-        <p style="margin:6px 0 0; color:var(--text-dim);">Target condition: player records 3+ combined Hits + Runs + RBIs.</p>
+        <h1 style="margin:0; font-size:2rem; letter-spacing:-0.02em;">MLB HRR+ (Hits + Runs + RBIs) Probability Model</h1>
+        <p style="margin:6px 0 0; color:var(--text-dim);">Target condition: player records 3+ combined HRR+ / Hits + Runs + RBIs.</p>
     </div>
 
     <div id="dashboard" class="grid"></div>
@@ -324,7 +324,7 @@
                     '</div>' +
                     '<div class="score-box">' +
                         '<span class="score-val">' + escapeHtml(String(player.probability || 0)) + '%</span>' +
-                        '<span class="score-label">H+R+RBI PROB</span>' +
+                        '<span class="score-label">HRR+ PROB</span>' +
                     '</div>' +
                 '</div>' +
 
