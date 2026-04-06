@@ -38,5 +38,10 @@ const projectData = [
     "title": "HardHits Core v3.0",
     "description": "Base Statcast engine tracking Exit Velocity trends, Launch Angles, and Barrel percentages.",
     "status": "Stable"
+  },
+  {
+    "title": "One-Step Stable Publish Workflow",
+    "description": "Repeatable GitHub Pages publish flow using `run_build_pages.bat` / `python python/publish_github_pages.py` to rebuild and push the live stable site in one command.",
+    "status": "Stable"
   }
 ];
