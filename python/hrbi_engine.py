@@ -113,24 +113,38 @@ def get_team_abbr(team_name):
     return TEAM_MAP.get(team_name, team_name[:3].upper())
 
 
-def load_starting_lineups():
-    lineup_path = DATA_DIR / "starting_lineups.js"
-    if not lineup_path.exists():
-        return []
+def load_starting_lineups(target_date=None):
+    candidate_paths = []
+    if target_date:
+        candidate_paths.extend([
+            DATA_DIR / f"starting_lineups_{target_date}.js",
+            DATA_DIR / f"starting_lineups_{target_date}.json",
+        ])
+    candidate_paths.extend([
+        DATA_DIR / "starting_lineups.json",
+        DATA_DIR / "starting_lineups.js",
+    ])
 
-    try:
-        content = lineup_path.read_text(encoding="utf-8")
-        match = re.search(r"const startingLineups = (\[.*\]);", content, re.S)
-        if not match:
-            return []
-        return json.loads(match.group(1))
-    except Exception as exc:
-        print(f"Warning: failed to load starting lineups: {exc}")
-        return []
+    for lineup_path in candidate_paths:
+        if not lineup_path.exists():
+            continue
+
+        try:
+            content = lineup_path.read_text(encoding="utf-8")
+            if lineup_path.suffix.lower() == ".json":
+                return json.loads(content)
+
+            match = re.search(r"const startingLineups = (\[.*\]);", content, re.S)
+            if match:
+                return json.loads(match.group(1))
+        except Exception as exc:
+            print(f"Warning: failed to load {lineup_path.name}: {exc}")
+
+    return []
 
 
 def build_lineup_context(target_date):
-    games = load_starting_lineups()
+    games = load_starting_lineups(target_date)
     context = {}
 
     for game in games:
@@ -154,14 +168,21 @@ def build_lineup_context(target_date):
     return context
 
 
-def extract_statcast_windows(player_id):
+def extract_statcast_windows(player_id, reference_date=None):
     try:
-        end_date = datetime.now().strftime("%Y-%m-%d")
-        start_date = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+        if reference_date:
+            reference_dt = datetime.strptime(str(reference_date), "%Y-%m-%d")
+        else:
+            reference_dt = datetime.now()
+
+        end_date = reference_dt.strftime("%Y-%m-%d")
+        start_date = (reference_dt - timedelta(days=30)).strftime("%Y-%m-%d")
         df = pb.statcast_batter(start_date, end_date, player_id)
 
         if df.empty:
-            df = pb.statcast_batter("2025-09-01", "2025-10-01", player_id)
+            fallback_end = reference_dt.strftime("%Y-%m-%d")
+            fallback_start = (reference_dt - timedelta(days=30)).strftime("%Y-%m-%d")
+            df = pb.statcast_batter(fallback_start, fallback_end, player_id)
             if df.empty:
                 return None
 
@@ -170,7 +191,7 @@ def extract_statcast_windows(player_id):
             return None
 
         df["game_date"] = pd.to_datetime(df["game_date"])
-        last_7 = df[df["game_date"] >= (datetime.now() - timedelta(days=7))]
+        last_7 = df[df["game_date"] >= (reference_dt - timedelta(days=7))]
 
         line_drives = df[df["bb_type"] == "line_drive"]
         ld_rate = len(line_drives) / len(df) * 100
@@ -214,19 +235,39 @@ def extract_statcast_windows(player_id):
         return None
 
 
-def compute_last_5_summary(game_log_splits):
+def compute_last_5_summary(game_log_splits, reference_date=None):
     if not game_log_splits:
         return {"avg": None, "hits": 0, "at_bats": 0}
 
-    recent = game_log_splits[:5]
+    filtered_logs = []
+    if reference_date:
+        try:
+            reference_dt = datetime.strptime(str(reference_date), "%Y-%m-%d").date()
+        except Exception:
+            reference_dt = None
+    else:
+        reference_dt = None
+
+    for split in game_log_splits:
+        split_date = split.get("date") or split.get("game", {}).get("gameDate")
+        if reference_dt and split_date:
+            try:
+                if datetime.strptime(str(split_date)[:10], "%Y-%m-%d").date() > reference_dt:
+                    continue
+            except Exception:
+                pass
+        filtered_logs.append(split)
+
+    recent = filtered_logs[:5]
     total_hits = sum(int(safe_float(split.get("stat", {}).get("hits"), 0)) for split in recent)
     total_ab = sum(int(safe_float(split.get("stat", {}).get("atBats"), 0)) for split in recent)
     avg = round(total_hits / total_ab, 3) if total_ab > 0 else None
     return {"avg": avg, "hits": total_hits, "at_bats": total_ab}
 
 
-def get_hitting_profile(player_id, pitcher_id=None):
-    cache_key = (player_id, pitcher_id)
+def get_hitting_profile(player_id, pitcher_id=None, reference_date=None):
+    reference_key = str(reference_date or "current")
+    cache_key = (player_id, pitcher_id, reference_key)
     if cache_key in PROFILE_CACHE:
         return PROFILE_CACHE[cache_key]
 
@@ -250,7 +291,15 @@ def get_hitting_profile(player_id, pitcher_id=None):
     }
 
     try:
-        season = str(datetime.now().year)
+        if reference_date:
+            try:
+                reference_dt = datetime.strptime(str(reference_date), "%Y-%m-%d")
+            except Exception:
+                reference_dt = datetime.now()
+        else:
+            reference_dt = datetime.now()
+
+        season = str(reference_dt.year)
         type_list = "season,gameLog,vsPlayer" if pitcher_id else "season,gameLog"
         hydrate = f"stats(group=[hitting],type=[{type_list}],season={season}"
         if pitcher_id:
@@ -284,7 +333,7 @@ def get_hitting_profile(player_id, pitcher_id=None):
         risp_proxy = clamp((avg - 0.200) / 0.140 * 100)
         team_obp_score = clamp((obp - 0.280) / 0.090 * 100)
 
-        last_5_summary = compute_last_5_summary(game_logs)
+        last_5_summary = compute_last_5_summary(game_logs, reference_date=reference_date)
         last_5_avg = last_5_summary["avg"]
         last_5_hits = last_5_summary["hits"]
         last_5_ab = last_5_summary["at_bats"]
@@ -370,11 +419,11 @@ def build_player_row(game, side, roster_player, lineup_context):
     opp_pitcher = game.get("home_probable_pitcher" if side == "away" else "away_probable_pitcher") or "TBD"
     opp_pitcher_id = get_pitcher_id(opp_pitcher)
 
-    statcast = extract_statcast_windows(player_id)
+    statcast = extract_statcast_windows(player_id, reference_date=game.get("game_date"))
     if not statcast:
         return None
 
-    profile = get_hitting_profile(player_id, pitcher_id=opp_pitcher_id)
+    profile = get_hitting_profile(player_id, pitcher_id=opp_pitcher_id, reference_date=game.get("game_date"))
     park_factor = PARK_HITS_FACTORS.get(game.get("home_name"), 1.00)
 
     context = lineup_context.get(normalize_name(name), {
@@ -545,7 +594,7 @@ def save_probability_payload(
     return dated_output
 
 
-def run_hrbi_model(max_games=None):
+def run_hrbi_model(max_games=None, target_date=None):
     print("--- H+R+RBI Probability Engine (stable) ---")
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -553,6 +602,39 @@ def run_hrbi_model(max_games=None):
     run_time_label = now_et.strftime('%I:%M %p ET').lstrip('0')
     today = now_et.strftime("%Y-%m-%d")
     tomorrow = (now_et + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    if target_date:
+        print(f"Building H+R+RBI historical predictions for {target_date}")
+        payload = generate_probability_payload(target_date, max_games=max_games)
+
+        if target_date == today:
+            output = save_probability_payload(
+                payload,
+                target_date,
+                "hrbi_model_data.js",
+                "hrbiModelData",
+                "hrbiModelUpdateDate",
+                "hrbiModelLastRunTime",
+                run_time_label,
+            )
+            print(f"Saved latest today file and {output.name}")
+        elif target_date == tomorrow:
+            output = save_probability_payload(
+                payload,
+                target_date,
+                "hrbi_model_tomorrow.js",
+                "hrbiModelTomorrowData",
+                "hrbiModelTomorrowUpdateDate",
+                "hrbiModelTomorrowLastRunTime",
+                run_time_label,
+            )
+            print(f"Saved latest tomorrow file and {output.name}")
+        else:
+            output = save_probability_payload(payload, target_date, run_time_label=run_time_label)
+            print(f"Saved historical file: {output.name}")
+
+        print(f"Success: {len(payload)} players scored for {target_date}.")
+        return
 
     print(f"Building today's H+R+RBI predictions for {today}")
     today_payload = generate_probability_payload(today, max_games=max_games)
@@ -591,6 +673,11 @@ def run_hrbi_model(max_games=None):
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate stable H+R+RBI probability outputs.")
     parser.add_argument(
+        "--date",
+        default="",
+        help="Optional target date in YYYY-MM-DD format for generating a single historical file.",
+    )
+    parser.add_argument(
         "--max-games",
         type=int,
         default=0,
@@ -601,4 +688,4 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    run_hrbi_model(max_games=args.max_games or None)
+    run_hrbi_model(max_games=args.max_games or None, target_date=args.date or None)
