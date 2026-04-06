@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HardHits | HR Historical</title>
+    <link rel="stylesheet" href="../../assets/site-nav.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --card: #0f172a;
+            --border: #1e293b;
+            --accent: #f43f5e;
+            --gold: #fbbf24;
+            --emerald: #10b981;
+            --sky: #38bdf8;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            margin: 0; 
+            line-height: 1.5;
+        }
+
+        .controls-bar {
+            background: var(--card);
+            padding: 15px 5%;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        input[type="date"] {
+            background: #1e293b;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .load-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .load-btn:hover { transform: scale(1.05); }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+
+        .card { 
+            background: var(--card); 
+            border: 1px solid var(--border); 
+            border-radius: 20px; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-8px); border-color: #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        .elite { border-top: 5px solid var(--accent); }
+        .solid { border-top: 5px solid var(--emerald); }
+
+        .card-header { padding: 24px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .team-tag { font-size: 0.65rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        .player-name { margin: 4px 0; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+
+        .score-box { background: #1e293b; padding: 10px; border-radius: 12px; text-align: center; min-width: 65px; border: 1px solid var(--border); }
+        .score-val { display: block; font-size: 1.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
+        .score-label { font-size: 0.6rem; color: var(--text-dim); font-weight: 700; margin-top: 4px; }
+
+        .breakdown-section { padding: 0 24px 20px; }
+        .breakdown-title { font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px; display: block; }
+        
+        .breakdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 12px; }
+        .b-item { text-align: center; }
+        .b-label { font-size: 0.55rem; font-weight: 800; color: var(--text-dim); display: block; margin-bottom: 6px; }
+        .b-track { height: 4px; background: #334155; border-radius: 2px; overflow: hidden; }
+        .b-fill { height: 100%; border-radius: 2px; transition: width 1s ease-out; }
+
+        .stats-section { padding: 0 24px 24px; }
+        .stat-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
+        .stat-value { font-size: 0.85rem; font-weight: 700; }
+        
+        .progress-track { height: 6px; background: #1e293b; border-radius: 10px; overflow: hidden; margin-top: 4px; }
+        .progress-fill { height: 100%; border-radius: 10px; }
+
+        .trend-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; display: inline-block; margin-top: 5px; }
+        .hot-trend { background: rgba(244, 63, 94, 0.1); color: var(--accent); border: 1px solid var(--accent); }
+        .neutral-trend { background: rgba(16, 185, 129, 0.1); color: var(--emerald); border: 1px solid var(--emerald); }
+
+        .error-container { grid-column: 1/-1; text-align: center; padding: 60px; border: 2px dashed var(--border); border-radius: 30px; color: var(--text-dim); }
+    </style>
+
+<style id="dev-stage-style">
+  .dev-stage-banner {
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+  .dev-stage-banner code {
+    background: rgba(255,255,255,0.16);
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #fff;
+  }
+</style>
+</head>
+<body data-nav="hrhist">
+<div class="dev-stage-banner">DEV STAGE · Test changes safely here. Stable pages remain in <code>/site</code>.</div>
+
+
+<div class="controls-bar">
+    <span style="font-weight: 700; font-size: 0.8rem; color: var(--text-dim);">SELECT DATE:</span>
+    <input type="date" id="datePicker" value="2026-04-01">
+    <button class="load-btn" onclick="loadHistoricalData()">RUN ANALYSIS</button>
+</div>
+
+<div class="container">
+    <div style="margin-bottom: 30px;">
+        <h1 id="pageTitle" style="font-size: 2.2rem; margin: 0; letter-spacing: -1px;">HR Probability (historical)</h1>
+        <p style="color: var(--text-dim); margin-top: 5px;">Loads <code>data/hr_model_&lt;date&gt;.js</code> from <code>python python/hr_engine_historical.py</code> (set <code>TARGET_DATE_STR</code> in the script).</p>
+    </div>
+
+    <div id="dashboard" class="grid">
+        <div class="error-container">
+            <h2>System Standby</h2>
+            <p>Select a date and click &quot;Run Analysis&quot;, or generate data for that date first.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function renderDashboard(data) {
+        const dash = document.getElementById('dashboard');
+        dash.innerHTML = '';
+
+        data.forEach(p => {
+            const isElite = p.probability >= 8.5;
+            const isSolid = p.probability >= 5.5 && p.probability < 8.5;
+            const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
+            
+            const powerVal = Math.min((p.max_ev - 100) * 5, 100); 
+            const formVal = Math.min((p.fb_ev - 85) * 6, 100);
+            const trendVal = Math.min((p.ev_trend_val + 5) * 10, 100);
+            const trendClass = p.ev_trend_val > 1.0 ? 'hot-trend' : 'neutral-trend';
+
+            dash.innerHTML += `
+                <article class="card ${tierClass}">
+                    <div class="card-header">
+                        <div>
+                            <span class="team-tag">${p.team}</span>
+                            <h2 class="player-name">${p.name}</h2>
+                            <span class="trend-badge ${trendClass}">${p.ev_trend_val > 0 ? '+' : ''}${p.ev_trend_val} EV Trend</span>
+                        </div>
+                        <div class="score-box">
+                            <span class="score-val">${p.probability}%</span>
+                            <span class="score-label">PROB</span>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-section">
+                        <span class="breakdown-title">Signal Heatmap</span>
+                        <div class="breakdown-grid">
+                            <div class="b-item">
+                                <span class="b-label">POWER</span>
+                                <div class="b-track"><div class="b-fill" style="width:${powerVal}%; background: var(--accent);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">FORM</span>
+                                <div class="b-track"><div class="b-fill" style="width:${formVal}%; background: var(--emerald);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">TREND</span>
+                                <div class="b-track"><div class="b-fill" style="width:${trendVal}%; background: var(--gold);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-section">
+                        <div class="stat-group">
+                            <div class="stat-line">
+                                <span class="stat-label">Max Exit Velocity</span>
+                                <span class="stat-value">${p.max_ev} MPH</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" style="width:${(p.max_ev/122)*100}%; background: var(--accent);"></div></div>
+                        </div>
+                        
+                        <div class="stat-group" style="margin-top:15px;">
+                            <div class="stat-line">
+                                <span class="stat-label">Fly Ball EV (Avg)</span>
+                                <span class="stat-value">${p.fb_ev} MPH</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" style="width:${(p.fb_ev/105)*100}%; background: var(--gold);"></div></div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        });
+    }
+
+    function loadHistoricalData() {
+        const dateVal = document.getElementById('datePicker').value;
+        if (!dateVal) return;
+
+        const fileName = `../../data/hr_model_${dateVal}.js`;
+        const varName = `hrModelData_${dateVal.replaceAll('-', '_')}`;
+
+        const oldScript = document.getElementById('dynamic-data-script');
+        if (oldScript) oldScript.remove();
+
+        const script = document.createElement('script');
+        script.id = 'dynamic-data-script';
+        script.src = fileName;
+
+        script.onload = () => {
+            const data = window[varName];
+            if (data) {
+                renderDashboard(data);
+                document.getElementById('pageTitle').innerText = `Projections: ${dateVal}`;
+            } else {
+                showError(`File loaded, but "window.${varName}" is missing.`);
+            }
+        };
+
+        script.onerror = () => {
+            showError(`No file at ${fileName}. Run python python/hr_engine_historical.py with TARGET_DATE_STR="${dateVal}" to generate it.`);
+        };
+
+        document.head.appendChild(script);
+    }
+
+    function showError(msg) {
+        document.getElementById('dashboard').innerHTML = `
+            <div class="error-container">
+                <h2 style="color: var(--accent)">Data Unavailable</h2>
+                <p>${msg}</p>
+            </div>`;
+    }
+</script>
+<script src="../../assets/site-nav-dev.js" defer></script>
+</body>
+</html>

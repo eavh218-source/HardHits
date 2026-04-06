@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HardHits | BvP Analytics</title>
+    <link rel="stylesheet" href="../../assets/site-nav.css">
+    <script src="../../data/bvp_data.js"></script>
+    <script src="../../data/bvp_data_tomorrow.js"></script>
+    <script src="../../data/bvp_index.js"></script>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: #111827;
+            --card-hover: #1a2234;
+            --border: #1e293b;
+            --accent: #f87171;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text-dim);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .matchup-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        .matchup-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+
+        .live-dot { width: 5px; height: 5px; background: #4ade80; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        .team-row { display: flex; justify-content: space-between; align-items: center; margin: 5px 0; }
+        .team-abbr { font-size: 1.1rem; font-weight: 900; }
+        .p-name { font-size: 0.75rem; color: var(--text-dim); }
+        .vs-divider { text-align: center; font-size: 0.5rem; color: var(--accent); font-weight: 900; margin: 2px 0; opacity: 0.4; }
+
+        .section-title { font-size: 0.85rem; text-transform: uppercase; color: var(--accent); font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+        .leader-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-bottom: 50px; }
+        .leader-card { background: var(--card); border-left: 4px solid var(--accent); padding: 15px; border-radius: 6px; }
+
+        .p-group { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+        .p-header { background: var(--card); padding: 15px; cursor: pointer; display: flex; justify-content: space-between; font-size: 0.9rem; }
+        .hidden { display: none; }
+        table { width: 100%; border-collapse: collapse; }
+        td, th { padding: 12px 20px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 30px;
+            color: var(--text-dim);
+            background: var(--card);
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 1200px) { .matchup-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 800px) { .matchup-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+
+<style id="dev-stage-style">
+  .dev-stage-banner {
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+  .dev-stage-banner code {
+    background: rgba(255,255,255,0.16);
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #fff;
+  }
+</style>
+</head>
+<body data-nav="bvp">
+<div class="dev-stage-banner">DEV STAGE · Test changes safely here. Stable pages remain in <code>/site</code>.</div>
+
+
+<div class="container">
+    <div style="margin-bottom: 30px;">
+        <h1 id="page-title" style="font-size: 2.2rem; margin: 0; letter-spacing: -1px;">BvP Analytics</h1>
+        <p id="page-subtitle" style="color: var(--text-dim); margin-top: 5px;">Today matchup-based hard-contact history</p>
+    </div>
+
+    <div class="view-toggle">
+        <button class="toggle-btn active" id="today-btn">Today's Matchups</button>
+        <button class="toggle-btn" id="historical-btn">Historical</button>
+        <button class="toggle-btn" id="tomorrow-btn">Tomorrow</button>
+    </div>
+
+    <div id="date-selector" style="display: none; margin-bottom: 30px; text-align: center;">
+        <select id="date-select" style="padding: 10px 15px; border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 8px; font-size: 0.9rem;">
+            <option value="">Select Date...</option>
+        </select>
+        <div id="date-summary" style="margin-top: 15px; color: var(--text-dim); font-size: 0.85rem;"></div>
+    </div>
+
+    <div class="section-title">Matchups</div>
+    <div id="grid-box" class="matchup-grid"></div>
+
+    <div class="section-title">☄️ Power Leaders (by Distance)</div>
+    <div id="leaderboard" class="leader-grid"></div>
+
+    <div class="section-title">Pitcher Scouting Reports</div>
+    <div id="reports"></div>
+</div>
+
+<script>
+    let currentView = 'today';
+
+    document.getElementById('today-btn').addEventListener('click', () => setView('today'));
+    document.getElementById('historical-btn').addEventListener('click', () => setView('historical'));
+    document.getElementById('tomorrow-btn').addEventListener('click', () => setView('tomorrow'));
+
+    function formatDateForDisplay(dateStr) {
+        const date = new Date(dateStr + 'T00:00:00');
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    }
+
+    function setView(view) {
+        currentView = view;
+        document.getElementById('today-btn').classList.toggle('active', view === 'today');
+        document.getElementById('historical-btn').classList.toggle('active', view === 'historical');
+        document.getElementById('tomorrow-btn').classList.toggle('active', view === 'tomorrow');
+
+        const dateSelector = document.getElementById('date-selector');
+        const pageTitle = document.getElementById('page-title');
+        const pageSubtitle = document.getElementById('page-subtitle');
+
+        if (view === 'today') {
+            dateSelector.style.display = 'none';
+            pageTitle.textContent = 'BvP Analytics';
+            pageSubtitle.textContent = typeof bvpDate !== 'undefined'
+                ? `Today • ${formatDateForDisplay(bvpDate)} matchup-based hard-contact history`
+                : 'Today matchup-based hard-contact history';
+            renderBvpPage(typeof dailyMatchups !== 'undefined' ? dailyMatchups : [], typeof bvpData !== 'undefined' ? bvpData : []);
+        } else if (view === 'tomorrow') {
+            dateSelector.style.display = 'none';
+            pageTitle.textContent = 'Tomorrow BvP Outlook';
+            pageSubtitle.textContent = typeof bvpTomorrowDate !== 'undefined'
+                ? `${formatDateForDisplay(bvpTomorrowDate)} projected matchup history and hard-contact risk`
+                : 'Tomorrow projected matchup history';
+            renderBvpPage(typeof tomorrowMatchups !== 'undefined' ? tomorrowMatchups : [], typeof bvpTomorrowData !== 'undefined' ? bvpTomorrowData : []);
+        } else {
+            dateSelector.style.display = 'block';
+            pageTitle.textContent = 'Historical BvP Analytics';
+            pageSubtitle.textContent = 'Review previous matchup scouting by date';
+            initializeDateSelector();
+        }
+    }
+
+    function initializeDateSelector() {
+        const dateSelect = document.getElementById('date-select');
+        const dateSummary = document.getElementById('date-summary');
+
+        while (dateSelect.children.length > 1) {
+            dateSelect.removeChild(dateSelect.lastChild);
+        }
+
+        const todayDate = typeof bvpDate !== 'undefined' ? bvpDate : null;
+        const tomorrowDate = typeof bvpTomorrowDate !== 'undefined' ? bvpTomorrowDate : null;
+
+        if (typeof bvpHistoricalDates !== 'undefined') {
+            const todayObj = todayDate ? new Date(todayDate + 'T00:00:00') : null;
+            const tomorrowObj = todayObj ? new Date(todayObj.getTime() + 24 * 60 * 60 * 1000) : null;
+
+            const orderedDates = [...bvpHistoricalDates]
+                .sort((a, b) => b.localeCompare(a))
+                .filter(dateStr => {
+                    if (dateStr === todayDate || dateStr === tomorrowDate) return false;
+                    if (!tomorrowObj) return true;
+                    return new Date(dateStr + 'T00:00:00') < tomorrowObj;
+                });
+
+            orderedDates.forEach(dateStr => {
+                const option = document.createElement('option');
+                option.value = dateStr;
+                option.textContent = formatDateForDisplay(dateStr);
+                dateSelect.appendChild(option);
+            });
+
+            const firstHistorical = orderedDates[0];
+            if (firstHistorical) {
+                dateSelect.value = firstHistorical;
+                loadHistoricalBvp(firstHistorical);
+            } else {
+                dateSummary.textContent = 'No historical BvP dates available yet';
+                renderBvpPage([], []);
+            }
+        } else {
+            dateSummary.textContent = 'No historical BvP data available';
+            renderBvpPage([], []);
+        }
+
+        dateSelect.onchange = (e) => {
+            const selectedDate = e.target.value;
+            if (selectedDate) {
+                loadHistoricalBvp(selectedDate);
+            }
+        };
+    }
+
+    function loadHistoricalBvp(dateStr) {
+        const dateSummary = document.getElementById('date-summary');
+        dateSummary.textContent = `Loading ${formatDateForDisplay(dateStr)}...`;
+
+        loadBvpHistoricalData(dateStr).then(() => {
+            const key = dateStr.replace(/-/g, '_');
+            const matchups = window[`dailyMatchups_${key}`] || [];
+            const hits = window[`bvpData_${key}`] || [];
+            document.getElementById('page-subtitle').textContent = `Historical Date: ${formatDateForDisplay(dateStr)}`;
+            renderBvpPage(matchups, hits);
+            dateSummary.textContent = `Showing ${formatDateForDisplay(dateStr)}`;
+        }).catch(() => {
+            dateSummary.textContent = `Failed to load ${formatDateForDisplay(dateStr)}`;
+            renderBvpPage([], []);
+        });
+    }
+
+    function renderBvpPage(matchups, hits) {
+        const grid = document.getElementById('grid-box');
+        const leaderboard = document.getElementById('leaderboard');
+        const reports = document.getElementById('reports');
+
+        grid.innerHTML = '';
+        leaderboard.innerHTML = '';
+        reports.innerHTML = '';
+
+        if (!matchups || matchups.length === 0) {
+            grid.innerHTML = '<div class="empty-state">No matchup cards available for this view.</div>';
+        } else {
+            matchups.forEach(m => {
+                grid.innerHTML += `
+                    <div class="matchup-card">
+                        <div class="card-header"><span style="font-size:0.65rem; color:var(--text-dim);"><span class="live-dot"></span>${m.time || 'TBD'}</span></div>
+                        <div class="team-row"><span class="team-abbr">${m.away_abbr || 'TBD'}</span><span class="p-name">${m.away_p || 'TBD'}</span></div>
+                        <div class="vs-divider">VS</div>
+                        <div class="team-row"><span class="team-abbr">${m.home_abbr || 'TBD'}</span><span class="p-name">${m.home_p || 'TBD'}</span></div>
+                    </div>`;
+            });
+        }
+
+        if (!hits || hits.length === 0) {
+            leaderboard.innerHTML = '<div class="empty-state">No BvP hard-contact history available for this view.</div>';
+            reports.innerHTML = '<div class="empty-state">No pitcher scouting reports available for this view.</div>';
+            return;
+        }
+
+        const top12 = [...hits].sort((a, b) => (b.distance || 0) - (a.distance || 0)).slice(0, 12);
+        top12.forEach(h => {
+            const distLabel = !h.distance ? 'N/A' : `${h.distance} FT`;
+            leaderboard.innerHTML += `
+                <div class="leader-card">
+                    <div style="color:var(--accent); font-weight:900; font-size:1.4rem;">${distLabel}</div>
+                    <div style="font-weight:700;">${h.batter_name}</div>
+                    <div style="font-size:0.75rem; color:var(--text-dim);">vs ${h.pitcher_name} • ${h.launch_speed} MPH</div>
+                </div>`;
+        });
+
+        const grouped = hits.reduce((acc, h) => {
+            acc[h.pitcher_name] = acc[h.pitcher_name] || { opp: h.opponent_team, hits: [] };
+            acc[h.pitcher_name].hits.push(h);
+            return acc;
+        }, {});
+
+        Object.keys(grouped).sort().forEach(p => {
+            const data = grouped[p];
+            const id = `grp-${p.replace(/\s+/g, '-')}`;
+            reports.innerHTML += `
+                <div class="p-group">
+                    <div class="p-header" onclick="document.getElementById('${id}').classList.toggle('hidden')">
+                        <strong>${p.toUpperCase()} <small style="color:var(--text-dim); margin-left:10px;">vs ${data.opp}</small></strong>
+                        <span style="color:var(--accent); font-weight:800; font-size:0.75rem;">${data.hits.length} ENTRIES</span>
+                    </div>
+                    <div id="${id}" class="hidden">
+                        <table>
+                            <thead><tr><th>Batter</th><th>Event</th><th>Velo</th><th>Dist</th><th>Date</th></tr></thead>
+                            <tbody>
+                                ${data.hits.sort((a, b) => (b.distance || 0) - (a.distance || 0)).map(h => `
+                                    <tr>
+                                        <td style="font-weight:700;">${h.batter_name}</td>
+                                        <td>${h.events}</td>
+                                        <td>${h.launch_speed} MPH</td>
+                                        <td style="color:var(--accent); font-weight:800;">${!h.distance ? 'N/A' : h.distance + ' FT'}</td>
+                                        <td style="color:var(--text-dim); font-size:0.75rem;">${h.game_date}</td>
+                                    </tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>`;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setView('today');
+    });
+</script>
+<script src="../../assets/site-nav-dev.js" defer></script>
+</body>
+</html>

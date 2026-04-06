@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HardHits | HR Probability</title>
+    <link rel="stylesheet" href="../../assets/site-nav.css">
+    <script src="../../data/hr_model_data.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --card: #0f172a;
+            --border: #1e293b;
+            --accent: #f43f5e;
+            --gold: #fbbf24;
+            --emerald: #10b981;
+            --sky: #38bdf8;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            margin: 0; 
+            line-height: 1.5;
+        }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+
+        .card { 
+            background: var(--card); 
+            border: 1px solid var(--border); 
+            border-radius: 20px; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-8px); border-color: #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        .elite { border-top: 5px solid var(--accent); }
+        .solid { border-top: 5px solid var(--emerald); }
+
+        .card-header { padding: 24px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .team-tag { font-size: 0.65rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        .player-name { margin: 4px 0; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+
+        .score-box { background: #1e293b; padding: 10px; border-radius: 12px; text-align: center; min-width: 65px; border: 1px solid var(--border); }
+        .score-val { display: block; font-size: 1.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
+        .score-label { font-size: 0.6rem; color: var(--text-dim); font-weight: 700; margin-top: 4px; }
+
+        .breakdown-section { padding: 0 24px 20px; }
+        .breakdown-title { font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px; display: block; }
+        
+        .breakdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 12px; }
+        .b-item { text-align: center; }
+        .b-label { font-size: 0.55rem; font-weight: 800; color: var(--text-dim); display: block; margin-bottom: 6px; }
+        .b-track { height: 4px; background: #334155; border-radius: 2px; overflow: hidden; }
+        .b-fill { height: 100%; border-radius: 2px; transition: width 1s ease-out; }
+
+        .stats-section { padding: 0 24px 24px; }
+        .stat-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
+        .stat-value { font-size: 0.85rem; font-weight: 700; }
+        
+        .progress-track { height: 6px; background: #1e293b; border-radius: 10px; overflow: hidden; margin-top: 4px; }
+        .progress-fill { height: 100%; border-radius: 10px; }
+
+        .card-footer { 
+            background: rgba(0,0,0,0.15); 
+            padding: 16px 24px; 
+            border-top: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.75rem; font-weight: 600;
+        }
+        .trend-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; }
+        .hot-trend { background: rgba(244, 63, 94, 0.1); color: var(--accent); border: 1px solid var(--accent); }
+        .neutral-trend { background: rgba(16, 185, 129, 0.1); color: var(--emerald); border: 1px solid var(--emerald); }
+
+        .park-info { color: var(--sky); text-transform: uppercase; font-size: 0.65rem; }
+    </style>
+
+<style id="dev-stage-style">
+  .dev-stage-banner {
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+  .dev-stage-banner code {
+    background: rgba(255,255,255,0.16);
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #fff;
+  }
+</style>
+</head>
+<body data-nav="hr">
+<div class="dev-stage-banner">DEV STAGE · Test changes safely here. Stable pages remain in <code>/site</code>.</div>
+
+
+<div class="container">
+    <div style="margin-bottom: 30px;">
+        <h1 style="font-size: 2.2rem; margin: 0; letter-spacing: -1px;">Home Run Probability</h1>
+        <p style="color: var(--text-dim); margin-top: 5px;">Scoring weight: 20% Power, 15% Form, 10% Trend, 5% Context</p>
+    </div>
+
+    <div id="dashboard" class="grid">
+        </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dash = document.getElementById('dashboard');
+
+        if (typeof hrModelData === 'undefined' || hrModelData.length === 0) {
+            dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
+                <h2 style="color: var(--text-dim)">No Data Found</h2>
+                <p>Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/hr_model_data.js</code>.</p>
+            </div>`;
+            return;
+        }
+
+        hrModelData.forEach(p => {
+            const isElite = p.probability >= 8.5;
+            const isSolid = p.probability >= 5.5 && p.probability < 8.5;
+            const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
+            const trendClass = p.ev_trend_val > 1.5 ? 'hot-trend' : 'neutral-trend';
+
+            dash.innerHTML += `
+                <article class="card ${tierClass}">
+                    <div class="card-header">
+                        <div class="header-main">
+                            <span class="team-tag">${p.team}</span>
+                            <h2 class="player-name">${p.name}</h2>
+                            <span class="trend-badge ${trendClass}">${p.ev_trend_label}</span>
+                        </div>
+                        <div class="score-box">
+                            <span class="score-val">${p.probability}%</span>
+                            <span class="score-label">PROB</span>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-section">
+                        <span class="breakdown-title">Signal Heatmap</span>
+                        <div class="breakdown-grid">
+                            <div class="b-item">
+                                <span class="b-label">POWER</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Power}%; background: var(--accent);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">FORM</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Form}%; background: var(--emerald);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">TREND</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Trend}%; background: var(--gold);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">PARK</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Park}%; background: var(--sky);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-section">
+                        <div class="stat-group">
+                            <div class="stat-line">
+                                <span class="stat-label">Max Exit Velocity</span>
+                                <span class="stat-value">${p.max_ev} MPH</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" style="width:${p.max_ev_pct}%; background: var(--accent);"></div></div>
+                        </div>
+                        
+                        <div class="stat-group" style="margin-top:15px;">
+                            <div class="stat-line">
+                                <span class="stat-label">Fly Ball EV (Avg)</span>
+                                <span class="stat-value">${p.fb_ev} MPH</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" style="width:${p.fb_ev_pct}%; background: var(--gold);"></div></div>
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <div class="pitcher-info">vs <span style="color:white">${p.opp_pitcher}</span></div>
+                        <div class="park-info">${p.park_factor}</div>
+                    </footer>
+                </article>
+            `;
+        });
+    });
+</script>
+<script src="../../assets/site-nav-dev.js" defer></script>
+</body>
+</html>

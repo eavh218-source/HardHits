@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Homers | HardHits</title>
+    <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260404-2">
+    <script src="../data/todays_hrs.js"></script>
+    <script src="../data/hr_model_data.js"></script>
+    <script src="../data/historical_index.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: #111827;
+            --border: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --danger: #f87171;
+            --success: #22c55e;
+            --warning: #fbbf24;
+            --gold: #fbbf24;
+            --emerald: #10b981;
+            --sky: #38bdf8;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: var(--text-main); margin: 0; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+        .header { border-left: 5px solid var(--accent); padding-left: 20px; margin-bottom: 30px; }
+
+        /* View toggle */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text-muted);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .toggle-btn:hover:not(.active) {
+            border-color: var(--text-muted);
+            color: var(--text-main);
+        }
+
+        /* Grid layout for cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+        /* Card styling */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover { transform: translateY(-4px); border-color: #334155; box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
+
+        .card.win { border-top: 5px solid var(--success); }
+        .card.outlier { border-top: 5px solid var(--warning); }
+        .card.outlier-near-miss { border-top: 5px solid #fbbf24 !important; box-shadow: 0 0 12px rgba(251, 191, 36, 0.2); }
+        .card.outlier-cold-miss { border-top: 5px solid #f59e0b !important; box-shadow: 0 0 12px rgba(245, 158, 11, 0.2); }
+        .card.outlier-blind-spot { border-top: 5px solid #d97706 !important; box-shadow: 0 0 12px rgba(217, 119, 6, 0.2); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .player-info h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .team-tag {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .result-badge {
+            font-size: 0.7rem;
+            font-weight: 900;
+            padding: 6px 12px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-win { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
+        .badge-outlier { background: rgba(251, 191, 36, 0.15); color: var(--warning); border: 1px solid var(--warning); }
+
+        .matchup-info {
+            background: rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .pitcher-name {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .pitcher-team {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .model-insight {
+            background: rgba(251, 191, 36, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .model-prob {
+            color: var(--warning);
+            font-weight: 700;
+        }
+
+        /* Summary bar */
+        .summary-bar {
+            background: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 25px;
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .summary-item {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .summary-item b {
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: 900;
+            display: block;
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Table view (legacy) */
+        table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 12px; overflow: hidden; margin-top: 20px; }
+        th { text-align: left; background: #1e293b; color: var(--text-muted); padding: 15px; font-size: 0.75rem; text-transform: uppercase; }
+        td { padding: 15px; border-bottom: 1px solid var(--border); }
+        .dist-large { font-weight: 800; font-size: 1.2rem; color: #fff; }
+        .angle-badge { background: #0f172a; padding: 4px 8px; border-radius: 6px; color: var(--accent); font-weight: 700; }
+    </style>
+</head>
+<body data-nav="daily">
+
+<div class="container">
+    <div class="header">
+        <h1 id="page-title" style="margin:0;">DAILY HOMER ANALYSIS</h1>
+        <p id="date-label" style="color:var(--text-muted); margin:5px 0 0 0;"></p>
+    </div>
+
+    <div class="view-toggle">
+        <button class="toggle-btn active" id="cards-btn">Card View</button>
+        <button class="toggle-btn" id="table-btn">Table View</button>
+    </div>
+
+    <div id="date-selector" style="margin-bottom: 30px; text-align: center;">
+        <select id="date-select" style="padding: 10px 15px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-main); border-radius: 8px; font-size: 0.9rem;">
+            <option value="">Select Date...</option>
+        </select>
+        <div id="date-summary" style="margin-top: 15px; color: var(--text-muted); font-size: 0.85rem;"></div>
+    </div>
+
+    <div id="summary-container"></div>
+
+    <div id="content-area" class="grid">
+        <!-- Cards will be loaded here -->
+    </div>
+</div>
+
+<script>
+    let currentView = 'cards';
+    let currentDate = null;
+
+    // View toggle functionality
+    document.getElementById('cards-btn').addEventListener('click', () => setView('cards'));
+    document.getElementById('table-btn').addEventListener('click', () => setView('table'));
+
+    function setView(view) {
+        currentView = view;
+        document.getElementById('cards-btn').classList.toggle('active', view === 'cards');
+        document.getElementById('table-btn').classList.toggle('active', view === 'table');
+
+        const dateSelect = document.getElementById('date-select');
+        const selectedDate = dateSelect ? dateSelect.value : '';
+
+        if (selectedDate && selectedDate !== 'today') {
+            currentDate = selectedDate;
+            loadHistoricalResults(selectedDate);
+        } else {
+            currentDate = null;
+            loadDailyHomers();
+        }
+    }
+
+    function initializeDateSelector() {
+        const dateSelect = document.getElementById('date-select');
+        const dateSummary = document.getElementById('date-summary');
+
+        while (dateSelect.children.length > 1) {
+            dateSelect.removeChild(dateSelect.lastChild);
+        }
+
+        if (typeof hrUpdateDate !== 'undefined') {
+            const todayOption = document.createElement('option');
+            todayOption.value = 'today';
+            todayOption.textContent = `Today (${formatDateForDisplay(hrUpdateDate)})`;
+            dateSelect.appendChild(todayOption);
+        }
+
+        if (typeof historicalDates !== 'undefined') {
+            const orderedDates = [...historicalDates].sort((a, b) => b.localeCompare(a));
+            orderedDates.forEach(dateStr => {
+                if (typeof hrUpdateDate !== 'undefined' && dateStr === hrUpdateDate) {
+                    return;
+                }
+                const option = document.createElement('option');
+                option.value = dateStr;
+                option.textContent = formatDateForDisplay(dateStr);
+                dateSelect.appendChild(option);
+            });
+        } else {
+            dateSummary.textContent = 'No historical data available';
+        }
+
+        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0 && typeof hrUpdateDate !== 'undefined') {
+            dateSelect.value = 'today';
+            dateSummary.textContent = `Showing current results for ${formatDateForDisplay(hrUpdateDate)}`;
+        } else if (typeof historicalDates !== 'undefined' && historicalDates.length > 0) {
+            const latestHistoricalDate = [...historicalDates].sort((a, b) => b.localeCompare(a))[0];
+            dateSelect.value = latestHistoricalDate;
+            loadHistoricalResults(latestHistoricalDate);
+        }
+
+        dateSelect.addEventListener('change', (e) => {
+            const selectedDate = e.target.value;
+            if (selectedDate === 'today') {
+                currentDate = null;
+                dateSummary.textContent = typeof hrUpdateDate !== 'undefined'
+                    ? `Showing current results for ${formatDateForDisplay(hrUpdateDate)}`
+                    : 'Showing current results';
+                loadDailyHomers();
+            } else if (selectedDate) {
+                loadHistoricalResults(selectedDate);
+            }
+        });
+    }
+
+    function formatDateForDisplay(dateStr) {
+        const date = new Date(dateStr + 'T00:00:00');
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const month = monthNames[date.getMonth()];
+        const day = date.getDate();
+        const year = date.getFullYear();
+        return `${month} ${day}, ${year}`;
+    }
+
+    function loadHistoricalResults(dateStr) {
+        currentDate = dateStr;
+        const dateSummary = document.getElementById('date-summary');
+        dateSummary.textContent = `Loading data for ${formatDateForDisplay(dateStr)}...`;
+        document.getElementById('page-title').innerText = 'HISTORICAL HOMER ANALYSIS';
+        document.getElementById('date-label').innerText = `Historical Date: ${formatDateForDisplay(dateStr)}`;
+
+        return loadHistoricalData(dateStr).then(() => {
+            const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || [];
+            const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || [];
+
+            if (currentView === 'table') {
+                renderTableView(resultsData, modelData);
+            } else {
+                renderCardView(resultsData, modelData);
+            }
+
+            dateSummary.textContent = `Showing results for ${formatDateForDisplay(dateStr)}`;
+        }).catch(() => {
+            dateSummary.textContent = `Error loading data for ${formatDateForDisplay(dateStr)}`;
+            document.getElementById('content-area').innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-muted);">Failed to load historical data</div>';
+        });
+    }
+
+    function loadHistoricalData(dateStr) {
+        return new Promise((resolve, reject) => {
+            let modelLoaded = false;
+            let resultsLoaded = false;
+            const onLoadIfReady = () => {
+                if (modelLoaded && resultsLoaded) {
+                    resolve();
+                }
+            };
+
+            const modelScript = document.createElement('script');
+            modelScript.src = `../data/hr_model_${dateStr}.js`;
+            modelScript.onerror = () => reject('Failed to load model data');
+            modelScript.onload = () => {
+                modelLoaded = true;
+                onLoadIfReady();
+            };
+            document.head.appendChild(modelScript);
+
+            const resultsScript = document.createElement('script');
+            resultsScript.src = `../data/hr_results_${dateStr}.js`;
+            resultsScript.onerror = () => reject('Failed to load results data');
+            resultsScript.onload = () => {
+                resultsLoaded = true;
+                onLoadIfReady();
+            };
+            document.head.appendChild(resultsScript);
+
+            // Failsafe, reject after 5s
+            setTimeout(() => {
+                if (!modelLoaded || !resultsLoaded) {
+                    reject('Timeout loading historical scripts');
+                }
+            }, 5000);
+        });
+    }
+
+    function buildLiveLabel(dateStr) {
+        const liveDate = dateStr || hrUpdateDate;
+        const lastCompleted = (typeof hrLastCompleted !== 'undefined' && hrLastCompleted)
+            ? ` • Last completed ${hrLastCompleted}`
+            : '';
+        return `Statcast Live: ${liveDate}${lastCompleted}`;
+    }
+
+    function loadDailyHomers() {
+        const contentArea = document.getElementById('content-area');
+        const summaryContainer = document.getElementById('summary-container');
+
+        // Set date label (today's data)
+        if (typeof currentDate === 'string' && currentDate) {
+            document.getElementById('page-title').innerText = 'HISTORICAL HOMER ANALYSIS';
+            document.getElementById('date-label').innerText = `Historical Date: ${formatDateForDisplay(currentDate)}`;
+        } else if (typeof hrUpdateDate !== 'undefined') {
+            document.getElementById('page-title').innerText = 'DAILY HOMER ANALYSIS';
+            document.getElementById('date-label').innerText = buildLiveLabel(hrUpdateDate);
+        }
+
+        if (currentView === 'table') {
+            // Check if todaysHRData exists
+            if (typeof todaysHRData === 'undefined' || todaysHRData.length === 0) {
+                contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">No Data Found</h2></div>';
+                return;
+            }
+            renderTableView(todaysHRData, typeof hrModelData !== 'undefined' ? hrModelData : []);
+        } else {
+            // Check if todaysHRData exists
+            if (typeof todaysHRData === 'undefined' || todaysHRData.length === 0) {
+                contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">No Data Found</h2></div>';
+                return;
+            }
+            const modelData = typeof hrModelData !== 'undefined' ? hrModelData : [];
+            renderCardView(todaysHRData, modelData);
+        }
+    }
+
+    function renderTableView(hrsData, modelData = []) {
+        const contentArea = document.getElementById('content-area');
+        const summaryContainer = document.getElementById('summary-container');
+        const modelMap = new Map((modelData || []).map(p => [p.name.toLowerCase(), p]));
+        summaryContainer.innerHTML = '';
+        const sorted = [...hrsData].sort((a, b) => ((b.distance ?? b.dist ?? 0) - (a.distance ?? a.dist ?? 0)));
+
+        contentArea.innerHTML = `
+            <table>
+                <thead>
+                    <tr><th>Batter</th><th>Pitcher</th><th>Exit Velo</th><th>Launch Angle</th><th>Distance</th></tr>
+                </thead>
+                <tbody id="hr-body"></tbody>
+            </table>
+        `;
+
+        const body = document.getElementById('hr-body');
+        sorted.forEach(hr => {
+            const modelEntry = modelMap.get((hr.batter || hr.name || '').toLowerCase());
+            const batter = hr.batter || hr.name || 'Unknown';
+            const batterTeam = hr.batter_team || hr.team || modelEntry?.team || 'N/A';
+            const pitcher = (hr.pitcher && hr.pitcher !== 'TBD')
+                ? hr.pitcher
+                : ((modelEntry?.opp_pitcher && modelEntry.opp_pitcher !== 'TBD') ? modelEntry.opp_pitcher : 'Matchup unavailable');
+            const pitcherTeam = hr.pitcher_team || (modelEntry?.park_factor ? `Park: ${modelEntry.park_factor}` : 'Historical result');
+            const exitVelo = hr.exit_velo || hr.ev || modelEntry?.max_ev || 'N/A';
+            const launchAngle = hr.launch_angle || 'N/A';
+            const distance = hr.distance || hr.dist || 'N/A';
+
+            body.innerHTML += `
+                <tr>
+                    <td><div style="font-weight:700;">${batter}</div><span class="team-tag">${batterTeam}</span></td>
+                    <td><div style="font-size:0.9rem;">${pitcher}</div><span class="team-tag">${pitcherTeam}</span></td>
+                    <td style="color:var(--danger); font-weight:800;">${exitVelo} MPH</td>
+                    <td><span class="angle-badge">${launchAngle}°</span></td>
+                    <td class="dist-large">${distance} FT</td>
+                </tr>`;
+        });
+    }
+
+    function renderCardView(hrsData, modelData) {
+        const contentArea = document.getElementById('content-area');
+        const summaryContainer = document.getElementById('summary-container');
+        contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;"><div class="loading-spinner"></div><p>Analyzing home runs...</p></div>';
+
+        // Process HR data with model insights
+        setTimeout(() => {
+            const results = processDailyHomers(hrsData, modelData);
+            renderCards(results, contentArea);
+            renderSummary(results, summaryContainer);
+        }, 500);
+    }
+
+    function processDailyHomers(hrData, modelData) {
+        const modelMap = new Map(modelData.map(p => [p.name.toLowerCase(), p]));
+        let totalHRs = hrData.length;
+        let predictedHRs = 0;
+        let outlierHRs = 0;
+
+        const processedHRs = hrData.map(hr => {
+            const playerName = (hr.batter || hr.name || '').toLowerCase();
+            const modelEntry = modelMap.get(playerName);
+            let classification = 'outlier';
+            let subtype = 'Blind Spot';
+            let modelProb = null;
+            let insight = '';
+
+            if (modelEntry) {
+                modelProb = modelEntry.probability;
+
+                if (modelEntry.probability >= 5.0) {
+                    classification = 'win';
+                    predictedHRs++;
+                    insight = `Successfully predicted at ${modelEntry.probability}% probability (rank ${getModelRank(modelEntry, modelData)})`;
+                } else {
+                    outlierHRs++;
+                    if (modelEntry.probability >= 3.0) {
+                        subtype = 'Near Miss';
+                        insight = `Near miss: Modeled at ${modelEntry.probability}% but fell below 5.0% threshold`;
+                    } else if (modelEntry.probability >= 1.0) {
+                        subtype = 'Cold Miss';
+                        insight = `Cold miss: Weak signal at ${modelEntry.probability}% - worth investigating`;
+                    } else {
+                        subtype = 'Blind Spot';
+                        insight = `Minimal model visibility at ${modelEntry.probability}%`;
+                    }
+                }
+            } else {
+                outlierHRs++;
+                subtype = 'Blind Spot';
+                insight = 'Player not found in model data for this date';
+            }
+
+            return {
+                ...hr,
+                classification,
+                subtype,
+                modelProb,
+                insight,
+                modelEntry
+            };
+        });
+
+        return {
+            hrs: processedHRs,
+            totalHRs,
+            predictedHRs,
+            outlierHRs,
+            predictionRate: totalHRs > 0 ? ((predictedHRs / totalHRs) * 100).toFixed(1) : 0
+        };
+    }
+
+    function getModelRank(player, modelData) {
+        if (!player || !player.name) return 'N/A';
+        const sorted = modelData.slice().sort((a, b) => b.probability - a.probability);
+        const rank = sorted.findIndex(p => p.name === player.name) + 1;
+        return rank > 0 ? rank : 'N/A';
+    }
+
+    function renderCards(results, contentArea) {
+        // Sort: Wins first, then outliers by subtype
+        const sortedHRs = results.hrs.sort((a, b) => {
+            if (a.classification !== b.classification) {
+                return a.classification === 'win' ? -1 : 1;
+            }
+            // For outliers, sort by subtype priority
+            const subtypeOrder = { 'Near Miss': 0, 'Cold Miss': 1, 'Blind Spot': 2 };
+            return subtypeOrder[a.subtype] - subtypeOrder[b.subtype];
+        });
+
+        contentArea.innerHTML = '';
+        sortedHRs.forEach(hr => {
+            const cardClass = hr.classification === 'win' ? 'card win' : `card outlier outlier-${hr.subtype.toLowerCase().replace(' ', '-')}`;
+            const badgeClass = hr.classification === 'win' ? 'badge-win' : 'badge-outlier';
+            const badgeText = hr.classification === 'win' ? '✓ PREDICTED' : `⭐ ${hr.subtype.toUpperCase()}`;
+
+            const batter = hr.batter || hr.name || 'Unknown';
+            const batterTeam = hr.batter_team || hr.team || hr.modelEntry?.team || 'N/A';
+            const pitcher = (hr.pitcher && hr.pitcher !== 'TBD')
+                ? hr.pitcher
+                : ((hr.modelEntry?.opp_pitcher && hr.modelEntry.opp_pitcher !== 'TBD') ? hr.modelEntry.opp_pitcher : 'Matchup unavailable');
+            const pitcherTeam = hr.pitcher_team || (hr.modelEntry?.park_factor ? `Park: ${hr.modelEntry.park_factor}` : 'Historical result');
+            const exitVelo = hr.exit_velo || hr.ev || hr.modelEntry?.max_ev || 'N/A';
+            const launchAngle = hr.launch_angle || 'N/A';
+            const distance = hr.distance || hr.dist || 'N/A';
+
+            contentArea.innerHTML += `
+                <div class="${cardClass}">
+                    <div class="card-header">
+                        <div class="player-info">
+                            <h3>${batter}</h3>
+                            <span class="team-tag">${batterTeam}</span>
+                        </div>
+                        <div class="result-badge ${badgeClass}">${badgeText}</div>
+                    </div>
+
+                    <div class="matchup-info">
+                        <div class="pitcher-name">vs ${pitcher}</div>
+                        <div class="pitcher-team">${pitcherTeam}</div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Exit Velo</span>
+                            <span class="stat-value" style="color: var(--danger);">${exitVelo}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Launch Angle</span>
+                            <span class="stat-value">${launchAngle}°</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Distance</span>
+                            <span class="stat-value">${distance}</span>
+                        </div>
+                    </div>
+
+                    ${hr.modelProb !== null ? `
+                    <div class="model-insight">
+                        <strong>Model:</strong> ${hr.modelProb}% probability
+                        ${hr.modelEntry ? `
+                            <br><strong>Breakdown:</strong> Power ${hr.modelEntry.breakdown.Power}% | Form ${hr.modelEntry.breakdown.Form}% | Trend ${hr.modelEntry.breakdown.Trend}% | Park ${hr.modelEntry.breakdown.Park}%
+                        ` : ''}
+                        <br><em>${hr.insight}</em>
+                    </div>
+                    ` : `
+                    <div class="model-insight">
+                        <em>${hr.insight}</em>
+                    </div>
+                    `}
+                </div>
+            `;
+        });
+    }
+
+    function renderSummary(results, summaryContainer) {
+        summaryContainer.innerHTML = `
+            <div class="summary-bar">
+                <div class="summary-item">Total HRs <b>${results.totalHRs}</b></div>
+                <div class="summary-item">Predicted <b>${results.predictedHRs}</b></div>
+                <div class="summary-item">Outliers <b>${results.outlierHRs}</b></div>
+                <div class="summary-item">Prediction Rate <b>${results.predictionRate}%</b></div>
+            </div>
+        `;
+
+        const dateLabel = document.getElementById('date-label');
+        if (currentDate) {
+            dateLabel.innerText = `Historical Date: ${formatDateForDisplay(currentDate)}`;
+        } else if (typeof hrUpdateDate !== 'undefined') {
+            dateLabel.innerText = buildLiveLabel(hrUpdateDate);
+        } else {
+            dateLabel.innerText = `Date: ${formatDateForDisplay(new Date().toISOString().split('T')[0])}`;
+        }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeDateSelector();
+
+        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0) {
+            currentDate = null;
+            loadDailyHomers();
+        } else if (typeof historicalDates !== 'undefined' && historicalDates.length === 0) {
+            document.getElementById('date-summary').innerText = 'No historical dates available.';
+        }
+    });
+</script>
+<script src="../assets/site-nav.js?v=stable-20260404-2" defer></script>
+</body>
+</html>

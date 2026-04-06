@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HardHits | HR Probability & Results</title>
+    <link rel="stylesheet" href="../../assets/site-nav.css">
+    <script src="../../data/hr_model_data.js"></script>
+    <script src="../../data/hr_model_tomorrow.js"></script>
+    <script src="../../data/hr_results_data.js"></script>
+    <script src="../../data/hr_model_consolidated.js"></script>
+    <script src="../../data/historical_index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --card: #0f172a;
+            --border: #1e293b;
+            --accent: #f43f5e;
+            --gold: #fbbf24;
+            --emerald: #10b981;
+            --sky: #38bdf8;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --warning: #fbbf24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card:hover { transform: translateY(-8px); border-color: #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        /* Prediction card styles */
+        .elite { border-top: 5px solid var(--accent); }
+        .solid { border-top: 5px solid var(--emerald); }
+
+        /* Results card styles */
+        .status-hit { border-top: 5px solid var(--success); }
+        .status-miss { border-top: 5px solid var(--danger); }
+        .status-outlier { border-top: 5px solid var(--warning); }
+
+        .card-header { padding: 24px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .team-tag { font-size: 0.65rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        .player-name { margin: 4px 0; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+
+        .score-box { background: #1e293b; padding: 10px; border-radius: 12px; text-align: center; min-width: 65px; border: 1px solid var(--border); }
+        .score-val { display: block; font-size: 1.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
+        .score-label { font-size: 0.6rem; color: var(--text-dim); font-weight: 700; margin-top: 4px; }
+
+        .result-badge {
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 6px 12px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-hit { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid var(--success); }
+        .badge-miss { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid var(--danger); }
+        .badge-outlier { background: rgba(251, 191, 36, 0.15); color: var(--warning); border: 1px solid var(--warning); }
+
+        .breakdown-section { padding: 0 24px 20px; }
+        .breakdown-title { font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px; display: block; }
+
+        .breakdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 12px; }
+        .b-item { text-align: center; }
+        .b-label { font-size: 0.55rem; font-weight: 800; color: var(--text-dim); display: block; margin-bottom: 6px; }
+        .b-track { height: 4px; background: #334155; border-radius: 2px; overflow: hidden; }
+        .b-fill { height: 100%; border-radius: 2px; transition: width 1s ease-out; }
+
+        .stats-section {
+            padding: 0 24px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .stat-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
+        .stat-value { font-size: 0.85rem; font-weight: 700; }
+
+        .progress-track { height: 6px; background: #1e293b; border-radius: 10px; overflow: hidden; margin-top: 4px; }
+        .progress-fill { height: 100%; border-radius: 10px; }
+
+        .card-footer {
+            background: rgba(0,0,0,0.15);
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: auto;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pitcher-info {
+            color: var(--text-dim);
+            flex: 1 1 220px;
+            min-width: 0;
+            line-height: 1.4;
+        }
+
+        .pitcher-info span {
+            color: white;
+            white-space: normal;
+            word-break: break-word;
+        }
+        .trend-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; }
+        .hot-trend { background: rgba(244, 63, 94, 0.1); color: var(--accent); border: 1px solid var(--accent); }
+        .neutral-trend { background: rgba(16, 185, 129, 0.1); color: var(--emerald); border: 1px solid var(--emerald); }
+
+        .park-info {
+            color: var(--sky);
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            margin-left: auto;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* View toggle */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text-dim);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .toggle-btn:hover:not(.active) {
+            border-color: var(--text-dim);
+            color: var(--text);
+        }
+
+        /* Results specific styles */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+            background: rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .player-team {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        /* Summary bar for results */
+        .summary-bar {
+            background: var(--card);
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 25px;
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .summary-item {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+
+        .summary-item b {
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: 900;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced badge styles for win/loss/outlier classification */
+        .badge-elite-win {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(251, 191, 36, 0.2));
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+        }
+
+        .badge-solid-win {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(56, 189, 248, 0.2));
+            color: var(--emerald);
+            border: 1px solid var(--emerald);
+        }
+
+        .badge-high-conf-miss {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(244, 63, 94, 0.25));
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Win quality and loss reason styling */
+        .win-quality {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(244, 63, 94, 0.1));
+            color: var(--gold);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 12px 0;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .loss-reason {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(244, 63, 94, 0.1));
+            color: #ff9999;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 12px 0;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Outlier sub-category styling */
+        .outlier-near-miss {
+            border-top: 5px solid #fbbf24 !important;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .outlier-cold-miss {
+            border-top: 5px solid #f59e0b !important;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .outlier-blind-spot {
+            border-top: 5px solid #d97706 !important;
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.3);
+        }
+
+        /* Outlier details section */
+        .outlier-details {
+            padding: 12px 16px;
+            background: rgba(251, 191, 36, 0.05);
+            border-top: 1px solid rgba(251, 191, 36, 0.2);
+            margin-top: 12px;
+        }
+
+        .outlier-type {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--warning);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .outlier-analysis {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+    </style>
+
+<style id="dev-stage-style">
+  .dev-stage-banner {
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+  .dev-stage-banner code {
+    background: rgba(255,255,255,0.16);
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #fff;
+  }
+</style>
+</head>
+<body data-nav="hr">
+<div class="dev-stage-banner">DEV STAGE · Test changes safely here. Stable pages remain in <code>/site</code>.</div>
+
+
+<div class="container">
+    <div style="margin-bottom: 30px;">
+        <h1 style="font-size: 2.2rem; margin: 0; letter-spacing: -1px;">Home Run Probability</h1>
+        <p id="subtitle" style="color: var(--text-dim); margin-top: 5px;">Scoring weight: 20% Power, 15% Form, 10% Trend, 5% Context</p>
+    </div>
+
+    <div class="view-toggle">
+        <button class="toggle-btn active" id="predictions-btn">Today's Predictions</button>
+        <button class="toggle-btn" id="results-btn">Historical Results</button>
+        <button class="toggle-btn" id="tomorrow-btn">Tomorrow's Predictions</button>
+    </div>
+
+    <div id="date-selector" style="display: none; margin-bottom: 30px; text-align: center;">
+        <select id="date-select" style="padding: 10px 15px; border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 8px; font-size: 0.9rem;">
+            <option value="">Select Date...</option>
+        </select>
+        <div id="date-summary" style="margin-top: 15px; color: var(--text-dim); font-size: 0.85rem;"></div>
+    </div>
+
+    <div id="summary-container" style="display: none;"></div>
+
+    <div id="dashboard" class="grid">
+        <!-- Cards will be loaded here -->
+    </div>
+</div>
+
+<!-- Outlier detail modal -->
+<div id="outlier-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background: var(--card); border:1px solid var(--border); border-radius: 16px; width: min(92%, 560px); max-height: 80%; overflow:auto; padding: 20px; position: relative;">
+        <button id="close-outlier-modal" style="position:absolute; top:12px; right:12px; border:none; background: var(--border); color: var(--text); font-weight:800; border-radius:8px; padding:6px 10px; cursor:pointer;">X</button>
+        <h2 id="outlier-modal-title" style="margin:0 0 10px;">Outlier Review</h2>
+        <div id="outlier-modal-content" style="color: var(--text-dim); font-size:0.95rem;"></div>
+    </div>
+</div>
+
+<script>
+    let currentView = 'predictions';
+    let currentDate = null;
+    const startedTeamsCache = {};
+    const TEAM_ABBR_MAP = {
+        'Arizona Diamondbacks': 'ARI', 'Atlanta Braves': 'ATL', 'Baltimore Orioles': 'BAL',
+        'Boston Red Sox': 'BOS', 'Chicago Cubs': 'CHC', 'Chicago White Sox': 'CHW',
+        'Cincinnati Reds': 'CIN', 'Cleveland Guardians': 'CLE', 'Colorado Rockies': 'COL',
+        'Detroit Tigers': 'DET', 'Houston Astros': 'HOU', 'Kansas City Royals': 'KCR',
+        'Los Angeles Angels': 'LAA', 'Los Angeles Dodgers': 'LAD', 'Miami Marlins': 'MIA',
+        'Milwaukee Brewers': 'MIL', 'Minnesota Twins': 'MIN', 'New York Mets': 'NYM',
+        'New York Yankees': 'NYY', 'Oakland Athletics': 'OAK', 'Philadelphia Phillies': 'PHI',
+        'Pittsburgh Pirates': 'PIT', 'San Diego Padres': 'SDP', 'San Francisco Giants': 'SFG',
+        'Seattle Mariners': 'SEA', 'St. Louis Cardinals': 'STL', 'Tampa Bay Rays': 'TBR',
+        'Texas Rangers': 'TEX', 'Toronto Blue Jays': 'TOR', 'Washington Nationals': 'WSH'
+    };
+
+    // View toggle functionality
+    document.getElementById('predictions-btn').addEventListener('click', () => {
+        setView('predictions');
+    });
+
+    document.getElementById('results-btn').addEventListener('click', () => {
+        setView('results');
+    });
+
+    document.getElementById('tomorrow-btn').addEventListener('click', () => {
+        setView('tomorrow');
+    });
+
+    function setView(view) {
+        currentView = view;
+
+        // Update toggle buttons
+        document.getElementById('predictions-btn').classList.toggle('active', view === 'predictions');
+        document.getElementById('results-btn').classList.toggle('active', view === 'results');
+        document.getElementById('tomorrow-btn').classList.toggle('active', view === 'tomorrow');
+
+        // Update header
+        const title = document.querySelector('h1');
+        const subtitle = document.getElementById('subtitle');
+
+        if (view === 'predictions') {
+            title.textContent = 'Home Run Probability';
+            subtitle.textContent = 'Scoring weight: 20% Power, 15% Form, 10% Trend, 5% Context';
+            document.getElementById('summary-container').style.display = 'none';
+            document.getElementById('date-selector').style.display = 'none';
+            loadPredictions();
+        } else if (view === 'tomorrow') {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            title.textContent = 'Tomorrow HR Probability';
+            subtitle.textContent = `${formatDate(tomorrow)} • projected using current power, form, trend, park, and matchup history`;
+            document.getElementById('summary-container').style.display = 'none';
+            document.getElementById('date-selector').style.display = 'none';
+            loadTomorrowPredictions();
+        } else {
+            title.textContent = 'Probability Results';
+            subtitle.textContent = 'Historical model performance by date';
+            document.getElementById('summary-container').style.display = 'block';
+            document.getElementById('date-selector').style.display = 'block';
+            initializeDateSelector();
+        }
+    }
+
+    function initializeDateSelector() {
+        const dateSelect = document.getElementById('date-select');
+        const dateSummary = document.getElementById('date-summary');
+
+        while (dateSelect.children.length > 1) {
+            dateSelect.removeChild(dateSelect.lastChild);
+        }
+
+        const todayModelDate = (typeof hrModelData !== 'undefined' && hrModelData.length > 0 && hrModelData[0].date)
+            ? hrModelData[0].date
+            : null;
+
+        if (todayModelDate) {
+            const todayOption = document.createElement('option');
+            todayOption.value = todayModelDate;
+            todayOption.textContent = `Today (${formatDateForDisplay(todayModelDate)})`;
+            dateSelect.appendChild(todayOption);
+        }
+
+        if (typeof historicalDates !== 'undefined') {
+            const orderedDates = [...historicalDates].sort((a, b) => b.localeCompare(a));
+            orderedDates.forEach(dateStr => {
+                if (todayModelDate && dateStr === todayModelDate) return;
+                const option = document.createElement('option');
+                option.value = dateStr;
+                option.textContent = formatDateForDisplay(dateStr);
+                dateSelect.appendChild(option);
+            });
+
+            if (todayModelDate) {
+                dateSelect.value = todayModelDate;
+                loadResults(todayModelDate);
+            } else if (orderedDates.length > 0) {
+                dateSelect.value = orderedDates[0];
+                loadResults(orderedDates[0]);
+            }
+        } else if (todayModelDate) {
+            dateSelect.value = todayModelDate;
+            loadResults(todayModelDate);
+        } else {
+            dateSummary.textContent = 'No historical data available';
+        }
+
+        dateSelect.addEventListener('change', (e) => {
+            const selectedDate = e.target.value;
+            if (selectedDate) {
+                loadResults(selectedDate);
+            }
+        });
+    }
+
+    function formatDateForDisplay(dateStr) {
+        const date = new Date(dateStr + 'T00:00:00');
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const month = monthNames[date.getMonth()];
+        const day = date.getDate();
+        const year = date.getFullYear();
+        return `${month} ${day}, ${year}`;
+    }
+
+    function formatDate(date) {
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+        const month = monthNames[date.getMonth()];
+        const day = date.getDate();
+        const year = date.getFullYear();
+        return `${month} ${day}, ${year}`;
+    }
+
+    function findModelEntryByName(name, modelDataForDate) {
+        if (!name) return null;
+        const normalized = name.toLowerCase();
+        const check = (arr) => arr && arr.find(x => x.name && x.name.toLowerCase() === normalized);
+
+        let entry = check(modelDataForDate);
+        if (!entry && typeof hrModelData !== 'undefined') entry = check(hrModelData);
+        if (!entry && typeof hrModelHistoricalData !== 'undefined') entry = check(hrModelHistoricalData);
+        return entry || null;
+    }
+
+    function openOutlierModal(name, dateStr) {
+        let details = `This outlier is for ${name} (${dateStr}).`;
+        const sameDateModel = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || [];
+        const sameEntry = findModelEntryByName(name, sameDateModel);
+        if (sameEntry) {
+            details += `<br><br><b>Same date:</b> ${dateStr}`;
+            details += `<br><b>Model Prob:</b> ${sameEntry.probability}%`;
+            details += `<br><b>Max EV:</b> ${sameEntry.max_ev || 'N/A'}`;
+            details += `<br><b>Breakdown:</b> Power ${sameEntry.breakdown.Power} | Form ${sameEntry.breakdown.Form} | Trend ${sameEntry.breakdown.Trend} | Park ${sameEntry.breakdown.Park}`;
+        } else {
+            details += `<br><br>No model entry found for ${name} on ${dateStr}.`;
+        }
+
+        const content = document.getElementById('outlier-modal-content');
+        const title = document.getElementById('outlier-modal-title');
+        title.innerHTML = `Outlier Lookup: ${name}`;
+        content.innerHTML = details;
+        document.getElementById('outlier-modal').style.display = 'flex';
+    }
+
+    document.getElementById('close-outlier-modal').addEventListener('click', () => {
+        document.getElementById('outlier-modal').style.display = 'none';
+    });
+
+    function renderPredictionCards(predictionData, emptyFileName, emptyMessage) {
+        const dash = document.getElementById('dashboard');
+        dash.innerHTML = '';
+
+        if (!predictionData || predictionData.length === 0) {
+            const message = emptyMessage || `Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/${emptyFileName}</code>.`;
+            dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
+                <h2 style="color: var(--text-dim)">No Data Found</h2>
+                <p>${message}</p>
+            </div>`;
+            return;
+        }
+
+        predictionData.forEach(p => {
+            const isElite = p.probability >= 8.5;
+            const isSolid = p.probability >= 5.5 && p.probability < 8.5;
+            const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
+            const trendClass = p.ev_trend_val > 1.5 ? 'hot-trend' : 'neutral-trend';
+
+            dash.innerHTML += `
+                <article class="card ${tierClass}">
+                    <div class="card-header">
+                        <div class="header-main">
+                            <span class="team-tag">${p.team}</span>
+                            <h2 class="player-name">${p.name}</h2>
+                            <span class="trend-badge ${trendClass}">${p.ev_trend_label}</span>
+                        </div>
+                        <div class="score-box">
+                            <span class="score-val">${p.probability}%</span>
+                            <span class="score-label">PROB</span>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-section">
+                        <span class="breakdown-title">Signal Heatmap</span>
+                        <div class="breakdown-grid">
+                            <div class="b-item">
+                                <span class="b-label">POWER</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Power}%; background: var(--accent);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">FORM</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Form}%; background: var(--emerald);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">TREND</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Trend}%; background: var(--gold);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">PARK</span>
+                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Park}%; background: var(--sky);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-section">
+                        <div class="stat-group">
+                            <div class="stat-line">
+                                <span class="stat-label">Max Exit Velocity</span>
+                                <span class="stat-value">${p.max_ev} MPH</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" style="width:${p.max_ev_pct}%; background: var(--accent);"></div></div>
+                        </div>
+
+                        <div class="stat-group" style="margin-top:15px;">
+                            <div class="stat-line">
+                                <span class="stat-label">Fly Ball EV (Avg)</span>
+                                <span class="stat-value">${p.fb_ev} MPH</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" style="width:${p.fb_ev_pct}%; background: var(--gold);"></div></div>
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <div class="pitcher-info">vs <span style="color:white">${p.opp_pitcher_full || p.opp_pitcher || 'TBD'}</span></div>
+                        <div class="park-info">${p.park_factor}</div>
+                    </footer>
+                </article>
+            `;
+        });
+    }
+
+    function getTeamAbbr(teamName) {
+        return TEAM_ABBR_MAP[teamName] || '';
+    }
+
+    async function getStartedTeamsForDate(dateStr) {
+        if (!dateStr) return new Set();
+        if (startedTeamsCache[dateStr]) return startedTeamsCache[dateStr];
+
+        const startedTeams = new Set();
+        try {
+            const response = await fetch(`https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=${dateStr}`);
+            const payload = await response.json();
+            const games = (payload.dates && payload.dates[0] && payload.dates[0].games) ? payload.dates[0].games : [];
+
+            games.forEach(game => {
+                const abstractState = ((game.status && game.status.abstractGameState) || '').toLowerCase();
+                const isFinal = abstractState === 'final';
+                if (!isFinal) return;
+
+                const awayName = game.teams && game.teams.away && game.teams.away.team ? game.teams.away.team.name : '';
+                const homeName = game.teams && game.teams.home && game.teams.home.team ? game.teams.home.team.name : '';
+                const awayAbbr = getTeamAbbr(awayName);
+                const homeAbbr = getTeamAbbr(homeName);
+
+                if (awayAbbr) startedTeams.add(awayAbbr);
+                if (homeAbbr) startedTeams.add(homeAbbr);
+            });
+        } catch (err) {
+            console.warn('Unable to load schedule for display filtering:', err);
+        }
+
+        startedTeamsCache[dateStr] = startedTeams;
+        return startedTeams;
+    }
+
+    async function loadPredictions() {
+        const allPredictions = typeof hrModelData !== 'undefined' ? hrModelData : [];
+        if (!allPredictions.length) {
+            renderPredictionCards([], 'hr_model_data.js');
+            return;
+        }
+
+        const dateStr = allPredictions[0].date;
+        const startedTeams = await getStartedTeamsForDate(dateStr);
+        const filteredPredictions = allPredictions.filter(p => !startedTeams.has(p.team));
+
+        if (!filteredPredictions.length) {
+            renderPredictionCards(
+                [],
+                'hr_model_data.js',
+                'All games for this slate are Final, so today\'s display is intentionally empty.'
+            );
+            return;
+        }
+
+        renderPredictionCards(filteredPredictions, 'hr_model_data.js');
+    }
+
+    function loadTomorrowPredictions() {
+        renderPredictionCards(typeof hrModelTomorrowData !== 'undefined' ? hrModelTomorrowData : [], 'hr_model_tomorrow.js');
+    }
+
+    function inferModelMissReason(result, modelEntry, modelData, outlierSubtype, outlierType) {
+        if (!modelEntry) {
+            return `Player not found in model data for this date. This represents a complete blind spot where the model had no visibility into this player's HR potential.`;
+        }
+
+        const threshold = 5.0;
+        const sorted = (modelData || []).slice().sort((a, b) => b.probability - a.probability);
+        const rank = sorted.findIndex(p => p.name === modelEntry.name) + 1 || 'N/A';
+        const thresholdTag = modelEntry.probability < threshold ? `below threshold (${threshold}%)` : 'at or above threshold';
+
+        let analysis = `Modeled at ${modelEntry.probability}% (rank ${rank}, ${thresholdTag}). `;
+
+        // Enhanced analysis based on outlier subtype and type
+        if (outlierSubtype === 'Near Miss') {
+            analysis += `Near miss: Player was close to being flagged but fell just short of the ${threshold}% threshold. `;
+            if (outlierType === 'Park Effect') {
+                analysis += `Park factors may have been undervalued - this HR benefited significantly from favorable ballpark conditions.`;
+            } else if (outlierType === 'Hot Streak') {
+                analysis += `Recent form/trend signals were strong but not captured in the probability calculation.`;
+            } else if (outlierType === 'Bullpen Surprise') {
+                analysis += `Pitching matchup changes or bullpen performance exceeded model expectations.`;
+            } else {
+                analysis += `Pure power display that narrowly missed the prediction threshold.`;
+            }
+        } else if (outlierSubtype === 'Cold Miss') {
+            analysis += `Cold miss: Player showed meaningful model signal (${modelEntry.probability}%) but still fell well below the threshold. `;
+            if (outlierType === 'Park Effect') {
+                analysis += `Ballpark advantage was recognized but may have been insufficient to push probability above threshold.`;
+            } else {
+                analysis += `Model correctly identified some potential but underestimated the likelihood of conversion.`;
+            }
+        } else if (outlierSubtype === 'Blind Spot') {
+            analysis += `Blind spot: Player had minimal model visibility (${modelEntry.probability}%) and represents a significant model miss. `;
+            if (outlierType === 'Pure Power') {
+                analysis += `Exceptional power display that wasn't anticipated by current model signals.`;
+            } else if (outlierType === 'Park Effect') {
+                analysis += `Ballpark conditions created an opportunity not fully captured by the model.`;
+            } else {
+                analysis += `Unforeseen circumstances led to this HR outcome.`;
+            }
+        }
+
+        return analysis;
+    }
+
+    function loadResults(dateStr) {
+        currentDate = dateStr;
+        const dash = document.getElementById('dashboard');
+        const summary = document.getElementById('summary-container');
+        const dateSummary = document.getElementById('date-summary');
+        const subtitle = document.getElementById('subtitle');
+
+        dash.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;"><div class="loading-spinner"></div><p>Loading historical data...</p></div>';
+        summary.innerHTML = '';
+        dateSummary.textContent = `Loading data for ${formatDateForDisplay(dateStr)}...`;
+
+        // Update subtitle with selected date
+        subtitle.textContent = `${formatDate(new Date(dateStr + 'T00:00:00'))} • v3 Model Performance vs. Statcast Reality`;
+
+        // Load historical data for this date
+        loadHistoricalData(dateStr).then(() => {
+            // Use the loaded historical data
+            const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || hrModelData;
+            const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || hrResultsData;
+
+            processResultsData(modelData, resultsData, dash, summary, dateStr);
+            dateSummary.textContent = `Showing results for ${formatDateForDisplay(dateStr)}`;
+        }).catch(() => {
+            // Fallback to current data if historical load fails
+            console.log('Using current data as fallback');
+            processResultsData(hrModelData, hrResultsData, dash, summary, dateStr);
+            dateSummary.textContent = `Showing current data (historical data not available for ${formatDateForDisplay(dateStr)})`;
+        });
+    }
+
+function processResultsData(modelData, resultsData, dash, summary, dateStr) {
+        dash.innerHTML = ''; // Clear loading message
+
+        // 1. Create a Set of names who ACTUALLY hit HRs for fast lookup
+        const actualHRNames = new Set(resultsData.map(r => r.name));
+        const resultsByName = new Map(resultsData.map(r => [r.name, r]));
+
+        let successfulPredictions = 0;
+        let totalFlagged = 0;
+        let truePositives = 0;
+        let falsePositives = 0;
+        let falseNegatives = 0;
+        const allCards = [];
+
+        // 2. Map through the Model Predictions
+        modelData.forEach(p => {
+            const actual = resultsByName.get(p.name);
+            const didHit = !!actual;
+            const isFlagged = p.probability >= 5.0; // Your threshold for a "Pick"
+
+            if (isFlagged) totalFlagged++;
+            if (isFlagged && didHit) {
+                successfulPredictions++;
+                truePositives++;
+            } else if (isFlagged && !didHit) {
+                falsePositives++;
+            } else if (!isFlagged && didHit) {
+                falseNegatives++;
+            }
+
+            const card = document.createElement('div');
+
+            // Enhanced win/loss classification with quality scoring
+            let status, resultText, resultClass, winQualityScore = null, lossReason = null;
+
+            if (didHit) {
+                status = 'win';
+                resultText = '✓ WIN';
+                resultClass = 'badge-hit';
+
+                // Win quality scoring based on probability/threshold ratio
+                const threshold = 5.0;
+                winQualityScore = p.probability / threshold;
+                if (winQualityScore >= 1.6) {
+                    resultText = '✓ ELITE WIN';
+                    resultClass = 'badge-elite-win';
+                } else if (winQualityScore >= 1.2) {
+                    resultText = '✓ SOLID WIN';
+                    resultClass = 'badge-solid-win';
+                }
+            } else {
+                status = 'loss';
+                resultText = '✗ LOSS';
+                resultClass = 'badge-miss';
+
+                // Loss reason tagging
+                if (p.probability >= 8.0) {
+                    lossReason = 'High Confidence Miss';
+                    resultClass = 'badge-high-conf-miss';
+                } else if (p.probability >= 5.0) {
+                    lossReason = 'Standard Miss';
+                } else {
+                    lossReason = 'Watchlist Miss';
+                }
+            }
+
+            card.className = `card ${didHit ? 'status-hit' : 'status-miss'}`;
+
+            card.innerHTML = `
+                <div class="card-header">
+                    <div>
+                        <span class="team-tag">${p.team}</span>
+                        <div class="player-name">${p.name}</div>
+                        <div class="player-team">${p.team} • Pred: ${p.probability}%</div>
+                    </div>
+                    <div class="result-badge ${resultClass}">${resultText}</div>
+                </div>
+
+                <div class="breakdown-section">
+                    <span class="breakdown-title">Signal Heatmap</span>
+                    <div class="breakdown-grid">
+                        <div class="b-item">
+                            <span class="b-label">POWER</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Power}%; background: var(--accent);"></div></div>
+                        </div>
+                        <div class="b-item">
+                            <span class="b-label">FORM</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Form}%; background: var(--emerald);"></div></div>
+                        </div>
+                        <div class="b-item">
+                            <span class="b-label">TREND</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Trend}%; background: var(--gold);"></div></div>
+                        </div>
+                        <div class="b-item">
+                            <span class="b-label">PARK</span>
+                            <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Park}%; background: var(--sky);"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Model Prob</div>
+                        <div class="stat-value">${p.probability}%</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Max EV</div>
+                        <div class="stat-value">${p.max_ev || 'N/A'}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Actual EV</div>
+                        <div class="stat-value">${actual ? actual.ev : 'N/A'}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Distance</div>
+                        <div class="stat-value">${actual ? `${actual.dist}'` : 'N/A'}</div>
+                    </div>
+                </div>
+                ${winQualityScore ? `<div class="win-quality">Win Quality: ${(winQualityScore).toFixed(1)}x threshold</div>` : ''}
+                ${lossReason ? `<div class="loss-reason">Reason: ${lossReason}</div>` : ''}
+            `;
+            allCards.push({ element: card, status, winQualityScore, lossReason });
+        });
+
+        // 3. Find "Outliers" (Players who hit HRs but weren't flagged as predictions)
+        const predictedNames = new Set(modelData.filter(p => p.probability >= 5.0).map(p => p.name));
+        resultsData.forEach(r => {
+            if (!predictedNames.has(r.name)) {
+                falseNegatives++;
+
+                const lookupSources = [modelData, typeof hrModelData !== 'undefined' ? hrModelData : [],
+                    typeof hrModelHistoricalData !== 'undefined' ? hrModelHistoricalData : []];
+
+                let modelEntry = null;
+                for (const source of lookupSources) {
+                    if (!modelEntry) {
+                        modelEntry = source.find(p => p.name === r.name);
+                    }
+                }
+
+                const hasModelData = modelEntry && modelEntry.breakdown;
+
+                // Enhanced outlier classification with sub-categories and types
+                let outlierSubtype = 'Blind Spot';
+                let outlierType = 'Pure Power';
+                let confidenceBand = 'Watchlist';
+
+                if (hasModelData) {
+                    const prob = modelEntry.probability;
+                    if (prob >= 3.0) {
+                        outlierSubtype = 'Near Miss';
+                        confidenceBand = prob >= 5.0 ? 'Standard' : 'Watchlist';
+                    } else if (prob >= 1.0) {
+                        outlierSubtype = 'Cold Miss';
+                        confidenceBand = 'Watchlist';
+                    } else {
+                        outlierSubtype = 'Blind Spot';
+                        confidenceBand = 'Watchlist';
+                    }
+
+                    // Determine outlier type based on breakdown
+                    const breakdown = modelEntry.breakdown;
+                    if (breakdown.Park >= 70) {
+                        outlierType = 'Park Effect';
+                    } else if (breakdown.Power >= 80) {
+                        outlierType = 'Pure Power';
+                    } else if (breakdown.Form >= 60 || breakdown.Trend >= 60) {
+                        outlierType = 'Hot Streak';
+                    } else {
+                        outlierType = 'Bullpen Surprise';
+                    }
+                }
+
+                const missReason = inferModelMissReason(r, modelEntry, modelData, outlierSubtype, outlierType);
+                const card = document.createElement('div');
+                card.className = `card status-outlier outlier-${outlierSubtype.toLowerCase().replace(' ', '-')}`;
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div>
+                            <div class="player-name">${r.name}</div>
+                            <div class="player-team">Actual HR Hit ${hasModelData ? `• Model: ${modelEntry.probability}%` : ''}</div>
+                        </div>
+                        <div class="result-badge badge-outlier">⭐ ${outlierSubtype.toUpperCase()}</div>
+                    </div>
+                    <div class="breakdown-section">
+                        <span class="breakdown-title">${hasModelData ? `Model Ratings (${confidenceBand} Confidence)` : 'Not in Model'}</span>
+                        <div class="breakdown-grid">
+                            <div class="b-item">
+                                <span class="b-label">POWER</span>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Power : 0}%; background: var(--accent);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">FORM</span>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Form : 0}%; background: var(--emerald);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">TREND</span>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Trend : 0}%; background: var(--gold);"></div></div>
+                            </div>
+                            <div class="b-item">
+                                <span class="b-label">PARK</span>
+                                <div class="b-track"><div class="b-fill" style="width:${hasModelData ? modelEntry.breakdown.Park : 0}%; background: var(--sky);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Model Prob</div>
+                            <div class="stat-value">${hasModelData ? `${modelEntry.probability}%` : 'N/A'}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Max EV</div>
+                            <div class="stat-value">${hasModelData ? modelEntry.max_ev : 'N/A'}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Actual EV</div>
+                            <div class="stat-value">${r.ev}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Distance</div>
+                            <div class="stat-value">${r.dist}'</div>
+                        </div>
+                    </div>
+                    <div class="outlier-details">
+                        <div class="outlier-type">Type: ${outlierType}</div>
+                        <div class="outlier-analysis">${missReason}</div>
+                    </div>
+                `;
+                card.style.cursor = 'pointer';
+                card.title = 'Click to inspect outlier model history';
+                card.addEventListener('click', () => openOutlierModal(r.name, dateStr));
+
+                allCards.push({ element: card, status: 'outlier', outlierSubtype, outlierType });
+            }
+        });
+
+        // 4. Sort by status: Elite Win -> Solid Win -> Win -> Outlier -> Loss
+        allCards.sort((a, b) => {
+            const statusOrder = {
+                'win': a.winQualityScore >= 1.6 ? 0 : (a.winQualityScore >= 1.2 ? 1 : 2),
+                'outlier': 3,
+                'loss': 4
+            };
+            const aOrder = statusOrder[a.status] !== undefined ? statusOrder[a.status] : 5;
+            const bOrder = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 5;
+            return aOrder - bOrder;
+        });
+
+        // 5. Append sorted cards to dashboard
+        allCards.forEach(({ element }) => {
+            dash.appendChild(element);
+        });
+
+        // 6. Render enhanced Summary with advanced metrics
+        const rate = totalFlagged > 0 ? ((successfulPredictions / totalFlagged) * 100).toFixed(1) : 0;
+        const totalHRs = resultsData.length;
+        const predictedHRs = successfulPredictions;
+
+        // Calculate precision, recall, and F1 scores
+        const precision = truePositives > 0 ? ((truePositives / (truePositives + falsePositives)) * 100).toFixed(1) : 0;
+        const recall = truePositives > 0 ? ((truePositives / (truePositives + falseNegatives)) * 100).toFixed(1) : 0;
+        const f1Score = (precision > 0 && recall > 0) ? ((2 * precision * recall) / (precision + recall)).toFixed(1) : 0;
+
+        summary.innerHTML = `
+            <div class="summary-bar">
+                <div class="summary-item">Flagged <b>${totalFlagged}</b></div>
+                <div class="summary-item">Hits <b>${successfulPredictions}</b></div>
+                <div class="summary-item">Accuracy <b>${rate}%</b></div>
+                <div class="summary-item">Precision <b>${precision}%</b></div>
+                <div class="summary-item">Recall <b>${recall}%</b></div>
+                <div class="summary-item">F1 Score <b>${f1Score}</b></div>
+                <div class="summary-item">Total HRs <b>${totalHRs}</b></div>
+                <div class="summary-item">Predicted <b>${predictedHRs}/${totalHRs}</b></div>
+            </div>
+        `;
+    }
+
+    // Initialize with predictions view
+    document.addEventListener('DOMContentLoaded', () => {
+        loadPredictions();
+    });
+</script>
+<script src="../../assets/site-nav-dev.js" defer></script>
+</body>
+</html>
