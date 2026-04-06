@@ -567,3 +567,7 @@
 2026-04-06 09:42:48,996 | INFO | Starting-lineups refresh completed successfully
 2026-04-06 09:42:48,997 | INFO | Next run scheduled for 2026-04-06 10:12:41 AM
 2026-04-06 10:12:41,403 | INFO | Starting HR results refresh
+2026-04-06 10:12:48,603 | INFO | HR results refresh completed successfully
+2026-04-06 10:12:48,603 | INFO | Starting starting-lineups refresh
+2026-04-06 10:12:49,143 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 10:12:49,144 | INFO | Next run scheduled for 2026-04-06 10:42:41 AM
