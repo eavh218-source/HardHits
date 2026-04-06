@@ -1,187 +1,7 @@
 [
     {
-        "pitcher_name": "Dustin May",
-        "pitcher_id": 669160,
-        "pitcher_team": "STL",
-        "opponent_team": "DET"
-    },
-    {
-        "pitcher_name": "Jack Flaherty",
-        "pitcher_id": 656427,
-        "pitcher_team": "DET",
-        "opponent_team": "STL"
-    },
-    {
-        "pitcher_name": "Mason Fluharty",
-        "pitcher_id": 689254,
-        "pitcher_team": "TOR",
-        "opponent_team": "CWS"
-    },
-    {
-        "pitcher_name": "Grant Taylor",
-        "pitcher_id": 691799,
-        "pitcher_team": "CWS",
-        "opponent_team": "TOR"
-    },
-    {
-        "pitcher_name": "Chad Patrick",
-        "pitcher_id": 694477,
-        "pitcher_team": "MIL",
-        "opponent_team": "KC"
-    },
-    {
-        "pitcher_name": "Luinder Avila",
-        "pitcher_id": 679883,
-        "pitcher_team": "KC",
-        "opponent_team": "MIL"
-    },
-    {
-        "pitcher_name": "Logan Henderson",
-        "pitcher_id": 701656,
-        "pitcher_team": "MIL",
-        "opponent_team": "KC"
-    },
-    {
-        "pitcher_name": "Seth Lugo",
-        "pitcher_id": 607625,
-        "pitcher_team": "KC",
-        "opponent_team": "MIL"
-    },
-    {
-        "pitcher_name": "Tyler Glasnow",
-        "pitcher_id": 607192,
-        "pitcher_team": "LAD",
-        "opponent_team": "WSH"
-    },
-    {
-        "pitcher_name": "Jake Irvin",
-        "pitcher_id": 663623,
-        "pitcher_team": "WSH",
-        "opponent_team": "LAD"
-    },
-    {
-        "pitcher_name": "Tatsuya Imai",
-        "pitcher_id": 837227,
-        "pitcher_team": "HOU",
-        "opponent_team": "ATH"
-    },
-    {
-        "pitcher_name": "Luis Morales",
-        "pitcher_id": 806960,
-        "pitcher_team": "ATH",
-        "opponent_team": "HOU"
-    },
-    {
-        "pitcher_name": "Shane Baz",
-        "pitcher_id": 669358,
-        "pitcher_team": "BAL",
-        "opponent_team": "PIT"
-    },
-    {
-        "pitcher_name": "Carmen Mlodzinski",
-        "pitcher_id": 669387,
-        "pitcher_team": "PIT",
-        "opponent_team": "BAL"
-    },
-    {
-        "pitcher_name": "Randy V\u00e1squez",
-        "pitcher_id": 681190,
-        "pitcher_team": "SD",
-        "opponent_team": "BOS"
-    },
-    {
-        "pitcher_name": "Connelly Early",
-        "pitcher_id": 813349,
-        "pitcher_team": "BOS",
-        "opponent_team": "SD"
-    },
-    {
-        "pitcher_name": "Rhett Lowder",
-        "pitcher_id": 695076,
-        "pitcher_team": "CIN",
-        "opponent_team": "TEX"
-    },
-    {
-        "pitcher_name": "Kumar Rocker",
-        "pitcher_id": 677958,
-        "pitcher_team": "TEX",
-        "opponent_team": "CIN"
-    },
-    {
-        "pitcher_name": "Max Meyer",
-        "pitcher_id": 676974,
-        "pitcher_team": "MIA",
-        "opponent_team": "NYY"
-    },
-    {
-        "pitcher_name": "Ryan Weathers",
-        "pitcher_id": 677960,
-        "pitcher_team": "NYY",
-        "opponent_team": "MIA"
-    },
-    {
-        "pitcher_name": "Steven Matz",
-        "pitcher_id": 571927,
-        "pitcher_team": "TB",
-        "opponent_team": "MIN"
-    },
-    {
-        "pitcher_name": "Mick Abel",
-        "pitcher_id": 690953,
-        "pitcher_team": "MIN",
-        "opponent_team": "TB"
-    },
-    {
-        "pitcher_name": "Bryce Elder",
-        "pitcher_id": 693821,
-        "pitcher_team": "ATL",
-        "opponent_team": "AZ"
-    },
-    {
-        "pitcher_name": "Michael Soroka",
-        "pitcher_id": 647336,
-        "pitcher_team": "AZ",
-        "opponent_team": "ATL"
-    },
-    {
-        "pitcher_name": "Jes\u00fas Luzardo",
-        "pitcher_id": 666200,
-        "pitcher_team": "PHI",
-        "opponent_team": "COL"
-    },
-    {
-        "pitcher_name": "Brennan Bernardino",
-        "pitcher_id": 657514,
-        "pitcher_team": "COL",
-        "opponent_team": "PHI"
-    },
-    {
-        "pitcher_name": "Clay Holmes",
-        "pitcher_id": 605280,
-        "pitcher_team": "NYM",
-        "opponent_team": "SF"
-    },
-    {
-        "pitcher_name": "Landen Roupp",
-        "pitcher_id": 694738,
-        "pitcher_team": "SF",
-        "opponent_team": "NYM"
-    },
-    {
-        "pitcher_name": "Emerson Hancock",
-        "pitcher_id": 676106,
-        "pitcher_team": "SEA",
-        "opponent_team": "LAA"
-    },
-    {
-        "pitcher_name": "Jack Kochanowicz",
-        "pitcher_id": 686799,
-        "pitcher_team": "LAA",
-        "opponent_team": "SEA"
-    },
-    {
-        "pitcher_name": "Shota Imanaga",
-        "pitcher_id": 684007,
+        "pitcher_name": "Edward Cabrera",
+        "pitcher_id": 665795,
         "pitcher_team": "CHC",
         "opponent_team": "CLE"
     },
@@ -190,5 +10,185 @@
         "pitcher_id": 677944,
         "pitcher_team": "CLE",
         "opponent_team": "CHC"
+    },
+    {
+        "pitcher_name": "Shota Imanaga",
+        "pitcher_id": 684007,
+        "pitcher_team": "CHC",
+        "opponent_team": "CLE"
+    },
+    {
+        "pitcher_name": "Parker Messick",
+        "pitcher_id": 800048,
+        "pitcher_team": "CLE",
+        "opponent_team": "CHC"
+    },
+    {
+        "pitcher_name": "Roki Sasaki",
+        "pitcher_id": 808963,
+        "pitcher_team": "LAD",
+        "opponent_team": "WSH"
+    },
+    {
+        "pitcher_name": "Foster Griffin",
+        "pitcher_id": 656492,
+        "pitcher_team": "WSH",
+        "opponent_team": "LAD"
+    },
+    {
+        "pitcher_name": "Chris Bassitt",
+        "pitcher_id": 605135,
+        "pitcher_team": "BAL",
+        "opponent_team": "PIT"
+    },
+    {
+        "pitcher_name": "Braxton Ashcraft",
+        "pitcher_id": 677952,
+        "pitcher_team": "PIT",
+        "opponent_team": "BAL"
+    },
+    {
+        "pitcher_name": "Walker Buehler",
+        "pitcher_id": 621111,
+        "pitcher_team": "SD",
+        "opponent_team": "BOS"
+    },
+    {
+        "pitcher_name": "Ranger Suarez",
+        "pitcher_id": 624133,
+        "pitcher_team": "BOS",
+        "opponent_team": "SD"
+    },
+    {
+        "pitcher_name": "Pete Fairbanks",
+        "pitcher_id": 664126,
+        "pitcher_team": "MIA",
+        "opponent_team": "NYY"
+    },
+    {
+        "pitcher_name": "Max Fried",
+        "pitcher_id": 608331,
+        "pitcher_team": "NYY",
+        "opponent_team": "MIA"
+    },
+    {
+        "pitcher_name": "Nick Martinez",
+        "pitcher_id": 607259,
+        "pitcher_team": "TB",
+        "opponent_team": "MIN"
+    },
+    {
+        "pitcher_name": "Simeon Woods Richardson",
+        "pitcher_id": 680573,
+        "pitcher_team": "MIN",
+        "opponent_team": "TB"
+    },
+    {
+        "pitcher_name": "Eric Lauer",
+        "pitcher_id": 641778,
+        "pitcher_team": "TOR",
+        "opponent_team": "CWS"
+    },
+    {
+        "pitcher_name": "Davis Martin",
+        "pitcher_id": 663436,
+        "pitcher_team": "CWS",
+        "opponent_team": "TOR"
+    },
+    {
+        "pitcher_name": "Kyle Harrison",
+        "pitcher_id": 690986,
+        "pitcher_team": "MIL",
+        "opponent_team": "KC"
+    },
+    {
+        "pitcher_name": "Kris Bubic",
+        "pitcher_id": 663460,
+        "pitcher_team": "KC",
+        "opponent_team": "MIL"
+    },
+    {
+        "pitcher_name": "Chase Burns",
+        "pitcher_id": 695505,
+        "pitcher_team": "CIN",
+        "opponent_team": "TEX"
+    },
+    {
+        "pitcher_name": "Jack Leiter",
+        "pitcher_id": 683004,
+        "pitcher_team": "TEX",
+        "opponent_team": "CIN"
+    },
+    {
+        "pitcher_name": "Taijuan Walker",
+        "pitcher_id": 592836,
+        "pitcher_team": "PHI",
+        "opponent_team": "COL"
+    },
+    {
+        "pitcher_name": "Tomoyuki Sugano",
+        "pitcher_id": 608372,
+        "pitcher_team": "COL",
+        "opponent_team": "PHI"
+    },
+    {
+        "pitcher_name": "Lance McCullers Jr.",
+        "pitcher_id": 621121,
+        "pitcher_team": "HOU",
+        "opponent_team": "ATH"
+    },
+    {
+        "pitcher_name": "Jacob Lopez",
+        "pitcher_id": 682052,
+        "pitcher_team": "ATH",
+        "opponent_team": "HOU"
+    },
+    {
+        "pitcher_name": "Kodai Senga",
+        "pitcher_id": 673540,
+        "pitcher_team": "NYM",
+        "opponent_team": "SF"
+    },
+    {
+        "pitcher_name": "Logan Webb",
+        "pitcher_id": 657277,
+        "pitcher_team": "SF",
+        "opponent_team": "NYM"
+    },
+    {
+        "pitcher_name": "Luis Castillo",
+        "pitcher_id": 622491,
+        "pitcher_team": "SEA",
+        "opponent_team": "LAA"
+    },
+    {
+        "pitcher_name": "George Klassen",
+        "pitcher_id": 691946,
+        "pitcher_team": "LAA",
+        "opponent_team": "SEA"
+    },
+    {
+        "pitcher_name": "Mart\u00edn P\u00e9rez",
+        "pitcher_id": 527048,
+        "pitcher_team": "ATL",
+        "opponent_team": "AZ"
+    },
+    {
+        "pitcher_name": "Brandon Pfaadt",
+        "pitcher_id": 694297,
+        "pitcher_team": "AZ",
+        "opponent_team": "ATL"
+    },
+    {
+        "pitcher_name": "Kyle Leahy",
+        "pitcher_id": 681517,
+        "pitcher_team": "STL",
+        "opponent_team": "DET"
+    },
+    {
+        "pitcher_name": "Keider Montero",
+        "pitcher_id": 672456,
+        "pitcher_team": "DET",
+        "opponent_team": "STL"
     }
 ]

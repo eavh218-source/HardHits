@@ -343,7 +343,7 @@
 <div class="container">
     <div style="margin-bottom: 30px;">
         <h1 style="font-size: 2.2rem; margin: 0; letter-spacing: -1px;">Home Run Probability</h1>
-        <p id="subtitle" style="color: var(--text-dim); margin-top: 5px;">Scoring weight: 20% Power, 15% Form, 10% Trend, 5% Context</p>
+        <p id="subtitle" style="color: var(--text-dim); margin-top: 5px;">Unified model: power, form, EV trend, pitcher risk, park, platoon, H2H, weather + lineup PA multiplier</p>
     </div>
 
     <div class="view-toggle">
@@ -419,7 +419,7 @@
 
         if (view === 'predictions') {
             title.textContent = 'Home Run Probability';
-            subtitle.textContent = 'Scoring weight: 20% Power, 15% Form, 10% Trend, 5% Context';
+            subtitle.textContent = 'Unified model: power, form, EV trend, pitcher risk, park, platoon, H2H, weather + lineup PA multiplier';
             document.getElementById('summary-container').style.display = 'none';
             document.getElementById('date-selector').style.display = 'none';
             loadPredictions();
@@ -427,7 +427,7 @@
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             title.textContent = 'Tomorrow HR Probability';
-            subtitle.textContent = `${formatDate(tomorrow)} • projected using current power, form, trend, park, and matchup history`;
+            subtitle.textContent = `${formatDate(tomorrow)} • projected using the unified power, pitcher, park, platoon, weather, and lineup model`;
             document.getElementById('summary-container').style.display = 'none';
             document.getElementById('date-selector').style.display = 'none';
             loadTomorrowPredictions();

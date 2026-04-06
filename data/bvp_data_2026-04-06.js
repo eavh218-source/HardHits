@@ -1,5 +1,5 @@
-const bvpTomorrowDate = '2026-04-06';
-const tomorrowMatchups = [
+window.bvpDate_2026_04_06 = '2026-04-06';
+window.dailyMatchups_2026_04_06 = [
   {
     "date": "2026-04-06",
     "time": "4:10 PM ET",
@@ -105,7 +105,7 @@ const tomorrowMatchups = [
     "home_p": "Houser"
   }
 ];
-const bvpTomorrowData = [
+window.bvpData_2026_04_06 = [
   {
     "date": "2026-04-06",
     "pitcher_name": "Tanner Bibee",

@@ -532,17 +532,17 @@ def save_probability_payload(payload, target_date, default_filename=None, defaul
 
 
 def run_hrbi_model(max_games=None):
-    print("--- HRR+ Probability Engine (stable) ---")
+    print("--- H+R+RBI Probability Engine (stable) ---")
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     today = datetime.now().strftime("%Y-%m-%d")
     tomorrow = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
 
-    print(f"Building today's HRR+ predictions for {today}")
+    print(f"Building today's H+R+RBI predictions for {today}")
     today_payload = generate_probability_payload(today, max_games=max_games)
     today_output = save_probability_payload(today_payload, today, "hrbi_model_data.js", "hrbiModelData")
 
-    print(f"Building tomorrow's HRR+ predictions for {tomorrow}")
+    print(f"Building tomorrow's H+R+RBI predictions for {tomorrow}")
     tomorrow_payload = generate_probability_payload(tomorrow, max_games=max_games)
     tomorrow_output = save_probability_payload(
         tomorrow_payload,
@@ -562,7 +562,7 @@ def run_hrbi_model(max_games=None):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Generate stable HRR+ probability outputs.")
+    parser = argparse.ArgumentParser(description="Generate stable H+R+RBI probability outputs.")
     parser.add_argument(
         "--max-games",
         type=int,

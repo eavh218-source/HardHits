@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HardHits | HRR+ Probability</title>
+    <title>HardHits | MLB Hits + Runs + RBIs (H+R+RBI) Probability Model</title>
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260404-clickfix">
     <script src="../data/hrbi_model_data.js?v=stable-20260404-clickfix"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -229,8 +229,8 @@
 <body data-nav="hrbi">
 <div class="container">
     <div style="margin-bottom: 26px;">
-        <h1 style="margin:0; font-size:2rem; letter-spacing:-0.02em;">HRR+ Probability</h1>
-        <p style="margin:6px 0 0; color:var(--text-dim);">Target condition: player reaches 3+ combined Hits + Runs + RBI.</p>
+        <h1 style="margin:0; font-size:2rem; letter-spacing:-0.02em;">MLB Hits + Runs + RBIs (H+R+RBI) Probability Model</h1>
+        <p style="margin:6px 0 0; color:var(--text-dim);">Target condition: player records 3+ combined Hits + Runs + RBIs.</p>
     </div>
 
     <div id="dashboard" class="grid"></div>
@@ -324,7 +324,7 @@
                     '</div>' +
                     '<div class="score-box">' +
                         '<span class="score-val">' + escapeHtml(String(player.probability || 0)) + '%</span>' +
-                        '<span class="score-label">HRR+ PROB</span>' +
+                        '<span class="score-label">H+R+RBI PROB</span>' +
                     '</div>' +
                 '</div>' +
 
@@ -382,7 +382,7 @@
 
         if (!players.length) {
             dash.innerHTML = '<div style="grid-column:1/-1; padding:60px; text-align:center; border:2px dashed #334155; border-radius:16px; background:rgba(15,23,42,0.92); color:#f8fafc;">' +
-                '<h2 style="margin:0 0 8px;">No HRR+ Data Found</h2>' +
+                '<h2 style="margin:0 0 8px;">No H+R+RBI Data Found</h2>' +
                 '<p style="margin:0; color:#94a3b8;">Run <code>python python/hrbi_engine.py</code> from the repo root to generate <code>data/hrbi_model_data.js</code>.</p>' +
                 '</div>';
             return;

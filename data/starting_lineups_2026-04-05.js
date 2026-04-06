@@ -1,6 +1,6 @@
-const lineupUpdateDate = '2026-04-05';
-const lineupLastCompleted = '9:42 PM ET';
-const startingLineups = [
+window.lineupUpdateDate_2026_04_05 = '2026-04-05';
+window.lineupLastCompleted_2026_04_05 = '9:42 PM ET';
+window.startingLineups_2026_04_05 = [
   {
     "date": "2026-04-05",
     "game_pk": 824459,

@@ -21,6 +21,8 @@ import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
+from system_settings import load_system_settings
+
 ROOT = Path(__file__).resolve().parent.parent
 LOG_DIR = ROOT / "logs"
 DEFAULT_LOG_FILE = LOG_DIR / "hr_engine_job.log"
@@ -104,7 +106,13 @@ def run_forever(interval_minutes: int) -> None:
         time.sleep(sleep_seconds)
 
 
+def get_default_interval() -> int:
+    settings = load_system_settings()
+    return int(settings.get("jobIntervals", {}).get("hr_engine_job_minutes", 30))
+
+
 def parse_args() -> argparse.Namespace:
+    default_interval = get_default_interval()
     parser = argparse.ArgumentParser(
         description="Run the HardHits live HR results and lineup updaters once or on a repeating interval."
     )
@@ -116,8 +124,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--interval",
         type=int,
-        default=30,
-        help="Minutes between runs when using --loop (default: 30).",
+        default=default_interval,
+        help=f"Minutes between runs when using --loop (default from system settings: {default_interval}).",
     )
     parser.add_argument(
         "--log-file",

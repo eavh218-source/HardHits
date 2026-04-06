@@ -2,14 +2,14 @@ const siteStatus = {
   "site": "stable",
   "repo_root": "C:\\code\\HardHits",
   "homepage": "site/HardHits.html",
-  "generated_at_utc": "2026-04-05T02:18:34Z",
+  "generated_at_utc": "2026-04-05T10:36:39Z",
   "status": "healthy",
   "jobs": {
     "mastercontroller": {
       "label": "Full dashboard refresh",
       "success": true,
       "detail": "All stable dashboard refresh scripts completed successfully.",
-      "last_run_utc": "2026-04-05T02:18:34Z",
+      "last_run_utc": "2026-04-05T10:36:39Z",
       "log_file": "logs/mastercontroller_job.log"
     },
     "hr_engine_job": {
