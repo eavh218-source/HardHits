@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - master
+      - EveningVibing
     paths:
       - 'site/**'
       - 'assets/**'
