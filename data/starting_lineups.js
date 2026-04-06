@@ -1,5 +1,5 @@
 const lineupUpdateDate = '2026-04-06';
-const lineupLastCompleted = '11:42 AM ET';
+const lineupLastCompleted = '12:42 PM ET';
 const startingLineups = [
   {
     "date": "2026-04-06",
@@ -8,10 +8,10 @@ const startingLineups = [
     "away_team": "Chicago Cubs",
     "home_team": "Tampa Bay Rays",
     "game_time_et": "4:10 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (267 minutes to first pitch)",
-    "minutes_to_first_pitch": 267,
+    "reason": "too early (207 minutes to first pitch)",
+    "minutes_to_first_pitch": 207,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -24,8 +24,8 @@ const startingLineups = [
     "game_time_et": "6:10 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (387 minutes to first pitch)",
-    "minutes_to_first_pitch": 387,
+    "reason": "too early (327 minutes to first pitch)",
+    "minutes_to_first_pitch": 327,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -38,8 +38,8 @@ const startingLineups = [
     "game_time_et": "6:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (417 minutes to first pitch)",
-    "minutes_to_first_pitch": 417,
+    "reason": "too early (357 minutes to first pitch)",
+    "minutes_to_first_pitch": 357,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -52,8 +52,8 @@ const startingLineups = [
     "game_time_et": "6:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (417 minutes to first pitch)",
-    "minutes_to_first_pitch": 417,
+    "reason": "too early (357 minutes to first pitch)",
+    "minutes_to_first_pitch": 357,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -66,8 +66,8 @@ const startingLineups = [
     "game_time_et": "6:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (422 minutes to first pitch)",
-    "minutes_to_first_pitch": 422,
+    "reason": "too early (362 minutes to first pitch)",
+    "minutes_to_first_pitch": 362,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -80,8 +80,8 @@ const startingLineups = [
     "game_time_et": "6:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (422 minutes to first pitch)",
-    "minutes_to_first_pitch": 422,
+    "reason": "too early (362 minutes to first pitch)",
+    "minutes_to_first_pitch": 362,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -94,8 +94,8 @@ const startingLineups = [
     "game_time_et": "7:07 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (444 minutes to first pitch)",
-    "minutes_to_first_pitch": 444,
+    "reason": "too early (384 minutes to first pitch)",
+    "minutes_to_first_pitch": 384,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -108,8 +108,8 @@ const startingLineups = [
     "game_time_et": "7:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (477 minutes to first pitch)",
-    "minutes_to_first_pitch": 477,
+    "reason": "too early (417 minutes to first pitch)",
+    "minutes_to_first_pitch": 417,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -122,8 +122,8 @@ const startingLineups = [
     "game_time_et": "7:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (477 minutes to first pitch)",
-    "minutes_to_first_pitch": 477,
+    "reason": "too early (417 minutes to first pitch)",
+    "minutes_to_first_pitch": 417,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -136,8 +136,8 @@ const startingLineups = [
     "game_time_et": "8:05 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (502 minutes to first pitch)",
-    "minutes_to_first_pitch": 502,
+    "reason": "too early (442 minutes to first pitch)",
+    "minutes_to_first_pitch": 442,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -150,8 +150,8 @@ const startingLineups = [
     "game_time_et": "8:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (537 minutes to first pitch)",
-    "minutes_to_first_pitch": 537,
+    "reason": "too early (477 minutes to first pitch)",
+    "minutes_to_first_pitch": 477,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -164,8 +164,8 @@ const startingLineups = [
     "game_time_et": "9:38 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (595 minutes to first pitch)",
-    "minutes_to_first_pitch": 595,
+    "reason": "too early (535 minutes to first pitch)",
+    "minutes_to_first_pitch": 535,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -178,8 +178,8 @@ const startingLineups = [
     "game_time_et": "9:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (602 minutes to first pitch)",
-    "minutes_to_first_pitch": 602,
+    "reason": "too early (542 minutes to first pitch)",
+    "minutes_to_first_pitch": 542,
     "away_lineup": [],
     "home_lineup": []
   }

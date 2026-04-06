@@ -1,5 +1,5 @@
 const hrUpdateDate = '2026-04-05';
-const hrLastCompleted = '11:42 AM ET';
+const hrLastCompleted = '12:42 PM ET';
 const todaysHRData = [
   {
     "date": "2026-04-05",
