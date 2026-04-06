@@ -138,6 +138,20 @@ class RegressionDataChecks(unittest.TestCase):
         for key in ["date", "wins", "losses", "outliers", "precision", "recall", "f1_score"]:
             self.assertIn(key, summary)
 
+    def test_historical_index_includes_recent_available_dates(self):
+        text = read_text(DATA_DIR / "historical_index.js")
+        available_dates = sorted(
+            {
+                match.group(1)
+                for path in DATA_DIR.glob("hr_results_*.js")
+                for match in [re.match(r"hr_results_(\d{4}-\d{2}-\d{2})\.js$", path.name)]
+                if match and (DATA_DIR / f"hr_model_{match.group(1)}.js").exists()
+            }
+        )
+        self.assertGreater(len(available_dates), 0)
+        for date_str in available_dates[-3:]:
+            self.assertIn(date_str, text)
+
     def test_projects_data_shape(self):
         text = read_text(DATA_DIR / "projects_data.js")
         data = extract_json_assignment(text, "projectData")

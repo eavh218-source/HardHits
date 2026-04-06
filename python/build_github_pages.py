@@ -14,6 +14,8 @@ import os
 import shutil
 from pathlib import Path
 
+from refresh_historical_index import write_historical_index
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE_DIR = ROOT / "site"
 ASSETS_DIR = ROOT / "assets"
@@ -79,6 +81,7 @@ def write_root_files() -> None:
 
 
 def main() -> int:
+    write_historical_index()
     reset_output_dir()
     copy_site()
     copy_static_dir(ASSETS_DIR, "assets")
