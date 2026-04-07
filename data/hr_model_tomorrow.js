@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 16:35 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 17:26 UTC)
 
 const hrModelTomorrowUpdateDate = "2026-04-08";
-const hrModelTomorrowLastRunTime = "12:22 PM ET";
+const hrModelTomorrowLastRunTime = "1:22 PM ET";
 const hrModelTomorrowData = [
   {
     "date": "2026-04-08",
