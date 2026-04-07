@@ -161,6 +161,7 @@ def collect_hrbi_model_rows() -> list[dict[str, Any]]:
                 "rbi_score": safe_int(breakdown.get("RBI")),
                 "runs_score": safe_int(breakdown.get("Runs")),
                 "park_score": safe_int(breakdown.get("Park")),
+                "weather_score": safe_int(breakdown.get("Weather")),
                 "source_file": path.name,
             })
     return rows
@@ -251,6 +252,37 @@ def collect_starting_lineup_rows() -> list[dict[str, Any]]:
     return rows
 
 
+def collect_game_weather_rows() -> list[dict[str, Any]]:
+    path = DATA_DIR / "mlb_weather.js"
+    if not path.exists():
+        return []
+
+    data = parse_named_assignment(read_text(path), "mlbWeatherData")
+    rows: list[dict[str, Any]] = []
+    for item in data:
+        if not item.get("away_abbr") or not item.get("home_abbr"):
+            continue
+        rows.append({
+            "weather_date": item.get("date"),
+            "game_time_et": item.get("game_time_et"),
+            "away_abbr": item.get("away_abbr"),
+            "home_abbr": item.get("home_abbr"),
+            "away_team": item.get("away_team") or item.get("away_display"),
+            "home_team": item.get("home_team") or item.get("home_display"),
+            "venue": item.get("venue"),
+            "wind_mph": safe_float(item.get("wind_mph")),
+            "wind_direction": item.get("wind_direction"),
+            "temperature_f": safe_float(item.get("temperature_f")),
+            "humidity_pct": safe_float(item.get("humidity_pct")),
+            "precip_pct": safe_float(item.get("precip_pct")),
+            "weather_score": safe_int(item.get("weather_score")),
+            "source_name": item.get("source") or "covers",
+            "source_url": item.get("source_url"),
+            "source_file": path.name,
+        })
+    return rows
+
+
 def collect_bvp_rows() -> list[dict[str, Any]]:
     path = DATA_DIR / "bvp_data.js"
     data = parse_named_assignment(read_text(path), "bvpData")
@@ -277,6 +309,7 @@ DATASET_ORDER = [
     "hrbi_results_summary",
     "live_home_runs",
     "starting_lineup_players",
+    "game_weather",
     "bvp_events",
 ]
 
@@ -301,6 +334,8 @@ def collect_all_datasets(selected_tables: Iterable[str] | None = None) -> dict[s
         datasets["live_home_runs"] = collect_live_home_runs()
     if "starting_lineup_players" in requested:
         datasets["starting_lineup_players"] = collect_starting_lineup_rows()
+    if "game_weather" in requested:
+        datasets["game_weather"] = collect_game_weather_rows()
     if "bvp_events" in requested:
         datasets["bvp_events"] = collect_bvp_rows()
 
@@ -325,9 +360,9 @@ def require_pyodbc():
 
 
 def build_connection_string(args: argparse.Namespace) -> str:
-    driver = args.driver or os.getenv("HARDHITS_SQL_DRIVER", "ODBC Driver 17 for SQL Server")
-    server = args.server or os.getenv("HARDHITS_SQL_SERVER", "")
-    database = args.database or os.getenv("HARDHITS_SQL_DATABASE", "")
+    driver = args.driver or os.getenv("HARDHITS_SQL_DRIVER", "ODBC Driver 18 for SQL Server")
+    server = args.server or os.getenv("HARDHITS_SQL_SERVER", "localhost\\SQLEXPRESS")
+    database = args.database or os.getenv("HARDHITS_SQL_DATABASE", "HardHits")
     username = args.username or os.getenv("HARDHITS_SQL_USERNAME", "")
     password = args.password or os.getenv("HARDHITS_SQL_PASSWORD", "")
 
@@ -385,6 +420,8 @@ def load_to_sql_server(
             delete_and_insert(cursor, "live_home_runs", "update_date", datasets["live_home_runs"])
         if "starting_lineup_players" in requested:
             delete_and_insert(cursor, "starting_lineup_players", "lineup_date", datasets["starting_lineup_players"])
+        if "game_weather" in requested:
+            delete_and_insert(cursor, "game_weather", "weather_date", datasets["game_weather"])
 
         if "bvp_events" in requested:
             cursor.execute("TRUNCATE TABLE dbo.bvp_events")
@@ -404,8 +441,8 @@ def load_to_sql_server(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Load HardHits generated data into SQL Server.")
     parser.add_argument("--dry-run", action="store_true", help="Parse all supported data files and print row counts without connecting.")
-    parser.add_argument("--server", default="", help="SQL Server host or host\\instance.")
-    parser.add_argument("--database", default="", help="Target database name.")
+    parser.add_argument("--server", default="", help="SQL Server host or host\\instance. Defaults to localhost\\SQLEXPRESS.")
+    parser.add_argument("--database", default="", help="Target database name. Defaults to HardHits.")
     parser.add_argument("--username", default="", help="SQL login username (omit for trusted connection).")
     parser.add_argument("--password", default="", help="SQL login password.")
     parser.add_argument("--driver", default="", help="ODBC driver name. Defaults to ODBC Driver 17 for SQL Server.")

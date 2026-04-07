@@ -56,6 +56,7 @@ class RegressionDataChecks(unittest.TestCase):
             DATA_DIR / "hrbi_results_index.js",
             DATA_DIR / "todays_hrs.js",
             DATA_DIR / "starting_lineups.js",
+            DATA_DIR / "mlb_weather.js",
             DATA_DIR / "bvp_data.js",
             DATA_DIR / "projects_data.js",
         ]
@@ -111,6 +112,21 @@ class RegressionDataChecks(unittest.TestCase):
             self.assertIn(key, sample)
         self.assertIsInstance(sample["away_lineup"], list)
         self.assertIsInstance(sample["home_lineup"], list)
+
+    def test_mlb_weather_shape(self):
+        text = read_text(DATA_DIR / "mlb_weather.js")
+        update_date = extract_string_assignment(text, "weatherUpdateDate")
+        last_completed = extract_string_assignment(text, "weatherLastCompleted")
+        data = extract_json_assignment(text, "mlbWeatherData")
+
+        self.assertRegex(update_date, r"\d{4}-\d{2}-\d{2}")
+        self.assertTrue(last_completed)
+        self.assertIsInstance(data, list)
+        self.assertGreater(len(data), 0)
+
+        sample = data[0]
+        for key in ["date", "away_abbr", "home_abbr", "venue", "temperature_f", "weather_score", "center_field_direction", "wind_outlook"]:
+            self.assertIn(key, sample)
 
     def test_bvp_data_shape(self):
         text = read_text(DATA_DIR / "bvp_data.js")

@@ -8,6 +8,7 @@ import pandas as pd
 import pybaseball as pb
 import statsapi
 
+from get_mlb_weather import get_weather_score_for_game
 from hrbi_live import live_hrbi_probability
 from paths import DATA_DIR
 
@@ -451,6 +452,12 @@ def build_player_row(game, side, roster_player, lineup_context):
     )
 
     pitcher_contact_score = get_pitcher_contact_score(opp_pitcher)
+    weather_score = get_weather_score_for_game(
+        game.get("game_date"),
+        park_factor=park_factor,
+        home_team=game.get("home_name"),
+        away_team=game.get("away_name"),
+    )
 
     park_hits_score = clamp(((park_factor - 0.85) / 0.30) * 100)
 
@@ -464,7 +471,7 @@ def build_player_row(game, side, roster_player, lineup_context):
         + runs_score * 0.08
         + park_hits_score * 0.06
         + 50.0 * 0.05
-        + 50.0 * 0.04
+        + weather_score * 0.04
         + 50.0 * 0.02
     )
 
@@ -532,6 +539,7 @@ def build_player_row(game, side, roster_player, lineup_context):
             "RBI": int(round(rbi_opportunity_score)),
             "Runs": int(round(runs_score)),
             "Park": int(round(park_hits_score)),
+            "Weather": int(round(weather_score)),
         },
     }
 
@@ -602,6 +610,7 @@ def run_hrbi_model(max_games=None, target_date=None):
     run_time_label = now_et.strftime('%I:%M %p ET').lstrip('0')
     today = now_et.strftime("%Y-%m-%d")
     tomorrow = (now_et + timedelta(days=1)).strftime("%Y-%m-%d")
+    smoke_mode = bool(max_games)
 
     if target_date:
         print(f"Building H+R+RBI historical predictions for {target_date}")
@@ -611,24 +620,24 @@ def run_hrbi_model(max_games=None, target_date=None):
             output = save_probability_payload(
                 payload,
                 target_date,
-                "hrbi_model_data.js",
-                "hrbiModelData",
-                "hrbiModelUpdateDate",
-                "hrbiModelLastRunTime",
+                None if smoke_mode else "hrbi_model_data.js",
+                None if smoke_mode else "hrbiModelData",
+                "hrbiModelUpdateDate" if not smoke_mode else None,
+                "hrbiModelLastRunTime" if not smoke_mode else None,
                 run_time_label,
             )
-            print(f"Saved latest today file and {output.name}")
+            print(("Saved smoke-test file: " if smoke_mode else "Saved latest today file and ") + output.name)
         elif target_date == tomorrow:
             output = save_probability_payload(
                 payload,
                 target_date,
-                "hrbi_model_tomorrow.js",
-                "hrbiModelTomorrowData",
-                "hrbiModelTomorrowUpdateDate",
-                "hrbiModelTomorrowLastRunTime",
+                None if smoke_mode else "hrbi_model_tomorrow.js",
+                None if smoke_mode else "hrbiModelTomorrowData",
+                "hrbiModelTomorrowUpdateDate" if not smoke_mode else None,
+                "hrbiModelTomorrowLastRunTime" if not smoke_mode else None,
                 run_time_label,
             )
-            print(f"Saved latest tomorrow file and {output.name}")
+            print(("Saved smoke-test file: " if smoke_mode else "Saved latest tomorrow file and ") + output.name)
         else:
             output = save_probability_payload(payload, target_date, run_time_label=run_time_label)
             print(f"Saved historical file: {output.name}")
@@ -641,10 +650,10 @@ def run_hrbi_model(max_games=None, target_date=None):
     today_output = save_probability_payload(
         today_payload,
         today,
-        "hrbi_model_data.js",
-        "hrbiModelData",
-        "hrbiModelUpdateDate",
-        "hrbiModelLastRunTime",
+        None if smoke_mode else "hrbi_model_data.js",
+        None if smoke_mode else "hrbiModelData",
+        "hrbiModelUpdateDate" if not smoke_mode else None,
+        "hrbiModelLastRunTime" if not smoke_mode else None,
         run_time_label,
     )
 
@@ -653,10 +662,10 @@ def run_hrbi_model(max_games=None, target_date=None):
     tomorrow_output = save_probability_payload(
         tomorrow_payload,
         tomorrow,
-        "hrbi_model_tomorrow.js",
-        "hrbiModelTomorrowData",
-        "hrbiModelTomorrowUpdateDate",
-        "hrbiModelTomorrowLastRunTime",
+        None if smoke_mode else "hrbi_model_tomorrow.js",
+        None if smoke_mode else "hrbiModelTomorrowData",
+        "hrbiModelTomorrowUpdateDate" if not smoke_mode else None,
+        "hrbiModelTomorrowLastRunTime" if not smoke_mode else None,
         run_time_label,
     )
 
@@ -664,10 +673,15 @@ def run_hrbi_model(max_games=None, target_date=None):
         f"Success: {len(today_payload)} players scored for today and "
         f"{len(tomorrow_payload)} for tomorrow."
     )
-    print(
-        "Saved: hrbi_model_data.js, "
-        f"{today_output.name}, hrbi_model_tomorrow.js, and {tomorrow_output.name}"
-    )
+    if smoke_mode:
+        print(
+            f"Smoke test mode: wrote limited dated files {today_output.name} and {tomorrow_output.name} without overwriting the live site bundles."
+        )
+    else:
+        print(
+            "Saved: hrbi_model_data.js, "
+            f"{today_output.name}, hrbi_model_tomorrow.js, and {tomorrow_output.name}"
+        )
 
 
 def parse_args():

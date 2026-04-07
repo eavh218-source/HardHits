@@ -6,6 +6,7 @@
     <title>HardHits | HR Probability</title>
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260406-admingear">
     <script src="../data/hr_model_data.js?v=stable-20260406-livefix"></script>
+    <script src="../data/mlb_weather.js?v=stable-20260407-ballparks"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -106,6 +107,51 @@
             gap: 10px;
         }
 
+        .modal-context-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+            gap: 16px;
+            align-items: start;
+            margin-top: 16px;
+        }
+
+        .modal-context-layout .modal-section {
+            margin-top: 0;
+        }
+
+        .modal-ballpark-panel img {
+            display: block;
+            width: 100%;
+            max-width: 240px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            margin: 0 0 12px;
+            background: #081120;
+        }
+
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .weather-pill {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.72);
+            padding: 8px 10px;
+        }
+
+        .weather-pill-label {
+            display: block;
+            font-size: 0.62rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 3px;
+        }
+
         .stat-pill {
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -182,6 +228,16 @@
         .neutral-trend { background: rgba(16, 185, 129, 0.1); color: var(--emerald); border: 1px solid var(--emerald); }
 
         .park-info { color: var(--sky); text-transform: uppercase; font-size: 0.65rem; }
+
+        @media (max-width: 720px) {
+            .modal-context-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-ballpark-panel img {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body data-nav="hr">
@@ -221,12 +277,75 @@
             return Number.isFinite(numericValue) ? `${numericValue}${suffix}` : 'N/A';
         }
 
+        const weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
+
+        function slugify(value) {
+            return String(value ?? '')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '') || 'ballpark';
+        }
+
+        function getBallparkContext(player) {
+            if (!player || !weatherRows.length) {
+                return null;
+            }
+
+            const playerDate = String(player.date || '').slice(0, 10);
+            const teamCode = String(player.team || '').trim().toUpperCase();
+
+            return weatherRows.find((row) => {
+                const rowDate = String(row.date || '').slice(0, 10);
+                const away = String(row.away_abbr || '').toUpperCase();
+                const home = String(row.home_abbr || '').toUpperCase();
+                return rowDate === playerDate && (away === teamCode || home === teamCode);
+            }) || null;
+        }
+
+        function renderBallparkSection(player) {
+            const context = getBallparkContext(player);
+            const venue = (context && context.venue) || player.ballpark_name || 'Ballpark TBD';
+            const firstPitch = context && context.game_time_et ? String(context.game_time_et) : '';
+            const imageSrc = context && context.venue
+                ? `../assets/generated/covers/ballparks/${slugify(context.venue)}.png`
+                : '';
+            const temp = context ? formatMetric(context.temperature_f, '°F') : 'N/A';
+            const wind = context ? `${formatMetric(context.wind_mph, ' mph')} ${context.wind_direction || ''}`.trim() : 'N/A';
+            const humidity = context ? formatMetric(context.humidity_pct, '%') : 'N/A';
+            const rain = context ? formatMetric(context.precip_pct, '%') : 'N/A';
+            const cfCompass = context && context.center_field_direction ? String(context.center_field_direction) : 'N/A';
+            const windOutlook = context && context.wind_outlook ? String(context.wind_outlook) : 'Lookup pending';
+
+            return `
+                <div class="modal-section modal-ballpark-panel">
+                    <div class="breakdown-title">Ballpark</div>
+                    ${imageSrc ? `<img src="${safeText(imageSrc)}" alt="${safeText(venue)}" onerror="this.style.display='none'">` : ''}
+                    ${detailRow('Venue', String(venue))}
+                    ${firstPitch ? detailRow('First Pitch', firstPitch) : ''}
+                    ${detailRow('CF Compass', cfCompass)}
+                    ${detailRow('Wind Outlook', windOutlook)}
+                    ${detailRow('Park', String(player.park_factor || 'Neutral'))}
+                    ${detailRow('Weather Score', formatMetric(player.weather_boost, '%'))}
+                    <div class="weather-grid">
+                        ${weatherPill('Temp', temp)}
+                        ${weatherPill('Wind', wind)}
+                        ${weatherPill('Humidity', humidity)}
+                        ${weatherPill('Rain', rain)}
+                    </div>
+                </div>
+            `;
+        }
+
         function detailRow(label, value) {
             return `<div class="detail-row"><span>${safeText(label)}</span><strong>${safeText(value)}</strong></div>`;
         }
 
         function statPill(label, value) {
             return `<div class="stat-pill"><span class="stat-pill-label">${safeText(label)}</span><span class="stat-pill-value">${safeText(value)}</span></div>`;
+        }
+
+        function weatherPill(label, value) {
+            return `<div class="weather-pill"><span class="weather-pill-label">${safeText(label)}</span><strong>${safeText(value)}</strong></div>`;
         }
 
         function closeModal() {
@@ -262,6 +381,21 @@
                     </div>
                 </div>
 
+                <div class="modal-context-layout">
+                    <div class="modal-section">
+                        <div class="breakdown-title">Game Context</div>
+                        ${detailRow('Trend', String(player.ev_trend_label || 'Stable'))}
+                        ${detailRow('Lineup', `${String(player.lineup_slot || 'TBD')} • ${String(player.lineup_status || 'Pending')}`)}
+                        ${detailRow('Expected PA', String(player.expected_pa || 'N/A'))}
+                        ${detailRow('Pitcher HR Risk', formatMetric(player.pitcher_hr_risk, '%'))}
+                        ${detailRow('Pitcher HR/9', formatMetric(player.pitcher_hr9))}
+                        ${detailRow('Pitcher FB Rate', formatMetric(player.pitcher_fb_rate, '%'))}
+                        ${detailRow('Platoon Edge', formatMetric(player.platoon_advantage, '%'))}
+                        ${detailRow('BvP', String(player.bvp_summary || 'No batter-vs-pitcher note available.'))}
+                    </div>
+                    ${renderBallparkSection(player)}
+                </div>
+
                 <div class="modal-section">
                     <div class="breakdown-title">Model Signals</div>
                     ${detailRow('Power Score', `${breakdown.Power ?? 'N/A'} / 100`)}
@@ -270,24 +404,7 @@
                     ${detailRow('Park Score', `${breakdown.Park ?? 'N/A'} / 100`)}
                     ${detailRow('Pitcher Score', `${breakdown.Pitcher ?? 'N/A'} / 100`)}
                     ${detailRow('Platoon Score', `${breakdown.Platoon ?? 'N/A'} / 100`)}
-                </div>
-
-                <div class="modal-section">
-                    <div class="breakdown-title">Game Context</div>
-                    ${detailRow('Lineup Slot', String(player.lineup_slot || 'TBD'))}
-                    ${detailRow('Expected PA', String(player.expected_pa || 'N/A'))}
-                    ${detailRow('Lineup Status', String(player.lineup_status || 'Pending'))}
-                    ${detailRow('Park Factor', String(player.park_factor || 'Neutral'))}
-                    ${detailRow('Pitcher HR Risk', formatMetric(player.pitcher_hr_risk, '%'))}
-                    ${detailRow('Pitcher HR/9', formatMetric(player.pitcher_hr9))}
-                    ${detailRow('Pitcher FB Rate', formatMetric(player.pitcher_fb_rate, '%'))}
-                    ${detailRow('Weather Boost', formatMetric(player.weather_boost, '%'))}
-                    ${detailRow('Platoon Edge', formatMetric(player.platoon_advantage, '%'))}
-                </div>
-
-                <div class="modal-section">
-                    <div class="breakdown-title">BvP Notes</div>
-                    <div style="color: var(--text-dim); font-size: 0.88rem;">${safeText(player.bvp_summary || 'No batter-vs-pitcher note available.')}</div>
+                    ${detailRow('Weather Score', `${breakdown.Weather ?? 'N/A'} / 100`)}
                 </div>
             `;
 

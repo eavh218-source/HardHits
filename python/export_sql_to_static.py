@@ -424,6 +424,7 @@ def normalize_hrbi_model_row(row: dict[str, Any]) -> dict[str, Any]:
             "RBI": safe_int(row.get("rbi_score"), 0),
             "Runs": safe_int(row.get("runs_score"), 0),
             "Park": safe_int(row.get("park_score"), 50),
+            "Weather": safe_int(row.get("weather_score"), 50),
         },
     }
 
@@ -474,6 +475,26 @@ def normalize_live_hr_row(row: dict[str, Any]) -> dict[str, Any]:
         "distance": dist,
         "dist": dist,
         "status": stringify(row.get("result_status"), "HOME RUN"),
+    }
+
+
+def normalize_game_weather_row(row: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "date": to_date_str(row.get("weather_date")),
+        "game_time_et": stringify(row.get("game_time_et"), "TBD"),
+        "away_abbr": stringify(row.get("away_abbr")),
+        "home_abbr": stringify(row.get("home_abbr")),
+        "away_team": stringify(row.get("away_team")),
+        "home_team": stringify(row.get("home_team")),
+        "venue": stringify(row.get("venue")),
+        "wind_mph": safe_float(row.get("wind_mph")),
+        "wind_direction": stringify(row.get("wind_direction")),
+        "temperature_f": safe_float(row.get("temperature_f")),
+        "humidity_pct": safe_float(row.get("humidity_pct")),
+        "precip_pct": safe_float(row.get("precip_pct")),
+        "weather_score": safe_int(row.get("weather_score"), 50),
+        "source": stringify(row.get("source_name"), "covers"),
+        "source_url": stringify(row.get("source_url")),
     }
 
 
@@ -700,6 +721,10 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
             cursor,
             "SELECT * FROM dbo.starting_lineup_players ORDER BY lineup_date, matchup, team_side, lineup_slot, player_name"
         )
+        weather_rows = fetch_rows(
+            cursor,
+            "SELECT * FROM dbo.game_weather ORDER BY weather_date, game_time_et, home_abbr, away_abbr"
+        )
     finally:
         conn.close()
 
@@ -728,6 +753,10 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
     for row in live_hr_rows:
         live_by_date[to_date_str(row.get("update_date")) or ""].append(normalize_live_hr_row(row))
 
+    weather_by_date: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in weather_rows:
+        weather_by_date[to_date_str(row.get("weather_date")) or ""].append(normalize_game_weather_row(row))
+
     lineups = build_starting_lineups(lineup_rows)
 
     written: list[Path] = []
@@ -742,6 +771,7 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
     hrbi_result_dates = sorted([d for d in hrbi_results_by_date if d])
     live_dates = sorted([d for d in live_by_date if d])
     lineup_dates = sorted([str(game.get("date")) for game in lineups if game.get("date")])
+    weather_dates = sorted([d for d in weather_by_date if d])
 
     today_model_date = pick_best_date(hr_model_dates, today_str)
     tomorrow_model_date = pick_best_date(hr_model_dates, tomorrow_str)
@@ -750,6 +780,7 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
     latest_hrbi_results_date = hrbi_result_dates[-1] if hrbi_result_dates else None
     latest_live_date = live_dates[-1] if live_dates else None
     latest_lineup_date = lineup_dates[-1] if lineup_dates else None
+    latest_weather_date = weather_dates[-1] if weather_dates else None
 
     if today_model_date:
         today_source_rows = [row for row in hr_model_rows if to_date_str(row.get("model_date")) == today_model_date]
@@ -829,6 +860,18 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
         )
         written.append(output_dir / "starting_lineups.js")
 
+    if latest_weather_date:
+        latest_weather_rows = [row for row in weather_rows if to_date_str(row.get("weather_date")) == latest_weather_date]
+        write_js_file(
+            output_dir / "mlb_weather.js",
+            [
+                ("weatherUpdateDate", latest_weather_date, False),
+                ("weatherLastCompleted", to_et_label(latest_imported_at(latest_weather_rows)), False),
+                ("mlbWeatherData", weather_by_date[latest_weather_date], False),
+            ],
+        )
+        written.append(output_dir / "mlb_weather.js")
+
     for date_str, rows in hr_model_by_date.items():
         key = date_str.replace("-", "_")
         source_rows = [row for row in hr_model_rows if to_date_str(row.get("model_date")) == date_str]
@@ -863,6 +906,20 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
             [
                 (f"hrbiResultsData_{key}", rows, True),
                 (f"hrbiResultsSummary_{key}", hrbi_summary_by_date.get(date_str, {"date": date_str}), True),
+            ],
+        )
+        written.append(path)
+
+    for date_str, rows in weather_by_date.items():
+        key = date_str.replace("-", "_")
+        path = output_dir / f"mlb_weather_{date_str}.js"
+        source_rows = [row for row in weather_rows if to_date_str(row.get("weather_date")) == date_str]
+        write_js_file(
+            path,
+            [
+                (f"weatherUpdateDate_{key}", date_str, True),
+                (f"weatherLastCompleted_{key}", to_et_label(latest_imported_at(source_rows)), True),
+                (f"mlbWeatherData_{key}", rows, True),
             ],
         )
         written.append(path)
