@@ -131,6 +131,10 @@ def choose_date(preferred: str | None, table: str, column: str) -> str:
     return date_to_str(latest) or ""
 
 
+def iso_or_none(value: Any) -> str | None:
+    return value.isoformat() if hasattr(value, "isoformat") else None
+
+
 def normalize_hr_prediction(row: dict[str, Any]) -> dict[str, Any]:
     max_ev = safe_float(row.get("max_ev"))
     fb_ev = safe_float(row.get("fb_ev"))
@@ -159,7 +163,7 @@ def normalize_hr_prediction(row: dict[str, Any]) -> dict[str, Any]:
             "Weather": safe_int(row.get("weather_score")),
         },
         "source_file": row.get("source_file"),
-        "imported_at_utc": row.get("imported_at_utc").isoformat() if row.get("imported_at_utc") else None,
+        "imported_at_utc": iso_or_none(row.get("imported_at_utc")),
     }
 
 
@@ -204,7 +208,7 @@ def normalize_hrbi_prediction(row: dict[str, Any]) -> dict[str, Any]:
             "Park": safe_int(row.get("park_score")),
         },
         "source_file": row.get("source_file"),
-        "imported_at_utc": row.get("imported_at_utc").isoformat() if row.get("imported_at_utc") else None,
+        "imported_at_utc": iso_or_none(row.get("imported_at_utc")),
     }
 
 
@@ -299,6 +303,41 @@ def api_meta() -> dict[str, Any]:
         "latest_hrbi_prediction_date": choose_date(None, "hrbi_model_predictions", "model_date"),
         "latest_hrbi_results_date": choose_date(None, "hrbi_results", "result_date"),
         "latest_lineup_date": choose_date(None, "starting_lineup_players", "lineup_date"),
+    }
+
+
+def build_freshness_snapshot(label: str, table: str, date_column: str) -> dict[str, Any]:
+    row = query_rows(
+        f"SELECT MAX({date_column}) AS latest_date, COUNT(*) AS row_count, MAX(imported_at_utc) AS last_imported_at_utc FROM dbo.{table}"
+    )[0]
+    imported = row.get("last_imported_at_utc")
+    return {
+        "label": label,
+        "table": table,
+        "latest_date": date_to_str(row.get("latest_date")),
+        "row_count": safe_int(row.get("row_count")) or 0,
+        "last_imported_at_utc": iso_or_none(imported) if imported is not None else None,
+    }
+
+
+@app.get("/api/status/freshness")
+def api_status_freshness() -> dict[str, Any]:
+    current_time = one_value("SELECT SYSUTCDATETIME() AS now_utc")
+    datasets = [
+        build_freshness_snapshot("HR Predictions", "hr_model_predictions", "model_date"),
+        build_freshness_snapshot("HR Results", "hr_results", "result_date"),
+        build_freshness_snapshot("HRR+ Predictions", "hrbi_model_predictions", "model_date"),
+        build_freshness_snapshot("HRR+ Results", "hrbi_results", "result_date"),
+        build_freshness_snapshot("HRR+ Summary", "hrbi_results_summary", "result_date"),
+        build_freshness_snapshot("Live Home Runs", "live_home_runs", "update_date"),
+        build_freshness_snapshot("Starting Lineups", "starting_lineup_players", "lineup_date"),
+    ]
+    return {
+        "status": "ok",
+        "generated_at_utc": current_time.isoformat() if hasattr(current_time, "isoformat") else current_time,
+        "database": SQL_DATABASE,
+        "server": SQL_SERVER,
+        "datasets": datasets,
     }
 
 

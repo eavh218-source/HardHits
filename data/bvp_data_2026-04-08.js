@@ -1,5 +1,5 @@
-const bvpTomorrowDate = '2026-04-08';
-const tomorrowMatchups = [
+window.bvpDate_2026_04_08 = '2026-04-08';
+window.dailyMatchups_2026_04_08 = [
   {
     "date": "2026-04-08",
     "time": "12:35 PM ET",
@@ -121,7 +121,7 @@ const tomorrowMatchups = [
     "home_p": "Ober"
   }
 ];
-const bvpTomorrowData = [
+window.bvpData_2026_04_08 = [
   {
     "date": "2026-04-08",
     "pitcher_name": "Dylan Cease",

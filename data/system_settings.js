@@ -1,6 +1,6 @@
 const systemSettings = {
   "environment": "stable",
-  "updated_at_utc": "2026-04-07T01:48:01Z",
+  "updated_at_utc": "2026-04-07T11:04:06Z",
   "jobIntervals": {
     "mastercontroller_minutes": 60,
     "hr_engine_job_minutes": 15

@@ -1,5 +1,5 @@
 const hrUpdateDate = '2026-04-06';
-const hrLastCompleted = '9:48 PM ET';
+const hrLastCompleted = '12:12 PM ET';
 const todaysHRData = [
   {
     "date": "2026-04-06",
@@ -207,8 +207,23 @@ const todaysHRData = [
     "exit_velo": 98.2,
     "ev": 98.2,
     "launch_angle": 25.0,
-    "distance": 354.0,
-    "dist": 354.0,
+    "distance": 366.0,
+    "dist": 366.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "batter": "Willson Contreras",
+    "name": "Willson Contreras",
+    "batter_team": "Boston Red Sox",
+    "team": "Boston Red Sox",
+    "pitcher": "Angel Zerpa",
+    "pitcher_team": "Milwaukee Brewers",
+    "exit_velo": 105.3,
+    "ev": 105.3,
+    "launch_angle": 33.0,
+    "distance": 362.0,
+    "dist": 362.0,
     "status": "\ud83c\udfaf HOME RUN"
   },
   {
@@ -348,6 +363,21 @@ const todaysHRData = [
   },
   {
     "date": "2026-04-06",
+    "batter": "Troy Johnston",
+    "name": "Troy Johnston",
+    "batter_team": "Colorado Rockies",
+    "team": "Colorado Rockies",
+    "pitcher": "Ryan Weiss",
+    "pitcher_team": "Houston Astros",
+    "exit_velo": 99.9,
+    "ev": 99.9,
+    "launch_angle": 34.0,
+    "distance": 407.0,
+    "dist": 407.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
     "batter": "Drake Baldwin",
     "name": "Drake Baldwin",
     "batter_team": "Atlanta Braves",
@@ -374,6 +404,36 @@ const todaysHRData = [
     "launch_angle": 29.0,
     "distance": 400.0,
     "dist": 400.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "batter": "Jo Adell",
+    "name": "Jo Adell",
+    "batter_team": "Los Angeles Angels",
+    "team": "Los Angeles Angels",
+    "pitcher": "Chris Sale",
+    "pitcher_team": "Atlanta Braves",
+    "exit_velo": 113.2,
+    "ev": 113.2,
+    "launch_angle": 24.0,
+    "distance": 411.0,
+    "dist": 411.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "batter": "Mauricio Dub\u00f3n",
+    "name": "Mauricio Dub\u00f3n",
+    "batter_team": "Atlanta Braves",
+    "team": "Atlanta Braves",
+    "pitcher": "Chase Silseth",
+    "pitcher_team": "Los Angeles Angels",
+    "exit_velo": 103.4,
+    "ev": 103.4,
+    "launch_angle": 25.0,
+    "distance": 372.0,
+    "dist": 372.0,
     "status": "\ud83c\udfaf HOME RUN"
   }
 ];

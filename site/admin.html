@@ -8,6 +8,7 @@
     <script src="../data/projects_data.js?v=stable-20260406-admingear"></script>
     <script src="../data/system_settings.js?v=stable-20260406-admingear"></script>
     <script src="../data/status.js?v=stable-20260406-admingear"></script>
+    <script src="../assets/hardhits-api.js?v=stable-20260407-adminfresh"></script>
     <style>
         :root {
             --bg: #0b0f19;
@@ -68,6 +69,10 @@
             <h3>Public Site Status</h3>
             <p>Check the last stable refresh result written by `site_status.py`.</p>
         </a>
+        <a class="quick-link" href="#api-freshness">
+            <h3>API Data Freshness</h3>
+            <p>Inspect the live SQL-backed API timestamps for predictions, results, and lineups.</p>
+        </a>
         <a class="quick-link" href="projects.html">
             <h3>Open Roadmap Page</h3>
             <p>Use the full project tracker for roadmap detail and planning.</p>
@@ -117,16 +122,24 @@
         <div class="hint" id="status-meta" style="margin-top:12px;"></div>
     </div>
 
+    <div class="section-title" id="api-freshness">API Data Freshness</div>
+    <div class="panel">
+        <div class="status-grid" id="freshness-grid"></div>
+        <div class="hint" id="freshness-meta" style="margin-top:12px;"></div>
+    </div>
+
     <div class="section-title">Saved Settings Snapshot</div>
     <div class="panel" id="settings-summary"></div>
 </div>
 
 <script>
+    const hardHitsApi = window.HardHitsApi || null;
+
     const fallbackSettings = {
         updated_at_utc: null,
         jobIntervals: {
             mastercontroller_minutes: 60,
-            hr_engine_job_minutes: 30
+            hr_engine_job_minutes: 15
         },
         taskScheduler: {
             mastercontroller_task_name: '',
@@ -215,6 +228,55 @@
         out.style.display = 'block';
     }
 
+    function formatTimestamp(value) {
+        if (!value) return 'Unknown';
+        const parsed = new Date(value);
+        return Number.isNaN(parsed.getTime()) ? String(value) : parsed.toLocaleString();
+    }
+
+    async function renderApiFreshness() {
+        const freshnessGrid = document.getElementById('freshness-grid');
+        const freshnessMeta = document.getElementById('freshness-meta');
+
+        if (!freshnessGrid || !freshnessMeta) return;
+
+        if (!hardHitsApi) {
+            freshnessGrid.innerHTML = '<div class="status-card"><h3>Local API unavailable</h3><p>The admin page can still load from static files, but live freshness cards appear when the local API is running.</p></div>';
+            freshnessMeta.textContent = 'Start `run_hardhits_api.bat` to see live SQL-backed freshness timestamps here.';
+            return;
+        }
+
+        try {
+            const payload = await hardHitsApi.fetchJson('/api/status/freshness');
+            const datasets = Array.isArray(payload.datasets) ? payload.datasets : [];
+
+            if (!datasets.length) {
+                freshnessGrid.innerHTML = '<div class="status-card"><h3>No freshness data</h3><p>The API is running, but it did not return any dataset freshness records.</p></div>';
+                freshnessMeta.textContent = '';
+                return;
+            }
+
+            freshnessGrid.innerHTML = datasets.map((item) => `
+                <div class="status-card">
+                    <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;">
+                        <h3>${item.label || item.table}</h3>
+                        <span class="status-tag good">Live</span>
+                    </div>
+                    <p><strong>Latest date:</strong> ${item.latest_date || 'Unknown'}</p>
+                    <p><strong>Rows:</strong> ${item.row_count ?? 0}</p>
+                    <p><strong>Last SQL sync:</strong> ${formatTimestamp(item.last_imported_at_utc)}</p>
+                    <p><strong>Table:</strong> ${item.table || 'n/a'}</p>
+                </div>
+            `).join('');
+
+            freshnessMeta.textContent = `API base: ${hardHitsApi.baseUrl} • Snapshot generated: ${formatTimestamp(payload.generated_at_utc)}`;
+        } catch (error) {
+            console.warn('Unable to load API freshness data:', error);
+            freshnessGrid.innerHTML = '<div class="status-card"><h3>Freshness check failed</h3><p>The admin page could not reach the local API freshness endpoint. Static site status remains available below.</p></div>';
+            freshnessMeta.textContent = 'If the API should be running, restart `run_hardhits_api.bat` and refresh this page.';
+        }
+    }
+
     function renderSiteStatus() {
         const statusGrid = document.getElementById('status-grid');
         const statusMeta = document.getElementById('status-meta');
@@ -252,6 +314,7 @@
         renderProjectPreview();
         populateSettingsForm();
         renderSiteStatus();
+        renderApiFreshness();
     });
 </script>
 <script src="../assets/site-nav.js?v=stable-20260406-admingear" defer></script>
