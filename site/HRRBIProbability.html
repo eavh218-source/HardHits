@@ -6,6 +6,7 @@
     <title>HardHits | MLB HRR+ (Hits + Runs + RBIs) Probability Model</title>
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260406-admingear">
     <script src="../data/hrbi_model_data.js?v=stable-20260406-hrbiresults"></script>
+    <script src="../data/mlb_weather.js?v=stable-20260407-ballparks"></script>
     <script src="../data/hrbi_results_data.js?v=stable-20260406-hrbiresults"></script>
     <script src="../data/hrbi_results_index.js?v=stable-20260406-hrbiresults"></script>
     <script src="../assets/hardhits-api.js?v=stable-20260406-api"></script>
@@ -206,6 +207,51 @@
             gap: 10px;
         }
 
+        .modal-context-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+            gap: 16px;
+            align-items: start;
+            margin-top: 16px;
+        }
+
+        .modal-context-layout .modal-section {
+            margin-top: 0;
+        }
+
+        .modal-ballpark-panel img {
+            display: block;
+            width: 100%;
+            max-width: 240px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            margin: 0 0 12px;
+            background: #081120;
+        }
+
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .weather-pill {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.72);
+            padding: 8px 10px;
+        }
+
+        .weather-pill-label {
+            display: block;
+            font-size: 0.62rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 3px;
+        }
+
         .stat-pill {
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -327,6 +373,16 @@
             border-radius: 16px;
             background: rgba(15, 23, 42, 0.92);
             color: #f8fafc;
+        }
+
+        @media (max-width: 720px) {
+            .modal-context-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-ballpark-panel img {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -494,6 +550,13 @@
             '</div>';
         }
 
+        function weatherPill(label, value) {
+            return '<div class="weather-pill">' +
+                '<span class="weather-pill-label">' + escapeHtml(label) + '</span>' +
+                '<strong>' + escapeHtml(value) + '</strong>' +
+            '</div>';
+        }
+
         function normalizeKey(value) {
             return String(value == null ? '' : value).trim().toLowerCase();
         }
@@ -501,6 +564,65 @@
         function formatMetric(value, suffix) {
             const numericValue = Number(value);
             return Number.isFinite(numericValue) ? String(numericValue) + (suffix || '') : 'N/A';
+        }
+
+        const weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
+
+        function slugify(value) {
+            return String(value == null ? '' : value)
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '') || 'ballpark';
+        }
+
+        function getBallparkContext(player) {
+            if (!player || !weatherRows.length) {
+                return null;
+            }
+
+            const playerDate = String(player.date || '').slice(0, 10);
+            const teamCode = String(player.team || '').trim().toUpperCase();
+
+            return weatherRows.find(function (row) {
+                const rowDate = String(row.date || '').slice(0, 10);
+                const away = String(row.away_abbr || '').toUpperCase();
+                const home = String(row.home_abbr || '').toUpperCase();
+                return rowDate === playerDate && (away === teamCode || home === teamCode);
+            }) || null;
+        }
+
+        function renderBallparkBlock(player) {
+            const context = getBallparkContext(player);
+            const venue = (context && context.venue) || player.ballpark_name || 'Ballpark TBD';
+            const imageSrc = context && context.venue
+                ? '../assets/generated/covers/ballparks/' + slugify(context.venue) + '.png'
+                : '';
+            const temp = context ? formatMetric(context.temperature_f, '°F') : 'N/A';
+            const wind = context ? (formatMetric(context.wind_mph, ' mph') + ' ' + (context.wind_direction || '')).trim() : 'N/A';
+            const humidity = context ? formatMetric(context.humidity_pct, '%') : 'N/A';
+            const rain = context ? formatMetric(context.precip_pct, '%') : 'N/A';
+            const cfCompass = context && context.center_field_direction ? String(context.center_field_direction) : 'N/A';
+            const windOutlook = context && context.wind_outlook ? String(context.wind_outlook) : 'Lookup pending';
+
+            return '' +
+                '<div class="modal-section modal-ballpark-panel">' +
+                    '<div class="title">Ballpark</div>' +
+                    (imageSrc
+                        ? '<img src="' + escapeHtml(imageSrc) + '" alt="' + escapeHtml(String(venue)) + '" onerror="this.style.display=\'none\'">'
+                        : '') +
+                    detailRow('Venue', String(venue)) +
+                    (context && context.game_time_et ? detailRow('First Pitch', String(context.game_time_et)) : '') +
+                    detailRow('CF Compass', cfCompass) +
+                    detailRow('Wind Outlook', windOutlook) +
+                    detailRow('Park Signal', formatMetric((player.breakdown || {}).Park, ' / 100')) +
+                    detailRow('Weather', formatMetric((player.breakdown || {}).Weather, ' / 100')) +
+                    '<div class="weather-grid">' +
+                        weatherPill('Temp', temp) +
+                        weatherPill('Wind', wind) +
+                        weatherPill('Humidity', humidity) +
+                        weatherPill('Rain', rain) +
+                    '</div>' +
+                '</div>';
         }
 
         function buildPredictionSubtitle() {
@@ -569,6 +691,7 @@
             const lastFiveSummary = Number(player.last_5_ab || 0) > 0
                 ? (player.last_5_avg_display || 'N/A') + ' (' + (player.last_5_hits || 0) + ' H / ' + (player.last_5_ab || 0) + ' AB)'
                 : (player.last_5_avg_display || 'N/A');
+            const ballparkHtml = renderBallparkBlock(player);
 
             modalContent.innerHTML =
                 '<div class="modal-header">' +
@@ -595,15 +718,18 @@
                     '</div>' +
                 '</div>' +
 
-                '<div class="modal-section">' +
-                    '<div class="title">Form + Context</div>' +
-                    detailRow('Expected PA', String(player.expected_pa || 3.5)) +
-                    detailRow('Lineup Slot', String(player.lineup_slot || 9)) +
-                    detailRow('Hard-Hit Rate', formatMetric(player.hard_hit_rate, '%')) +
-                    detailRow('Line Drive Rate', formatMetric(player.ld_rate, '%')) +
-                    detailRow('Line Drive EV', formatMetric(player.ld_ev, ' MPH')) +
-                    detailRow('EV Trend', formatMetric(player.ev_trend_val) + ' (' + (player.ev_trend_label || 'Stable') + ')') +
-                    detailRow('BABIP Trend', formatMetric(player.babip_trend_val) + ' (' + (player.babip_trend_label || 'Stable') + ')') +
+                '<div class="modal-context-layout">' +
+                    '<div class="modal-section">' +
+                        '<div class="title">Form + Context</div>' +
+                        detailRow('Lineup', String(player.lineup_slot || 9) + ' • ' + String(player.confidence_band || 'Watchlist')) +
+                        detailRow('Expected PA', String(player.expected_pa || 3.5)) +
+                        detailRow('Hard-Hit Rate', formatMetric(player.hard_hit_rate, '%')) +
+                        detailRow('Line Drive Rate', formatMetric(player.ld_rate, '%')) +
+                        detailRow('Line Drive EV', formatMetric(player.ld_ev, ' MPH')) +
+                        detailRow('EV Trend', formatMetric(player.ev_trend_val) + ' (' + (player.ev_trend_label || 'Stable') + ')') +
+                        detailRow('BABIP Trend', formatMetric(player.babip_trend_val) + ' (' + (player.babip_trend_label || 'Stable') + ')') +
+                    '</div>' +
+                    ballparkHtml +
                 '</div>' +
 
                 (showPitcherHistory

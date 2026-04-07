@@ -6,10 +6,10 @@
     "away_team": "Kansas City Royals",
     "home_team": "Cleveland Guardians",
     "game_time_et": "1:10 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -28,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -193,
     "away_lineup": [
       {
         "slot": 1,
@@ -27,10 +27,10 @@
       },
       {
         "slot": 3,
-        "name": "Vinnie Pasquantino",
-        "position": "1B",
-        "jersey": "9",
-        "player_id": 686469
+        "name": "Lane Thomas",
+        "position": "RF",
+        "jersey": "15",
+        "player_id": 657041
       },
       {
         "slot": 4,
@@ -56,7 +56,7 @@
       {
         "slot": 7,
         "name": "Jac Caglianone",
-        "position": "RF",
+        "position": "1B",
         "jersey": "14",
         "player_id": 695506
       },
@@ -79,16 +79,16 @@
       {
         "slot": 1,
         "name": "Steven Kwan",
-        "position": "CF",
+        "position": "LF",
         "jersey": "38",
         "player_id": 680757
       },
       {
         "slot": 2,
-        "name": "Angel Mart\u00ednez",
-        "position": "LF",
-        "jersey": "1",
-        "player_id": 682657
+        "name": "Daniel Schneemann",
+        "position": "CF",
+        "jersey": "10",
+        "player_id": 682177
       },
       {
         "slot": 3,
@@ -99,17 +99,17 @@
       },
       {
         "slot": 4,
-        "name": "David Fry",
+        "name": "Chase DeLauter",
         "position": "DH",
-        "jersey": "6",
-        "player_id": 681807
+        "jersey": "24",
+        "player_id": 800050
       },
       {
         "slot": 5,
-        "name": "Rhys Hoskins",
+        "name": "Kyle Manzardo",
         "position": "1B",
-        "jersey": "8",
-        "player_id": 656555
+        "jersey": "9",
+        "player_id": 700932
       },
       {
         "slot": 6,
@@ -127,10 +127,10 @@
       },
       {
         "slot": 8,
-        "name": "Austin Hedges",
-        "position": "C",
-        "jersey": "27",
-        "player_id": 595978
+        "name": "Bo Naylor",
+        "position": "PH",
+        "jersey": "23",
+        "player_id": 666310
       },
       {
         "slot": 9,
@@ -148,10 +148,10 @@
     "away_team": "Baltimore Orioles",
     "home_team": "Chicago White Sox",
     "game_time_et": "3:10 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within 92 minutes of first pitch",
-    "minutes_to_first_pitch": 92,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -73,
     "away_lineup": [
       {
         "slot": 1,
@@ -290,12 +290,140 @@
     "away_team": "Arizona Diamondbacks",
     "home_team": "New York Mets",
     "game_time_et": "4:10 PM ET",
-    "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (152 minutes to first pitch)",
-    "minutes_to_first_pitch": 152,
-    "away_lineup": [],
-    "home_lineup": []
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -13,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Ketel Marte",
+        "position": "2B",
+        "jersey": "4",
+        "player_id": 606466
+      },
+      {
+        "slot": 2,
+        "name": "Corbin Carroll",
+        "position": "RF",
+        "jersey": "7",
+        "player_id": 682998
+      },
+      {
+        "slot": 3,
+        "name": "Geraldo Perdomo",
+        "position": "SS",
+        "jersey": "2",
+        "player_id": 672695
+      },
+      {
+        "slot": 4,
+        "name": "Gabriel Moreno",
+        "position": "C",
+        "jersey": "14",
+        "player_id": 672515
+      },
+      {
+        "slot": 5,
+        "name": "Adrian Del Castillo",
+        "position": "DH",
+        "jersey": "25",
+        "player_id": 680728
+      },
+      {
+        "slot": 6,
+        "name": "Nolan Arenado",
+        "position": "3B",
+        "jersey": "28",
+        "player_id": 571448
+      },
+      {
+        "slot": 7,
+        "name": "Ildemaro Vargas",
+        "position": "1B",
+        "jersey": "6",
+        "player_id": 545121
+      },
+      {
+        "slot": 8,
+        "name": "Alek Thomas",
+        "position": "CF",
+        "jersey": "5",
+        "player_id": 677950
+      },
+      {
+        "slot": 9,
+        "name": "Jorge Barrosa",
+        "position": "LF",
+        "jersey": "1",
+        "player_id": 678489
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Francisco Lindor",
+        "position": "SS",
+        "jersey": "12",
+        "player_id": 596019
+      },
+      {
+        "slot": 2,
+        "name": "Bo Bichette",
+        "position": "3B",
+        "jersey": "19",
+        "player_id": 666182
+      },
+      {
+        "slot": 3,
+        "name": "Jorge Polanco",
+        "position": "DH",
+        "jersey": "11",
+        "player_id": 593871
+      },
+      {
+        "slot": 4,
+        "name": "Luis Robert Jr.",
+        "position": "CF",
+        "jersey": "88",
+        "player_id": 673357
+      },
+      {
+        "slot": 5,
+        "name": "Brett Baty",
+        "position": "RF",
+        "jersey": "7",
+        "player_id": 683146
+      },
+      {
+        "slot": 6,
+        "name": "Mark Vientos",
+        "position": "1B",
+        "jersey": "27",
+        "player_id": 668901
+      },
+      {
+        "slot": 7,
+        "name": "Marcus Semien",
+        "position": "2B",
+        "jersey": "10",
+        "player_id": 543760
+      },
+      {
+        "slot": 8,
+        "name": "Carson Benge",
+        "position": "LF",
+        "jersey": "3",
+        "player_id": 701807
+      },
+      {
+        "slot": 9,
+        "name": "Francisco Alvarez",
+        "position": "C",
+        "jersey": "4",
+        "player_id": 682626
+      }
+    ]
   },
   {
     "date": "2026-04-07",
@@ -304,10 +432,10 @@
     "away_team": "San Diego Padres",
     "home_team": "Pittsburgh Pirates",
     "game_time_et": "6:40 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (302 minutes to first pitch)",
-    "minutes_to_first_pitch": 302,
+    "reason": "too early (137 minutes to first pitch)",
+    "minutes_to_first_pitch": 137,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -318,10 +446,10 @@
     "away_team": "Chicago Cubs",
     "home_team": "Tampa Bay Rays",
     "game_time_et": "6:40 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (302 minutes to first pitch)",
-    "minutes_to_first_pitch": 302,
+    "reason": "too early (137 minutes to first pitch)",
+    "minutes_to_first_pitch": 137,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -332,10 +460,10 @@
     "away_team": "Cincinnati Reds",
     "home_team": "Miami Marlins",
     "game_time_et": "6:40 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (302 minutes to first pitch)",
-    "minutes_to_first_pitch": 302,
+    "reason": "too early (137 minutes to first pitch)",
+    "minutes_to_first_pitch": 137,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -346,10 +474,10 @@
     "away_team": "St. Louis Cardinals",
     "home_team": "Washington Nationals",
     "game_time_et": "6:45 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (307 minutes to first pitch)",
-    "minutes_to_first_pitch": 307,
+    "reason": "too early (142 minutes to first pitch)",
+    "minutes_to_first_pitch": 142,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -360,10 +488,10 @@
     "away_team": "Milwaukee Brewers",
     "home_team": "Boston Red Sox",
     "game_time_et": "6:45 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (307 minutes to first pitch)",
-    "minutes_to_first_pitch": 307,
+    "reason": "too early (142 minutes to first pitch)",
+    "minutes_to_first_pitch": 142,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -374,10 +502,10 @@
     "away_team": "Athletics",
     "home_team": "New York Yankees",
     "game_time_et": "7:05 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (327 minutes to first pitch)",
-    "minutes_to_first_pitch": 327,
+    "reason": "too early (162 minutes to first pitch)",
+    "minutes_to_first_pitch": 162,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -388,10 +516,10 @@
     "away_team": "Los Angeles Dodgers",
     "home_team": "Toronto Blue Jays",
     "game_time_et": "7:07 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (329 minutes to first pitch)",
-    "minutes_to_first_pitch": 329,
+    "reason": "too early (164 minutes to first pitch)",
+    "minutes_to_first_pitch": 164,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -402,10 +530,10 @@
     "away_team": "Detroit Tigers",
     "home_team": "Minnesota Twins",
     "game_time_et": "7:40 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (362 minutes to first pitch)",
-    "minutes_to_first_pitch": 362,
+    "reason": "too early (197 minutes to first pitch)",
+    "minutes_to_first_pitch": 197,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -416,10 +544,10 @@
     "away_team": "Seattle Mariners",
     "home_team": "Texas Rangers",
     "game_time_et": "8:05 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (387 minutes to first pitch)",
-    "minutes_to_first_pitch": 387,
+    "reason": "too early (222 minutes to first pitch)",
+    "minutes_to_first_pitch": 222,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -430,10 +558,10 @@
     "away_team": "Houston Astros",
     "home_team": "Colorado Rockies",
     "game_time_et": "8:40 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (422 minutes to first pitch)",
-    "minutes_to_first_pitch": 422,
+    "reason": "too early (257 minutes to first pitch)",
+    "minutes_to_first_pitch": 257,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -446,8 +574,8 @@
     "game_time_et": "9:38 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (480 minutes to first pitch)",
-    "minutes_to_first_pitch": 480,
+    "reason": "too early (315 minutes to first pitch)",
+    "minutes_to_first_pitch": 315,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -460,8 +588,8 @@
     "game_time_et": "9:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (487 minutes to first pitch)",
-    "minutes_to_first_pitch": 487,
+    "reason": "too early (322 minutes to first pitch)",
+    "minutes_to_first_pitch": 322,
     "away_lineup": [],
     "home_lineup": []
   }

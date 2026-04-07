@@ -1,8 +1,114 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 17:40 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 20:31 UTC)
 
 const lineupUpdateDate = "2026-04-07";
-const lineupLastCompleted = "1:37 PM ET";
+const lineupLastCompleted = "4:23 PM ET";
 const startingLineups = [
+  {
+    "date": "2026-04-07",
+    "game_pk": null,
+    "matchup": "ARI @ NYM",
+    "away_team": "Arizona Diamondbacks",
+    "home_team": "New York Mets",
+    "game_time_et": "4:10 PM ET",
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "In Progress",
+    "minutes_to_first_pitch": null,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Ketel Marte",
+        "position": "2B"
+      },
+      {
+        "slot": 2,
+        "name": "Corbin Carroll",
+        "position": "RF"
+      },
+      {
+        "slot": 3,
+        "name": "Geraldo Perdomo",
+        "position": "SS"
+      },
+      {
+        "slot": 4,
+        "name": "Gabriel Moreno",
+        "position": "C"
+      },
+      {
+        "slot": 5,
+        "name": "Adrian Del Castillo",
+        "position": "DH"
+      },
+      {
+        "slot": 6,
+        "name": "Nolan Arenado",
+        "position": "3B"
+      },
+      {
+        "slot": 7,
+        "name": "Ildemaro Vargas",
+        "position": "1B"
+      },
+      {
+        "slot": 8,
+        "name": "Alek Thomas",
+        "position": "CF"
+      },
+      {
+        "slot": 9,
+        "name": "Jorge Barrosa",
+        "position": "LF"
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Francisco Lindor",
+        "position": "SS"
+      },
+      {
+        "slot": 2,
+        "name": "Bo Bichette",
+        "position": "3B"
+      },
+      {
+        "slot": 3,
+        "name": "Jorge Polanco",
+        "position": "DH"
+      },
+      {
+        "slot": 4,
+        "name": "Luis Robert Jr.",
+        "position": "CF"
+      },
+      {
+        "slot": 5,
+        "name": "Brett Baty",
+        "position": "RF"
+      },
+      {
+        "slot": 6,
+        "name": "Mark Vientos",
+        "position": "1B"
+      },
+      {
+        "slot": 7,
+        "name": "Marcus Semien",
+        "position": "2B"
+      },
+      {
+        "slot": 8,
+        "name": "Carson Benge",
+        "position": "LF"
+      },
+      {
+        "slot": 9,
+        "name": "Francisco Alvarez",
+        "position": "C"
+      }
+    ]
+  },
   {
     "date": "2026-04-07",
     "game_pk": null,
@@ -10,9 +116,9 @@ const startingLineups = [
     "away_team": "Baltimore Orioles",
     "home_team": "Chicago White Sox",
     "game_time_et": "3:10 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "Pre-Game",
+    "reason": "In Progress",
     "minutes_to_first_pitch": null,
     "away_lineup": [
       {
@@ -116,9 +222,9 @@ const startingLineups = [
     "away_team": "Kansas City Royals",
     "home_team": "Cleveland Guardians",
     "game_time_et": "1:10 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "In Progress",
+    "reason": "Final",
     "minutes_to_first_pitch": null,
     "away_lineup": [
       {
@@ -133,8 +239,8 @@ const startingLineups = [
       },
       {
         "slot": 3,
-        "name": "Vinnie Pasquantino",
-        "position": "1B"
+        "name": "Lane Thomas",
+        "position": "RF"
       },
       {
         "slot": 4,
@@ -154,7 +260,7 @@ const startingLineups = [
       {
         "slot": 7,
         "name": "Jac Caglianone",
-        "position": "RF"
+        "position": "1B"
       },
       {
         "slot": 8,
@@ -171,12 +277,12 @@ const startingLineups = [
       {
         "slot": 1,
         "name": "Steven Kwan",
-        "position": "CF"
+        "position": "LF"
       },
       {
         "slot": 2,
-        "name": "Angel Martínez",
-        "position": "LF"
+        "name": "Daniel Schneemann",
+        "position": "CF"
       },
       {
         "slot": 3,
@@ -185,12 +291,12 @@ const startingLineups = [
       },
       {
         "slot": 4,
-        "name": "David Fry",
+        "name": "Chase DeLauter",
         "position": "DH"
       },
       {
         "slot": 5,
-        "name": "Rhys Hoskins",
+        "name": "Kyle Manzardo",
         "position": "1B"
       },
       {
@@ -205,8 +311,8 @@ const startingLineups = [
       },
       {
         "slot": 8,
-        "name": "Austin Hedges",
-        "position": "C"
+        "name": "Bo Naylor",
+        "position": "PH"
       },
       {
         "slot": 9,

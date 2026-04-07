@@ -1,0 +1,462 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1476" height="1278" viewBox="0 0 1476 1278">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)" />
+  <text x="28" y="40" font-size="28" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">HardHits MLB Team + Ballpark Slate</text>
+  <text x="28" y="66" font-size="15" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">2026-04-07 • generated from daily weather + matchup data</text>
+  
+    <g transform="translate(28,92)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">1:10 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 43</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/KCR.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#BD9B60" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/CLE.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#E31937" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Kansas City Royals</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Cleveland Guardians</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Progressive Field</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 29.9°F   •   Wind: 9.1 mph S</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 55.77%   •   Rain: —%</text>
+      <image href="covers/ballparks/progressive-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(508,92)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">3:10 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 42</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/BAL.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#000000" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/CHW.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#C4CED4" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Baltimore Orioles</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Chicago White Sox</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Rate Field</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 35.0°F   •   Wind: 8.1 mph ESE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 51.64%   •   Rain: —%</text>
+      <image href="covers/ballparks/rate-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(988,92)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">4:10 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 48</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/ARI.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#E3D4AD" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/NYM.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#FF5910" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Arizona Diamondbacks</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at New York Mets</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Citi Field</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 49.9°F   •   Wind: 25.3 mph E</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 26.71%   •   Rain: 14.0%</text>
+      <image href="covers/ballparks/citi-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(28,322)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">6:40 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 54</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/CIN.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#000000" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/MIA.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#EF3340" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Cincinnati Reds</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Miami Marlins</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 loanDepot park</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 76.9°F   •   Wind: 9.2 mph ENE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 81.93%   •   Rain: 79.0%</text>
+      <image href="covers/ballparks/loandepot-park.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(508,322)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">6:40 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 42</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/SDP.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#FFC425" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/PIT.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#27251F" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">San Diego Padres</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Pittsburgh Pirates</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 PNC Park</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 40.0°F   •   Wind: 9.2 mph E</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 34.06%   •   Rain: —%</text>
+      <image href="covers/ballparks/pnc-park.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(988,322)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">6:40 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 59</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/CHC.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#CC3433" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/TBR.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#8FBCE6" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Chicago Cubs</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Tampa Bay Rays</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Tropicana Field</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 71.0°F   •   Wind: 21.9 mph S</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 84.11%   •   Rain: 14.0%</text>
+      <image href="covers/ballparks/tropicana-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(28,552)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">6:45 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 43</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/MIL.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#FFC52F" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/BOS.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#0C2340" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Milwaukee Brewers</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Boston Red Sox</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Fenway Park</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 42.0°F   •   Wind: 15.0 mph ENE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 59.81%   •   Rain: 22.0%</text>
+      <image href="covers/ballparks/fenway-park.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(508,552)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">6:45 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 46</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/STL.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#0C2340" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/WAS.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#94a3b8" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">St. Louis Cardinals</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at WAS</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Nationals Park</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 51.0°F   •   Wind: 13.9 mph SSE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 22.46%   •   Rain: —%</text>
+      <image href="covers/ballparks/nationals-park.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(988,552)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">7:05 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 50</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/ATH.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#EFB21E" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/NYY.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#C4CED3" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Athletics</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at New York Yankees</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Yankee Stadium</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 45.0°F   •   Wind: 20.8 mph NE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 32.06%   •   Rain: 9.0%</text>
+      <image href="covers/ballparks/yankee-stadium.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(28,782)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">7:07 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 42</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/LAD.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#FFFFFF" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/TOR.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#1D2D5C" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Los Angeles Dodgers</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Toronto Blue Jays</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Rogers Centre</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 31.0°F   •   Wind: 10.3 mph SSE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 48.66%   •   Rain: —%</text>
+      <image href="covers/ballparks/rogers-centre.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(508,782)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">7:40 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 46</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/DET.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#FA4616" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/MIN.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#D31145" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Detroit Tigers</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Minnesota Twins</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Target Field</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 45.9°F   •   Wind: 11.4 mph W</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 30.98%   •   Rain: 3.0%</text>
+      <image href="covers/ballparks/target-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(988,782)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">8:05 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 55</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/SEA.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#005C5C" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/TEX.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#C0111F" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Seattle Mariners</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Texas Rangers</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Globe Life Field</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 71.0°F   •   Wind: 6.9 mph ENE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 33.63%   •   Rain: —%</text>
+      <image href="covers/ballparks/globe-life-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(28,1012)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">8:40 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 51</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/HOU.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#EB6E1F" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/COL.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#C4CED4" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Houston Astros</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Colorado Rockies</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Coors Field</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 65.9°F   •   Wind: 8.1 mph NNE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 24.93%   •   Rain: 24.0%</text>
+      <image href="covers/ballparks/coors-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(508,1012)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">9:38 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 59</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/ATL.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#13274F" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/LAA.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#003263" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Atlanta Braves</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Los Angeles Angels</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Angel Stadium</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 72.9°F   •   Wind: 6.9 mph N</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 53.26%   •   Rain: —%</text>
+      <image href="covers/ballparks/angel-stadium.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+    <g transform="translate(988,1012)">
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+      <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
+      <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">9:45 PM ET</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 52</text>
+
+      
+        <g>
+          <circle cx="48" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/PHI.svg" x="22" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="48" cy="95" r="28" fill="none" stroke="#002D72" stroke-width="3" />
+        </g>
+        
+      
+        <g>
+          <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
+          <image href="covers/teams/SFG.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#27251F" stroke-width="3" />
+        </g>
+        
+
+      <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">Philadelphia Phillies</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at San Francisco Giants</text>
+
+      <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Oracle Park</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 61.1°F   •   Wind: 10.3 mph N</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 69.42%   •   Rain: 1.0%</text>
+      <image href="covers/ballparks/oracle-park.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
+    </g>
+    
+</svg>

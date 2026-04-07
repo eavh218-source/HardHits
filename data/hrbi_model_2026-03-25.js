@@ -1,4 +1,4 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 17:40 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 20:31 UTC)
 
 window.hrbiModelData_2026_03_25 = [
   {
@@ -45,7 +45,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 85,
       "Runs": 60,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -92,7 +93,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 51,
       "Runs": 49,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -139,7 +141,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 85,
       "Runs": 48,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -186,7 +189,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 50,
       "Runs": 32,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -233,7 +237,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 29,
       "Runs": 29,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -280,7 +285,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 58,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -327,7 +333,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 59,
       "Runs": 58,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -374,7 +381,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -421,7 +429,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -468,7 +477,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 27,
       "Runs": 29,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -515,7 +525,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -562,7 +573,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 72,
       "Runs": 70,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -609,7 +621,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 69,
       "Runs": 60,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -656,7 +669,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -703,7 +717,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 58,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -750,7 +765,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 43,
       "Runs": 34,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -797,7 +813,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -844,7 +861,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -891,7 +909,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 39,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -938,7 +957,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 58,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -985,7 +1005,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 85,
       "Runs": 48,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -1032,7 +1053,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 26,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -1079,7 +1101,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 37,
       "Runs": 32,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -1126,7 +1149,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -1173,7 +1197,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 41,
       "Runs": 49,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   },
   {
@@ -1220,7 +1245,8 @@ window.hrbiModelData_2026_03_25 = [
       "Pitcher": 47,
       "RBI": 25,
       "Runs": 28,
-      "Park": 23
+      "Park": 23,
+      "Weather": 50
     }
   }
 ];
