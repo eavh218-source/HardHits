@@ -10,10 +10,12 @@ the bundle as-is.
 
 from __future__ import annotations
 
+import argparse
 import os
 import shutil
 from pathlib import Path
 
+from export_sql_to_static import export_site_data_from_sql
 from refresh_historical_index import write_historical_index
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -80,12 +82,34 @@ def write_root_files() -> None:
         (OUTPUT_DIR / "CNAME").write_text(cname + "\n", encoding="utf-8")
 
 
+def maybe_export_sql_pages_data() -> None:
+    if os.getenv("HARDHITS_PAGES_USE_SQL", "").strip().lower() not in {"1", "true", "yes", "on"}:
+        return
+
+    sql_args = argparse.Namespace(
+        server=os.getenv("HARDHITS_SQL_SERVER", ""),
+        database=os.getenv("HARDHITS_SQL_DATABASE", ""),
+        username=os.getenv("HARDHITS_SQL_USERNAME", ""),
+        password=os.getenv("HARDHITS_SQL_PASSWORD", ""),
+        driver=os.getenv("HARDHITS_SQL_DRIVER", "ODBC Driver 18 for SQL Server"),
+        trusted_connection=os.getenv("HARDHITS_SQL_TRUSTED_CONNECTION", "").strip().lower() in {"1", "true", "yes", "on"},
+        output_dir=str(OUTPUT_DIR / "data"),
+    )
+
+    try:
+        written = export_site_data_from_sql(sql_args)
+        print(f"[OK] SQL-backed Pages export refreshed {len(written)} files into {OUTPUT_DIR / 'data'}")
+    except Exception as exc:
+        print(f"[WARN] SQL export skipped; continuing with existing static data. Reason: {exc}")
+
+
 def main() -> int:
     write_historical_index()
     reset_output_dir()
     copy_site()
     copy_static_dir(ASSETS_DIR, "assets")
     copy_static_dir(DATA_DIR, "data")
+    maybe_export_sql_pages_data()
     write_root_files()
 
     print(f"[OK] Stable GitHub Pages bundle created at: {OUTPUT_DIR}")

@@ -4,9 +4,10 @@
 IF OBJECT_ID('dbo.hr_model_predictions', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.hr_model_predictions (
+        hr_model_prediction_id bigint IDENTITY(1,1) NOT NULL PRIMARY KEY,
         model_date date NOT NULL,
         player_name nvarchar(150) NOT NULL,
-        team_code nvarchar(10) NULL,
+        team_code nvarchar(10) NOT NULL,
         probability decimal(5,2) NULL,
         opp_pitcher nvarchar(150) NULL,
         max_ev decimal(6,2) NULL,
@@ -26,8 +27,7 @@ BEGIN
         history_score smallint NULL,
         weather_score smallint NULL,
         source_file nvarchar(260) NOT NULL,
-        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hr_model_predictions_imported_at DEFAULT SYSUTCDATETIME(),
-        CONSTRAINT PK_hr_model_predictions PRIMARY KEY (model_date, player_name, team_code)
+        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hr_model_predictions_imported_at DEFAULT SYSUTCDATETIME()
     );
 END;
 GO
@@ -35,6 +35,7 @@ GO
 IF OBJECT_ID('dbo.hr_results', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.hr_results (
+        hr_result_id bigint IDENTITY(1,1) NOT NULL PRIMARY KEY,
         result_date date NOT NULL,
         player_name nvarchar(150) NOT NULL,
         team_name nvarchar(120) NULL,
@@ -45,8 +46,7 @@ BEGIN
         distance_ft decimal(7,2) NULL,
         result_status nvarchar(80) NULL,
         source_file nvarchar(260) NOT NULL,
-        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hr_results_imported_at DEFAULT SYSUTCDATETIME(),
-        CONSTRAINT PK_hr_results PRIMARY KEY (result_date, player_name, pitcher_name)
+        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hr_results_imported_at DEFAULT SYSUTCDATETIME()
     );
 END;
 GO
@@ -54,9 +54,10 @@ GO
 IF OBJECT_ID('dbo.hrbi_model_predictions', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.hrbi_model_predictions (
+        hrbi_model_prediction_id bigint IDENTITY(1,1) NOT NULL PRIMARY KEY,
         model_date date NOT NULL,
         player_name nvarchar(150) NOT NULL,
-        team_code nvarchar(10) NULL,
+        team_code nvarchar(10) NOT NULL,
         probability decimal(5,2) NULL,
         confidence_band nvarchar(50) NULL,
         opp_pitcher nvarchar(150) NULL,
@@ -76,8 +77,7 @@ BEGIN
         runs_score smallint NULL,
         park_score smallint NULL,
         source_file nvarchar(260) NOT NULL,
-        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hrbi_model_predictions_imported_at DEFAULT SYSUTCDATETIME(),
-        CONSTRAINT PK_hrbi_model_predictions PRIMARY KEY (model_date, player_name, team_code)
+        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hrbi_model_predictions_imported_at DEFAULT SYSUTCDATETIME()
     );
 END;
 GO
@@ -85,9 +85,10 @@ GO
 IF OBJECT_ID('dbo.hrbi_results', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.hrbi_results (
+        hrbi_result_id bigint IDENTITY(1,1) NOT NULL PRIMARY KEY,
         result_date date NOT NULL,
         player_name nvarchar(150) NOT NULL,
-        team_code nvarchar(10) NULL,
+        team_code nvarchar(10) NOT NULL,
         probability decimal(5,2) NULL,
         confidence_band nvarchar(50) NULL,
         lineup_slot nvarchar(20) NULL,
@@ -98,8 +99,7 @@ BEGIN
         actual_total int NULL,
         classification nvarchar(30) NULL,
         source_file nvarchar(260) NOT NULL,
-        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hrbi_results_imported_at DEFAULT SYSUTCDATETIME(),
-        CONSTRAINT PK_hrbi_results PRIMARY KEY (result_date, player_name, team_code)
+        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hrbi_results_imported_at DEFAULT SYSUTCDATETIME()
     );
 END;
 GO
@@ -123,6 +123,7 @@ GO
 IF OBJECT_ID('dbo.live_home_runs', 'U') IS NULL
 BEGIN
     CREATE TABLE dbo.live_home_runs (
+        live_home_run_id bigint IDENTITY(1,1) NOT NULL PRIMARY KEY,
         update_date date NOT NULL,
         player_name nvarchar(150) NOT NULL,
         team_name nvarchar(120) NULL,
@@ -133,8 +134,7 @@ BEGIN
         distance_ft decimal(7,2) NULL,
         result_status nvarchar(80) NULL,
         source_file nvarchar(260) NOT NULL,
-        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_live_home_runs_imported_at DEFAULT SYSUTCDATETIME(),
-        CONSTRAINT PK_live_home_runs PRIMARY KEY (update_date, player_name, pitcher_name)
+        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_live_home_runs_imported_at DEFAULT SYSUTCDATETIME()
     );
 END;
 GO

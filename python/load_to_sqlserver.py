@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import re
 from pathlib import Path
@@ -29,7 +30,10 @@ def safe_float(value: Any, default: float | None = None) -> float | None:
     try:
         if value in (None, ""):
             return default
-        return float(value)
+        parsed = float(value)
+        if not math.isfinite(parsed):
+            return default
+        return parsed
     except Exception:
         return default
 
@@ -77,7 +81,7 @@ def collect_hr_model_rows() -> list[dict[str, Any]]:
             rows.append({
                 "model_date": item.get("date") or date_str,
                 "player_name": item.get("name"),
-                "team_code": item.get("team"),
+                "team_code": item.get("team") or "UNK",
                 "probability": safe_float(item.get("probability")),
                 "opp_pitcher": item.get("opp_pitcher") or item.get("opp_pitcher_full"),
                 "max_ev": safe_float(item.get("max_ev")),
@@ -138,7 +142,7 @@ def collect_hrbi_model_rows() -> list[dict[str, Any]]:
             rows.append({
                 "model_date": item.get("date") or date_str,
                 "player_name": item.get("name"),
-                "team_code": item.get("team"),
+                "team_code": item.get("team") or "UNK",
                 "probability": safe_float(item.get("probability")),
                 "confidence_band": item.get("confidence_band"),
                 "opp_pitcher": item.get("opp_pitcher"),
@@ -187,7 +191,7 @@ def collect_hrbi_results_rows() -> tuple[list[dict[str, Any]], list[dict[str, An
             rows.append({
                 "result_date": item.get("date") or date_str,
                 "player_name": item.get("name"),
-                "team_code": item.get("team"),
+                "team_code": item.get("team") or "UNK",
                 "probability": safe_float(item.get("probability")),
                 "confidence_band": item.get("confidence_band"),
                 "lineup_slot": str(item.get("lineup_slot")) if item.get("lineup_slot") is not None else None,
@@ -277,23 +281,35 @@ DATASET_ORDER = [
 ]
 
 
-def collect_all_datasets() -> dict[str, list[dict[str, Any]]]:
-    hrbi_results, hrbi_summary = collect_hrbi_results_rows()
-    return {
-        "hr_model_predictions": collect_hr_model_rows(),
-        "hr_results": collect_hr_results_rows(),
-        "hrbi_model_predictions": collect_hrbi_model_rows(),
-        "hrbi_results": hrbi_results,
-        "hrbi_results_summary": hrbi_summary,
-        "live_home_runs": collect_live_home_runs(),
-        "starting_lineup_players": collect_starting_lineup_rows(),
-        "bvp_events": collect_bvp_rows(),
-    }
+def collect_all_datasets(selected_tables: Iterable[str] | None = None) -> dict[str, list[dict[str, Any]]]:
+    requested = set(selected_tables or DATASET_ORDER)
+    datasets: dict[str, list[dict[str, Any]]] = {name: [] for name in DATASET_ORDER}
+
+    if "hr_model_predictions" in requested:
+        datasets["hr_model_predictions"] = collect_hr_model_rows()
+    if "hr_results" in requested:
+        datasets["hr_results"] = collect_hr_results_rows()
+    if "hrbi_model_predictions" in requested:
+        datasets["hrbi_model_predictions"] = collect_hrbi_model_rows()
+    if "hrbi_results" in requested or "hrbi_results_summary" in requested:
+        hrbi_results, hrbi_summary = collect_hrbi_results_rows()
+        if "hrbi_results" in requested:
+            datasets["hrbi_results"] = hrbi_results
+        if "hrbi_results_summary" in requested:
+            datasets["hrbi_results_summary"] = hrbi_summary
+    if "live_home_runs" in requested:
+        datasets["live_home_runs"] = collect_live_home_runs()
+    if "starting_lineup_players" in requested:
+        datasets["starting_lineup_players"] = collect_starting_lineup_rows()
+    if "bvp_events" in requested:
+        datasets["bvp_events"] = collect_bvp_rows()
+
+    return datasets
 
 
-def print_dry_run_summary(datasets: dict[str, list[dict[str, Any]]]) -> None:
+def print_dry_run_summary(datasets: dict[str, list[dict[str, Any]]], selected_tables: Iterable[str] | None = None) -> None:
     print("=== HardHits SQL Server dry run ===")
-    for name in DATASET_ORDER:
+    for name in selected_tables or DATASET_ORDER:
         rows = datasets.get(name, [])
         print(f"{name}: {len(rows)} rows")
 
@@ -344,27 +360,41 @@ def delete_and_insert(cursor, table: str, date_column: str, rows: list[dict[str,
     cursor.executemany(f"INSERT INTO dbo.{table} ({col_sql}) VALUES ({placeholders})", values)
 
 
-def load_to_sql_server(args: argparse.Namespace, datasets: dict[str, list[dict[str, Any]]]) -> None:
+def load_to_sql_server(
+    args: argparse.Namespace,
+    datasets: dict[str, list[dict[str, Any]]],
+    selected_tables: Iterable[str] | None = None,
+) -> None:
+    requested = set(selected_tables or DATASET_ORDER)
     pyodbc = require_pyodbc()
     conn = pyodbc.connect(build_connection_string(args))
     try:
         cursor = conn.cursor()
-        delete_and_insert(cursor, "hr_model_predictions", "model_date", datasets["hr_model_predictions"])
-        delete_and_insert(cursor, "hr_results", "result_date", datasets["hr_results"])
-        delete_and_insert(cursor, "hrbi_model_predictions", "model_date", datasets["hrbi_model_predictions"])
-        delete_and_insert(cursor, "hrbi_results", "result_date", datasets["hrbi_results"])
-        delete_and_insert(cursor, "hrbi_results_summary", "result_date", datasets["hrbi_results_summary"])
-        delete_and_insert(cursor, "live_home_runs", "update_date", datasets["live_home_runs"])
-        delete_and_insert(cursor, "starting_lineup_players", "lineup_date", datasets["starting_lineup_players"])
 
-        cursor.execute("TRUNCATE TABLE dbo.bvp_events")
-        bvp_rows = datasets["bvp_events"]
-        if bvp_rows:
-            columns = list(bvp_rows[0].keys())
-            col_sql = ", ".join(columns)
-            placeholders = ", ".join("?" for _ in columns)
-            values = [tuple(row.get(col) for col in columns) for row in bvp_rows]
-            cursor.executemany(f"INSERT INTO dbo.bvp_events ({col_sql}) VALUES ({placeholders})", values)
+        if "hr_model_predictions" in requested:
+            delete_and_insert(cursor, "hr_model_predictions", "model_date", datasets["hr_model_predictions"])
+        if "hr_results" in requested:
+            delete_and_insert(cursor, "hr_results", "result_date", datasets["hr_results"])
+        if "hrbi_model_predictions" in requested:
+            delete_and_insert(cursor, "hrbi_model_predictions", "model_date", datasets["hrbi_model_predictions"])
+        if "hrbi_results" in requested:
+            delete_and_insert(cursor, "hrbi_results", "result_date", datasets["hrbi_results"])
+        if "hrbi_results_summary" in requested:
+            delete_and_insert(cursor, "hrbi_results_summary", "result_date", datasets["hrbi_results_summary"])
+        if "live_home_runs" in requested:
+            delete_and_insert(cursor, "live_home_runs", "update_date", datasets["live_home_runs"])
+        if "starting_lineup_players" in requested:
+            delete_and_insert(cursor, "starting_lineup_players", "lineup_date", datasets["starting_lineup_players"])
+
+        if "bvp_events" in requested:
+            cursor.execute("TRUNCATE TABLE dbo.bvp_events")
+            bvp_rows = datasets["bvp_events"]
+            if bvp_rows:
+                columns = list(bvp_rows[0].keys())
+                col_sql = ", ".join(columns)
+                placeholders = ", ".join("?" for _ in columns)
+                values = [tuple(row.get(col) for col in columns) for row in bvp_rows]
+                cursor.executemany(f"INSERT INTO dbo.bvp_events ({col_sql}) VALUES ({placeholders})", values)
 
         conn.commit()
     finally:
@@ -380,19 +410,26 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--password", default="", help="SQL login password.")
     parser.add_argument("--driver", default="", help="ODBC driver name. Defaults to ODBC Driver 17 for SQL Server.")
     parser.add_argument("--trusted-connection", action="store_true", help="Use Windows authentication.")
+    parser.add_argument(
+        "--tables",
+        nargs="+",
+        choices=DATASET_ORDER,
+        help="Optional subset of dataset tables to load. Defaults to all supported tables.",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    datasets = collect_all_datasets()
-    print_dry_run_summary(datasets)
+    selected_tables = args.tables or DATASET_ORDER
+    datasets = collect_all_datasets(selected_tables)
+    print_dry_run_summary(datasets, selected_tables)
 
     if args.dry_run:
         print("Dry run completed successfully.")
         return 0
 
-    load_to_sql_server(args, datasets)
+    load_to_sql_server(args, datasets, selected_tables)
     print(f"Loaded HardHits datasets into SQL Server from {REPO_ROOT}.")
     return 0
 
