@@ -51,6 +51,8 @@
             height: 100%;
         }
         .card:hover { transform: translateY(-8px); border-color: #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .card--interactive { cursor: pointer; }
+        .card--interactive:focus-visible { outline: 2px solid var(--sky); outline-offset: 2px; }
 
         /* Prediction card styles */
         .elite { border-top: 5px solid var(--accent); }
@@ -637,6 +639,17 @@
         return `${month} ${day}, ${year}`;
     }
 
+    function escapeHtml(value) {
+        return String(value ?? '').replace(/[&<>"']/g, function (char) {
+            return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char] || char;
+        });
+    }
+
+    function formatMetric(value, suffix = '') {
+        const numericValue = Number(value);
+        return Number.isFinite(numericValue) ? `${numericValue}${suffix}` : 'N/A';
+    }
+
     function findModelEntryByName(name, modelDataForDate) {
         if (!name) return null;
         const normalized = name.toLowerCase();
@@ -648,28 +661,84 @@
         return entry || null;
     }
 
-    function openOutlierModal(name, dateStr) {
-        let details = `This outlier is for ${name} (${dateStr}).`;
-        const sameDateModel = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || [];
-        const sameEntry = findModelEntryByName(name, sameDateModel);
-        if (sameEntry) {
-            details += `<br><br><b>Same date:</b> ${dateStr}`;
-            details += `<br><b>Model Prob:</b> ${sameEntry.probability}%`;
-            details += `<br><b>Max EV:</b> ${sameEntry.max_ev || 'N/A'}`;
-            details += `<br><b>Breakdown:</b> Power ${sameEntry.breakdown.Power} | Form ${sameEntry.breakdown.Form} | Trend ${sameEntry.breakdown.Trend} | Park ${sameEntry.breakdown.Park}`;
-        } else {
-            details += `<br><br>No model entry found for ${name} on ${dateStr}.`;
-        }
-
+    function showDetailModal(titleText, detailsHtml) {
         const content = document.getElementById('outlier-modal-content');
         const title = document.getElementById('outlier-modal-title');
-        title.innerHTML = `Outlier Lookup: ${name}`;
-        content.innerHTML = details;
+        title.innerHTML = titleText;
+        content.innerHTML = detailsHtml;
         document.getElementById('outlier-modal').style.display = 'flex';
     }
 
+    function getPredictionFromCard(card, predictionData) {
+        const index = Number(card.getAttribute('data-player-index'));
+        return Number.isInteger(index) && predictionData[index] ? predictionData[index] : null;
+    }
+
+    function openPredictionModal(player) {
+        if (!player) {
+            return;
+        }
+
+        const breakdown = player.breakdown || {};
+        const opponent = player.opp_pitcher_full || player.opp_pitcher || 'TBD';
+        const details = `
+            <div style="margin-bottom: 14px;">
+                <div class="team-tag">${escapeHtml(player.team || 'TBD')}</div>
+                <div style="font-size: 1.05rem; color: var(--text); font-weight: 800; margin-top: 4px;">${escapeHtml(player.name || 'Unknown')}</div>
+                <div style="margin-top: 6px;">Detailed HR model lookup vs <b>${escapeHtml(opponent)}</b></div>
+            </div>
+            <div class="stat-grid" style="margin-top:0;">
+                <div class="stat-item"><div class="stat-label">Probability</div><div class="stat-value">${escapeHtml(String(player.probability ?? 'N/A'))}%</div></div>
+                <div class="stat-item"><div class="stat-label">Max EV</div><div class="stat-value">${escapeHtml(formatMetric(player.max_ev, ' MPH'))}</div></div>
+                <div class="stat-item"><div class="stat-label">Fly Ball EV</div><div class="stat-value">${escapeHtml(formatMetric(player.fb_ev, ' MPH'))}</div></div>
+                <div class="stat-item"><div class="stat-label">Barrel %</div><div class="stat-value">${escapeHtml(formatMetric(player.barrel_pct, '%'))}</div></div>
+            </div>
+            <div style="margin-top: 16px;">
+                <div class="breakdown-title">Signal Breakdown</div>
+                <div class="breakdown-grid">
+                    <div class="b-item"><span class="b-label">POWER</span><div class="stat-value">${escapeHtml(String(breakdown.Power ?? 'N/A'))}</div></div>
+                    <div class="b-item"><span class="b-label">FORM</span><div class="stat-value">${escapeHtml(String(breakdown.Form ?? 'N/A'))}</div></div>
+                    <div class="b-item"><span class="b-label">TREND</span><div class="stat-value">${escapeHtml(String(breakdown.Trend ?? 'N/A'))}</div></div>
+                    <div class="b-item"><span class="b-label">PARK</span><div class="stat-value">${escapeHtml(String(breakdown.Park ?? 'N/A'))}</div></div>
+                </div>
+            </div>
+            <div style="margin-top: 16px; display:grid; gap:8px; color: var(--text-dim); font-size:0.92rem;">
+                <div><b style="color:var(--text)">Trend:</b> ${escapeHtml(player.ev_trend_label || 'Stable')}</div>
+                <div><b style="color:var(--text)">Lineup:</b> ${escapeHtml(String(player.lineup_slot || 'TBD'))} • ${escapeHtml(String(player.lineup_status || 'Pending'))}</div>
+                <div><b style="color:var(--text)">Expected PA:</b> ${escapeHtml(String(player.expected_pa || 'N/A'))}</div>
+                <div><b style="color:var(--text)">Park:</b> ${escapeHtml(String(player.park_factor || 'Neutral'))}</div>
+                <div><b style="color:var(--text)">Pitcher HR Risk:</b> ${escapeHtml(formatMetric(player.pitcher_hr_risk, '%'))}</div>
+                <div><b style="color:var(--text)">BvP:</b> ${escapeHtml(player.bvp_summary || 'No batter-vs-pitcher note available.')}</div>
+            </div>
+        `;
+
+        showDetailModal(`Player Lookup: ${escapeHtml(player.name || 'Unknown')}`, details);
+    }
+
+    function openOutlierModal(name, dateStr) {
+        let details = `This outlier is for ${escapeHtml(name)} (${escapeHtml(dateStr)}).`;
+        const sameDateModel = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || [];
+        const sameEntry = findModelEntryByName(name, sameDateModel);
+        if (sameEntry) {
+            details += `<br><br><b>Same date:</b> ${escapeHtml(dateStr)}`;
+            details += `<br><b>Model Prob:</b> ${escapeHtml(String(sameEntry.probability))}%`;
+            details += `<br><b>Max EV:</b> ${escapeHtml(formatMetric(sameEntry.max_ev, ' MPH'))}`;
+            details += `<br><b>Breakdown:</b> Power ${escapeHtml(String(sameEntry.breakdown.Power))} | Form ${escapeHtml(String(sameEntry.breakdown.Form))} | Trend ${escapeHtml(String(sameEntry.breakdown.Trend))} | Park ${escapeHtml(String(sameEntry.breakdown.Park))}`;
+        } else {
+            details += `<br><br>No model entry found for ${escapeHtml(name)} on ${escapeHtml(dateStr)}.`;
+        }
+
+        showDetailModal(`Outlier Lookup: ${escapeHtml(name)}`, details);
+    }
+
+    const outlierModal = document.getElementById('outlier-modal');
     document.getElementById('close-outlier-modal').addEventListener('click', () => {
-        document.getElementById('outlier-modal').style.display = 'none';
+        outlierModal.style.display = 'none';
+    });
+    outlierModal.addEventListener('click', (event) => {
+        if (event.target === outlierModal) {
+            outlierModal.style.display = 'none';
+        }
     });
 
     function renderPredictionCards(predictionData, emptyFileName, emptyMessage) {
@@ -685,22 +754,22 @@
             return;
         }
 
-        predictionData.forEach(p => {
+        dash.innerHTML = predictionData.map((p, index) => {
             const isElite = p.probability >= 8.5;
             const isSolid = p.probability >= 5.5 && p.probability < 8.5;
             const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
             const trendClass = p.ev_trend_val > 1.5 ? 'hot-trend' : 'neutral-trend';
 
-            dash.innerHTML += `
-                <article class="card ${tierClass}">
+            return `
+                <article class="card card--interactive ${tierClass}" data-player-index="${index}" tabindex="0" role="button" aria-label="Open HR details for ${escapeHtml(p.name || 'Unknown')}" title="Click for full player breakdown">
                     <div class="card-header">
                         <div class="header-main">
-                            <span class="team-tag">${p.team}</span>
-                            <h2 class="player-name">${p.name}</h2>
-                            <span class="trend-badge ${trendClass}">${p.ev_trend_label}</span>
+                            <span class="team-tag">${escapeHtml(p.team || 'TBD')}</span>
+                            <h2 class="player-name">${escapeHtml(p.name || 'Unknown')}</h2>
+                            <span class="trend-badge ${trendClass}">${escapeHtml(p.ev_trend_label || 'Stable')}</span>
                         </div>
                         <div class="score-box">
-                            <span class="score-val">${p.probability}%</span>
+                            <span class="score-val">${escapeHtml(String(p.probability ?? 'N/A'))}%</span>
                             <span class="score-label">PROB</span>
                         </div>
                     </div>
@@ -731,7 +800,7 @@
                         <div class="stat-group">
                             <div class="stat-line">
                                 <span class="stat-label">Max Exit Velocity</span>
-                                <span class="stat-value">${p.max_ev} MPH</span>
+                                <span class="stat-value">${escapeHtml(formatMetric(p.max_ev, ' MPH'))}</span>
                             </div>
                             <div class="progress-track"><div class="progress-fill" style="width:${p.max_ev_pct}%; background: var(--accent);"></div></div>
                         </div>
@@ -739,18 +808,36 @@
                         <div class="stat-group" style="margin-top:15px;">
                             <div class="stat-line">
                                 <span class="stat-label">Fly Ball EV (Avg)</span>
-                                <span class="stat-value">${p.fb_ev} MPH</span>
+                                <span class="stat-value">${escapeHtml(formatMetric(p.fb_ev, ' MPH'))}</span>
                             </div>
                             <div class="progress-track"><div class="progress-fill" style="width:${p.fb_ev_pct}%; background: var(--gold);"></div></div>
                         </div>
                     </div>
 
                     <footer class="card-footer">
-                        <div class="pitcher-info">vs <span style="color:white">${p.opp_pitcher_full || p.opp_pitcher || 'TBD'}</span></div>
-                        <div class="park-info">${p.park_factor}</div>
+                        <div class="pitcher-info">vs <span style="color:white">${escapeHtml(p.opp_pitcher_full || p.opp_pitcher || 'TBD')}</span></div>
+                        <div class="park-info">${escapeHtml(p.park_factor || 'Neutral')}</div>
                     </footer>
                 </article>
             `;
+        }).join('');
+
+        Array.from(dash.querySelectorAll('.card--interactive')).forEach((card) => {
+            const openCard = () => {
+                const player = getPredictionFromCard(card, predictionData);
+                if (player) {
+                    openPredictionModal(player);
+                }
+            };
+
+            card.addEventListener('click', openCard);
+            card.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') {
+                    return;
+                }
+                event.preventDefault();
+                openCard();
+            });
         });
     }
 

@@ -41,6 +41,107 @@
         }
         .card:hover { transform: translateY(-8px); border-color: #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
+        .card--interactive { cursor: pointer; }
+        .card--interactive:focus-visible { outline: 2px solid var(--sky); outline-offset: 2px; }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.82);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 3000;
+        }
+
+        .modal-backdrop.is-open { display: flex; }
+
+        .modal-card {
+            width: min(760px, 100%);
+            max-height: 85vh;
+            overflow-y: auto;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(8, 12, 21, 0.98));
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+            padding: 22px;
+        }
+
+        .modal-close {
+            border: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-left: auto;
+            display: block;
+        }
+
+        .modal-close:hover { border-color: #475569; }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 10px 0 18px;
+        }
+
+        .modal-title { margin: 6px 0; font-size: 1.6rem; }
+        .modal-subtitle { color: var(--text-dim); font-size: 0.88rem; }
+
+        .modal-section {
+            margin-top: 16px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+            background: rgba(2, 6, 23, 0.42);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .stat-pill {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.78);
+            padding: 10px 12px;
+        }
+
+        .stat-pill-label {
+            display: block;
+            font-size: 0.68rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .stat-pill-value {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 8px 0;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        .detail-row strong {
+            color: var(--text);
+            text-align: right;
+        }
+
         .elite { border-top: 5px solid var(--accent); }
         .solid { border-top: 5px solid var(--emerald); }
 
@@ -89,15 +190,129 @@
     <div style="margin-bottom: 30px;">
         <h1 style="font-size: 2.2rem; margin: 0; letter-spacing: -1px;">Home Run Probability</h1>
         <p style="color: var(--text-dim); margin-top: 5px;">Unified model: power, form, EV trend, pitcher risk, park, platoon, H2H, weather + lineup PA multiplier</p>
+        <p style="color: var(--gold); margin: 8px 0 0; font-size: 0.9rem; font-weight: 700;">Click any player card for a deeper breakdown.</p>
     </div>
 
-    <div id="dashboard" class="grid">
-        </div>
+    <div id="dashboard" class="grid"></div>
+</div>
+
+<div id="player-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="player-modal-title">
+        <button id="close-player-modal" class="modal-close" type="button">Close</button>
+        <div id="player-modal-content"></div>
+    </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const dash = document.getElementById('dashboard');
+        const modal = document.getElementById('player-modal');
+        const modalContent = document.getElementById('player-modal-content');
+        const closeModalBtn = document.getElementById('close-player-modal');
+
+        function safeText(value) {
+            return String(value ?? '').replace(/[&<>"']/g, function (char) {
+                return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char] || char;
+            });
+        }
+
+        function formatMetric(value, suffix = '') {
+            const numericValue = Number(value);
+            return Number.isFinite(numericValue) ? `${numericValue}${suffix}` : 'N/A';
+        }
+
+        function detailRow(label, value) {
+            return `<div class="detail-row"><span>${safeText(label)}</span><strong>${safeText(value)}</strong></div>`;
+        }
+
+        function statPill(label, value) {
+            return `<div class="stat-pill"><span class="stat-pill-label">${safeText(label)}</span><span class="stat-pill-value">${safeText(value)}</span></div>`;
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function openPlayerModal(player) {
+            const breakdown = player.breakdown || {};
+            const opponent = player.opp_pitcher_full || player.opp_pitcher || 'TBD';
+
+            modalContent.innerHTML = `
+                <div class="modal-header">
+                    <div>
+                        <div class="team-tag">${safeText(player.team || 'TBD')}</div>
+                        <h2 id="player-modal-title" class="modal-title">${safeText(player.name || 'Unknown')}</h2>
+                        <div class="modal-subtitle">Detailed HR model lookup vs ${safeText(opponent)}</div>
+                    </div>
+                    <div class="score-box">
+                        <span class="score-val">${safeText(String(player.probability ?? 'N/A'))}%</span>
+                        <span class="score-label">HR PROB</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="breakdown-title">Power Snapshot</div>
+                    <div class="modal-grid">
+                        ${statPill('Max EV', formatMetric(player.max_ev, ' MPH'))}
+                        ${statPill('Fly Ball EV', formatMetric(player.fb_ev, ' MPH'))}
+                        ${statPill('Barrel %', formatMetric(player.barrel_pct, '%'))}
+                        ${statPill('EV Trend', player.ev_trend_label || 'Stable')}
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="breakdown-title">Model Signals</div>
+                    ${detailRow('Power Score', `${breakdown.Power ?? 'N/A'} / 100`)}
+                    ${detailRow('Form Score', `${breakdown.Form ?? 'N/A'} / 100`)}
+                    ${detailRow('Trend Score', `${breakdown.Trend ?? 'N/A'} / 100`)}
+                    ${detailRow('Park Score', `${breakdown.Park ?? 'N/A'} / 100`)}
+                    ${detailRow('Pitcher Score', `${breakdown.Pitcher ?? 'N/A'} / 100`)}
+                    ${detailRow('Platoon Score', `${breakdown.Platoon ?? 'N/A'} / 100`)}
+                </div>
+
+                <div class="modal-section">
+                    <div class="breakdown-title">Game Context</div>
+                    ${detailRow('Lineup Slot', String(player.lineup_slot || 'TBD'))}
+                    ${detailRow('Expected PA', String(player.expected_pa || 'N/A'))}
+                    ${detailRow('Lineup Status', String(player.lineup_status || 'Pending'))}
+                    ${detailRow('Park Factor', String(player.park_factor || 'Neutral'))}
+                    ${detailRow('Pitcher HR Risk', formatMetric(player.pitcher_hr_risk, '%'))}
+                    ${detailRow('Pitcher HR/9', formatMetric(player.pitcher_hr9))}
+                    ${detailRow('Pitcher FB Rate', formatMetric(player.pitcher_fb_rate, '%'))}
+                    ${detailRow('Weather Boost', formatMetric(player.weather_boost, '%'))}
+                    ${detailRow('Platoon Edge', formatMetric(player.platoon_advantage, '%'))}
+                </div>
+
+                <div class="modal-section">
+                    <div class="breakdown-title">BvP Notes</div>
+                    <div style="color: var(--text-dim); font-size: 0.88rem;">${safeText(player.bvp_summary || 'No batter-vs-pitcher note available.')}</div>
+                </div>
+            `;
+
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            closeModalBtn.focus();
+        }
+
+        function getPlayerFromCard(card) {
+            const index = Number(card.getAttribute('data-player-index'));
+            return Number.isInteger(index) && hrModelData[index] ? hrModelData[index] : null;
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
 
         if (typeof hrModelData === 'undefined' || hrModelData.length === 0) {
             dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
@@ -107,22 +322,22 @@
             return;
         }
 
-        hrModelData.forEach(p => {
+        dash.innerHTML = hrModelData.map((p, index) => {
             const isElite = p.probability >= 8.5;
             const isSolid = p.probability >= 5.5 && p.probability < 8.5;
             const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
             const trendClass = p.ev_trend_val > 1.5 ? 'hot-trend' : 'neutral-trend';
 
-            dash.innerHTML += `
-                <article class="card ${tierClass}">
+            return `
+                <article class="card card--interactive ${tierClass}" data-player-index="${index}" tabindex="0" role="button" aria-label="Open HR details for ${safeText(p.name)}" title="Click for full player breakdown">
                     <div class="card-header">
                         <div class="header-main">
-                            <span class="team-tag">${p.team}</span>
-                            <h2 class="player-name">${p.name}</h2>
-                            <span class="trend-badge ${trendClass}">${p.ev_trend_label}</span>
+                            <span class="team-tag">${safeText(p.team)}</span>
+                            <h2 class="player-name">${safeText(p.name)}</h2>
+                            <span class="trend-badge ${trendClass}">${safeText(p.ev_trend_label)}</span>
                         </div>
                         <div class="score-box">
-                            <span class="score-val">${p.probability}%</span>
+                            <span class="score-val">${safeText(String(p.probability))}%</span>
                             <span class="score-label">PROB</span>
                         </div>
                     </div>
@@ -153,26 +368,47 @@
                         <div class="stat-group">
                             <div class="stat-line">
                                 <span class="stat-label">Max Exit Velocity</span>
-                                <span class="stat-value">${p.max_ev} MPH</span>
+                                <span class="stat-value">${safeText(formatMetric(p.max_ev, ' MPH'))}</span>
                             </div>
                             <div class="progress-track"><div class="progress-fill" style="width:${p.max_ev_pct}%; background: var(--accent);"></div></div>
                         </div>
-                        
+
                         <div class="stat-group" style="margin-top:15px;">
                             <div class="stat-line">
                                 <span class="stat-label">Fly Ball EV (Avg)</span>
-                                <span class="stat-value">${p.fb_ev} MPH</span>
+                                <span class="stat-value">${safeText(formatMetric(p.fb_ev, ' MPH'))}</span>
                             </div>
                             <div class="progress-track"><div class="progress-fill" style="width:${p.fb_ev_pct}%; background: var(--gold);"></div></div>
                         </div>
                     </div>
 
                     <footer class="card-footer">
-                        <div class="pitcher-info">vs <span style="color:white">${p.opp_pitcher}</span></div>
-                        <div class="park-info">${p.park_factor}</div>
+                        <div class="pitcher-info">vs <span style="color:white">${safeText(p.opp_pitcher || 'TBD')}</span></div>
+                        <div class="park-info">${safeText(p.park_factor || 'Neutral')}</div>
                     </footer>
                 </article>
             `;
+        }).join('');
+
+        Array.from(dash.querySelectorAll('.card--interactive')).forEach((card) => {
+            card.addEventListener('click', () => {
+                const player = getPlayerFromCard(card);
+                if (player) {
+                    openPlayerModal(player);
+                }
+            });
+
+            card.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') {
+                    return;
+                }
+
+                event.preventDefault();
+                const player = getPlayerFromCard(card);
+                if (player) {
+                    openPlayerModal(player);
+                }
+            });
         });
     });
 </script>
