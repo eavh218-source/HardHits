@@ -131,6 +131,102 @@ def choose_date(preferred: str | None, table: str, column: str) -> str:
     return date_to_str(latest) or ""
 
 
+HR_LINEUP_EXPECTED_PA_SQL = """
+CASE lu.lineup_slot
+    WHEN 1 THEN CAST(4.5 AS decimal(4,1))
+    WHEN 2 THEN CAST(4.5 AS decimal(4,1))
+    WHEN 3 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 4 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 5 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 6 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 7 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 8 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 9 THEN CAST(3.5 AS decimal(4,1))
+    ELSE NULL
+END
+""".strip()
+
+HRBI_LINEUP_EXPECTED_PA_SQL = """
+CASE lu.lineup_slot
+    WHEN 1 THEN CAST(4.6 AS decimal(4,1))
+    WHEN 2 THEN CAST(4.5 AS decimal(4,1))
+    WHEN 3 THEN CAST(4.2 AS decimal(4,1))
+    WHEN 4 THEN CAST(4.1 AS decimal(4,1))
+    WHEN 5 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 6 THEN CAST(3.8 AS decimal(4,1))
+    WHEN 7 THEN CAST(3.7 AS decimal(4,1))
+    WHEN 8 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 9 THEN CAST(3.4 AS decimal(4,1))
+    ELSE NULL
+END
+""".strip()
+
+
+def build_prediction_query(
+    table: str,
+    *,
+    limit: int,
+    expected_pa_sql: str,
+    probability_cap: float,
+    include_confidence_band: bool = False,
+    status_fallback_sql: str = "p.lineup_status",
+) -> str:
+    confidence_band_sql = """
+            ,
+            CASE
+                WHEN adjusted.probability >= 8.0 THEN 'High Confidence'
+                WHEN adjusted.probability >= 5.0 THEN 'Standard'
+                WHEN adjusted.probability >= 3.0 THEN 'Watchlist'
+                ELSE 'Not Modeled'
+            END AS confidence_band
+    """ if include_confidence_band else ""
+
+    return f"""
+        SELECT TOP {limit}
+            p.*,
+            lineup.lineup_slot AS lineup_slot,
+            lineup.expected_pa AS expected_pa,
+            lineup.lineup_status AS lineup_status,
+            adjusted.probability AS probability{confidence_band_sql}
+        FROM dbo.{table} AS p
+        LEFT JOIN dbo.starting_lineup_players AS lu
+            ON lu.lineup_date = p.model_date
+           AND lu.player_name = p.player_name
+        OUTER APPLY (
+            SELECT
+                COALESCE(CAST(lu.lineup_slot AS nvarchar(10)), CAST(p.lineup_slot AS nvarchar(10)), 'TBD') AS lineup_slot,
+                CAST(COALESCE({expected_pa_sql}, p.expected_pa, 3.5) AS decimal(4,1)) AS expected_pa,
+                CAST(COALESCE(NULLIF(p.expected_pa, 0), 3.5) AS decimal(4,1)) AS base_expected_pa,
+                COALESCE(
+                    CASE
+                        WHEN lu.player_name IS NOT NULL AND lu.lineup_slot IS NOT NULL
+                            THEN CONCAT('Confirmed • Slot ', CAST(lu.lineup_slot AS nvarchar(10)), ' • ', COALESCE(lu.game_status, 'Lineup Posted'))
+                        WHEN lu.player_name IS NOT NULL
+                            THEN CONCAT('Confirmed • ', COALESCE(lu.game_status, 'Lineup Posted'))
+                        ELSE NULL
+                    END,
+                    {status_fallback_sql},
+                    'Lineup Pending'
+                ) AS lineup_status
+        ) AS lineup
+        OUTER APPLY (
+            SELECT CAST(
+                ROUND(
+                    CASE
+                        WHEN p.probability IS NULL THEN NULL
+                        WHEN p.probability * (lineup.expected_pa / NULLIF(lineup.base_expected_pa, 0)) > {probability_cap}
+                            THEN {probability_cap}
+                        WHEN p.probability * (lineup.expected_pa / NULLIF(lineup.base_expected_pa, 0)) < 0
+                            THEN 0.0
+                        ELSE p.probability * (lineup.expected_pa / NULLIF(lineup.base_expected_pa, 0))
+                    END,
+                    1
+                ) AS decimal(5,1)
+            ) AS probability
+        ) AS adjusted
+    """.strip()
+
+
 def iso_or_none(value: Any) -> str | None:
     return value.isoformat() if hasattr(value, "isoformat") else None
 
@@ -356,12 +452,18 @@ def hr_predictions(
     limit: int = Query(default=250, ge=1, le=500),
 ) -> dict[str, Any]:
     target_date = choose_date(date, "hr_model_predictions", "model_date")
-    sql = f"SELECT TOP {limit} * FROM dbo.hr_model_predictions WHERE model_date = ?"
+    sql = build_prediction_query(
+        "hr_model_predictions",
+        limit=limit,
+        expected_pa_sql=HR_LINEUP_EXPECTED_PA_SQL,
+        probability_cap=14.0,
+    )
+    sql += " WHERE p.model_date = ?"
     params: list[Any] = [target_date]
     if team:
-        sql += " AND team_code = ?"
+        sql += " AND p.team_code = ?"
         params.append(team.upper())
-    sql += " ORDER BY probability DESC, player_name"
+    sql += " ORDER BY adjusted.probability DESC, p.player_name"
     rows = query_rows(sql, tuple(params))
     return {"date": target_date, "count": len(rows), "items": [normalize_hr_prediction(row) for row in rows]}
 
@@ -403,12 +505,20 @@ def hrbi_predictions(
     limit: int = Query(default=250, ge=1, le=500),
 ) -> dict[str, Any]:
     target_date = choose_date(date, "hrbi_model_predictions", "model_date")
-    sql = f"SELECT TOP {limit} * FROM dbo.hrbi_model_predictions WHERE model_date = ?"
+    sql = build_prediction_query(
+        "hrbi_model_predictions",
+        limit=limit,
+        expected_pa_sql=HRBI_LINEUP_EXPECTED_PA_SQL,
+        probability_cap=25.0,
+        include_confidence_band=True,
+        status_fallback_sql="'Lineup Pending'",
+    )
+    sql += " WHERE p.model_date = ?"
     params: list[Any] = [target_date]
     if team:
-        sql += " AND team_code = ?"
+        sql += " AND p.team_code = ?"
         params.append(team.upper())
-    sql += " ORDER BY probability DESC, player_name"
+    sql += " ORDER BY adjusted.probability DESC, p.player_name"
     rows = query_rows(sql, tuple(params))
     return {"date": target_date, "count": len(rows), "items": [normalize_hrbi_prediction(row) for row in rows]}
 
