@@ -1,3 +1,5 @@
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 02:00 UTC)
+
 window.hrbiResultsData_2026_03_25 = [
   {
     "date": "2026-03-25",
@@ -267,7 +269,7 @@ window.hrbiResultsData_2026_03_25 = [
   },
   {
     "date": "2026-03-25",
-    "name": "Jos\u00e9 Caballero",
+    "name": "José Caballero",
     "team": "NYY",
     "probability": 8.0,
     "confidence_band": "High Confidence",

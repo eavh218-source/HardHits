@@ -1,20 +1,18 @@
-// Historical Data Index
-// Load specific date files as needed
+// Historical Results Index
+// Load specific model/results files as needed
 
 const historicalDates = [
   "2026-04-06",
   "2026-04-05",
   "2026-04-04",
   "2026-04-03",
-  "2026-04-02",
   "2026-04-01",
   "2026-03-31",
   "2026-03-30",
   "2026-03-29",
   "2026-03-28",
   "2026-03-27",
-  "2026-03-26",
-  "2026-03-25"
+  "2026-03-26"
 ];
 
 function loadHistoricalData(dateStr) {
@@ -46,7 +44,7 @@ function loadHistoricalData(dateStr) {
                 modelLoaded = true;
                 finalize();
             };
-            modelScript.onerror = () => reject(new Error(`Failed to load HR model data for ${dateStr}`));
+            modelScript.onerror = () => reject(new Error(`Failed to load model data for ${dateStr}`));
             document.head.appendChild(modelScript);
         }
 
@@ -57,7 +55,7 @@ function loadHistoricalData(dateStr) {
                 resultsLoaded = true;
                 finalize();
             };
-            resultsScript.onerror = () => reject(new Error(`Failed to load HR results data for ${dateStr}`));
+            resultsScript.onerror = () => reject(new Error(`Failed to load results data for ${dateStr}`));
             document.head.appendChild(resultsScript);
         }
 

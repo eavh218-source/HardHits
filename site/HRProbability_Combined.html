@@ -10,6 +10,7 @@
     <script src="../data/hr_results_data.js?v=stable-20260406-lastrun"></script>
     <script src="../data/hr_model_consolidated.js?v=stable-20260406-lastrun"></script>
     <script src="../data/historical_index.js?v=stable-20260406-lastrun"></script>
+    <script src="../assets/hardhits-api.js?v=stable-20260406-api"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -393,6 +394,108 @@
     };
     const predictionsSubtitleBase = 'Unified model: power, form, EV trend, pitcher risk, park, platoon, H2H, weather + lineup PA multiplier';
     const tomorrowSubtitleBase = 'projected using the unified power, pitcher, park, platoon, weather, and lineup model';
+    const hardHitsApi = window.HardHitsApi || null;
+    const apiState = {
+        bootstrapPromise: null,
+        historicalDates: [],
+    };
+
+    function getAvailableHistoricalDates() {
+        if (apiState.historicalDates.length) {
+            return apiState.historicalDates;
+        }
+        if (typeof historicalDates !== 'undefined' && Array.isArray(historicalDates)) {
+            return historicalDates;
+        }
+        if (Array.isArray(window.historicalDates)) {
+            return window.historicalDates;
+        }
+        return [];
+    }
+
+    function inferApiRunTime(items) {
+        if (!hardHitsApi || !Array.isArray(items)) {
+            return '';
+        }
+
+        const imported = items
+            .map(item => item && item.imported_at_utc)
+            .filter(Boolean)
+            .sort()
+            .pop();
+
+        return imported ? hardHitsApi.formatEtTime(imported) : '';
+    }
+
+    async function loadApiHrPredictions(dateStr, targetName) {
+        if (!hardHitsApi || !dateStr) {
+            throw new Error('HardHits API is not available.');
+        }
+
+        const payload = await hardHitsApi.fetchJson(`/api/hr/predictions?date=${encodeURIComponent(dateStr)}&limit=500`);
+        const items = Array.isArray(payload.items) ? payload.items : [];
+        const key = dateStr.replace(/-/g, '_');
+        const lastRunTime = inferApiRunTime(items);
+
+        window[`hrModelData_${key}`] = items;
+
+        if (targetName === 'today') {
+            window.hrModelData = items;
+            window.hrModelUpdateDate = payload.date || dateStr;
+            window.hrModelLastRunTime = lastRunTime;
+        } else if (targetName === 'tomorrow') {
+            window.hrModelTomorrowData = items;
+            window.hrModelTomorrowUpdateDate = payload.date || dateStr;
+            window.hrModelTomorrowLastRunTime = lastRunTime;
+        }
+
+        return { date: payload.date || dateStr, items, lastRunTime };
+    }
+
+    async function loadApiHrResults(dateStr) {
+        if (!hardHitsApi || !dateStr) {
+            throw new Error('HardHits API is not available.');
+        }
+
+        const payload = await hardHitsApi.fetchJson(`/api/hr/results?date=${encodeURIComponent(dateStr)}`);
+        const items = Array.isArray(payload.items) ? payload.items : [];
+        window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] = items;
+        return { date: payload.date || dateStr, items };
+    }
+
+    async function bootstrapApiData() {
+        if (!hardHitsApi) {
+            return false;
+        }
+
+        if (apiState.bootstrapPromise) {
+            return apiState.bootstrapPromise;
+        }
+
+        apiState.bootstrapPromise = (async () => {
+            try {
+                const todayStr = hardHitsApi.easternDateString(0);
+                const tomorrowStr = hardHitsApi.easternDateString(1);
+                const [todayPayload, tomorrowPayload, datesPayload] = await Promise.all([
+                    loadApiHrPredictions(todayStr, 'today'),
+                    loadApiHrPredictions(tomorrowStr, 'tomorrow').catch(() => null),
+                    hardHitsApi.fetchJson('/api/hr/dates'),
+                ]);
+
+                if (datesPayload && Array.isArray(datesPayload.dates)) {
+                    apiState.historicalDates = datesPayload.dates.slice().sort((a, b) => b.localeCompare(a));
+                    window.historicalDates = apiState.historicalDates;
+                }
+
+                return Boolean(todayPayload && todayPayload.items.length) || Boolean(tomorrowPayload && tomorrowPayload.items.length);
+            } catch (error) {
+                console.warn('HardHits API unavailable, using static HR bundle:', error);
+                return false;
+            }
+        })();
+
+        return apiState.bootstrapPromise;
+    }
 
     function buildPredictionSubtitle(dateStr, lastRunTime, suffixText) {
         const parts = [];
@@ -470,9 +573,11 @@
             dateSelect.removeChild(dateSelect.lastChild);
         }
 
-        const todayModelDate = (typeof hrModelData !== 'undefined' && hrModelData.length > 0 && hrModelData[0].date)
-            ? hrModelData[0].date
+        const currentHrModelData = typeof hrModelData !== 'undefined' ? hrModelData : window.hrModelData;
+        const todayModelDate = (Array.isArray(currentHrModelData) && currentHrModelData.length > 0 && currentHrModelData[0].date)
+            ? currentHrModelData[0].date
             : null;
+        const availableDates = getAvailableHistoricalDates();
 
         if (todayModelDate) {
             const todayOption = document.createElement('option');
@@ -481,8 +586,8 @@
             dateSelect.appendChild(todayOption);
         }
 
-        if (typeof historicalDates !== 'undefined') {
-            const orderedDates = [...historicalDates].sort((a, b) => b.localeCompare(a));
+        if (availableDates.length > 0) {
+            const orderedDates = [...availableDates].sort((a, b) => b.localeCompare(a));
             orderedDates.forEach(dateStr => {
                 if (todayModelDate && dateStr === todayModelDate) return;
                 const option = document.createElement('option');
@@ -494,7 +599,7 @@
             if (todayModelDate) {
                 dateSelect.value = todayModelDate;
                 loadResults(todayModelDate);
-            } else if (orderedDates.length > 0) {
+            } else {
                 dateSelect.value = orderedDates[0];
                 loadResults(orderedDates[0]);
             }
@@ -505,12 +610,12 @@
             dateSummary.textContent = 'No historical data available';
         }
 
-        dateSelect.addEventListener('change', (e) => {
+        dateSelect.onchange = (e) => {
             const selectedDate = e.target.value;
             if (selectedDate) {
                 loadResults(selectedDate);
             }
-        });
+        };
     }
 
     function formatDateForDisplay(dateStr) {
@@ -685,7 +790,10 @@
     }
 
     async function loadPredictions() {
-        const allPredictions = typeof hrModelData !== 'undefined' ? hrModelData : [];
+        await bootstrapApiData();
+
+        const sourcePredictions = typeof hrModelData !== 'undefined' ? hrModelData : window.hrModelData;
+        const allPredictions = Array.isArray(sourcePredictions) ? sourcePredictions : [];
         if (!allPredictions.length) {
             renderPredictionCards([], 'hr_model_data.js');
             return;
@@ -712,8 +820,11 @@
         renderPredictionCards(filteredPredictions, 'hr_model_data.js');
     }
 
-    function loadTomorrowPredictions() {
-        const tomorrowPredictions = typeof hrModelTomorrowData !== 'undefined' ? hrModelTomorrowData : [];
+    async function loadTomorrowPredictions() {
+        await bootstrapApiData();
+
+        const sourcePredictions = typeof hrModelTomorrowData !== 'undefined' ? hrModelTomorrowData : window.hrModelTomorrowData;
+        const tomorrowPredictions = Array.isArray(sourcePredictions) ? sourcePredictions : [];
         const tomorrowDate = (typeof hrModelTomorrowUpdateDate !== 'undefined' && hrModelTomorrowUpdateDate)
             ? hrModelTomorrowUpdateDate
             : (tomorrowPredictions[0] && tomorrowPredictions[0].date ? tomorrowPredictions[0].date : '');
@@ -771,7 +882,7 @@
         return analysis;
     }
 
-    function loadResults(dateStr) {
+    async function loadResults(dateStr) {
         currentDate = dateStr;
         const dash = document.getElementById('dashboard');
         const summary = document.getElementById('summary-container');
@@ -781,24 +892,42 @@
         dash.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;"><div class="loading-spinner"></div><p>Loading historical data...</p></div>';
         summary.innerHTML = '';
         dateSummary.textContent = `Loading data for ${formatDateForDisplay(dateStr)}...`;
-
-        // Update subtitle with selected date
         subtitle.textContent = `${formatDate(new Date(dateStr + 'T00:00:00'))} • v3 Model Performance vs. Statcast Reality`;
 
-        // Load historical data for this date
-        loadHistoricalData(dateStr).then(() => {
-            // Use the loaded historical data
-            const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || hrModelData;
-            const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || hrResultsData;
+        if (hardHitsApi && dateStr) {
+            try {
+                const [modelPayload, resultsPayload] = await Promise.all([
+                    loadApiHrPredictions(dateStr),
+                    loadApiHrResults(dateStr),
+                ]);
 
-            processResultsData(modelData, resultsData, dash, summary, dateStr);
-            dateSummary.textContent = `Showing results for ${formatDateForDisplay(dateStr)}`;
-        }).catch(() => {
-            // Fallback to current data if historical load fails
-            console.log('Using current data as fallback');
-            processResultsData(hrModelData, hrResultsData, dash, summary, dateStr);
-            dateSummary.textContent = `Showing current data (historical data not available for ${formatDateForDisplay(dateStr)})`;
-        });
+                if ((modelPayload.items && modelPayload.items.length) || (resultsPayload.items && resultsPayload.items.length)) {
+                    processResultsData(modelPayload.items || [], resultsPayload.items || [], dash, summary, dateStr);
+                    dateSummary.textContent = `Showing live SQL-backed results for ${formatDateForDisplay(dateStr)}`;
+                    return;
+                }
+            } catch (error) {
+                console.warn('Falling back to static historical HR files:', error);
+            }
+        }
+
+        if (typeof loadHistoricalData === 'function') {
+            try {
+                await loadHistoricalData(dateStr);
+                const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || hrModelData;
+                const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || hrResultsData;
+                processResultsData(modelData, resultsData, dash, summary, dateStr);
+                dateSummary.textContent = `Showing results for ${formatDateForDisplay(dateStr)}`;
+                return;
+            } catch (error) {
+                console.warn('Using current data as fallback:', error);
+            }
+        }
+
+        const fallbackModelData = typeof hrModelData !== 'undefined' ? hrModelData : [];
+        const fallbackResultsData = typeof hrResultsData !== 'undefined' ? hrResultsData : [];
+        processResultsData(fallbackModelData, fallbackResultsData, dash, summary, dateStr);
+        dateSummary.textContent = `Showing current data (historical data not available for ${formatDateForDisplay(dateStr)})`;
     }
 
 function processResultsData(modelData, resultsData, dash, summary, dateStr) {

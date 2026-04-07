@@ -8,6 +8,7 @@
     <script src="../data/todays_hrs.js?v=stable-20260406-livefix"></script>
     <script src="../data/hr_model_data.js?v=stable-20260406-livefix"></script>
     <script src="../data/historical_index.js?v=stable-20260406-livefix"></script>
+    <script src="../assets/hardhits-api.js?v=stable-20260406-api"></script>
     <style>
         :root {
             --bg-dark: #0b0f19;
@@ -259,6 +260,85 @@
 <script>
     let currentView = 'cards';
     let currentDate = null;
+    const hardHitsApi = window.HardHitsApi || null;
+    let liveHrRows = (typeof todaysHRData !== 'undefined' && Array.isArray(todaysHRData)) ? todaysHRData : [];
+    let liveModelRows = (typeof hrModelData !== 'undefined' && Array.isArray(hrModelData)) ? hrModelData : [];
+    let availableHistoricalDates = (typeof historicalDates !== 'undefined' && Array.isArray(historicalDates)) ? [...historicalDates] : [];
+
+    function inferApiRunTime(items) {
+        if (!hardHitsApi || !Array.isArray(items)) {
+            return '';
+        }
+
+        const imported = items
+            .map(item => item && item.imported_at_utc)
+            .filter(Boolean)
+            .sort()
+            .pop();
+
+        return imported ? hardHitsApi.formatEtTime(imported) : '';
+    }
+
+    async function bootstrapApiData() {
+        if (!hardHitsApi) {
+            return false;
+        }
+
+        try {
+            const todayStr = hardHitsApi.easternDateString(0);
+            const [livePayload, predictionPayload, datesPayload] = await Promise.all([
+                hardHitsApi.fetchJson('/api/hr/live'),
+                hardHitsApi.fetchJson(`/api/hr/predictions?date=${encodeURIComponent(todayStr)}&limit=500`),
+                hardHitsApi.fetchJson('/api/hr/dates'),
+            ]);
+
+            if (livePayload && Array.isArray(livePayload.items)) {
+                liveHrRows = livePayload.items;
+                window.todaysHRData = liveHrRows;
+                window.hrUpdateDate = livePayload.date || todayStr;
+                const lastCompleted = inferApiRunTime(liveHrRows);
+                if (lastCompleted) {
+                    window.hrLastCompleted = lastCompleted;
+                }
+            }
+
+            if (predictionPayload && Array.isArray(predictionPayload.items)) {
+                liveModelRows = predictionPayload.items;
+                window.hrModelData = liveModelRows;
+                window.hrModelUpdateDate = predictionPayload.date || todayStr;
+            }
+
+            if (datesPayload && Array.isArray(datesPayload.dates)) {
+                availableHistoricalDates = datesPayload.dates
+                    .filter((value, index, arr) => value && arr.indexOf(value) === index)
+                    .sort((a, b) => b.localeCompare(a));
+                window.historicalDates = availableHistoricalDates;
+            }
+
+            return liveHrRows.length > 0 || liveModelRows.length > 0;
+        } catch (error) {
+            console.warn('HardHits API unavailable, using static Daily Homers data:', error);
+            return false;
+        }
+    }
+
+    async function fetchHistoricalApiData(dateStr) {
+        if (!hardHitsApi || !dateStr) {
+            throw new Error('HardHits API is not available.');
+        }
+
+        const [predictionPayload, resultsPayload] = await Promise.all([
+            hardHitsApi.fetchJson(`/api/hr/predictions?date=${encodeURIComponent(dateStr)}&limit=500`),
+            hardHitsApi.fetchJson(`/api/hr/results?date=${encodeURIComponent(dateStr)}`),
+        ]);
+
+        const modelData = predictionPayload && Array.isArray(predictionPayload.items) ? predictionPayload.items : [];
+        const resultsData = resultsPayload && Array.isArray(resultsPayload.items) ? resultsPayload.items : [];
+        const key = dateStr.replace(/-/g, '_');
+        window[`hrModelData_${key}`] = modelData;
+        window[`hrResultsData_${key}`] = resultsData;
+        return { modelData, resultsData };
+    }
 
     // View toggle functionality
     document.getElementById('cards-btn').addEventListener('click', () => setView('cards'));
@@ -284,22 +364,25 @@
     function initializeDateSelector() {
         const dateSelect = document.getElementById('date-select');
         const dateSummary = document.getElementById('date-summary');
+        const liveDate = typeof hrUpdateDate !== 'undefined'
+            ? hrUpdateDate
+            : (liveHrRows[0] && liveHrRows[0].date ? liveHrRows[0].date : '');
 
         while (dateSelect.children.length > 1) {
             dateSelect.removeChild(dateSelect.lastChild);
         }
 
-        if (typeof hrUpdateDate !== 'undefined') {
+        if (liveDate) {
             const todayOption = document.createElement('option');
             todayOption.value = 'today';
-            todayOption.textContent = `Today (${formatDateForDisplay(hrUpdateDate)})`;
+            todayOption.textContent = `Today (${formatDateForDisplay(liveDate)})`;
             dateSelect.appendChild(todayOption);
         }
 
-        if (typeof historicalDates !== 'undefined') {
-            const orderedDates = [...historicalDates].sort((a, b) => b.localeCompare(a));
+        if (availableHistoricalDates.length > 0) {
+            const orderedDates = [...availableHistoricalDates].sort((a, b) => b.localeCompare(a));
             orderedDates.forEach(dateStr => {
-                if (typeof hrUpdateDate !== 'undefined' && dateStr === hrUpdateDate) {
+                if (liveDate && dateStr === liveDate) {
                     return;
                 }
                 const option = document.createElement('option');
@@ -311,27 +394,27 @@
             dateSummary.textContent = 'No historical data available';
         }
 
-        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0 && typeof hrUpdateDate !== 'undefined') {
+        if (liveHrRows.length > 0 && liveDate) {
             dateSelect.value = 'today';
-            dateSummary.textContent = `Showing current results for ${formatDateForDisplay(hrUpdateDate)}`;
-        } else if (typeof historicalDates !== 'undefined' && historicalDates.length > 0) {
-            const latestHistoricalDate = [...historicalDates].sort((a, b) => b.localeCompare(a))[0];
+            dateSummary.textContent = `Showing current results for ${formatDateForDisplay(liveDate)}`;
+        } else if (availableHistoricalDates.length > 0) {
+            const latestHistoricalDate = [...availableHistoricalDates].sort((a, b) => b.localeCompare(a))[0];
             dateSelect.value = latestHistoricalDate;
             loadHistoricalResults(latestHistoricalDate);
         }
 
-        dateSelect.addEventListener('change', (e) => {
+        dateSelect.onchange = (e) => {
             const selectedDate = e.target.value;
             if (selectedDate === 'today') {
                 currentDate = null;
-                dateSummary.textContent = typeof hrUpdateDate !== 'undefined'
-                    ? `Showing current results for ${formatDateForDisplay(hrUpdateDate)}`
+                dateSummary.textContent = liveDate
+                    ? `Showing current results for ${formatDateForDisplay(liveDate)}`
                     : 'Showing current results';
                 loadDailyHomers();
             } else if (selectedDate) {
                 loadHistoricalResults(selectedDate);
             }
-        });
+        };
     }
 
     function formatDateForDisplay(dateStr) {
@@ -344,12 +427,27 @@
         return `${month} ${day}, ${year}`;
     }
 
-    function loadHistoricalResults(dateStr) {
+    async function loadHistoricalResults(dateStr) {
         currentDate = dateStr;
         const dateSummary = document.getElementById('date-summary');
         dateSummary.textContent = `Loading data for ${formatDateForDisplay(dateStr)}...`;
         document.getElementById('page-title').innerText = 'HISTORICAL HOMER ANALYSIS';
         document.getElementById('date-label').innerText = `Historical Date: ${formatDateForDisplay(dateStr)}`;
+
+        try {
+            if (hardHitsApi) {
+                const { modelData, resultsData } = await fetchHistoricalApiData(dateStr);
+                if (currentView === 'table') {
+                    renderTableView(resultsData, modelData);
+                } else {
+                    renderCardView(resultsData, modelData);
+                }
+                dateSummary.textContent = `Showing live SQL-backed results for ${formatDateForDisplay(dateStr)}`;
+                return;
+            }
+        } catch (error) {
+            console.warn('Falling back to static historical HR data:', error);
+        }
 
         return loadHistoricalData(dateStr).then(() => {
             const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || [];
@@ -415,32 +513,32 @@
 
     function loadDailyHomers() {
         const contentArea = document.getElementById('content-area');
-        const summaryContainer = document.getElementById('summary-container');
+        const liveRows = Array.isArray(window.todaysHRData) ? window.todaysHRData : liveHrRows;
+        const modelRows = Array.isArray(window.hrModelData) ? window.hrModelData : liveModelRows;
+        const liveDate = typeof hrUpdateDate !== 'undefined'
+            ? hrUpdateDate
+            : (liveRows[0] && liveRows[0].date ? liveRows[0].date : '');
 
-        // Set date label (today's data)
         if (typeof currentDate === 'string' && currentDate) {
             document.getElementById('page-title').innerText = 'HISTORICAL HOMER ANALYSIS';
             document.getElementById('date-label').innerText = `Historical Date: ${formatDateForDisplay(currentDate)}`;
-        } else if (typeof hrUpdateDate !== 'undefined') {
+        } else if (liveDate) {
             document.getElementById('page-title').innerText = 'DAILY HOMER ANALYSIS';
-            document.getElementById('date-label').innerText = buildLiveLabel(hrUpdateDate);
+            document.getElementById('date-label').innerText = buildLiveLabel(liveDate);
         }
 
         if (currentView === 'table') {
-            // Check if todaysHRData exists
-            if (typeof todaysHRData === 'undefined' || todaysHRData.length === 0) {
+            if (!liveRows.length) {
                 contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">No Data Found</h2></div>';
                 return;
             }
-            renderTableView(todaysHRData, typeof hrModelData !== 'undefined' ? hrModelData : []);
+            renderTableView(liveRows, modelRows);
         } else {
-            // Check if todaysHRData exists
-            if (typeof todaysHRData === 'undefined' || todaysHRData.length === 0) {
+            if (!liveRows.length) {
                 contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">No Data Found</h2></div>';
                 return;
             }
-            const modelData = typeof hrModelData !== 'undefined' ? hrModelData : [];
-            renderCardView(todaysHRData, modelData);
+            renderCardView(liveRows, modelRows);
         }
     }
 
@@ -659,13 +757,15 @@
     }
 
     // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+        await bootstrapApiData();
         initializeDateSelector();
 
-        if (typeof todaysHRData !== 'undefined' && todaysHRData.length > 0) {
+        const currentRows = Array.isArray(window.todaysHRData) ? window.todaysHRData : liveHrRows;
+        if (currentRows.length > 0) {
             currentDate = null;
             loadDailyHomers();
-        } else if (typeof historicalDates !== 'undefined' && historicalDates.length === 0) {
+        } else if (availableHistoricalDates.length === 0) {
             document.getElementById('date-summary').innerText = 'No historical dates available.';
         }
     });
