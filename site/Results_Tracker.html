@@ -8,6 +8,7 @@
     <script src="../data/hr_model_data.js?v=stable-20260406-livefix"></script>
     <script src="../data/hr_results_data.js?v=stable-20260406-livefix"></script>
     <script src="../data/historical_index.js?v=stable-20260406-livefix"></script>
+    <script src="../assets/hardhits-api.js?v=stable-20260406-api"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -185,6 +186,8 @@
 </div>
 
 <script>
+        const hardHitsApi = window.HardHitsApi || null;
+
         function formatDate(date) {
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                               'July', 'August', 'September', 'October', 'November', 'December'];
@@ -194,31 +197,72 @@
             return `${month} ${day}, ${year}`;
         }
 
-        function initTracker() {
+        function formatDateString(dateStr) {
+            return formatDate(new Date(dateStr + 'T00:00:00'));
+        }
+
+        async function loadResultsFromApi(dateStr) {
+            if (!hardHitsApi || !dateStr) {
+                throw new Error('HardHits API is not available.');
+            }
+
+            const [predictionPayload, resultsPayload] = await Promise.all([
+                hardHitsApi.fetchJson(`/api/hr/predictions?date=${encodeURIComponent(dateStr)}&limit=500`),
+                hardHitsApi.fetchJson(`/api/hr/results?date=${encodeURIComponent(dateStr)}`),
+            ]);
+
+            const modelData = predictionPayload && Array.isArray(predictionPayload.items) ? predictionPayload.items : [];
+            const resultsData = resultsPayload && Array.isArray(resultsPayload.items) ? resultsPayload.items : [];
+            const key = dateStr.replace(/-/g, '_');
+            window[`hrModelData_${key}`] = modelData;
+            window[`hrResultsData_${key}`] = resultsData;
+            return { modelData, resultsData };
+        }
+
+        async function initTracker() {
             const dash = document.getElementById('dashboard');
             const summary = document.getElementById('summary');
-            
-            // Set date to yesterday (when the home runs were hit)
-            const yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1);
-            const dateStr = yesterday.toISOString().split('T')[0]; // YYYY-MM-DD format
-            document.getElementById('dateSubtitle').innerText = `${formatDate(yesterday)} • v3 Model Performance vs. Statcast Reality`;
-            
-            // Load historical data for this date
+            dash.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-dim);">Loading results...</div>';
+
+            const fallbackDate = (() => {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                return yesterday.toISOString().split('T')[0];
+            })();
+
+            let dateStr = fallbackDate;
+
+            if (hardHitsApi) {
+                try {
+                    const meta = await hardHitsApi.fetchJson('/api/meta');
+                    if (meta && meta.latest_hr_results_date) {
+                        dateStr = meta.latest_hr_results_date;
+                    }
+
+                    document.getElementById('dateSubtitle').innerText = `${formatDateString(dateStr)} • v3 Model Performance vs. Statcast Reality`;
+                    const { modelData, resultsData } = await loadResultsFromApi(dateStr);
+                    processData(modelData, resultsData, dash, summary);
+                    return;
+                } catch (error) {
+                    console.warn('HardHits API unavailable, using static Results Tracker data:', error);
+                }
+            }
+
+            document.getElementById('dateSubtitle').innerText = `${formatDateString(dateStr)} • v3 Model Performance vs. Statcast Reality`;
+
             loadHistoricalData(dateStr).then(() => {
-                // Use the loaded historical data
                 const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || hrModelData;
                 const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || hrResultsData;
-                
                 processData(modelData, resultsData, dash, summary);
             }).catch(() => {
-                // Fallback to current data if historical load fails
                 console.log('Using current data as fallback');
                 processData(hrModelData, hrResultsData, dash, summary);
             });
         }
 
         function processData(modelData, resultsData, dash, summary) {
+            dash.innerHTML = '';
+
             // 1. Create a Set of names who ACTUALLY hit HRs for fast lookup
             const actualHRNames = new Set(resultsData.map(r => r.name));
             

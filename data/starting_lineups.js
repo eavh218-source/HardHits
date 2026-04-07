@@ -1,5 +1,5 @@
 const lineupUpdateDate = '2026-04-06';
-const lineupLastCompleted = '5:12 PM ET';
+const lineupLastCompleted = '9:48 PM ET';
 const startingLineups = [
   {
     "date": "2026-04-06",
@@ -8,10 +8,10 @@ const startingLineups = [
     "away_team": "Chicago Cubs",
     "home_team": "Tampa Bay Rays",
     "game_time_et": "4:10 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -63,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -339,
     "away_lineup": [
       {
         "slot": 1,
@@ -71,10 +71,10 @@ const startingLineups = [
       },
       {
         "slot": 9,
-        "name": "Miguel Amaya",
+        "name": "Dylan Carlson",
         "position": "DH",
-        "jersey": "9",
-        "player_id": 665804
+        "jersey": "5",
+        "player_id": 666185
       }
     ],
     "home_lineup": [
@@ -150,10 +150,10 @@ const startingLineups = [
     "away_team": "Kansas City Royals",
     "home_team": "Cleveland Guardians",
     "game_time_et": "6:10 PM ET",
-    "status": "Pre-Game",
+    "status": "Final",
     "eligible": true,
-    "reason": "within 57 minutes of first pitch",
-    "minutes_to_first_pitch": 57,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -219,
     "away_lineup": [
       {
         "slot": 1,
@@ -192,17 +192,17 @@ const startingLineups = [
       },
       {
         "slot": 6,
-        "name": "Jonathan India",
+        "name": "Michael Massey",
         "position": "2B",
-        "jersey": "6",
-        "player_id": 663697
+        "jersey": "19",
+        "player_id": 686681
       },
       {
         "slot": 7,
-        "name": "Jac Caglianone",
+        "name": "Lane Thomas",
         "position": "RF",
-        "jersey": "14",
-        "player_id": 695506
+        "jersey": "15",
+        "player_id": 657041
       },
       {
         "slot": 8,
@@ -243,10 +243,10 @@ const startingLineups = [
       },
       {
         "slot": 4,
-        "name": "Kyle Manzardo",
+        "name": "David Fry",
         "position": "1B",
-        "jersey": "9",
-        "player_id": 700932
+        "jersey": "6",
+        "player_id": 681807
       },
       {
         "slot": 5,
@@ -271,15 +271,15 @@ const startingLineups = [
       },
       {
         "slot": 8,
-        "name": "Gabriel Arias",
-        "position": "SS",
-        "jersey": "13",
-        "player_id": 672356
+        "name": "Daniel Schneemann",
+        "position": "2B",
+        "jersey": "10",
+        "player_id": 682177
       },
       {
         "slot": 9,
         "name": "Brayan Rocchio",
-        "position": "2B",
+        "position": "SS",
         "jersey": "4",
         "player_id": 677587
       }
@@ -292,10 +292,10 @@ const startingLineups = [
     "away_team": "San Diego Padres",
     "home_team": "Pittsburgh Pirates",
     "game_time_et": "6:40 PM ET",
-    "status": "Pre-Game",
+    "status": "Final",
     "eligible": true,
-    "reason": "within 87 minutes of first pitch",
-    "minutes_to_first_pitch": 87,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -189,
     "away_lineup": [
       {
         "slot": 1,
@@ -420,10 +420,10 @@ const startingLineups = [
       },
       {
         "slot": 9,
-        "name": "Henry Davis",
-        "position": "C",
-        "jersey": "32",
-        "player_id": 680779
+        "name": "Jake Mangum",
+        "position": "PH",
+        "jersey": "28",
+        "player_id": 663968
       }
     ]
   },
@@ -434,15 +434,15 @@ const startingLineups = [
     "away_team": "Cincinnati Reds",
     "home_team": "Miami Marlins",
     "game_time_et": "6:40 PM ET",
-    "status": "Pre-Game",
+    "status": "Final",
     "eligible": true,
-    "reason": "within 87 minutes of first pitch",
-    "minutes_to_first_pitch": 87,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -189,
     "away_lineup": [
       {
         "slot": 1,
         "name": "TJ Friedl",
-        "position": "CF",
+        "position": "LF",
         "jersey": "29",
         "player_id": 670770
       },
@@ -476,10 +476,10 @@ const startingLineups = [
       },
       {
         "slot": 6,
-        "name": "Spencer Steer",
-        "position": "LF",
-        "jersey": "7",
-        "player_id": 668715
+        "name": "Dane Myers",
+        "position": "CF",
+        "jersey": "17",
+        "player_id": 667472
       },
       {
         "slot": 7,
@@ -506,10 +506,10 @@ const startingLineups = [
     "home_lineup": [
       {
         "slot": 1,
-        "name": "Austin Slater",
+        "name": "Owen Caissie",
         "position": "RF",
-        "jersey": "15",
-        "player_id": 596103
+        "jersey": "17",
+        "player_id": 683357
       },
       {
         "slot": 2,
@@ -542,7 +542,7 @@ const startingLineups = [
       {
         "slot": 6,
         "name": "Connor Norby",
-        "position": "1B",
+        "position": "3B",
         "jersey": "1",
         "player_id": 681393
       },
@@ -555,15 +555,15 @@ const startingLineups = [
       },
       {
         "slot": 8,
-        "name": "Leo Jim\u00e9nez",
-        "position": "2B",
-        "jersey": "19",
-        "player_id": 677870
+        "name": "Liam Hicks",
+        "position": "1B",
+        "jersey": "34",
+        "player_id": 689414
       },
       {
         "slot": 9,
         "name": "Javier Sanoja",
-        "position": "3B",
+        "position": "2B",
         "jersey": "8",
         "player_id": 691594
       }
@@ -576,10 +576,10 @@ const startingLineups = [
     "away_team": "St. Louis Cardinals",
     "home_team": "Washington Nationals",
     "game_time_et": "6:45 PM ET",
-    "status": "Pre-Game",
+    "status": "Game Over",
     "eligible": true,
-    "reason": "within 92 minutes of first pitch",
-    "minutes_to_first_pitch": 92,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -184,
     "away_lineup": [
       {
         "slot": 1,
@@ -618,24 +618,24 @@ const startingLineups = [
       },
       {
         "slot": 6,
+        "name": "Masyn Winn",
+        "position": "SS",
+        "jersey": "0",
+        "player_id": 691026
+      },
+      {
+        "slot": 7,
         "name": "Ram\u00f3n Ur\u00edas",
         "position": "3B",
         "jersey": "29",
         "player_id": 602104
       },
       {
-        "slot": 7,
-        "name": "Thomas Saggese",
-        "position": "SS",
-        "jersey": "25",
-        "player_id": 695336
-      },
-      {
         "slot": 8,
-        "name": "Jos\u00e9 Ferm\u00edn",
+        "name": "Nathan Church",
         "position": "LF",
-        "jersey": "15",
-        "player_id": 665877
+        "jersey": "27",
+        "player_id": 701675
       },
       {
         "slot": 9,
@@ -655,10 +655,10 @@ const startingLineups = [
       },
       {
         "slot": 2,
-        "name": "Luis Garc\u00eda Jr.",
+        "name": "Curtis Mead",
         "position": "1B",
-        "jersey": "2",
-        "player_id": 671277
+        "jersey": "45",
+        "player_id": 678554
       },
       {
         "slot": 3,
@@ -704,10 +704,10 @@ const startingLineups = [
       },
       {
         "slot": 9,
-        "name": "Jacob Young",
+        "name": "Joey Wiemer",
         "position": "CF",
-        "jersey": "30",
-        "player_id": 696285
+        "jersey": "21",
+        "player_id": 686894
       }
     ]
   },
@@ -718,10 +718,10 @@ const startingLineups = [
     "away_team": "Milwaukee Brewers",
     "home_team": "Boston Red Sox",
     "game_time_et": "6:45 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within 92 minutes of first pitch",
-    "minutes_to_first_pitch": 92,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -184,
     "away_lineup": [
       {
         "slot": 1,
@@ -825,10 +825,10 @@ const startingLineups = [
       },
       {
         "slot": 6,
-        "name": "Marcelo Mayer",
+        "name": "Andruw Monasterio",
         "position": "2B",
-        "jersey": "11",
-        "player_id": 691785
+        "jersey": "32",
+        "player_id": 655316
       },
       {
         "slot": 7,
@@ -860,10 +860,10 @@ const startingLineups = [
     "away_team": "Los Angeles Dodgers",
     "home_team": "Toronto Blue Jays",
     "game_time_et": "7:07 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within 114 minutes of first pitch",
-    "minutes_to_first_pitch": 114,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -162,
     "away_lineup": [
       {
         "slot": 1,
@@ -881,10 +881,10 @@ const startingLineups = [
       },
       {
         "slot": 3,
-        "name": "Freddie Freeman",
+        "name": "Santiago Espinal",
         "position": "1B",
-        "jersey": "5",
-        "player_id": 518692
+        "jersey": "21",
+        "player_id": 669289
       },
       {
         "slot": 4,
@@ -902,10 +902,10 @@ const startingLineups = [
       },
       {
         "slot": 6,
-        "name": "Andy Pages",
+        "name": "Alex Call",
         "position": "CF",
-        "jersey": "44",
-        "player_id": 681624
+        "jersey": "12",
+        "player_id": 669743
       },
       {
         "slot": 7,
@@ -932,10 +932,10 @@ const startingLineups = [
     "home_lineup": [
       {
         "slot": 1,
-        "name": "George Springer",
+        "name": "Jes\u00fas S\u00e1nchez",
         "position": "DH",
-        "jersey": "4",
-        "player_id": 543807
+        "jersey": "12",
+        "player_id": 660821
       },
       {
         "slot": 2,
@@ -1002,12 +1002,140 @@ const startingLineups = [
     "away_team": "Detroit Tigers",
     "home_team": "Minnesota Twins",
     "game_time_et": "7:40 PM ET",
-    "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (147 minutes to first pitch)",
-    "minutes_to_first_pitch": 147,
-    "away_lineup": [],
-    "home_lineup": []
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -129,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Kevin McGonigle",
+        "position": "SS",
+        "jersey": "7",
+        "player_id": 805808
+      },
+      {
+        "slot": 2,
+        "name": "Gleyber Torres",
+        "position": "2B",
+        "jersey": "25",
+        "player_id": 650402
+      },
+      {
+        "slot": 3,
+        "name": "Colt Keith",
+        "position": "3B",
+        "jersey": "33",
+        "player_id": 690993
+      },
+      {
+        "slot": 4,
+        "name": "Riley Greene",
+        "position": "DH",
+        "jersey": "31",
+        "player_id": 682985
+      },
+      {
+        "slot": 5,
+        "name": "Spencer Torkelson",
+        "position": "1B",
+        "jersey": "20",
+        "player_id": 679529
+      },
+      {
+        "slot": 6,
+        "name": "Zach McKinstry",
+        "position": "RF",
+        "jersey": "39",
+        "player_id": 656716
+      },
+      {
+        "slot": 7,
+        "name": "Matt Vierling",
+        "position": "CF",
+        "jersey": "8",
+        "player_id": 663837
+      },
+      {
+        "slot": 8,
+        "name": "Jahmai Jones",
+        "position": "LF",
+        "jersey": "18",
+        "player_id": 663330
+      },
+      {
+        "slot": 9,
+        "name": "Jake Rogers",
+        "position": "C",
+        "jersey": "34",
+        "player_id": 668670
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Byron Buxton",
+        "position": "DH",
+        "jersey": "25",
+        "player_id": 621439
+      },
+      {
+        "slot": 2,
+        "name": "Trevor Larnach",
+        "position": "LF",
+        "jersey": "9",
+        "player_id": 663616
+      },
+      {
+        "slot": 3,
+        "name": "Luke Keaschall",
+        "position": "2B",
+        "jersey": "15",
+        "player_id": 807712
+      },
+      {
+        "slot": 4,
+        "name": "Kody Clemens",
+        "position": "1B",
+        "jersey": "2",
+        "player_id": 665019
+      },
+      {
+        "slot": 5,
+        "name": "Victor Caratini",
+        "position": "C",
+        "jersey": "37",
+        "player_id": 605170
+      },
+      {
+        "slot": 6,
+        "name": "Matt Wallner",
+        "position": "RF",
+        "jersey": "38",
+        "player_id": 670242
+      },
+      {
+        "slot": 7,
+        "name": "Royce Lewis",
+        "position": "3B",
+        "jersey": "23",
+        "player_id": 668904
+      },
+      {
+        "slot": 8,
+        "name": "James Outman",
+        "position": "CF",
+        "jersey": "30",
+        "player_id": 681546
+      },
+      {
+        "slot": 9,
+        "name": "Brooks Lee",
+        "position": "SS",
+        "jersey": "22",
+        "player_id": 686797
+      }
+    ]
   },
   {
     "date": "2026-04-06",
@@ -1016,12 +1144,140 @@ const startingLineups = [
     "away_team": "Baltimore Orioles",
     "home_team": "Chicago White Sox",
     "game_time_et": "7:40 PM ET",
-    "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (147 minutes to first pitch)",
-    "minutes_to_first_pitch": 147,
-    "away_lineup": [],
-    "home_lineup": []
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -129,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Taylor Ward",
+        "position": "LF",
+        "jersey": "3",
+        "player_id": 621493
+      },
+      {
+        "slot": 2,
+        "name": "Gunnar Henderson",
+        "position": "SS",
+        "jersey": "2",
+        "player_id": 683002
+      },
+      {
+        "slot": 3,
+        "name": "Pete Alonso",
+        "position": "1B",
+        "jersey": "25",
+        "player_id": 624413
+      },
+      {
+        "slot": 4,
+        "name": "Adley Rutschman",
+        "position": "C",
+        "jersey": "35",
+        "player_id": 668939
+      },
+      {
+        "slot": 5,
+        "name": "Tyler O'Neill",
+        "position": "RF",
+        "jersey": "9",
+        "player_id": 641933
+      },
+      {
+        "slot": 6,
+        "name": "Ryan Mountcastle",
+        "position": "DH",
+        "jersey": "6",
+        "player_id": 663624
+      },
+      {
+        "slot": 7,
+        "name": "Colton Cowser",
+        "position": "CF",
+        "jersey": "17",
+        "player_id": 681297
+      },
+      {
+        "slot": 8,
+        "name": "Blaze Alexander",
+        "position": "3B",
+        "jersey": "23",
+        "player_id": 677942
+      },
+      {
+        "slot": 9,
+        "name": "Jeremiah Jackson",
+        "position": "2B",
+        "jersey": "82",
+        "player_id": 669236
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Chase Meidroth",
+        "position": "2B",
+        "jersey": "10",
+        "player_id": 805367
+      },
+      {
+        "slot": 2,
+        "name": "Munetaka Murakami",
+        "position": "1B",
+        "jersey": "5",
+        "player_id": 808959
+      },
+      {
+        "slot": 3,
+        "name": "Miguel Vargas",
+        "position": "3B",
+        "jersey": "20",
+        "player_id": 678246
+      },
+      {
+        "slot": 4,
+        "name": "Colson Montgomery",
+        "position": "SS",
+        "jersey": "12",
+        "player_id": 695657
+      },
+      {
+        "slot": 5,
+        "name": "Derek Hill",
+        "position": "LF",
+        "jersey": "25",
+        "player_id": 656537
+      },
+      {
+        "slot": 6,
+        "name": "Andrew Benintendi",
+        "position": "DH",
+        "jersey": "23",
+        "player_id": 643217
+      },
+      {
+        "slot": 7,
+        "name": "Edgar Quero",
+        "position": "C",
+        "jersey": "26",
+        "player_id": 700337
+      },
+      {
+        "slot": 8,
+        "name": "Tristan Peters",
+        "position": "RF",
+        "jersey": "29",
+        "player_id": 671976
+      },
+      {
+        "slot": 9,
+        "name": "Luisangel Acu\u00f1a",
+        "position": "CF",
+        "jersey": "0",
+        "player_id": 682668
+      }
+    ]
   },
   {
     "date": "2026-04-06",
@@ -1030,12 +1286,140 @@ const startingLineups = [
     "away_team": "Seattle Mariners",
     "home_team": "Texas Rangers",
     "game_time_et": "8:05 PM ET",
-    "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (172 minutes to first pitch)",
-    "minutes_to_first_pitch": 172,
-    "away_lineup": [],
-    "home_lineup": []
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -104,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Brendan Donovan",
+        "position": "3B",
+        "jersey": "33",
+        "player_id": 680977
+      },
+      {
+        "slot": 2,
+        "name": "Cal Raleigh",
+        "position": "C",
+        "jersey": "29",
+        "player_id": 663728
+      },
+      {
+        "slot": 3,
+        "name": "Julio Rodr\u00edguez",
+        "position": "CF",
+        "jersey": "44",
+        "player_id": 677594
+      },
+      {
+        "slot": 4,
+        "name": "Josh Naylor",
+        "position": "1B",
+        "jersey": "12",
+        "player_id": 647304
+      },
+      {
+        "slot": 5,
+        "name": "Randy Arozarena",
+        "position": "LF",
+        "jersey": "56",
+        "player_id": 668227
+      },
+      {
+        "slot": 6,
+        "name": "Luke Raley",
+        "position": "RF",
+        "jersey": "20",
+        "player_id": 670042
+      },
+      {
+        "slot": 7,
+        "name": "Dominic Canzone",
+        "position": "DH",
+        "jersey": "8",
+        "player_id": 686527
+      },
+      {
+        "slot": 8,
+        "name": "Cole Young",
+        "position": "2B",
+        "jersey": "2",
+        "player_id": 702284
+      },
+      {
+        "slot": 9,
+        "name": "Leo Rivas",
+        "position": "SS",
+        "jersey": "76",
+        "player_id": 660844
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Brandon Nimmo",
+        "position": "RF",
+        "jersey": "24",
+        "player_id": 607043
+      },
+      {
+        "slot": 2,
+        "name": "Wyatt Langford",
+        "position": "LF",
+        "jersey": "36",
+        "player_id": 694671
+      },
+      {
+        "slot": 3,
+        "name": "Corey Seager",
+        "position": "SS",
+        "jersey": "5",
+        "player_id": 608369
+      },
+      {
+        "slot": 4,
+        "name": "Jake Burger",
+        "position": "1B",
+        "jersey": "21",
+        "player_id": 669394
+      },
+      {
+        "slot": 5,
+        "name": "Joc Pederson",
+        "position": "DH",
+        "jersey": "3",
+        "player_id": 592626
+      },
+      {
+        "slot": 6,
+        "name": "Evan Carter",
+        "position": "CF",
+        "jersey": "32",
+        "player_id": 694497
+      },
+      {
+        "slot": 7,
+        "name": "Danny Jansen",
+        "position": "C",
+        "jersey": "9",
+        "player_id": 643376
+      },
+      {
+        "slot": 8,
+        "name": "Josh Smith",
+        "position": "2B",
+        "jersey": "8",
+        "player_id": 669701
+      },
+      {
+        "slot": 9,
+        "name": "Josh Jung",
+        "position": "3B",
+        "jersey": "6",
+        "player_id": 673962
+      }
+    ]
   },
   {
     "date": "2026-04-06",
@@ -1044,12 +1428,140 @@ const startingLineups = [
     "away_team": "Houston Astros",
     "home_team": "Colorado Rockies",
     "game_time_et": "8:40 PM ET",
-    "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (207 minutes to first pitch)",
-    "minutes_to_first_pitch": 207,
-    "away_lineup": [],
-    "home_lineup": []
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -69,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Jeremy Pe\u00f1a",
+        "position": "SS",
+        "jersey": "3",
+        "player_id": 665161
+      },
+      {
+        "slot": 2,
+        "name": "Yordan Alvarez",
+        "position": "DH",
+        "jersey": "44",
+        "player_id": 670541
+      },
+      {
+        "slot": 3,
+        "name": "Jose Altuve",
+        "position": "2B",
+        "jersey": "27",
+        "player_id": 514888
+      },
+      {
+        "slot": 4,
+        "name": "Carlos Correa",
+        "position": "3B",
+        "jersey": "1",
+        "player_id": 621043
+      },
+      {
+        "slot": 5,
+        "name": "Christian Walker",
+        "position": "1B",
+        "jersey": "8",
+        "player_id": 572233
+      },
+      {
+        "slot": 6,
+        "name": "Cam Smith",
+        "position": "RF",
+        "jersey": "11",
+        "player_id": 701358
+      },
+      {
+        "slot": 7,
+        "name": "Joey Loperfido",
+        "position": "LF",
+        "jersey": "10",
+        "player_id": 694388
+      },
+      {
+        "slot": 8,
+        "name": "Yainer Diaz",
+        "position": "C",
+        "jersey": "21",
+        "player_id": 673237
+      },
+      {
+        "slot": 9,
+        "name": "Jake Meyers",
+        "position": "CF",
+        "jersey": "6",
+        "player_id": 676694
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Edouard Julien",
+        "position": "2B",
+        "jersey": "6",
+        "player_id": 666397
+      },
+      {
+        "slot": 2,
+        "name": "Mickey Moniak",
+        "position": "DH",
+        "jersey": "22",
+        "player_id": 666160
+      },
+      {
+        "slot": 3,
+        "name": "Hunter Goodman",
+        "position": "C",
+        "jersey": "15",
+        "player_id": 696100
+      },
+      {
+        "slot": 4,
+        "name": "Troy Johnston",
+        "position": "RF",
+        "jersey": "20",
+        "player_id": 687859
+      },
+      {
+        "slot": 5,
+        "name": "TJ Rumfield",
+        "position": "1B",
+        "jersey": "7",
+        "player_id": 681198
+      },
+      {
+        "slot": 6,
+        "name": "Willi Castro",
+        "position": "SS",
+        "jersey": "3",
+        "player_id": 650489
+      },
+      {
+        "slot": 7,
+        "name": "Brenton Doyle",
+        "position": "CF",
+        "jersey": "9",
+        "player_id": 686668
+      },
+      {
+        "slot": 8,
+        "name": "Jake McCarthy",
+        "position": "LF",
+        "jersey": "31",
+        "player_id": 664983
+      },
+      {
+        "slot": 9,
+        "name": "Kyle Karros",
+        "position": "3B",
+        "jersey": "12",
+        "player_id": 691720
+      }
+    ]
   },
   {
     "date": "2026-04-06",
@@ -1058,12 +1570,140 @@ const startingLineups = [
     "away_team": "Atlanta Braves",
     "home_team": "Los Angeles Angels",
     "game_time_et": "9:38 PM ET",
-    "status": "Scheduled",
-    "eligible": false,
-    "reason": "too early (265 minutes to first pitch)",
-    "minutes_to_first_pitch": 265,
-    "away_lineup": [],
-    "home_lineup": []
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -11,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Ronald Acu\u00f1a Jr.",
+        "position": "RF",
+        "jersey": "13",
+        "player_id": 660670
+      },
+      {
+        "slot": 2,
+        "name": "Drake Baldwin",
+        "position": "C",
+        "jersey": "30",
+        "player_id": 686948
+      },
+      {
+        "slot": 3,
+        "name": "Matt Olson",
+        "position": "1B",
+        "jersey": "28",
+        "player_id": 621566
+      },
+      {
+        "slot": 4,
+        "name": "Austin Riley",
+        "position": "3B",
+        "jersey": "27",
+        "player_id": 663586
+      },
+      {
+        "slot": 5,
+        "name": "Mike Yastrzemski",
+        "position": "LF",
+        "jersey": "18",
+        "player_id": 573262
+      },
+      {
+        "slot": 6,
+        "name": "Ozzie Albies",
+        "position": "2B",
+        "jersey": "1",
+        "player_id": 645277
+      },
+      {
+        "slot": 7,
+        "name": "Dominic Smith",
+        "position": "DH",
+        "jersey": "8",
+        "player_id": 642086
+      },
+      {
+        "slot": 8,
+        "name": "Michael Harris II",
+        "position": "CF",
+        "jersey": "23",
+        "player_id": 671739
+      },
+      {
+        "slot": 9,
+        "name": "Mauricio Dub\u00f3n",
+        "position": "SS",
+        "jersey": "14",
+        "player_id": 643289
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Zach Neto",
+        "position": "SS",
+        "jersey": "9",
+        "player_id": 687263
+      },
+      {
+        "slot": 2,
+        "name": "Jorge Soler",
+        "position": "RF",
+        "jersey": "12",
+        "player_id": 624585
+      },
+      {
+        "slot": 3,
+        "name": "Jo Adell",
+        "position": "LF",
+        "jersey": "7",
+        "player_id": 666176
+      },
+      {
+        "slot": 4,
+        "name": "Jeimer Candelario",
+        "position": "1B",
+        "jersey": "46",
+        "player_id": 600869
+      },
+      {
+        "slot": 5,
+        "name": "Logan O'Hoppe",
+        "position": "C",
+        "jersey": "14",
+        "player_id": 681351
+      },
+      {
+        "slot": 6,
+        "name": "Oswald Peraza",
+        "position": "3B",
+        "jersey": "2",
+        "player_id": 672724
+      },
+      {
+        "slot": 7,
+        "name": "Yo\u00e1n Moncada",
+        "position": "DH",
+        "jersey": "10",
+        "player_id": 660162
+      },
+      {
+        "slot": 8,
+        "name": "Bryce Teodosio",
+        "position": "CF",
+        "jersey": "22",
+        "player_id": 669326
+      },
+      {
+        "slot": 9,
+        "name": "Adam Frazier",
+        "position": "2B",
+        "jersey": "20",
+        "player_id": 624428
+      }
+    ]
   },
   {
     "date": "2026-04-06",
@@ -1072,11 +1712,139 @@ const startingLineups = [
     "away_team": "Philadelphia Phillies",
     "home_team": "San Francisco Giants",
     "game_time_et": "9:45 PM ET",
-    "status": "Scheduled",
-    "eligible": false,
-    "reason": "too early (272 minutes to first pitch)",
-    "minutes_to_first_pitch": 272,
-    "away_lineup": [],
-    "home_lineup": []
+    "status": "In Progress",
+    "eligible": true,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -4,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Trea Turner",
+        "position": "SS",
+        "jersey": "7",
+        "player_id": 607208
+      },
+      {
+        "slot": 2,
+        "name": "Kyle Schwarber",
+        "position": "DH",
+        "jersey": "12",
+        "player_id": 656941
+      },
+      {
+        "slot": 3,
+        "name": "Bryce Harper",
+        "position": "1B",
+        "jersey": "3",
+        "player_id": 547180
+      },
+      {
+        "slot": 4,
+        "name": "Alec Bohm",
+        "position": "3B",
+        "jersey": "28",
+        "player_id": 664761
+      },
+      {
+        "slot": 5,
+        "name": "Bryson Stott",
+        "position": "2B",
+        "jersey": "5",
+        "player_id": 681082
+      },
+      {
+        "slot": 6,
+        "name": "Adolis Garc\u00eda",
+        "position": "RF",
+        "jersey": "53",
+        "player_id": 666969
+      },
+      {
+        "slot": 7,
+        "name": "Brandon Marsh",
+        "position": "LF",
+        "jersey": "16",
+        "player_id": 669016
+      },
+      {
+        "slot": 8,
+        "name": "J.T. Realmuto",
+        "position": "C",
+        "jersey": "10",
+        "player_id": 592663
+      },
+      {
+        "slot": 9,
+        "name": "Justin Crawford",
+        "position": "CF",
+        "jersey": "2",
+        "player_id": 702222
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Willy Adames",
+        "position": "SS",
+        "jersey": "2",
+        "player_id": 642715
+      },
+      {
+        "slot": 2,
+        "name": "Luis Arraez",
+        "position": "2B",
+        "jersey": "1",
+        "player_id": 650333
+      },
+      {
+        "slot": 3,
+        "name": "Matt Chapman",
+        "position": "3B",
+        "jersey": "26",
+        "player_id": 656305
+      },
+      {
+        "slot": 4,
+        "name": "Rafael Devers",
+        "position": "1B",
+        "jersey": "16",
+        "player_id": 646240
+      },
+      {
+        "slot": 5,
+        "name": "Heliot Ramos",
+        "position": "LF",
+        "jersey": "17",
+        "player_id": 671218
+      },
+      {
+        "slot": 6,
+        "name": "Jung Hoo Lee",
+        "position": "RF",
+        "jersey": "51",
+        "player_id": 808982
+      },
+      {
+        "slot": 7,
+        "name": "Jerar Encarnacion",
+        "position": "DH",
+        "jersey": "19",
+        "player_id": 666464
+      },
+      {
+        "slot": 8,
+        "name": "Harrison Bader",
+        "position": "CF",
+        "jersey": "9",
+        "player_id": 664056
+      },
+      {
+        "slot": 9,
+        "name": "Patrick Bailey",
+        "position": "C",
+        "jersey": "14",
+        "player_id": 672275
+      }
+    ]
   }
 ];

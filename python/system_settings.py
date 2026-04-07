@@ -17,7 +17,7 @@ DEFAULT_SETTINGS: dict[str, Any] = {
     "updated_at_utc": None,
     "jobIntervals": {
         "mastercontroller_minutes": 60,
-        "hr_engine_job_minutes": 30,
+        "hr_engine_job_minutes": 15,
     },
     "taskScheduler": {
         "mastercontroller_task_name": "",

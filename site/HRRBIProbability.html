@@ -8,6 +8,7 @@
     <script src="../data/hrbi_model_data.js?v=stable-20260406-hrbiresults"></script>
     <script src="../data/hrbi_results_data.js?v=stable-20260406-hrbiresults"></script>
     <script src="../data/hrbi_results_index.js?v=stable-20260406-hrbiresults"></script>
+    <script src="../assets/hardhits-api.js?v=stable-20260406-api"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -374,18 +375,83 @@
         const predictionsBtn = document.getElementById('predictions-btn');
         const resultsBtn = document.getElementById('results-btn');
 
-        const sourcePlayers = typeof hrbiModelData !== 'undefined' ? hrbiModelData : window.hrbiModelData;
-        const players = Array.isArray(sourcePlayers) ? sourcePlayers : [];
-        const latestResultsSource = typeof hrbiResultsData !== 'undefined' ? hrbiResultsData : window.hrbiResultsData;
-        const latestResults = Array.isArray(latestResultsSource) ? latestResultsSource : [];
-        const latestSummarySource = typeof hrbiResultsSummary !== 'undefined' ? hrbiResultsSummary : window.hrbiResultsSummary;
-        const latestSummary = latestSummarySource && typeof latestSummarySource === 'object' ? latestSummarySource : null;
-        const historicalDateSource = typeof hrbiHistoricalDates !== 'undefined' && Array.isArray(hrbiHistoricalDates)
+        let sourcePlayers = typeof hrbiModelData !== 'undefined' ? hrbiModelData : window.hrbiModelData;
+        let players = Array.isArray(sourcePlayers) ? sourcePlayers : [];
+        let latestResultsSource = typeof hrbiResultsData !== 'undefined' ? hrbiResultsData : window.hrbiResultsData;
+        let latestResults = Array.isArray(latestResultsSource) ? latestResultsSource : [];
+        let latestSummarySource = typeof hrbiResultsSummary !== 'undefined' ? hrbiResultsSummary : window.hrbiResultsSummary;
+        let latestSummary = latestSummarySource && typeof latestSummarySource === 'object' ? latestSummarySource : null;
+        let historicalDateSource = typeof hrbiHistoricalDates !== 'undefined' && Array.isArray(hrbiHistoricalDates)
             ? hrbiHistoricalDates
             : (latestSummary && latestSummary.date ? [latestSummary.date] : []);
-        const historicalDates = historicalDateSource
+        let historicalDates = historicalDateSource
             .filter((value, index, arr) => value && arr.indexOf(value) === index)
             .sort((a, b) => b.localeCompare(a));
+        const hardHitsApi = window.HardHitsApi || null;
+
+        function inferApiRunTime(items) {
+            if (!hardHitsApi || !Array.isArray(items)) {
+                return '';
+            }
+
+            const imported = items
+                .map(item => item && item.imported_at_utc)
+                .filter(Boolean)
+                .sort()
+                .pop();
+
+            return imported ? hardHitsApi.formatEtTime(imported) : '';
+        }
+
+        async function bootstrapApiData() {
+            if (!hardHitsApi) {
+                return false;
+            }
+
+            try {
+                const todayStr = hardHitsApi.easternDateString(0);
+                const meta = await hardHitsApi.fetchJson('/api/meta');
+                const latestResultsDate = (meta && meta.latest_hrbi_results_date) || todayStr;
+                const [predictionPayload, resultsPayload, summaryPayload, datesPayload] = await Promise.all([
+                    hardHitsApi.fetchJson(`/api/hrbi/predictions?date=${encodeURIComponent(todayStr)}&limit=500`),
+                    hardHitsApi.fetchJson(`/api/hrbi/results?date=${encodeURIComponent(latestResultsDate)}`),
+                    hardHitsApi.fetchJson(`/api/hrbi/summary?date=${encodeURIComponent(latestResultsDate)}`),
+                    hardHitsApi.fetchJson('/api/hrbi/dates'),
+                ]);
+
+                if (predictionPayload && Array.isArray(predictionPayload.items)) {
+                    players = predictionPayload.items;
+                    window.hrbiModelData = players;
+                    window.hrbiModelUpdateDate = predictionPayload.date || todayStr;
+                    const lastRunTime = inferApiRunTime(players);
+                    if (lastRunTime) {
+                        window.hrbiModelLastRunTime = lastRunTime;
+                    }
+                }
+
+                if (resultsPayload && Array.isArray(resultsPayload.items)) {
+                    latestResults = resultsPayload.items;
+                    window.hrbiResultsData = latestResults;
+                }
+
+                if (summaryPayload && typeof summaryPayload === 'object') {
+                    latestSummary = summaryPayload;
+                    window.hrbiResultsSummary = latestSummary;
+                }
+
+                if (datesPayload && Array.isArray(datesPayload.dates)) {
+                    historicalDates = datesPayload.dates
+                        .filter((value, index, arr) => value && arr.indexOf(value) === index)
+                        .sort((a, b) => b.localeCompare(a));
+                    window.hrbiHistoricalDates = historicalDates;
+                }
+
+                return players.length > 0 || latestResults.length > 0;
+            } catch (error) {
+                console.warn('HardHits API unavailable, using static HRR+ bundle:', error);
+                return false;
+            }
+        }
 
         function formatLongDate(dateStr) {
             if (!dateStr) {
@@ -721,7 +787,7 @@
             }).join('');
         }
 
-        function loadResultsForDate(dateStr) {
+        async function loadResultsForDate(dateStr) {
             dash.innerHTML = '<div class="empty-state"><div style="margin-bottom:10px;">Loading verification...</div><div style="color:#94a3b8;">Pulling H+R+RBI model + results for ' + escapeHtml(formatLongDate(dateStr)) + '.</div></div>';
             summaryContainer.innerHTML = '';
             subtitle.textContent = buildResultsSubtitle(dateStr);
@@ -731,6 +797,33 @@
                 renderVerificationSummary(summaryData, dateStr);
                 renderResultsCards(rows, modelRows);
                 dateSummary.textContent = 'Showing verification for ' + formatLongDate(dateStr);
+            }
+
+            if (hardHitsApi && dateStr) {
+                try {
+                    const [predictionPayload, resultsPayload, summaryPayload] = await Promise.all([
+                        hardHitsApi.fetchJson(`/api/hrbi/predictions?date=${encodeURIComponent(dateStr)}&limit=500`),
+                        hardHitsApi.fetchJson(`/api/hrbi/results?date=${encodeURIComponent(dateStr)}`),
+                        hardHitsApi.fetchJson(`/api/hrbi/summary?date=${encodeURIComponent(dateStr)}`),
+                    ]);
+
+                    const modelRows = predictionPayload && Array.isArray(predictionPayload.items) ? predictionPayload.items : [];
+                    const rows = resultsPayload && Array.isArray(resultsPayload.items) ? resultsPayload.items : [];
+                    const summaryData = summaryPayload && typeof summaryPayload === 'object'
+                        ? summaryPayload
+                        : buildFallbackSummary(rows, dateStr);
+
+                    if (modelRows.length || rows.length) {
+                        const key = dateStr.replace(/-/g, '_');
+                        window['hrbiModelData_' + key] = modelRows;
+                        window['hrbiResultsData_' + key] = rows;
+                        window['hrbiResultsSummary_' + key] = summaryData;
+                        applyLoadedData(modelRows, rows, summaryData);
+                        return;
+                    }
+                } catch (error) {
+                    console.warn('Falling back to static H+R+RBI historical data:', error);
+                }
             }
 
             if (typeof loadHrbiHistoricalData === 'function' && dateStr) {
@@ -811,6 +904,16 @@
         });
 
         setView('predictions');
+        bootstrapApiData().then(function (loadedFromApi) {
+            if (!loadedFromApi) {
+                return;
+            }
+
+            if (predictionsBtn.classList.contains('active')) {
+                subtitle.textContent = buildPredictionSubtitle();
+                renderPredictionCards(players);
+            }
+        });
     });
 </script>
 <script src="../assets/site-nav.js?v=stable-20260406-admingear" defer></script>
