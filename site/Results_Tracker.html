@@ -154,6 +154,7 @@
             margin-bottom: 40px;
             display: flex;
             gap: 40px;
+            flex-wrap: wrap;
             border: 1px solid var(--border);
         }
 
@@ -170,6 +171,111 @@
             display: block;
             margin-top: 4px;
         }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .insight-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px 20px;
+        }
+
+        .insight-card--wide {
+            grid-column: 1 / -1;
+        }
+
+        .insight-card h2 {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-note {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .insight-subtitle {
+            color: var(--sky);
+            font-size: 0.74rem;
+            font-weight: 800;
+            margin: 12px 0 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .trend-list,
+        .signal-list,
+        .note-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .trend-row,
+        .signal-row,
+        .note-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            background: rgba(0,0,0,0.18);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: 12px;
+            padding: 10px 12px;
+        }
+
+        .trend-row strong,
+        .signal-row strong {
+            display: block;
+            font-size: 0.92rem;
+        }
+
+        .trend-row span,
+        .signal-row span,
+        .note-row span {
+            color: var(--text-dim);
+            font-size: 0.78rem;
+        }
+
+        .signal-meta {
+            text-align: right;
+        }
+
+        .signal-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 74px;
+            padding: 5px 8px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .signal-chip.good {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .signal-chip.warn {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .insight-empty {
+            color: var(--text-dim);
+            font-size: 0.84rem;
+        }
     </style>
 </head>
 <body data-nav="results">
@@ -181,6 +287,29 @@
     </div>
 
     <div class="summary-bar" id="summary"></div>
+
+    <div class="insights-grid">
+        <section class="insight-card">
+            <h2>Recent Accuracy Trend</h2>
+            <div id="trend-history" class="trend-list">
+                <div class="insight-empty">Loading recent slates...</div>
+            </div>
+        </section>
+
+        <section class="insight-card">
+            <h2>Signal Uplift Watch</h2>
+            <div id="signal-watch" class="signal-list">
+                <div class="insight-empty">Checking which signals are outperforming the baseline...</div>
+            </div>
+        </section>
+
+        <section class="insight-card insight-card--wide">
+            <h2>Process Notes</h2>
+            <div id="process-notes" class="note-list">
+                <div class="insight-empty">Scanning blind spots and possible tuning ideas...</div>
+            </div>
+        </section>
+    </div>
 
     <div id="dashboard"></div>
 </div>
@@ -219,6 +348,218 @@
             return { modelData, resultsData };
         }
 
+        function formatPercent(value) {
+            return `${(Number(value || 0) * 100).toFixed(1)}%`;
+        }
+
+        function getRecentHistoryDates(currentDate) {
+            const staticDates = Array.isArray(window.historicalDates)
+                ? window.historicalDates
+                : (typeof historicalDates !== 'undefined' && Array.isArray(historicalDates) ? historicalDates : []);
+            return Array.from(new Set([currentDate, ...staticDates].filter(Boolean)))
+                .sort((a, b) => b.localeCompare(a))
+                .slice(0, 5);
+        }
+
+        async function loadTrendHistory(currentDate, currentModelData, currentResultsData) {
+            const history = [];
+            const dates = getRecentHistoryDates(currentDate);
+
+            for (const date of dates) {
+                try {
+                    if (date === currentDate && Array.isArray(currentModelData) && Array.isArray(currentResultsData)) {
+                        history.push({ date, modelData: currentModelData, resultsData: currentResultsData });
+                        continue;
+                    }
+
+                    if (hardHitsApi) {
+                        const payload = await loadResultsFromApi(date);
+                        history.push({ date, modelData: payload.modelData, resultsData: payload.resultsData });
+                    } else {
+                        await loadHistoricalData(date);
+                        const key = date.replace(/-/g, '_');
+                        history.push({
+                            date,
+                            modelData: window[`hrModelData_${key}`] || [],
+                            resultsData: window[`hrResultsData_${key}`] || [],
+                        });
+                    }
+                } catch (error) {
+                    console.warn(`Skipping trend history for ${date}:`, error);
+                }
+            }
+
+            return history;
+        }
+
+        function buildDailyMetrics(modelData, resultsData) {
+            const actualHRNames = new Set((resultsData || []).map(r => r.name));
+            const flagged = (modelData || []).filter(p => Number(p.probability || 0) >= 5.0);
+            const hits = flagged.filter(p => actualHRNames.has(p.name)).length;
+            return {
+                picks: flagged.length,
+                hits,
+                accuracy: flagged.length ? (hits / flagged.length) : 0,
+            };
+        }
+
+        function buildSignalBuckets(history) {
+            const bucketDefs = [
+                { name: 'Elite 8%+', note: 'top-confidence bats', test: p => Number(p.probability || 0) >= 8 },
+                { name: 'Power 70+', note: 'raw EV / barrel thump', test: p => Number(p.breakdown?.Power || 0) >= 70 },
+                { name: 'Trend 60+', note: 'heating-up EV', test: p => Number(p.breakdown?.Trend || 0) >= 60 || Number(p.ev_trend_val || 0) >= 1.5 },
+                { name: 'Park 60+', note: 'friendly run environment', test: p => Number(p.breakdown?.Park || 0) >= 60 },
+                { name: 'Pitcher 60+', note: 'attackable arm', test: p => Number(p.breakdown?.Pitcher || 0) >= 60 || Number(p.pitcher_hr_risk || 0) >= 18 },
+                { name: 'Power + Trend', note: 'bat speed plus heat', test: p => Number(p.breakdown?.Power || 0) >= 65 && Number(p.breakdown?.Trend || 0) >= 60 },
+            ];
+
+            let baselinePicks = 0;
+            let baselineHits = 0;
+            const buckets = bucketDefs.map(bucket => ({ ...bucket, sample: 0, hits: 0 }));
+
+            history.forEach(({ modelData, resultsData }) => {
+                const actualHRNames = new Set((resultsData || []).map(r => r.name));
+                const flagged = (modelData || []).filter(p => Number(p.probability || 0) >= 5.0);
+                baselinePicks += flagged.length;
+                baselineHits += flagged.filter(p => actualHRNames.has(p.name)).length;
+
+                flagged.forEach(player => {
+                    buckets.forEach(bucket => {
+                        if (bucket.test(player)) {
+                            bucket.sample += 1;
+                            if (actualHRNames.has(player.name)) {
+                                bucket.hits += 1;
+                            }
+                        }
+                    });
+                });
+            });
+
+            const baselineRate = baselinePicks ? (baselineHits / baselinePicks) : 0;
+            return {
+                baselineRate,
+                buckets: buckets
+                    .filter(bucket => bucket.sample >= 3)
+                    .map(bucket => {
+                        const rate = bucket.sample ? (bucket.hits / bucket.sample) : 0;
+                        return { ...bucket, rate, uplift: rate - baselineRate };
+                    })
+                    .sort((a, b) => b.uplift - a.uplift),
+            };
+        }
+
+        function analyzeBlindSpots(history) {
+            const clues = [
+                { label: 'Hot-trend misses', count: 0 },
+                { label: 'Power misses', count: 0 },
+                { label: 'Park-aided misses', count: 0 },
+            ];
+
+            history.forEach(({ modelData, resultsData }) => {
+                const modelByName = new Map((modelData || []).map(player => [player.name, player]));
+                (resultsData || []).forEach(result => {
+                    const modelEntry = modelByName.get(result.name);
+                    if (!modelEntry || Number(modelEntry.probability || 0) >= 5.0) {
+                        return;
+                    }
+
+                    if (Number(modelEntry.breakdown?.Trend || 0) >= 60 || Number(modelEntry.ev_trend_val || 0) >= 1.5) {
+                        clues[0].count += 1;
+                    }
+                    if (Number(modelEntry.breakdown?.Power || 0) >= 70) {
+                        clues[1].count += 1;
+                    }
+                    if (Number(modelEntry.breakdown?.Park || 0) >= 60) {
+                        clues[2].count += 1;
+                    }
+                });
+            });
+
+            return clues.sort((a, b) => b.count - a.count);
+        }
+
+        async function renderTrendInsights(currentDate, modelData, resultsData) {
+            const trendHistoryEl = document.getElementById('trend-history');
+            const signalWatchEl = document.getElementById('signal-watch');
+            const processNotesEl = document.getElementById('process-notes');
+
+            trendHistoryEl.innerHTML = '<div class="insight-empty">Building trend view...</div>';
+            signalWatchEl.innerHTML = '<div class="insight-empty">Analyzing signal buckets...</div>';
+            processNotesEl.innerHTML = '<div class="insight-empty">Reviewing blind spots...</div>';
+
+            const history = await loadTrendHistory(currentDate, modelData, resultsData);
+            if (!history.length) {
+                trendHistoryEl.innerHTML = '<div class="insight-empty">No recent slates available.</div>';
+                signalWatchEl.innerHTML = '<div class="insight-empty">Not enough history yet for signal analysis.</div>';
+                processNotesEl.innerHTML = '<div class="insight-empty">Trend notes will appear once more result days accumulate.</div>';
+                return;
+            }
+
+            const dailyRows = history.map(item => ({ date: item.date, ...buildDailyMetrics(item.modelData, item.resultsData) }));
+            const signalSummary = buildSignalBuckets(history);
+            const bestSignals = signalSummary.buckets.filter(bucket => bucket.uplift >= 0).slice(0, 4);
+            const cautionSignals = signalSummary.buckets.filter(bucket => bucket.uplift < 0).slice(-2).reverse();
+            const blindSpots = analyzeBlindSpots(history);
+
+            trendHistoryEl.innerHTML = dailyRows.map(row => `
+                <div class="trend-row">
+                    <div>
+                        <strong>${formatDateString(row.date)}</strong>
+                        <span>${row.hits} hits on ${row.picks} flagged picks</span>
+                    </div>
+                    <div class="signal-meta">
+                        <strong>${formatPercent(row.accuracy)}</strong>
+                        <span>accuracy</span>
+                    </div>
+                </div>
+            `).join('');
+
+            const renderSignalRow = (bucket) => {
+                const upliftLabel = `${bucket.uplift >= 0 ? '+' : ''}${(bucket.uplift * 100).toFixed(1)} pts`;
+                const chipClass = bucket.uplift >= 0 ? 'good' : 'warn';
+                return `
+                    <div class="signal-row">
+                        <div>
+                            <strong>${bucket.name}</strong>
+                            <span>${bucket.note} • sample ${bucket.sample}</span>
+                        </div>
+                        <div class="signal-meta">
+                            <div class="signal-chip ${chipClass}">${upliftLabel}</div>
+                            <span>${formatPercent(bucket.rate)} hit rate</span>
+                        </div>
+                    </div>
+                `;
+            };
+
+            signalWatchEl.innerHTML = `
+                <div class="insight-note">Baseline hit rate across ${history.length} recent result dates: <b>${formatPercent(signalSummary.baselineRate)}</b></div>
+                <div class="signal-list">${bestSignals.map(renderSignalRow).join('') || '<div class="insight-empty">Need more samples for strong leaders.</div>'}</div>
+                ${cautionSignals.length ? `<div class="insight-subtitle">Needs review</div><div class="signal-list">${cautionSignals.map(renderSignalRow).join('')}</div>` : ''}
+            `;
+
+            const notes = [];
+            const comboSignal = signalSummary.buckets.find(bucket => bucket.name === 'Power + Trend');
+            const pitcherSignal = signalSummary.buckets.find(bucket => bucket.name === 'Pitcher 60+');
+            const topBlindSpot = blindSpots[0];
+
+            if (comboSignal && comboSignal.uplift > 0.03) {
+                notes.push('<code>Power + Trend</code> is running ahead of the baseline, so it looks like a good candidate for a slightly stronger combined bonus.');
+            }
+            if (pitcherSignal && pitcherSignal.uplift < 0) {
+                notes.push('Pitcher-only risk is lagging the baseline, which suggests batter-side quality may deserve more weight than pitcher weakness by itself.');
+            }
+            if (topBlindSpot && topBlindSpot.count > 0) {
+                notes.push(`The biggest blind spot in the recent sample is <b>${topBlindSpot.label.toLowerCase()}</b> (${topBlindSpot.count} misses), which is a strong review target.`);
+            }
+            notes.push('Use these trends as a feedback loop: compare the winning buckets here against the current weight mix before the next scoring tweak.');
+
+            processNotesEl.innerHTML = notes.map(note => `
+                <div class="note-row">
+                    <span>${note}</span>
+                </div>
+            `).join('');
+        }
+
         async function initTracker() {
             const dash = document.getElementById('dashboard');
             const summary = document.getElementById('summary');
@@ -242,6 +583,7 @@
                     document.getElementById('dateSubtitle').innerText = `${formatDateString(dateStr)} • v3 Model Performance vs. Statcast Reality`;
                     const { modelData, resultsData } = await loadResultsFromApi(dateStr);
                     processData(modelData, resultsData, dash, summary);
+                    await renderTrendInsights(dateStr, modelData, resultsData);
                     return;
                 } catch (error) {
                     console.warn('HardHits API unavailable, using static Results Tracker data:', error);
@@ -250,13 +592,15 @@
 
             document.getElementById('dateSubtitle').innerText = `${formatDateString(dateStr)} • v3 Model Performance vs. Statcast Reality`;
 
-            loadHistoricalData(dateStr).then(() => {
+            loadHistoricalData(dateStr).then(async () => {
                 const modelData = window[`hrModelData_${dateStr.replace(/-/g, '_')}`] || hrModelData;
                 const resultsData = window[`hrResultsData_${dateStr.replace(/-/g, '_')}`] || hrResultsData;
                 processData(modelData, resultsData, dash, summary);
-            }).catch(() => {
+                await renderTrendInsights(dateStr, modelData, resultsData);
+            }).catch(async () => {
                 console.log('Using current data as fallback');
                 processData(hrModelData, hrResultsData, dash, summary);
+                await renderTrendInsights(dateStr, hrModelData, hrResultsData);
             });
         }
 

@@ -1,5 +1,5 @@
 const lineupUpdateDate = '2026-04-07';
-const lineupLastCompleted = '12:22 PM ET';
+const lineupLastCompleted = '1:22 PM ET';
 const startingLineups = [
   {
     "date": "2026-04-07",
@@ -8,10 +8,10 @@ const startingLineups = [
     "away_team": "Kansas City Royals",
     "home_team": "Cleveland Guardians",
     "game_time_et": "1:10 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within 47 minutes of first pitch",
-    "minutes_to_first_pitch": 47,
+    "reason": "game is live",
+    "minutes_to_first_pitch": -13,
     "away_lineup": [
       {
         "slot": 1,
@@ -151,11 +151,139 @@ const startingLineups = [
     "home_team": "Chicago White Sox",
     "game_time_et": "3:10 PM ET",
     "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (167 minutes to first pitch)",
-    "minutes_to_first_pitch": 167,
-    "away_lineup": [],
-    "home_lineup": []
+    "eligible": true,
+    "reason": "within 107 minutes of first pitch",
+    "minutes_to_first_pitch": 107,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Taylor Ward",
+        "position": "LF",
+        "jersey": "3",
+        "player_id": 621493
+      },
+      {
+        "slot": 2,
+        "name": "Gunnar Henderson",
+        "position": "DH",
+        "jersey": "2",
+        "player_id": 683002
+      },
+      {
+        "slot": 3,
+        "name": "Pete Alonso",
+        "position": "1B",
+        "jersey": "25",
+        "player_id": 624413
+      },
+      {
+        "slot": 4,
+        "name": "Samuel Basallo",
+        "position": "C",
+        "jersey": "29",
+        "player_id": 694212
+      },
+      {
+        "slot": 5,
+        "name": "Dylan Beavers",
+        "position": "RF",
+        "jersey": "12",
+        "player_id": 687637
+      },
+      {
+        "slot": 6,
+        "name": "Jeremiah Jackson",
+        "position": "2B",
+        "jersey": "82",
+        "player_id": 669236
+      },
+      {
+        "slot": 7,
+        "name": "Colton Cowser",
+        "position": "CF",
+        "jersey": "17",
+        "player_id": 681297
+      },
+      {
+        "slot": 8,
+        "name": "Coby Mayo",
+        "position": "3B",
+        "jersey": "16",
+        "player_id": 691723
+      },
+      {
+        "slot": 9,
+        "name": "Blaze Alexander",
+        "position": "SS",
+        "jersey": "23",
+        "player_id": 677942
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Chase Meidroth",
+        "position": "2B",
+        "jersey": "10",
+        "player_id": 805367
+      },
+      {
+        "slot": 2,
+        "name": "Lenyn Sosa",
+        "position": "1B",
+        "jersey": "50",
+        "player_id": 672820
+      },
+      {
+        "slot": 3,
+        "name": "Miguel Vargas",
+        "position": "DH",
+        "jersey": "20",
+        "player_id": 678246
+      },
+      {
+        "slot": 4,
+        "name": "Colson Montgomery",
+        "position": "SS",
+        "jersey": "12",
+        "player_id": 695657
+      },
+      {
+        "slot": 5,
+        "name": "Edgar Quero",
+        "position": "C",
+        "jersey": "26",
+        "player_id": 700337
+      },
+      {
+        "slot": 6,
+        "name": "Tanner Murray",
+        "position": "3B",
+        "jersey": "41",
+        "player_id": 695020
+      },
+      {
+        "slot": 7,
+        "name": "Andrew Benintendi",
+        "position": "LF",
+        "jersey": "23",
+        "player_id": 643217
+      },
+      {
+        "slot": 8,
+        "name": "Luisangel Acu\u00f1a",
+        "position": "CF",
+        "jersey": "0",
+        "player_id": 682668
+      },
+      {
+        "slot": 9,
+        "name": "Derek Hill",
+        "position": "RF",
+        "jersey": "25",
+        "player_id": 656537
+      }
+    ]
   },
   {
     "date": "2026-04-07",
@@ -164,10 +292,10 @@ const startingLineups = [
     "away_team": "Arizona Diamondbacks",
     "home_team": "New York Mets",
     "game_time_et": "4:10 PM ET",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "eligible": false,
-    "reason": "too early (227 minutes to first pitch)",
-    "minutes_to_first_pitch": 227,
+    "reason": "too early (167 minutes to first pitch)",
+    "minutes_to_first_pitch": 167,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -180,8 +308,8 @@ const startingLineups = [
     "game_time_et": "6:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (377 minutes to first pitch)",
-    "minutes_to_first_pitch": 377,
+    "reason": "too early (317 minutes to first pitch)",
+    "minutes_to_first_pitch": 317,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -194,8 +322,8 @@ const startingLineups = [
     "game_time_et": "6:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (377 minutes to first pitch)",
-    "minutes_to_first_pitch": 377,
+    "reason": "too early (317 minutes to first pitch)",
+    "minutes_to_first_pitch": 317,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -208,8 +336,8 @@ const startingLineups = [
     "game_time_et": "6:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (377 minutes to first pitch)",
-    "minutes_to_first_pitch": 377,
+    "reason": "too early (317 minutes to first pitch)",
+    "minutes_to_first_pitch": 317,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -222,8 +350,8 @@ const startingLineups = [
     "game_time_et": "6:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (382 minutes to first pitch)",
-    "minutes_to_first_pitch": 382,
+    "reason": "too early (322 minutes to first pitch)",
+    "minutes_to_first_pitch": 322,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -236,8 +364,8 @@ const startingLineups = [
     "game_time_et": "6:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (382 minutes to first pitch)",
-    "minutes_to_first_pitch": 382,
+    "reason": "too early (322 minutes to first pitch)",
+    "minutes_to_first_pitch": 322,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -250,8 +378,8 @@ const startingLineups = [
     "game_time_et": "7:05 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (402 minutes to first pitch)",
-    "minutes_to_first_pitch": 402,
+    "reason": "too early (342 minutes to first pitch)",
+    "minutes_to_first_pitch": 342,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -264,8 +392,8 @@ const startingLineups = [
     "game_time_et": "7:07 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (404 minutes to first pitch)",
-    "minutes_to_first_pitch": 404,
+    "reason": "too early (344 minutes to first pitch)",
+    "minutes_to_first_pitch": 344,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -278,8 +406,8 @@ const startingLineups = [
     "game_time_et": "7:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (437 minutes to first pitch)",
-    "minutes_to_first_pitch": 437,
+    "reason": "too early (377 minutes to first pitch)",
+    "minutes_to_first_pitch": 377,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -292,8 +420,8 @@ const startingLineups = [
     "game_time_et": "8:05 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (462 minutes to first pitch)",
-    "minutes_to_first_pitch": 462,
+    "reason": "too early (402 minutes to first pitch)",
+    "minutes_to_first_pitch": 402,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -306,8 +434,8 @@ const startingLineups = [
     "game_time_et": "8:40 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (497 minutes to first pitch)",
-    "minutes_to_first_pitch": 497,
+    "reason": "too early (437 minutes to first pitch)",
+    "minutes_to_first_pitch": 437,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -320,8 +448,8 @@ const startingLineups = [
     "game_time_et": "9:38 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (555 minutes to first pitch)",
-    "minutes_to_first_pitch": 555,
+    "reason": "too early (495 minutes to first pitch)",
+    "minutes_to_first_pitch": 495,
     "away_lineup": [],
     "home_lineup": []
   },
@@ -334,8 +462,8 @@ const startingLineups = [
     "game_time_et": "9:45 PM ET",
     "status": "Scheduled",
     "eligible": false,
-    "reason": "too early (562 minutes to first pitch)",
-    "minutes_to_first_pitch": 562,
+    "reason": "too early (502 minutes to first pitch)",
+    "minutes_to_first_pitch": 502,
     "away_lineup": [],
     "home_lineup": []
   }
