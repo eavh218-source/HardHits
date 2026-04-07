@@ -1,257 +1,233 @@
 window.hrResultsData = [
   {
-    "date": "2026-04-05",
-    "name": "Drake Baldwin",
-    "ev": 108,
-    "dist": 398,
-    "launch_angle": 22,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Brent Rooker",
-    "ev": 104,
-    "dist": 364,
-    "launch_angle": 25,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Jake Meyers",
-    "ev": 106,
-    "dist": 393,
-    "launch_angle": 26,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Brent Rooker",
-    "ev": 106,
-    "dist": 365,
-    "launch_angle": 22,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Christian Walker",
-    "ev": 98,
-    "dist": 397,
-    "launch_angle": 28,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Yordan Alvarez",
-    "ev": 110,
-    "dist": 399,
-    "launch_angle": 22,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Jackson Merrill",
-    "ev": 103,
-    "dist": 384,
-    "launch_angle": 34,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Manny Machado",
-    "ev": 99,
-    "dist": 365,
-    "launch_angle": 29,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "CJ Kayfus",
-    "ev": 104,
-    "dist": 352,
-    "launch_angle": 35,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Ian Happ",
-    "ev": 107,
-    "dist": 382,
-    "launch_angle": 25,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Dansby Swanson",
-    "ev": 100,
-    "dist": 380,
-    "launch_angle": 28,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Matt Shaw",
-    "ev": 95,
-    "dist": 355,
-    "launch_angle": 34,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Mickey Moniak",
-    "ev": 103,
-    "dist": 437,
-    "launch_angle": 32,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Adolis Garc\u00eda",
-    "ev": 103,
-    "dist": 405,
-    "launch_angle": 32,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "TJ Rumfield",
-    "ev": 107,
-    "dist": 387,
-    "launch_angle": 21,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Mickey Moniak",
-    "ev": 108,
-    "dist": 433,
-    "launch_angle": 28,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Kerry Carpenter",
-    "ev": 103,
-    "dist": 425,
-    "launch_angle": 32,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Maikel Garcia",
-    "ev": 101,
-    "dist": 388,
-    "launch_angle": 25,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Gary S\u00e1nchez",
-    "ev": 109,
-    "dist": 414,
-    "launch_angle": 27,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Cole Young",
-    "ev": 104,
-    "dist": 394,
-    "launch_angle": 28,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Richie Palacios",
-    "ev": 100,
-    "dist": 382,
+    "date": "2026-04-06",
+    "name": "Willson Contreras",
+    "ev": 105,
+    "dist": 362,
     "launch_angle": 33,
     "status": "\ud83c\udfaf HOME RUN"
   },
   {
-    "date": "2026-04-05",
-    "name": "Junior Caminero",
-    "ev": 103,
-    "dist": 397,
-    "launch_angle": 28,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Matt Wallner",
-    "ev": 110,
-    "dist": 409,
-    "launch_angle": 36,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Ben Rice",
-    "ev": 110,
-    "dist": 410,
-    "launch_angle": 27,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Oneil Cruz",
-    "ev": 107,
-    "dist": 415,
-    "launch_angle": 23,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Ryan O'Hearn",
-    "ev": 103,
-    "dist": 402,
-    "launch_angle": 32,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Joc Pederson",
-    "ev": 101,
-    "dist": 361,
-    "launch_angle": 41,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Teoscar Hern\u00e1ndez",
-    "ev": 103,
-    "dist": 414,
-    "launch_angle": 29,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Dalton Rushing",
-    "ev": 103,
-    "dist": 375,
-    "launch_angle": 31,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "James Wood",
-    "ev": 107,
-    "dist": 416,
-    "launch_angle": 34,
-    "status": "\ud83c\udfaf HOME RUN"
-  },
-  {
-    "date": "2026-04-05",
-    "name": "Luis Garc\u00eda Jr.",
-    "ev": 107,
-    "dist": 405,
+    "date": "2026-04-06",
+    "name": "Gunnar Henderson",
+    "ev": 105,
+    "dist": 389,
     "launch_angle": 30,
     "status": "\ud83c\udfaf HOME RUN"
   },
   {
-    "date": "2026-04-05",
+    "date": "2026-04-06",
+    "name": "Brayan Rocchio",
+    "ev": 101,
+    "dist": 377,
+    "launch_angle": 34,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Jonathan India",
+    "ev": 101,
+    "dist": 380,
+    "launch_angle": 30,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Carter Jensen",
+    "ev": 111,
+    "dist": 359,
+    "launch_angle": 21,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Steven Kwan",
+    "ev": 100,
+    "dist": 381,
+    "launch_angle": 29,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Troy Johnston",
+    "ev": 99,
+    "dist": 407,
+    "launch_angle": 34,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Cam Smith",
+    "ev": 110,
+    "dist": 462,
+    "launch_angle": 29,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Mauricio Dub\u00f3n",
+    "ev": 103,
+    "dist": 372,
+    "launch_angle": 25,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Jo Adell",
+    "ev": 113,
+    "dist": 411,
+    "launch_angle": 24,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Zach Neto",
+    "ev": 107,
+    "dist": 400,
+    "launch_angle": 29,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Drake Baldwin",
+    "ev": 102,
+    "dist": 397,
+    "launch_angle": 34,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Tyler Stephenson",
+    "ev": 100,
+    "dist": 376,
+    "launch_angle": 35,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Luke Keaschall",
+    "ev": 101,
+    "dist": 367,
+    "launch_angle": 26,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Matt Shaw",
+    "ev": 106,
+    "dist": 366,
+    "launch_angle": 22,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Jonathan Aranda",
+    "ev": 103,
+    "dist": 403,
+    "launch_angle": 29,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Junior Caminero",
+    "ev": 106,
+    "dist": 401,
+    "launch_angle": 28,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Cedric Mullins",
+    "ev": 104,
+    "dist": 367,
+    "launch_angle": 23,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Cal Raleigh",
+    "ev": 107,
+    "dist": 418,
+    "launch_angle": 29,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Dalton Rushing",
+    "ev": 109,
+    "dist": 413,
+    "launch_angle": 23,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Dalton Rushing",
+    "ev": 107,
+    "dist": 415,
+    "launch_angle": 28,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
     "name": "Shohei Ohtani",
-    "ev": 114,
+    "ev": 107,
+    "dist": 414,
+    "launch_angle": 25,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Freddie Freeman",
+    "ev": 108,
     "dist": 438,
+    "launch_angle": 35,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Teoscar Hern\u00e1ndez",
+    "ev": 102,
+    "dist": 371,
+    "launch_angle": 29,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "CJ Abrams",
+    "ev": 98,
+    "dist": 366,
+    "launch_angle": 25,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Brady House",
+    "ev": 110,
+    "dist": 423,
+    "launch_angle": 22,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "James Wood",
+    "ev": 114,
+    "dist": 409,
+    "launch_angle": 18,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Jordan Walker",
+    "ev": 104,
+    "dist": 378,
+    "launch_angle": 32,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-06",
+    "name": "Ram\u00f3n Ur\u00edas",
+    "ev": 106,
+    "dist": 414,
     "launch_angle": 26,
     "status": "\ud83c\udfaf HOME RUN"
   }

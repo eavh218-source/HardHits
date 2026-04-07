@@ -92,6 +92,11 @@ def build_sql_sync_command() -> list[str] | None:
         "--driver",
         driver,
         "--tables",
+        "hr_model_predictions",
+        "hr_results",
+        "hrbi_model_predictions",
+        "hrbi_results",
+        "hrbi_results_summary",
         "live_home_runs",
         "starting_lineup_players",
     ]
@@ -112,9 +117,9 @@ def sync_live_data_to_sql(skip_sql_sync: bool = False) -> None:
         logging.info("SQL sync is disabled or not configured; skipping database refresh")
         return
 
-    logging.info("Starting SQL live-data sync")
+    logging.info("Starting SQL data sync for predictions, results, and live tables")
     subprocess.run(command, check=True, cwd=str(ROOT))
-    logging.info("SQL live-data sync completed successfully")
+    logging.info("SQL data sync completed successfully")
 
 
 def run_once(skip_sql_sync: bool = False) -> bool:

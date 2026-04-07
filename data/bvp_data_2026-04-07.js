@@ -2,11 +2,27 @@ window.bvpDate_2026_04_07 = '2026-04-07';
 window.dailyMatchups_2026_04_07 = [
   {
     "date": "2026-04-07",
-    "time": "6:10 PM ET",
+    "time": "1:10 PM ET",
     "away_abbr": "KCR",
     "away_p": "Cameron",
     "home_abbr": "CLE",
     "home_p": "Williams"
+  },
+  {
+    "date": "2026-04-07",
+    "time": "3:10 PM ET",
+    "away_abbr": "BAL",
+    "away_p": "Rogers",
+    "home_abbr": "CHW",
+    "home_p": "Smith"
+  },
+  {
+    "date": "2026-04-07",
+    "time": "4:10 PM ET",
+    "away_abbr": "ARI",
+    "away_p": "Gallen",
+    "home_abbr": "NYM",
+    "home_p": "Peralta"
   },
   {
     "date": "2026-04-07",
@@ -20,7 +36,7 @@ window.dailyMatchups_2026_04_07 = [
     "date": "2026-04-07",
     "time": "6:40 PM ET",
     "away_abbr": "CHC",
-    "away_p": "Boyd",
+    "away_p": "Assad",
     "home_abbr": "TBR",
     "home_p": "Rasmussen"
   },
@@ -66,27 +82,11 @@ window.dailyMatchups_2026_04_07 = [
   },
   {
     "date": "2026-04-07",
-    "time": "7:10 PM ET",
-    "away_abbr": "ARI",
-    "away_p": "Gallen",
-    "home_abbr": "NYM",
-    "home_p": "Peralta"
-  },
-  {
-    "date": "2026-04-07",
     "time": "7:40 PM ET",
     "away_abbr": "DET",
     "away_p": "Skubal",
     "home_abbr": "MIN",
     "home_p": "Bradley"
-  },
-  {
-    "date": "2026-04-07",
-    "time": "7:40 PM ET",
-    "away_abbr": "BAL",
-    "away_p": "Rogers",
-    "home_abbr": "CHW",
-    "home_p": "Smith"
   },
   {
     "date": "2026-04-07",
@@ -100,7 +100,7 @@ window.dailyMatchups_2026_04_07 = [
     "date": "2026-04-07",
     "time": "8:40 PM ET",
     "away_abbr": "HOU",
-    "away_p": "TBD",
+    "away_p": "Burrows",
     "home_abbr": "COL",
     "home_p": "Freeland"
   },
@@ -341,16 +341,6 @@ window.bvpData_2026_04_07 = [
     "distance": 394,
     "events": "Double",
     "game_date": "2025-04-17"
-  },
-  {
-    "date": "2026-04-07",
-    "pitcher_name": "Zac Gallen",
-    "opponent_team": "New York Mets",
-    "batter_name": "Juan Soto",
-    "launch_speed": 106.4,
-    "distance": 391,
-    "events": "Home Run",
-    "game_date": "2025-05-01"
   },
   {
     "date": "2026-04-07",
@@ -984,6 +974,16 @@ window.bvpData_2026_04_07 = [
   },
   {
     "date": "2026-04-07",
+    "pitcher_name": "Javier Assad",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Jake Fraley",
+    "launch_speed": 106.3,
+    "distance": 275,
+    "events": "Single",
+    "game_date": "2024-06-06"
+  },
+  {
+    "date": "2026-04-07",
     "pitcher_name": "Nathan Eovaldi",
     "opponent_team": "Seattle Mariners",
     "batter_name": "Julio Rodr\u00edguez",
@@ -1494,16 +1494,6 @@ window.bvpData_2026_04_07 = [
   },
   {
     "date": "2026-04-07",
-    "pitcher_name": "Zac Gallen",
-    "opponent_team": "New York Mets",
-    "batter_name": "Juan Soto",
-    "launch_speed": 113.3,
-    "distance": 78,
-    "events": "Single",
-    "game_date": "2024-04-02"
-  },
-  {
-    "date": "2026-04-07",
     "pitcher_name": "Nathan Eovaldi",
     "opponent_team": "Seattle Mariners",
     "batter_name": "Cal Raleigh",
@@ -1544,13 +1534,13 @@ window.bvpData_2026_04_07 = [
   },
   {
     "date": "2026-04-07",
-    "pitcher_name": "Zac Gallen",
-    "opponent_team": "New York Mets",
-    "batter_name": "Juan Soto",
-    "launch_speed": 103.7,
-    "distance": 55,
-    "events": "Field Out",
-    "game_date": "2023-08-17"
+    "pitcher_name": "Gavin Williams",
+    "opponent_team": "Kansas City Royals",
+    "batter_name": "Michael Massey",
+    "launch_speed": 102.4,
+    "distance": 58,
+    "events": "Force Out",
+    "game_date": "2023-07-08"
   },
   {
     "date": "2026-04-07",
@@ -1651,16 +1641,6 @@ window.bvpData_2026_04_07 = [
     "distance": 31,
     "events": "Force Out",
     "game_date": "2025-07-18"
-  },
-  {
-    "date": "2026-04-07",
-    "pitcher_name": "Zac Gallen",
-    "opponent_team": "New York Mets",
-    "batter_name": "Juan Soto",
-    "launch_speed": 110.1,
-    "distance": 30,
-    "events": "Field Out",
-    "game_date": "2025-05-01"
   },
   {
     "date": "2026-04-07",
@@ -1841,6 +1821,16 @@ window.bvpData_2026_04_07 = [
     "distance": 15,
     "events": "Force Out",
     "game_date": "2024-09-15"
+  },
+  {
+    "date": "2026-04-07",
+    "pitcher_name": "Javier Assad",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Yandy D\u00edaz",
+    "launch_speed": 103.1,
+    "distance": 15,
+    "events": "Field Out",
+    "game_date": "2025-09-14"
   },
   {
     "date": "2026-04-07",
@@ -2074,16 +2064,6 @@ window.bvpData_2026_04_07 = [
   },
   {
     "date": "2026-04-07",
-    "pitcher_name": "Cade Cavalli",
-    "opponent_team": "St. Louis Cardinals",
-    "batter_name": "Jordan Walker",
-    "launch_speed": 0.0,
-    "distance": 0,
-    "events": "Home Run",
-    "game_date": "2023-03-04"
-  },
-  {
-    "date": "2026-04-07",
     "pitcher_name": "Freddy Peralta",
     "opponent_team": "Arizona Diamondbacks",
     "batter_name": "Gabriel Moreno",
@@ -2091,6 +2071,16 @@ window.bvpData_2026_04_07 = [
     "distance": 0,
     "events": "Home Run",
     "game_date": "2025-03-21"
+  },
+  {
+    "date": "2026-04-07",
+    "pitcher_name": "Cade Cavalli",
+    "opponent_team": "St. Louis Cardinals",
+    "batter_name": "Jordan Walker",
+    "launch_speed": 0.0,
+    "distance": 0,
+    "events": "Home Run",
+    "game_date": "2023-03-04"
   },
   {
     "date": "2026-04-07",

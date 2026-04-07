@@ -1,4 +1,4 @@
-const hrbiResultsData = [
+window.hrbiResultsData_2026_04_06 = [
   {
     "date": "2026-04-06",
     "name": "Xavier Edwards",
@@ -4732,7 +4732,7 @@ const hrbiResultsData = [
     "classification": "NotFlagged"
   }
 ];
-const hrbiResultsSummary = {
+window.hrbiResultsSummary_2026_04_06 = {
   "date": "2026-04-06",
   "wins": 75,
   "losses": 260,

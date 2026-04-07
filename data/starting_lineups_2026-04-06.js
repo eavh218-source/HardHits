@@ -1,5 +1,5 @@
 window.lineupUpdateDate_2026_04_06 = '2026-04-06';
-window.lineupLastCompleted_2026_04_06 = '9:48 PM ET';
+window.lineupLastCompleted_2026_04_06 = '11:48 PM ET';
 window.startingLineups_2026_04_06 = [
   {
     "date": "2026-04-06",
@@ -11,7 +11,7 @@ window.startingLineups_2026_04_06 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -339,
+    "minutes_to_first_pitch": -459,
     "away_lineup": [
       {
         "slot": 1,
@@ -153,7 +153,7 @@ window.startingLineups_2026_04_06 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -219,
+    "minutes_to_first_pitch": -339,
     "away_lineup": [
       {
         "slot": 1,
@@ -295,7 +295,7 @@ window.startingLineups_2026_04_06 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -189,
+    "minutes_to_first_pitch": -309,
     "away_lineup": [
       {
         "slot": 1,
@@ -437,7 +437,7 @@ window.startingLineups_2026_04_06 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -189,
+    "minutes_to_first_pitch": -309,
     "away_lineup": [
       {
         "slot": 1,
@@ -576,10 +576,10 @@ window.startingLineups_2026_04_06 = [
     "away_team": "St. Louis Cardinals",
     "home_team": "Washington Nationals",
     "game_time_et": "6:45 PM ET",
-    "status": "Game Over",
+    "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -184,
+    "minutes_to_first_pitch": -304,
     "away_lineup": [
       {
         "slot": 1,
@@ -718,10 +718,10 @@ window.startingLineups_2026_04_06 = [
     "away_team": "Milwaukee Brewers",
     "home_team": "Boston Red Sox",
     "game_time_et": "6:45 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -184,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -304,
     "away_lineup": [
       {
         "slot": 1,
@@ -860,10 +860,10 @@ window.startingLineups_2026_04_06 = [
     "away_team": "Los Angeles Dodgers",
     "home_team": "Toronto Blue Jays",
     "game_time_et": "7:07 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -162,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -282,
     "away_lineup": [
       {
         "slot": 1,
@@ -932,10 +932,10 @@ window.startingLineups_2026_04_06 = [
     "home_lineup": [
       {
         "slot": 1,
-        "name": "Jes\u00fas S\u00e1nchez",
-        "position": "DH",
-        "jersey": "12",
-        "player_id": 660821
+        "name": "Brandon Valenzuela",
+        "position": "C",
+        "jersey": "59",
+        "player_id": 678218
       },
       {
         "slot": 2,
@@ -982,7 +982,7 @@ window.startingLineups_2026_04_06 = [
       {
         "slot": 8,
         "name": "Tyler Heineman",
-        "position": "C",
+        "position": "P",
         "jersey": "55",
         "player_id": 623168
       },
@@ -1002,10 +1002,10 @@ window.startingLineups_2026_04_06 = [
     "away_team": "Detroit Tigers",
     "home_team": "Minnesota Twins",
     "game_time_et": "7:40 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -129,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -249,
     "away_lineup": [
       {
         "slot": 1,
@@ -1081,10 +1081,10 @@ window.startingLineups_2026_04_06 = [
       },
       {
         "slot": 2,
-        "name": "Trevor Larnach",
+        "name": "Austin Martin",
         "position": "LF",
-        "jersey": "9",
-        "player_id": 663616
+        "jersey": "16",
+        "player_id": 668885
       },
       {
         "slot": 3,
@@ -1144,10 +1144,10 @@ window.startingLineups_2026_04_06 = [
     "away_team": "Baltimore Orioles",
     "home_team": "Chicago White Sox",
     "game_time_et": "7:40 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -129,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -249,
     "away_lineup": [
       {
         "slot": 1,
@@ -1244,10 +1244,10 @@ window.startingLineups_2026_04_06 = [
       },
       {
         "slot": 5,
-        "name": "Derek Hill",
-        "position": "LF",
-        "jersey": "25",
-        "player_id": 656537
+        "name": "Lenyn Sosa",
+        "position": "PH",
+        "jersey": "50",
+        "player_id": 672820
       },
       {
         "slot": 6,
@@ -1286,10 +1286,10 @@ window.startingLineups_2026_04_06 = [
     "away_team": "Seattle Mariners",
     "home_team": "Texas Rangers",
     "game_time_et": "8:05 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -104,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -224,
     "away_lineup": [
       {
         "slot": 1,
@@ -1328,17 +1328,17 @@ window.startingLineups_2026_04_06 = [
       },
       {
         "slot": 6,
-        "name": "Luke Raley",
+        "name": "Rob Refsnyder",
         "position": "RF",
-        "jersey": "20",
-        "player_id": 670042
+        "jersey": "30",
+        "player_id": 608701
       },
       {
         "slot": 7,
-        "name": "Dominic Canzone",
+        "name": "J.P. Crawford",
         "position": "DH",
-        "jersey": "8",
-        "player_id": 686527
+        "jersey": "3",
+        "player_id": 641487
       },
       {
         "slot": 8,
@@ -1414,10 +1414,10 @@ window.startingLineups_2026_04_06 = [
       },
       {
         "slot": 9,
-        "name": "Josh Jung",
+        "name": "Ezequiel Duran",
         "position": "3B",
-        "jersey": "6",
-        "player_id": 673962
+        "jersey": "20",
+        "player_id": 677649
       }
     ]
   },
@@ -1428,10 +1428,10 @@ window.startingLineups_2026_04_06 = [
     "away_team": "Houston Astros",
     "home_team": "Colorado Rockies",
     "game_time_et": "8:40 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live",
-    "minutes_to_first_pitch": -69,
+    "reason": "game is final",
+    "minutes_to_first_pitch": -189,
     "away_lineup": [
       {
         "slot": 1,
@@ -1500,10 +1500,10 @@ window.startingLineups_2026_04_06 = [
     "home_lineup": [
       {
         "slot": 1,
-        "name": "Edouard Julien",
-        "position": "2B",
-        "jersey": "6",
-        "player_id": 666397
+        "name": "Ezequiel Tovar",
+        "position": "SS",
+        "jersey": "14",
+        "player_id": 678662
       },
       {
         "slot": 2,
@@ -1536,7 +1536,7 @@ window.startingLineups_2026_04_06 = [
       {
         "slot": 6,
         "name": "Willi Castro",
-        "position": "SS",
+        "position": "2B",
         "jersey": "3",
         "player_id": 650489
       },
@@ -1573,7 +1573,7 @@ window.startingLineups_2026_04_06 = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live",
-    "minutes_to_first_pitch": -11,
+    "minutes_to_first_pitch": -131,
     "away_lineup": [
       {
         "slot": 1,
@@ -1649,15 +1649,15 @@ window.startingLineups_2026_04_06 = [
       },
       {
         "slot": 2,
-        "name": "Jorge Soler",
-        "position": "RF",
-        "jersey": "12",
-        "player_id": 624585
+        "name": "Josh Lowe",
+        "position": "LF",
+        "jersey": "3",
+        "player_id": 666139
       },
       {
         "slot": 3,
         "name": "Jo Adell",
-        "position": "LF",
+        "position": "RF",
         "jersey": "7",
         "player_id": 666176
       },
@@ -1715,7 +1715,7 @@ window.startingLineups_2026_04_06 = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live",
-    "minutes_to_first_pitch": -4,
+    "minutes_to_first_pitch": -124,
     "away_lineup": [
       {
         "slot": 1,
