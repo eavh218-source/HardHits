@@ -1,6 +1,6 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 17:40 UTC)
-
-window.hrResultsData = [
+window.hrUpdateDate_2026_04_07 = '2026-04-07';
+window.hrLastCompleted_2026_04_07 = '1:37 PM ET';
+window.todaysHRData_2026_04_07 = [
   {
     "date": "2026-04-07",
     "batter": "Carter Jensen",
@@ -14,6 +14,6 @@ window.hrResultsData = [
     "launch_angle": 21.0,
     "distance": 389.0,
     "dist": 389.0,
-    "status": "🎯 HOME RUN"
+    "status": "\ud83c\udfaf HOME RUN"
   }
 ];
