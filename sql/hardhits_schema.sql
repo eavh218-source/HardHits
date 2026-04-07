@@ -76,9 +76,16 @@ BEGIN
         rbi_score smallint NULL,
         runs_score smallint NULL,
         park_score smallint NULL,
+        weather_score smallint NULL,
         source_file nvarchar(260) NOT NULL,
         imported_at_utc datetime2 NOT NULL CONSTRAINT DF_hrbi_model_predictions_imported_at DEFAULT SYSUTCDATETIME()
     );
+END;
+GO
+
+IF COL_LENGTH('dbo.hrbi_model_predictions', 'weather_score') IS NULL
+BEGIN
+    ALTER TABLE dbo.hrbi_model_predictions ADD weather_score smallint NULL;
 END;
 GO
 
@@ -154,6 +161,31 @@ BEGIN
         source_file nvarchar(260) NOT NULL,
         imported_at_utc datetime2 NOT NULL CONSTRAINT DF_starting_lineup_players_imported_at DEFAULT SYSUTCDATETIME(),
         CONSTRAINT PK_starting_lineup_players PRIMARY KEY (lineup_date, matchup, team_side, player_name)
+    );
+END;
+GO
+
+IF OBJECT_ID('dbo.game_weather', 'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.game_weather (
+        weather_date date NOT NULL,
+        game_time_et nvarchar(40) NOT NULL,
+        away_abbr nvarchar(10) NOT NULL,
+        home_abbr nvarchar(10) NOT NULL,
+        away_team nvarchar(120) NULL,
+        home_team nvarchar(120) NULL,
+        venue nvarchar(160) NULL,
+        wind_mph decimal(6,2) NULL,
+        wind_direction nvarchar(20) NULL,
+        temperature_f decimal(6,2) NULL,
+        humidity_pct decimal(6,2) NULL,
+        precip_pct decimal(6,2) NULL,
+        weather_score smallint NULL,
+        source_name nvarchar(40) NULL,
+        source_url nvarchar(260) NULL,
+        source_file nvarchar(260) NOT NULL,
+        imported_at_utc datetime2 NOT NULL CONSTRAINT DF_game_weather_imported_at DEFAULT SYSUTCDATETIME(),
+        CONSTRAINT PK_game_weather PRIMARY KEY (weather_date, away_abbr, home_abbr, game_time_et)
     );
 END;
 GO

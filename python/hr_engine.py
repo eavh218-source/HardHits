@@ -8,6 +8,7 @@ import pandas as pd
 import pybaseball as pb
 import statsapi
 
+from get_mlb_weather import get_weather_score_for_game
 from paths import DATA_DIR
 
 # Unified HR model configuration from CALCULATION_LOGIC.md
@@ -310,25 +311,13 @@ def get_platoon_score(batter_side, pitcher_hand):
     return 42.0
 
 
-def get_weather_score(target_date, park_factor):
-    try:
-        month = int(str(target_date).split('-')[1])
-    except Exception:
-        month = datetime.now().month
-
-    if month in (6, 7, 8):
-        score = 58.0
-    elif month in (4, 5, 9):
-        score = 52.0
-    else:
-        score = 46.0
-
-    if park_factor > 1.10:
-        score += 4.0
-    elif park_factor < 0.90:
-        score -= 4.0
-
-    return clamp(score)
+def get_weather_score(target_date, park_factor, home_team=None, away_team=None):
+    return get_weather_score_for_game(
+        target_date,
+        park_factor=park_factor,
+        home_team=home_team,
+        away_team=away_team,
+    )
 
 
 def build_probability_row(game, side, roster_player, lineup_context, bvp_data, target_date, reference_date=None):
@@ -361,7 +350,12 @@ def build_probability_row(game, side, roster_player, lineup_context, bvp_data, t
     platoon_score = get_platoon_score(stats['bat_side'], pitcher_context['pitcher_hand'])
     h2h_score, bvp_boost, bvp_summary = calculate_bvp_score(name, opp_pitcher, bvp_data)
     park_score = clamp(((park_factor_value - 0.8) / 0.5) * 100.0)
-    weather_score = get_weather_score(target_date, park_factor_value)
+    weather_score = get_weather_score(
+        target_date,
+        park_factor_value,
+        home_team=game.get('home_name'),
+        away_team=game.get('away_name'),
+    )
 
     score_100 = (
         stats['power_score'] * 0.20
@@ -493,6 +487,7 @@ def run_probability_model(max_games=None):
     run_time_label = now_et.strftime('%I:%M %p ET').lstrip('0')
     today = now_et.strftime('%Y-%m-%d')
     tomorrow = (now_et + timedelta(days=1)).strftime('%Y-%m-%d')
+    smoke_mode = bool(max_games)
     bvp_data = load_bvp_data()
 
     if bvp_data:
@@ -503,10 +498,10 @@ def run_probability_model(max_games=None):
     today_output = save_probability_payload(
         today_payload,
         today,
-        'hr_model_data.js',
-        'hrModelData',
-        'hrModelUpdateDate',
-        'hrModelLastRunTime',
+        None if smoke_mode else 'hr_model_data.js',
+        None if smoke_mode else 'hrModelData',
+        'hrModelUpdateDate' if not smoke_mode else None,
+        'hrModelLastRunTime' if not smoke_mode else None,
         run_time_label,
     )
 
@@ -515,15 +510,18 @@ def run_probability_model(max_games=None):
     tomorrow_output = save_probability_payload(
         tomorrow_payload,
         tomorrow,
-        'hr_model_tomorrow.js',
-        'hrModelTomorrowData',
-        'hrModelTomorrowUpdateDate',
-        'hrModelTomorrowLastRunTime',
+        None if smoke_mode else 'hr_model_tomorrow.js',
+        None if smoke_mode else 'hrModelTomorrowData',
+        'hrModelTomorrowUpdateDate' if not smoke_mode else None,
+        'hrModelTomorrowLastRunTime' if not smoke_mode else None,
         run_time_label,
     )
 
     print(f"\n✅ Success! {len(today_payload)} threats updated for today and {len(tomorrow_payload)} for tomorrow.")
-    print(f"Saved: hr_model_data.js, {today_output.name}, hr_model_tomorrow.js, and {tomorrow_output.name}")
+    if smoke_mode:
+        print(f"Smoke test mode: wrote limited dated files {today_output.name} and {tomorrow_output.name} without overwriting the live site bundles.")
+    else:
+        print(f"Saved: hr_model_data.js, {today_output.name}, hr_model_tomorrow.js, and {tomorrow_output.name}")
 
 
 def parse_args():

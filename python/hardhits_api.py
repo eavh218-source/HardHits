@@ -302,6 +302,7 @@ def normalize_hrbi_prediction(row: dict[str, Any]) -> dict[str, Any]:
             "RBI": safe_int(row.get("rbi_score")),
             "Runs": safe_int(row.get("runs_score")),
             "Park": safe_int(row.get("park_score")),
+            "Weather": safe_int(row.get("weather_score")),
         },
         "source_file": row.get("source_file"),
         "imported_at_utc": iso_or_none(row.get("imported_at_utc")),

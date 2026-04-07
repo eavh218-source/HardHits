@@ -85,6 +85,8 @@ def run_update_cycle() -> bool:
     scripts_to_run = [
         # 1. Build daily matchup context first (starting points)
         "get_starters.py",
+        # 1b. Pull daily weather context for the slate
+        "get_mlb_weather.py",
         # 2. Pitcher-vs-batter analysis for situational insight
         "BvP.py",
         # 3. Hard hit dashboard details (101+ MPH events)
@@ -103,7 +105,9 @@ def run_update_cycle() -> bool:
         "update_projects.py",
         # 8. Sync stable system settings JSON -> JS for admin/scheduler tooling
         "update_system_settings.py",
-        # 9. Run lightweight regression checks after the refresh completes
+        # 9. Write the latest generated data into SQL Server
+        "load_to_sqlserver.py",
+        # 10. Run lightweight regression checks after the refresh completes
         "run_regression_suite.py",
     ]
     successful_runs = []
@@ -115,7 +119,7 @@ def run_update_cycle() -> bool:
     print("---------------------------------------")
     all_ok = len(successful_runs) == len(scripts_to_run)
     if all_ok:
-        detail = "All stable dashboard refresh and regression scripts completed successfully."
+        detail = "All stable dashboard refresh, SQL sync, and regression scripts completed successfully."
         print("[OK] All dashboards are now up to date.")
         write_site_status(True, detail)
     else:

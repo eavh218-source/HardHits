@@ -1,10 +1,11 @@
-"""Scheduled runner for live HR results, starting lineups, and SQL sync.
+"""Scheduled runner for live HR results, starting lineups, weather, and SQL sync.
 
 Recommended for Windows Task Scheduler:
     python python/hr_engine_job.py
 
-This runs the live home run refresh, the starting lineup refresh, and the
-SQL Server sync once and exits cleanly, which is ideal for a job configured
+This runs the live home run refresh, the starting lineup refresh, the daily
+weather refresh, and the SQL Server sync once and exits cleanly, which is
+ideal for a job configured
 to repeat every 15 minutes.
 
 Optional continuous mode:
@@ -29,6 +30,7 @@ LOG_DIR = ROOT / "logs"
 DEFAULT_LOG_FILE = LOG_DIR / "hr_engine_job.log"
 RESULTS_SCRIPT = ROOT / "python" / "TodaysHomers.py"
 LINEUPS_SCRIPT = ROOT / "python" / "get_starting_lineups.py"
+WEATHER_SCRIPT = ROOT / "python" / "get_mlb_weather.py"
 STATUS_SCRIPT = ROOT / "python" / "site_status.py"
 SQL_LOAD_SCRIPT = ROOT / "python" / "load_to_sqlserver.py"
 
@@ -99,6 +101,7 @@ def build_sql_sync_command() -> list[str] | None:
         "hrbi_results_summary",
         "live_home_runs",
         "starting_lineup_players",
+        "game_weather",
     ]
     if trusted or (not username and not password):
         command.append("--trusted-connection")
@@ -141,12 +144,20 @@ def run_once(skip_sql_sync: bool = False) -> bool:
         )
         logging.info("Starting-lineups refresh completed successfully")
 
+        logging.info("Starting weather refresh")
+        subprocess.run(
+            [sys.executable, str(WEATHER_SCRIPT)],
+            check=True,
+            cwd=str(ROOT),
+        )
+        logging.info("Weather refresh completed successfully")
+
         sync_live_data_to_sql(skip_sql_sync=skip_sql_sync)
-        update_site_status(True, "Live HR results, starting lineups, and SQL refresh completed successfully.")
+        update_site_status(True, "Live HR results, starting lineups, weather, and SQL refresh completed successfully.")
         return True
     except Exception:
         logging.exception("Scheduled refresh failed")
-        update_site_status(False, "Live HR, lineup, or SQL refresh failed. Check hr_engine_job.log for details.")
+        update_site_status(False, "Live HR, lineup, weather, or SQL refresh failed. Check hr_engine_job.log for details.")
         return False
 
 
