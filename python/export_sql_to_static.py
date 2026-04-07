@@ -179,6 +179,101 @@ def stringify(value: Any, default: str = "") -> str:
     return str(value)
 
 
+HR_LINEUP_EXPECTED_PA_SQL = """
+CASE lu.lineup_slot
+    WHEN 1 THEN CAST(4.5 AS decimal(4,1))
+    WHEN 2 THEN CAST(4.5 AS decimal(4,1))
+    WHEN 3 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 4 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 5 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 6 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 7 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 8 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 9 THEN CAST(3.5 AS decimal(4,1))
+    ELSE NULL
+END
+""".strip()
+
+HRBI_LINEUP_EXPECTED_PA_SQL = """
+CASE lu.lineup_slot
+    WHEN 1 THEN CAST(4.6 AS decimal(4,1))
+    WHEN 2 THEN CAST(4.5 AS decimal(4,1))
+    WHEN 3 THEN CAST(4.2 AS decimal(4,1))
+    WHEN 4 THEN CAST(4.1 AS decimal(4,1))
+    WHEN 5 THEN CAST(4.0 AS decimal(4,1))
+    WHEN 6 THEN CAST(3.8 AS decimal(4,1))
+    WHEN 7 THEN CAST(3.7 AS decimal(4,1))
+    WHEN 8 THEN CAST(3.5 AS decimal(4,1))
+    WHEN 9 THEN CAST(3.4 AS decimal(4,1))
+    ELSE NULL
+END
+""".strip()
+
+
+def build_prediction_export_sql(
+    table: str,
+    *,
+    expected_pa_sql: str,
+    probability_cap: float,
+    include_confidence_band: bool = False,
+    status_fallback_sql: str = "p.lineup_status",
+) -> str:
+    confidence_band_sql = """
+            ,
+            CASE
+                WHEN adjusted.probability >= 8.0 THEN 'High Confidence'
+                WHEN adjusted.probability >= 5.0 THEN 'Standard'
+                WHEN adjusted.probability >= 3.0 THEN 'Watchlist'
+                ELSE 'Not Modeled'
+            END AS confidence_band
+    """ if include_confidence_band else ""
+
+    return f"""
+        SELECT
+            p.*,
+            lineup.lineup_slot AS lineup_slot,
+            lineup.expected_pa AS expected_pa,
+            lineup.lineup_status AS lineup_status,
+            adjusted.probability AS probability{confidence_band_sql}
+        FROM dbo.{table} AS p
+        LEFT JOIN dbo.starting_lineup_players AS lu
+            ON lu.lineup_date = p.model_date
+           AND lu.player_name = p.player_name
+        OUTER APPLY (
+            SELECT
+                COALESCE(CAST(lu.lineup_slot AS nvarchar(10)), CAST(p.lineup_slot AS nvarchar(10)), 'TBD') AS lineup_slot,
+                CAST(COALESCE({expected_pa_sql}, p.expected_pa, 3.5) AS decimal(4,1)) AS expected_pa,
+                CAST(COALESCE(NULLIF(p.expected_pa, 0), 3.5) AS decimal(4,1)) AS base_expected_pa,
+                COALESCE(
+                    CASE
+                        WHEN lu.player_name IS NOT NULL AND lu.lineup_slot IS NOT NULL
+                            THEN CONCAT('Confirmed • Slot ', CAST(lu.lineup_slot AS nvarchar(10)), ' • ', COALESCE(lu.game_status, 'Lineup Posted'))
+                        WHEN lu.player_name IS NOT NULL
+                            THEN CONCAT('Confirmed • ', COALESCE(lu.game_status, 'Lineup Posted'))
+                        ELSE NULL
+                    END,
+                    {status_fallback_sql},
+                    'Lineup Pending'
+                ) AS lineup_status
+        ) AS lineup
+        OUTER APPLY (
+            SELECT CAST(
+                ROUND(
+                    CASE
+                        WHEN p.probability IS NULL THEN NULL
+                        WHEN p.probability * (lineup.expected_pa / NULLIF(lineup.base_expected_pa, 0)) > {probability_cap}
+                            THEN {probability_cap}
+                        WHEN p.probability * (lineup.expected_pa / NULLIF(lineup.base_expected_pa, 0)) < 0
+                            THEN 0.0
+                        ELSE p.probability * (lineup.expected_pa / NULLIF(lineup.base_expected_pa, 0))
+                    END,
+                    1
+                ) AS decimal(5,1)
+            ) AS probability
+        ) AS adjusted
+    """.strip()
+
+
 def serialize_assignment(name: str, value: Any, *, window: bool = False) -> str:
     lhs = f"window.{name}" if window else f"const {name}"
     if isinstance(value, str):
@@ -569,7 +664,11 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
 
         hr_model_rows = fetch_rows(
             cursor,
-            "SELECT * FROM dbo.hr_model_predictions ORDER BY model_date, probability DESC, player_name"
+            build_prediction_export_sql(
+                "hr_model_predictions",
+                expected_pa_sql=HR_LINEUP_EXPECTED_PA_SQL,
+                probability_cap=14.0,
+            ) + " ORDER BY p.model_date, adjusted.probability DESC, p.player_name"
         )
         hr_result_rows = fetch_rows(
             cursor,
@@ -577,7 +676,13 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
         )
         hrbi_model_rows = fetch_rows(
             cursor,
-            "SELECT * FROM dbo.hrbi_model_predictions ORDER BY model_date, probability DESC, player_name"
+            build_prediction_export_sql(
+                "hrbi_model_predictions",
+                expected_pa_sql=HRBI_LINEUP_EXPECTED_PA_SQL,
+                probability_cap=25.0,
+                include_confidence_band=True,
+                status_fallback_sql="'Lineup Pending'",
+            ) + " ORDER BY p.model_date, adjusted.probability DESC, p.player_name"
         )
         hrbi_result_rows = fetch_rows(
             cursor,
