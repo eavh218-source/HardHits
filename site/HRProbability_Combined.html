@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardHits | HR Probability & Results</title>
-    <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260406-admingear">
-    <script src="../data/hr_model_data.js?v=stable-20260406-lastrun"></script>
-    <script src="../data/mlb_weather.js?v=stable-20260407-ballparks"></script>
-    <script src="../data/hr_model_tomorrow.js?v=stable-20260406-lastrun"></script>
-    <script src="../data/hr_results_data.js?v=stable-20260406-lastrun"></script>
-    <script src="../data/hr_model_consolidated.js?v=stable-20260406-lastrun"></script>
-    <script src="../data/historical_index.js?v=stable-20260406-lastrun"></script>
-    <script src="../assets/hardhits-api.js?v=stable-20260406-api"></script>
+    <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260408-modalfix">
+    <script src="../data/hr_model_data.js?v=stable-20260408-modalfix"></script>
+    <script src="../data/mlb_weather.js?v=stable-20260408-modalfix"></script>
+    <script src="../data/hr_model_tomorrow.js?v=stable-20260408-modalfix"></script>
+    <script src="../data/hr_results_data.js?v=stable-20260408-modalfix"></script>
+    <script src="../data/hr_model_consolidated.js?v=stable-20260408-modalfix"></script>
+    <script src="../data/historical_index.js?v=stable-20260408-modalfix"></script>
+    <script src="../assets/hardhits-api.js?v=stable-20260408-modalfix"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -214,6 +214,28 @@
             font-weight: 500;
         }
 
+        .modal-context-layout {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+            gap: 14px;
+            align-items: start;
+        }
+
+        .modal-context-main {
+            display: grid;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            min-width: 0;
+        }
+
+        @media (max-width: 760px) {
+            .modal-context-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Summary bar for results */
         .summary-bar {
             background: var(--card);
@@ -372,7 +394,7 @@
 
 <!-- Outlier detail modal -->
 <div id="outlier-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:1000; align-items:center; justify-content:center;">
-    <div style="background: var(--card); border:1px solid var(--border); border-radius: 16px; width: min(92%, 560px); max-height: 80%; overflow:auto; padding: 20px; position: relative;">
+    <div style="background: var(--card); border:1px solid var(--border); border-radius: 16px; width: min(96%, 900px); max-height: 86%; overflow:auto; padding: 20px; position: relative;">
         <button id="close-outlier-modal" style="position:absolute; top:12px; right:12px; border:none; background: var(--border); color: var(--text); font-weight:800; border-radius:8px; padding:6px 10px; cursor:pointer;">X</button>
         <h2 id="outlier-modal-title" style="margin:0 0 10px;">Outlier Review</h2>
         <div id="outlier-modal-content" style="color: var(--text-dim); font-size:0.95rem;"></div>
@@ -694,7 +716,7 @@
         const windOutlook = context && context.wind_outlook ? String(context.wind_outlook) : 'Lookup pending';
 
         return `
-            <div style="border:1px solid var(--border); border-radius:14px; padding:14px; background:rgba(2,6,23,0.42);">
+            <div style="border:1px solid var(--border); border-radius:14px; padding:14px; background:rgba(2,6,23,0.42); min-width:0;">
                 <div class="breakdown-title">Ballpark</div>
                 ${imageSrc ? `<img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(String(venue))}" style="width:100%; max-width:220px; border-radius:14px; border:1px solid var(--border); margin:0 0 10px; background:#081120;" onerror="this.style.display='none'">` : ''}
                 <div style="display:grid; gap:8px; color: var(--text-dim); font-size:0.92rem;">
@@ -772,14 +794,14 @@
                     <div class="b-item"><span class="b-label">PARK</span><div class="stat-value">${escapeHtml(String(breakdown.Park ?? 'N/A'))}</div></div>
                 </div>
             </div>
-            <div style="margin-top: 16px; display:grid; grid-template-columns:minmax(0, 1.15fr) minmax(220px, 0.85fr); gap:14px; align-items:start;">
-                <div style="display:grid; gap:8px; color: var(--text-dim); font-size:0.92rem;">
+            <div class="modal-context-layout">
+                <div class="modal-context-main">
                     <div><b style="color:var(--text)">Trend:</b> ${escapeHtml(player.ev_trend_label || 'Stable')}</div>
                     <div><b style="color:var(--text)">Lineup:</b> ${escapeHtml(String(player.lineup_slot || 'TBD'))} • ${escapeHtml(String(player.lineup_status || 'Pending'))}</div>
                     <div><b style="color:var(--text)">Expected PA:</b> ${escapeHtml(String(player.expected_pa || 'N/A'))}</div>
                     <div><b style="color:var(--text)">Pitcher HR Risk:</b> ${escapeHtml(formatMetric(player.pitcher_hr_risk, '%'))}</div>
                     <div><b style="color:var(--text)">Pitcher FB Rate:</b> ${escapeHtml(formatMetric(player.pitcher_fb_rate, '%'))}</div>
-                    <div><b style="color:var(--text)">BvP:</b> ${escapeHtml(player.bvp_summary || 'No batter-vs-pitcher note available.')}</div>
+                    <div style="overflow-wrap:anywhere;"><b style="color:var(--text)">BvP:</b> ${escapeHtml(player.bvp_summary || 'No batter-vs-pitcher note available.')}</div>
                 </div>
                 ${ballparkHtml}
             </div>

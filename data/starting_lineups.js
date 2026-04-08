@@ -1,4 +1,4 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:53 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 04:05 UTC)
 
 const lineupUpdateDate = "2026-04-07";
 const lineupLastCompleted = "11:52 PM ET";
