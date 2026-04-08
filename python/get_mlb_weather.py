@@ -7,6 +7,8 @@ Exports:
     data/mlb_weather.json
     data/mlb_weather.js
     data/mlb_weather_YYYY-MM-DD.js
+    data/mlb_teams.json
+    data/mlb_teams.js
 
 The model engines can also import `get_weather_score_for_game()` from this module
 for a cached, file-backed weather signal with a built-in seasonal fallback.
@@ -38,38 +40,41 @@ EASTERN = ZoneInfo("America/New_York")
 COVERS_WEATHER_URL = "https://www.covers.com/sport/mlb/weather"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
-ABBR_TO_TEAM = {
-    "ARI": "Arizona Diamondbacks",
-    "ATL": "Atlanta Braves",
-    "BAL": "Baltimore Orioles",
-    "BOS": "Boston Red Sox",
-    "CHC": "Chicago Cubs",
-    "CHW": "Chicago White Sox",
-    "CIN": "Cincinnati Reds",
-    "CLE": "Cleveland Guardians",
-    "COL": "Colorado Rockies",
-    "DET": "Detroit Tigers",
-    "HOU": "Houston Astros",
-    "KCR": "Kansas City Royals",
-    "LAA": "Los Angeles Angels",
-    "LAD": "Los Angeles Dodgers",
-    "MIA": "Miami Marlins",
-    "MIL": "Milwaukee Brewers",
-    "MIN": "Minnesota Twins",
-    "NYM": "New York Mets",
-    "NYY": "New York Yankees",
-    "ATH": "Athletics",
-    "PHI": "Philadelphia Phillies",
-    "PIT": "Pittsburgh Pirates",
-    "SDP": "San Diego Padres",
-    "SFG": "San Francisco Giants",
-    "SEA": "Seattle Mariners",
-    "STL": "St. Louis Cardinals",
-    "TBR": "Tampa Bay Rays",
-    "TEX": "Texas Rangers",
-    "TOR": "Toronto Blue Jays",
-    "WSH": "Washington Nationals",
-}
+MLB_TEAM_TABLE = [
+    {"abbr": "ARI", "team": "Arizona Diamondbacks", "league": "NL", "division": "West", "ballpark_name": "Chase Field", "svg_path": "assets/generated/covers/teams/ARI.svg", "center_field_direction": "NNE"},
+    {"abbr": "ATL", "team": "Atlanta Braves", "league": "NL", "division": "East", "ballpark_name": "Truist Park", "svg_path": "assets/generated/covers/teams/ATL.svg", "center_field_direction": "NNE"},
+    {"abbr": "BAL", "team": "Baltimore Orioles", "league": "AL", "division": "East", "ballpark_name": "Oriole Park at Camden Yards", "svg_path": "assets/generated/covers/teams/BAL.svg", "center_field_direction": "NNE"},
+    {"abbr": "BOS", "team": "Boston Red Sox", "league": "AL", "division": "East", "ballpark_name": "Fenway Park", "svg_path": "assets/generated/covers/teams/BOS.svg", "center_field_direction": "ENE"},
+    {"abbr": "CHC", "team": "Chicago Cubs", "league": "NL", "division": "Central", "ballpark_name": "Wrigley Field", "svg_path": "assets/generated/covers/teams/CHC.svg", "center_field_direction": "NE"},
+    {"abbr": "CHW", "team": "Chicago White Sox", "league": "AL", "division": "Central", "ballpark_name": "Rate Field", "svg_path": "assets/generated/covers/teams/CHW.svg", "center_field_direction": "NNE"},
+    {"abbr": "CIN", "team": "Cincinnati Reds", "league": "NL", "division": "Central", "ballpark_name": "Great American Ball Park", "svg_path": "assets/generated/covers/teams/CIN.svg", "center_field_direction": "NNE"},
+    {"abbr": "CLE", "team": "Cleveland Guardians", "league": "AL", "division": "Central", "ballpark_name": "Progressive Field", "svg_path": "assets/generated/covers/teams/CLE.svg", "center_field_direction": "N"},
+    {"abbr": "COL", "team": "Colorado Rockies", "league": "NL", "division": "West", "ballpark_name": "Coors Field", "svg_path": "assets/generated/covers/teams/COL.svg", "center_field_direction": "NNE"},
+    {"abbr": "DET", "team": "Detroit Tigers", "league": "AL", "division": "Central", "ballpark_name": "Comerica Park", "svg_path": "assets/generated/covers/teams/DET.svg", "center_field_direction": "NE"},
+    {"abbr": "HOU", "team": "Houston Astros", "league": "AL", "division": "West", "ballpark_name": "Daikin Park", "svg_path": "assets/generated/covers/teams/HOU.svg", "center_field_direction": "NNE"},
+    {"abbr": "KCR", "team": "Kansas City Royals", "league": "AL", "division": "Central", "ballpark_name": "Kauffman Stadium", "svg_path": "assets/generated/covers/teams/KCR.svg", "center_field_direction": "NNE"},
+    {"abbr": "LAA", "team": "Los Angeles Angels", "league": "AL", "division": "West", "ballpark_name": "Angel Stadium", "svg_path": "assets/generated/covers/teams/LAA.svg", "center_field_direction": "N"},
+    {"abbr": "LAD", "team": "Los Angeles Dodgers", "league": "NL", "division": "West", "ballpark_name": "UNIQLO Field at Dodger Stadium", "svg_path": "assets/generated/covers/teams/LAD.svg", "center_field_direction": "NNE"},
+    {"abbr": "MIA", "team": "Miami Marlins", "league": "NL", "division": "East", "ballpark_name": "loanDepot park", "svg_path": "assets/generated/covers/teams/MIA.svg", "center_field_direction": "N"},
+    {"abbr": "MIL", "team": "Milwaukee Brewers", "league": "NL", "division": "Central", "ballpark_name": "American Family Field", "svg_path": "assets/generated/covers/teams/MIL.svg", "center_field_direction": "NNE"},
+    {"abbr": "MIN", "team": "Minnesota Twins", "league": "AL", "division": "Central", "ballpark_name": "Target Field", "svg_path": "assets/generated/covers/teams/MIN.svg", "center_field_direction": "NNE"},
+    {"abbr": "NYM", "team": "New York Mets", "league": "NL", "division": "East", "ballpark_name": "Citi Field", "svg_path": "assets/generated/covers/teams/NYM.svg", "center_field_direction": "NNE"},
+    {"abbr": "NYY", "team": "New York Yankees", "league": "AL", "division": "East", "ballpark_name": "Yankee Stadium", "svg_path": "assets/generated/covers/teams/NYY.svg", "center_field_direction": "NNE"},
+    {"abbr": "ATH", "team": "Athletics", "league": "AL", "division": "West", "ballpark_name": "Sutter Health Park", "svg_path": "assets/generated/covers/teams/ATH.svg", "center_field_direction": "NNE"},
+    {"abbr": "PHI", "team": "Philadelphia Phillies", "league": "NL", "division": "East", "ballpark_name": "Citizens Bank Park", "svg_path": "assets/generated/covers/teams/PHI.svg", "center_field_direction": "NNE"},
+    {"abbr": "PIT", "team": "Pittsburgh Pirates", "league": "NL", "division": "Central", "ballpark_name": "PNC Park", "svg_path": "assets/generated/covers/teams/PIT.svg", "center_field_direction": "NNE"},
+    {"abbr": "SDP", "team": "San Diego Padres", "league": "NL", "division": "West", "ballpark_name": "Petco Park", "svg_path": "assets/generated/covers/teams/SDP.svg", "center_field_direction": "N"},
+    {"abbr": "SFG", "team": "San Francisco Giants", "league": "NL", "division": "West", "ballpark_name": "Oracle Park", "svg_path": "assets/generated/covers/teams/SFG.svg", "center_field_direction": "NE"},
+    {"abbr": "SEA", "team": "Seattle Mariners", "league": "AL", "division": "West", "ballpark_name": "T-Mobile Park", "svg_path": "assets/generated/covers/teams/SEA.svg", "center_field_direction": "NNE"},
+    {"abbr": "STL", "team": "St. Louis Cardinals", "league": "NL", "division": "Central", "ballpark_name": "Busch Stadium", "svg_path": "assets/generated/covers/teams/STL.svg", "center_field_direction": "NE"},
+    {"abbr": "TBR", "team": "Tampa Bay Rays", "league": "AL", "division": "East", "ballpark_name": "Tropicana Field", "svg_path": "assets/generated/covers/teams/TBR.svg", "center_field_direction": "NNE"},
+    {"abbr": "TEX", "team": "Texas Rangers", "league": "AL", "division": "West", "ballpark_name": "Globe Life Field", "svg_path": "assets/generated/covers/teams/TEX.svg", "center_field_direction": "NNE"},
+    {"abbr": "TOR", "team": "Toronto Blue Jays", "league": "AL", "division": "East", "ballpark_name": "Rogers Centre", "svg_path": "assets/generated/covers/teams/TOR.svg", "center_field_direction": "NNE"},
+    {"abbr": "WSH", "team": "Washington Nationals", "league": "NL", "division": "East", "ballpark_name": "Nationals Park", "svg_path": "assets/generated/covers/teams/WSH.svg", "center_field_direction": "N"},
+]
+
+TEAM_METADATA_BY_ABBR = {row["abbr"]: dict(row) for row in MLB_TEAM_TABLE}
+ABBR_TO_TEAM = {abbr: row["team"] for abbr, row in TEAM_METADATA_BY_ABBR.items()}
 
 ABBR_ALIASES = {
     "AZ": "ARI",
@@ -79,59 +84,24 @@ ABBR_ALIASES = {
     "SF": "SFG",
     "TB": "TBR",
     "WSN": "WSH",
-    "WAS": "WSH",
 }
 
-DISPLAY_NAME_TO_ABBR = {
-    "Arizona": "ARI",
-    "Atlanta": "ATL",
-    "Baltimore": "BAL",
-    "Boston": "BOS",
-    "Chi. Cubs": "CHC",
-    "Chi. White Sox": "CHW",
-    "Cincinnati": "CIN",
-    "Cleveland": "CLE",
-    "Colorado": "COL",
-    "Detroit": "DET",
-    "Houston": "HOU",
-    "Kansas City": "KCR",
-    "LA Angels": "LAA",
-    "LA Dodgers": "LAD",
-    "Miami": "MIA",
-    "Milwaukee": "MIL",
-    "Minnesota": "MIN",
-    "NY Mets": "NYM",
-    "NY Yankees": "NYY",
-    "Athletics": "ATH",
-    "Philadelphia": "PHI",
-    "Pittsburgh": "PIT",
-    "San Diego": "SDP",
-    "San Francisco": "SFG",
-    "Seattle": "SEA",
-    "St. Louis": "STL",
-    "Tampa Bay": "TBR",
-    "Texas": "TEX",
-    "Toronto": "TOR",
-    "Washington": "WSH",
-    "WAS": "WSH",
-}
-
-TEAM_TO_ABBR = {team: abbr for abbr, team in ABBR_TO_TEAM.items()}
+TEAM_TO_ABBR = {row["team"]: row["abbr"] for row in MLB_TEAM_TABLE}
 TEAM_TO_ABBR.update({
     "Oakland Athletics": "ATH",
     "Athletics": "ATH",
 })
 
 INDOOR_OR_RETRACTABLE_VENUES = {
-    "american family field",
-    "chase field",
+    TEAM_METADATA_BY_ABBR["MIL"]["ballpark_name"].lower(),
+    TEAM_METADATA_BY_ABBR["ARI"]["ballpark_name"].lower(),
     "globelife field",
-    "globe life field",
-    "loanDepot park".lower(),
+    TEAM_METADATA_BY_ABBR["TEX"]["ballpark_name"].lower(),
+    TEAM_METADATA_BY_ABBR["MIA"]["ballpark_name"].lower(),
     "minute maid park",
-    "rogers centre",
-    "t-mobile park",
-    "tropicana field",
+    TEAM_METADATA_BY_ABBR["TOR"]["ballpark_name"].lower(),
+    TEAM_METADATA_BY_ABBR["SEA"]["ballpark_name"].lower(),
+    TEAM_METADATA_BY_ABBR["TBR"]["ballpark_name"].lower(),
 }
 
 COMPASS_TO_DEGREES = {
@@ -154,35 +124,9 @@ COMPASS_TO_DEGREES = {
 }
 
 BALLPARK_CF_DIRECTIONS = {
-    "American Family Field": "NNE",
-    "Angel Stadium": "N",
-    "Busch Stadium": "NE",
-    "Citi Field": "NNE",
-    "Citizens Bank Park": "NNE",
-    "Comerica Park": "NE",
-    "Coors Field": "NNE",
-    "Daikin Park": "NNE",
-    "Fenway Park": "ENE",
-    "Globe Life Field": "NNE",
-    "Great American Ball Park": "NNE",
-    "Kauffman Stadium": "NNE",
-    "Nationals Park": "N",
-    "Oracle Park": "NE",
-    "Oriole Park at Camden Yards": "NNE",
-    "PNC Park": "NNE",
-    "Petco Park": "N",
-    "Progressive Field": "N",
-    "Rate Field": "NNE",
-    "Rogers Centre": "NNE",
-    "Sutter Health Park": "NNE",
-    "T-Mobile Park": "NNE",
-    "Target Field": "NNE",
-    "Tropicana Field": "NNE",
-    "Truist Park": "NNE",
-    "UNIQLO Field at Dodger Stadium": "NNE",
-    "Wrigley Field": "NE",
-    "Yankee Stadium": "NNE",
-    "loanDepot park": "N",
+    row["ballpark_name"]: row["center_field_direction"]
+    for row in MLB_TEAM_TABLE
+    if row.get("center_field_direction")
 }
 
 BALLPARK_ALIASES = {
@@ -222,13 +166,24 @@ def normalize_abbr(value: str | None) -> str | None:
     return ABBR_ALIASES.get(cleaned, cleaned)
 
 
-def infer_abbr_from_display(display_name: str | None) -> str | None:
-    if not display_name:
+def get_team_table() -> list[dict]:
+    return [dict(row) for row in MLB_TEAM_TABLE]
+
+
+def get_team_metadata(value: str | None) -> dict | None:
+    if not value:
         return None
-    cleaned = str(display_name).strip()
-    if cleaned in DISPLAY_NAME_TO_ABBR:
-        return DISPLAY_NAME_TO_ABBR[cleaned]
-    return team_to_abbr(cleaned)
+
+    cleaned = str(value).strip()
+    normalized = normalize_abbr(cleaned)
+    if normalized and normalized in TEAM_METADATA_BY_ABBR:
+        return dict(TEAM_METADATA_BY_ABBR[normalized])
+
+    mapped_abbr = TEAM_TO_ABBR.get(cleaned)
+    if mapped_abbr and mapped_abbr in TEAM_METADATA_BY_ABBR:
+        return dict(TEAM_METADATA_BY_ABBR[mapped_abbr])
+
+    return None
 
 
 def team_to_abbr(team_name: str | None) -> str | None:
@@ -411,10 +366,6 @@ def extract_entries_from_html(html: str) -> list[dict]:
         time_node = node.select_one(".covers-CoversWeatherPage-time")
         left_logo = node.select_one(".covers-CoversWeather-teamLogoLeft")
         right_logo = node.select_one(".covers-CoversWeather-teamLogoRight")
-        if not away_abbr and left_logo:
-            away_abbr = infer_abbr_from_display(str(left_logo.get("alt") or ""))
-        if not home_abbr and right_logo:
-            home_abbr = infer_abbr_from_display(str(right_logo.get("alt") or ""))
         field_image = node.select_one(".covers-coversweather-fieldIcon")
         weather_image = node.select_one(".covers-CoversWeatherPage-weatherImg")
         wind_icon = node.select_one(".covers-coversweather-windDirectionIcon")
@@ -430,6 +381,10 @@ def extract_entries_from_html(html: str) -> list[dict]:
         precip_match = re.search(r"P\.O\.P\.:\s*([\d.]+)\s*%", text, re.I)
         wind_match = re.search(r"Wind:\s*([\d.]+)\s*mph", wind_detail.get_text(" ", strip=True) if wind_detail else text, re.I)
 
+        away_meta = get_team_metadata(away_abbr)
+        home_meta = get_team_metadata(home_abbr)
+        default_venue = (home_meta or {}).get("ballpark_name")
+
         entry = {
             "date": current_date,
             "game_time_et": time_node.get_text(" ", strip=True) if time_node else None,
@@ -441,9 +396,16 @@ def extract_entries_from_html(html: str) -> list[dict]:
             "home_display": right_logo.get("alt") if right_logo else None,
             "away_logo_url": left_logo.get("src") if left_logo else None,
             "home_logo_url": right_logo.get("src") if right_logo else None,
+            "away_league": (away_meta or {}).get("league"),
+            "home_league": (home_meta or {}).get("league"),
+            "away_division": (away_meta or {}).get("division"),
+            "home_division": (home_meta or {}).get("division"),
+            "away_svg_path": (away_meta or {}).get("svg_path"),
+            "home_svg_path": (home_meta or {}).get("svg_path"),
+            "home_ballpark_name": default_venue,
             "field_image_url": field_image.get("src") if field_image else None,
             "weather_icon_url": weather_image.get("src") if weather_image else None,
-            "venue": venue_node.get_text(" ", strip=True) if venue_node else None,
+            "venue": venue_node.get_text(" ", strip=True) if venue_node else default_venue,
             "wind_mph": safe_float(wind_match.group(1)) if wind_match else None,
             "wind_direction": wind_direction,
             "temperature_f": safe_float(temp_match.group(1)) if temp_match else None,
@@ -492,6 +454,10 @@ def save_outputs(rows: list[dict]) -> list[Path]:
 
     json_path = DATA_DIR / "mlb_weather.json"
     js_path = DATA_DIR / "mlb_weather.js"
+    teams_json_path = DATA_DIR / "mlb_teams.json"
+    teams_js_path = DATA_DIR / "mlb_teams.js"
+    team_rows = get_team_table()
+    teams_by_abbr = {row["abbr"]: row for row in team_rows}
 
     json_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
     js_path.write_text(
@@ -502,8 +468,18 @@ def save_outputs(rows: list[dict]) -> list[Path]:
         ]),
         encoding="utf-8",
     )
+    teams_json_path.write_text(json.dumps(team_rows, indent=2), encoding="utf-8")
+    teams_js_path.write_text(
+        "\n".join([
+            f"const mlbTeamTable = {json.dumps(team_rows, indent=2)};",
+            f"const mlbTeamsByAbbr = {json.dumps(teams_by_abbr, indent=2)};",
+            "window.mlbTeamTable = mlbTeamTable;",
+            "window.mlbTeamsByAbbr = mlbTeamsByAbbr;",
+        ]),
+        encoding="utf-8",
+    )
 
-    written = [json_path, js_path]
+    written = [json_path, js_path, teams_json_path, teams_js_path]
     grouped: dict[str, list[dict]] = defaultdict(list)
     for row in rows:
         grouped[str(row.get("date") or update_date)].append(row)

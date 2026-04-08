@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260408-modalfix">
     <script src="../data/hrbi_model_data.js?v=stable-20260408-modalfix"></script>
     <script src="../data/mlb_weather.js?v=stable-20260408-modalfix"></script>
+    <script src="../data/mlb_teams.js?v=stable-20260408-modalfix"></script>
     <script src="../data/hrbi_results_data.js?v=stable-20260408-modalfix"></script>
     <script src="../data/hrbi_results_index.js?v=stable-20260408-modalfix"></script>
     <script src="../assets/hardhits-api.js?v=stable-20260408-modalfix"></script>
@@ -40,6 +41,96 @@
 
         .container { max-width: 1400px; margin: 40px auto; padding: 0 20px 32px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+
+        .filter-panel {
+            margin: 0 0 24px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.88);
+            overflow: hidden;
+        }
+
+        .filter-panel summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            font-weight: 800;
+        }
+
+        .filter-panel summary::-webkit-details-marker { display: none; }
+
+        .filter-panel-body {
+            padding: 0 16px 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .filter-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin: 14px 0 12px;
+        }
+
+        .filter-summary-pill,
+        .filter-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(2, 6, 23, 0.7);
+            color: var(--text);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 8px 12px;
+        }
+
+        .filter-action-btn {
+            cursor: pointer;
+        }
+
+        .filter-action-btn:hover {
+            border-color: #475569;
+            color: var(--gold);
+        }
+
+        .team-filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .team-filter-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(2, 6, 23, 0.42);
+            font-size: 0.78rem;
+        }
+
+        .team-filter-chip input {
+            accent-color: var(--accent-2);
+            margin: 0;
+        }
+
+        .team-filter-meta {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .team-filter-meta small {
+            color: var(--text-dim);
+            font-size: 0.68rem;
+        }
 
         .card {
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(9, 13, 24, 0.98));
@@ -393,6 +484,19 @@
         <p id="subtitle" style="margin:6px 0 0; color:var(--text-dim);">Target condition: player records 3+ combined HRR+ / Hits + Runs + RBIs.</p>
     </div>
 
+    <details class="filter-panel" open>
+        <summary>
+            <span>Team Filters</span>
+            <span id="team-filter-summary" class="filter-summary-pill">All teams</span>
+        </summary>
+        <div class="filter-panel-body">
+            <div class="filter-toolbar">
+                <button id="team-filter-toggle" class="filter-action-btn" type="button">All selected • Clear all</button>
+            </div>
+            <div id="team-filter-options" class="team-filter-grid"></div>
+        </div>
+    </details>
+
     <div class="view-toggle">
         <button class="toggle-btn active" id="predictions-btn" type="button">Today's Predictions</button>
         <button class="toggle-btn" id="results-btn" type="button">Verification / Historical Results</button>
@@ -430,6 +534,9 @@
         const dateSummary = document.getElementById('date-summary');
         const predictionsBtn = document.getElementById('predictions-btn');
         const resultsBtn = document.getElementById('results-btn');
+        const teamFilterOptions = document.getElementById('team-filter-options');
+        const teamFilterToggle = document.getElementById('team-filter-toggle');
+        const teamFilterSummary = document.getElementById('team-filter-summary');
 
         let sourcePlayers = typeof hrbiModelData !== 'undefined' ? hrbiModelData : window.hrbiModelData;
         let players = Array.isArray(sourcePlayers) ? sourcePlayers : [];
@@ -444,6 +551,11 @@
             .filter((value, index, arr) => value && arr.indexOf(value) === index)
             .sort((a, b) => b.localeCompare(a));
         const hardHitsApi = window.HardHitsApi || null;
+        let visiblePlayers = [];
+        let currentView = 'predictions';
+        let currentResultsRows = Array.isArray(latestResults) ? latestResults : [];
+        let currentResultsDate = (latestSummary && latestSummary.date) || '';
+        let currentResultsSummary = latestSummary || null;
 
         function inferApiRunTime(items) {
             if (!hardHitsApi || !Array.isArray(items)) {
@@ -577,12 +689,101 @@
             return String(value == null ? '' : value).trim().toLowerCase();
         }
 
+        function normalizeTeamCode(value) {
+            return String(value == null ? '' : value).trim().toUpperCase();
+        }
+
+        function buildAvailableTeams() {
+            if (Array.isArray(window.mlbTeamTable) && window.mlbTeamTable.length) {
+                return window.mlbTeamTable.slice().sort(function (a, b) {
+                    return String(a.abbr || '').localeCompare(String(b.abbr || ''));
+                });
+            }
+
+            const seen = new Map();
+            [].concat(players || [], latestResults || []).forEach(function (row) {
+                const code = normalizeTeamCode(row && row.team);
+                if (!code || seen.has(code)) {
+                    return;
+                }
+                seen.set(code, { abbr: code, team: code, league: '', division: '' });
+            });
+            return Array.from(seen.values()).sort(function (a, b) {
+                return String(a.abbr || '').localeCompare(String(b.abbr || ''));
+            });
+        }
+
+        const availableTeams = buildAvailableTeams();
+        const selectedTeams = new Set(availableTeams.map(function (team) {
+            return normalizeTeamCode(team.abbr);
+        }));
+
+        function getFilteredRows(rows) {
+            return (rows || []).filter(function (row) {
+                return selectedTeams.has(normalizeTeamCode(row && row.team));
+            });
+        }
+
+        function updateTeamFilterState() {
+            const total = availableTeams.length;
+            const selectedCount = selectedTeams.size;
+            if (teamFilterSummary) {
+                teamFilterSummary.textContent = total && selectedCount === total
+                    ? 'All teams (' + selectedCount + '/' + total + ')'
+                    : (selectedCount + '/' + total + ' selected');
+            }
+            if (teamFilterToggle) {
+                teamFilterToggle.textContent = total && selectedCount === total
+                    ? 'All selected (' + selectedCount + '/' + total + ') • Clear all'
+                    : (selectedCount + '/' + total + ' selected • Select all');
+            }
+        }
+
+        function renderTeamFilterOptions() {
+            if (!teamFilterOptions) {
+                return;
+            }
+
+            teamFilterOptions.innerHTML = availableTeams.map(function (team) {
+                const abbr = normalizeTeamCode(team.abbr);
+                const subLabel = [team.league, team.division].filter(Boolean).join(' ');
+                return '' +
+                    '<label class="team-filter-chip" title="' + escapeHtml(team.team || abbr) + '">' +
+                        '<input type="checkbox" value="' + escapeHtml(abbr) + '" ' + (selectedTeams.has(abbr) ? 'checked' : '') + '>' +
+                        '<span class="team-filter-meta">' +
+                            '<strong>' + escapeHtml(abbr) + '</strong>' +
+                            '<small>' + escapeHtml(subLabel || team.team || '') + '</small>' +
+                        '</span>' +
+                    '</label>';
+            }).join('');
+
+            Array.from(teamFilterOptions.querySelectorAll('input[type="checkbox"]')).forEach(function (input) {
+                input.addEventListener('change', function () {
+                    const code = normalizeTeamCode(input.value);
+                    if (input.checked) {
+                        selectedTeams.add(code);
+                    } else {
+                        selectedTeams.delete(code);
+                    }
+                    updateTeamFilterState();
+                    refreshCurrentView();
+                });
+            });
+        }
+
+        function getVisibleResultsSummary(rows, summaryData, dateStr) {
+            if (selectedTeams.size === availableTeams.length) {
+                return summaryData || buildFallbackSummary(rows, dateStr);
+            }
+            return buildFallbackSummary(getFilteredRows(rows), dateStr);
+        }
+
         function formatMetric(value, suffix) {
             const numericValue = Number(value);
             return Number.isFinite(numericValue) ? String(numericValue) + (suffix || '') : 'N/A';
         }
 
-        const weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
+        let weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
 
         function slugify(value) {
             return String(value == null ? '' : value)
@@ -684,8 +885,8 @@
 
         function getPlayerFromCard(card) {
             const index = Number(card.getAttribute('data-player-index'));
-            if (Number.isInteger(index) && players[index]) {
-                return players[index];
+            if (Number.isInteger(index) && visiblePlayers[index]) {
+                return visiblePlayers[index];
             }
 
             const playerName = normalizeKey(card.getAttribute('data-player-name'));
@@ -798,7 +999,17 @@
                 return;
             }
 
-            dash.innerHTML = predictionPlayers.map(function (p, index) {
+            visiblePlayers = getFilteredRows(predictionPlayers);
+            if (!visiblePlayers.length) {
+                const emptyTitle = selectedTeams.size === 0 ? '0 teams selected' : 'No matching teams on this slate';
+                const emptyMessage = selectedTeams.size === 0
+                    ? 'Use the team filter above to select one or more clubs.'
+                    : 'The selected teams do not have any HRR+ player cards in the current slate.';
+                renderEmptyState(emptyTitle, emptyMessage);
+                return;
+            }
+
+            dash.innerHTML = visiblePlayers.map(function (p, index) {
                 const tierClass = p.probability >= 8.0 ? 'high' : (p.probability >= 5.0 ? 'std' : 'watch');
                 const breakdown = p.breakdown || {};
                 const safeName = escapeHtml(p.name || 'Unknown');
@@ -884,12 +1095,16 @@
         }
 
         function renderResultsCards(rows) {
-            const visibleRows = (rows || []).filter(function (row) {
+            const visibleRows = getFilteredRows(rows).filter(function (row) {
                 return row.classification === 'Win' || row.classification === 'Loss' || row.classification === 'Outlier';
             });
 
             if (!visibleRows.length) {
-                renderEmptyState('No Verification Data Found', 'Run <code>python python/hrbi_results_evaluator.py --date YYYY-MM-DD</code> to generate <code>data/hrbi_results_YYYY-MM-DD.js</code>.');
+                const emptyTitle = selectedTeams.size === 0 ? '0 teams selected' : 'No matching teams for this date';
+                const emptyMessage = selectedTeams.size === 0
+                    ? 'Use the team filter above to select one or more clubs.'
+                    : 'The selected teams do not have any verification cards for the current H+R+RBI view.';
+                renderEmptyState(emptyTitle, emptyMessage);
                 return;
             }
 
@@ -944,8 +1159,11 @@
             dateSummary.textContent = 'Loading verification for ' + formatLongDate(dateStr) + '...';
 
             function applyLoadedData(modelRows, rows, summaryData) {
-                renderVerificationSummary(summaryData, dateStr);
-                renderResultsCards(rows, modelRows);
+                currentResultsRows = Array.isArray(rows) ? rows : [];
+                currentResultsDate = dateStr;
+                currentResultsSummary = summaryData || buildFallbackSummary(currentResultsRows, dateStr);
+                renderVerificationSummary(getVisibleResultsSummary(currentResultsRows, currentResultsSummary, currentResultsDate), currentResultsDate);
+                renderResultsCards(currentResultsRows, modelRows);
                 dateSummary.textContent = 'Showing verification for ' + formatLongDate(dateStr);
             }
 
@@ -1020,7 +1238,17 @@
             loadResultsForDate(defaultDate);
         }
 
+        function refreshCurrentView() {
+            if (currentView === 'results') {
+                renderVerificationSummary(getVisibleResultsSummary(currentResultsRows, currentResultsSummary, currentResultsDate), currentResultsDate);
+                renderResultsCards(currentResultsRows);
+                return;
+            }
+            renderPredictionCards(players);
+        }
+
         function setView(view) {
+            currentView = view;
             predictionsBtn.classList.toggle('active', view === 'predictions');
             resultsBtn.classList.toggle('active', view === 'results');
 
@@ -1047,12 +1275,29 @@
             setView('results');
         });
 
+        if (teamFilterToggle) {
+            teamFilterToggle.addEventListener('click', function () {
+                if (selectedTeams.size === availableTeams.length) {
+                    selectedTeams.clear();
+                } else {
+                    availableTeams.forEach(function (team) {
+                        selectedTeams.add(normalizeTeamCode(team.abbr));
+                    });
+                }
+                updateTeamFilterState();
+                renderTeamFilterOptions();
+                refreshCurrentView();
+            });
+        }
+
         dateSelect.addEventListener('change', function (event) {
             if (event.target.value) {
                 loadResultsForDate(event.target.value);
             }
         });
 
+        updateTeamFilterState();
+        renderTeamFilterOptions();
         setView('predictions');
         bootstrapApiData().then(function (loadedFromApi) {
             if (!loadedFromApi) {
