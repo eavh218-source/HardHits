@@ -64,8 +64,8 @@
       <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Chicago White Sox</text>
 
       <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Rate Field</text>
-      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 35.0°F   •   Wind: 8.1 mph ESE</text>
-      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 51.64%   •   Rain: —%</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 36.2°F   •   Wind: 9.9 mph ESE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 47.58%   •   Rain: —%</text>
       <image href="covers/ballparks/rate-field.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
     </g>
     
@@ -193,7 +193,7 @@
       <rect x="0" y="0" rx="18" ry="18" width="460" height="210" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
       <rect x="0" y="0" rx="18" ry="18" width="460" height="58" fill="#111827" />
       <text x="20" y="28" font-size="16" font-weight="700" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">6:45 PM ET</text>
-      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 43</text>
+      <text x="440" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">Weather 44</text>
 
       
         <g>
@@ -214,8 +214,8 @@
       <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Boston Red Sox</text>
 
       <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Fenway Park</text>
-      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 42.0°F   •   Wind: 15.0 mph ENE</text>
-      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 59.81%   •   Rain: 22.0%</text>
+      <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 43.1°F   •   Wind: 13.9 mph ENE</text>
+      <text x="20" y="186" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Humidity: 48.74%   •   Rain: 6.0%</text>
       <image href="covers/ballparks/fenway-park.png" x="270" y="122" width="168" height="56" opacity="0.35" preserveAspectRatio="xMidYMid meet" />
     </g>
     
@@ -235,13 +235,13 @@
       
         <g>
           <circle cx="412" cy="95" r="28" fill="#ffffff" opacity="0.95" />
-          <image href="covers/teams/WAS.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
-          <circle cx="412" cy="95" r="28" fill="none" stroke="#94a3b8" stroke-width="3" />
+          <image href="covers/teams/WSH.svg" x="386" y="69" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+          <circle cx="412" cy="95" r="28" fill="none" stroke="#14225A" stroke-width="3" />
         </g>
         
 
       <text x="92" y="87" font-size="18" font-weight="800" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">St. Louis Cardinals</text>
-      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at WAS</text>
+      <text x="92" y="108" font-size="14" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif">at Washington Nationals</text>
 
       <text x="20" y="142" font-size="15" font-weight="700" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif">🏟 Nationals Park</text>
       <text x="20" y="166" font-size="13" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif">Temp: 51.0°F   •   Wind: 13.9 mph SSE</text>

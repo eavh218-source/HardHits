@@ -1,4 +1,4 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 17:41 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 18:26 UTC)
 
 window.hrModelUpdateDate_2026_04_09 = "2026-04-09";
 window.hrModelLastRunTime_2026_04_09 = "11:52 AM ET";
