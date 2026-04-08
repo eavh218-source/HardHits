@@ -1,5 +1,5 @@
 window.hrUpdateDate_2026_04_07 = '2026-04-07';
-window.hrLastCompleted_2026_04_07 = '10:22 PM ET';
+window.hrLastCompleted_2026_04_07 = '11:22 PM ET';
 window.todaysHRData_2026_04_07 = [
   {
     "date": "2026-04-07",
@@ -224,6 +224,21 @@ window.todaysHRData_2026_04_07 = [
     "launch_angle": 25.0,
     "distance": 436.0,
     "dist": 436.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-07",
+    "batter": "Mickey Moniak",
+    "name": "Mickey Moniak",
+    "batter_team": "Colorado Rockies",
+    "team": "Colorado Rockies",
+    "pitcher": "Kai-Wei Teng",
+    "pitcher_team": "Houston Astros",
+    "exit_velo": 97.0,
+    "ev": 97.0,
+    "launch_angle": 39.0,
+    "distance": 426.0,
+    "dist": 426.0,
     "status": "\ud83c\udfaf HOME RUN"
   },
   {

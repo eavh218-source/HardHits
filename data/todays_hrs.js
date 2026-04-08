@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 02:36 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:34 UTC)
 
 const hrUpdateDate = "2026-04-07";
-const hrLastCompleted = "10:24 PM ET";
+const hrLastCompleted = "11:22 PM ET";
 const todaysHRData = [
   {
     "date": "2026-04-07",
@@ -166,6 +166,21 @@ const todaysHRData = [
     "launch_angle": 21.0,
     "distance": 388.0,
     "dist": 388.0,
+    "status": "🎯 HOME RUN"
+  },
+  {
+    "date": "2026-04-07",
+    "batter": "Mickey Moniak",
+    "name": "Mickey Moniak",
+    "batter_team": "Colorado Rockies",
+    "team": "Colorado Rockies",
+    "pitcher": "Kai-Wei Teng",
+    "pitcher_team": "Houston Astros",
+    "exit_velo": 97.0,
+    "ev": 97.0,
+    "launch_angle": 39.0,
+    "distance": 426.0,
+    "dist": 426.0,
     "status": "🎯 HOME RUN"
   },
   {

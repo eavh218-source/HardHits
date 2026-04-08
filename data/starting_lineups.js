@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 02:36 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:34 UTC)
 
 const lineupUpdateDate = "2026-04-07";
-const lineupLastCompleted = "10:24 PM ET";
+const lineupLastCompleted = "11:22 PM ET";
 const startingLineups = [
   {
     "date": "2026-04-07",
@@ -646,9 +646,9 @@ const startingLineups = [
     "away_team": "Detroit Tigers",
     "home_team": "Minnesota Twins",
     "game_time_et": "7:40 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "In Progress",
+    "reason": "Final",
     "minutes_to_first_pitch": null,
     "away_lineup": [
       {
@@ -752,9 +752,9 @@ const startingLineups = [
     "away_team": "Houston Astros",
     "home_team": "Colorado Rockies",
     "game_time_et": "8:40 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "In Progress",
+    "reason": "Final",
     "minutes_to_first_pitch": null,
     "away_lineup": [
       {
@@ -799,20 +799,20 @@ const startingLineups = [
       },
       {
         "slot": 9,
-        "name": "Brice Matthews",
+        "name": "Joey Loperfido",
         "position": "LF"
       }
     ],
     "home_lineup": [
       {
         "slot": 1,
-        "name": "Edouard Julien",
+        "name": "Hunter Goodman",
         "position": "DH"
       },
       {
         "slot": 2,
         "name": "Mickey Moniak",
-        "position": "CF"
+        "position": "RF"
       },
       {
         "slot": 3,
@@ -822,7 +822,7 @@ const startingLineups = [
       {
         "slot": 4,
         "name": "Troy Johnston",
-        "position": "RF"
+        "position": "LF"
       },
       {
         "slot": 5,
@@ -836,8 +836,8 @@ const startingLineups = [
       },
       {
         "slot": 7,
-        "name": "Jordan Beck",
-        "position": "LF"
+        "name": "Brenton Doyle",
+        "position": "CF"
       },
       {
         "slot": 8,
@@ -1388,9 +1388,9 @@ const startingLineups = [
     "away_team": "Seattle Mariners",
     "home_team": "Texas Rangers",
     "game_time_et": "8:05 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "In Progress",
+    "reason": "Final",
     "minutes_to_first_pitch": null,
     "away_lineup": [
       {
