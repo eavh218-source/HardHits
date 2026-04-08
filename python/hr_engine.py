@@ -10,6 +10,7 @@ import statsapi
 
 from get_mlb_weather import get_weather_score_for_game
 from paths import DATA_DIR
+from system_settings import load_system_settings
 
 # Unified HR model configuration from CALCULATION_LOGIC.md
 PARK_FACTORS = {
@@ -124,11 +125,33 @@ def load_starting_lineups():
         return []
 
 
+def load_manual_injured_list():
+    try:
+        settings = load_system_settings()
+        raw_names = ((settings.get('playerExclusions') or {}).get('injured_list') or [])
+    except Exception as exc:
+        print(f"Warning: failed to load manual injured list from settings: {exc}")
+        return set()
+
+    excluded_names = set()
+    for name in raw_names:
+        normalized = normalize_name(name)
+        if normalized:
+            excluded_names.add(normalized)
+    return excluded_names
+
+
 def build_lineup_context(target_date):
     context = {
         LINEUP_EXCLUSIONS_KEY: {},
         LINEUP_EXCLUDED_IDS_KEY: set(),
     }
+
+    for player_name in load_manual_injured_list():
+        context[LINEUP_EXCLUSIONS_KEY][player_name] = {
+            'status': 'Manual injured list',
+            'status_code': 'SETTINGS',
+        }
 
     for game in load_starting_lineups():
         if str(game.get('date')) != target_date:

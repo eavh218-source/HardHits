@@ -1,5 +1,5 @@
 const hrModelTomorrowUpdateDate = '2026-04-09';
-const hrModelTomorrowLastRunTime = '12:31 PM ET';
+const hrModelTomorrowLastRunTime = '2:09 PM ET';
 const hrModelTomorrowData = [
   {
     "date": "2026-04-09",

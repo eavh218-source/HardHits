@@ -1,5 +1,5 @@
 window.hrModelUpdateDate_2026_04_09 = '2026-04-09';
-window.hrModelLastRunTime_2026_04_09 = '12:31 PM ET';
+window.hrModelLastRunTime_2026_04_09 = '2:09 PM ET';
 window.hrModelData_2026_04_09 = [
   {
     "date": "2026-04-09",

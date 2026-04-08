@@ -39,8 +39,10 @@
         .quick-link p, .project-card p, .hint, .summary-list li, .status-card p { color: var(--text-dim); }
         .settings-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom: 14px; }
         .field { display: flex; flex-direction: column; gap: 6px; }
+        .field--full { grid-column: 1 / -1; }
         .field label { font-size: 0.85rem; font-weight: 700; }
-        input { width: 100%; padding: 10px; background: #09101d; border: 1px solid var(--border); color: white; border-radius: 6px; box-sizing: border-box; }
+        input, textarea { width: 100%; padding: 10px; background: #09101d; border: 1px solid var(--border); color: white; border-radius: 6px; box-sizing: border-box; }
+        textarea { min-height: 110px; resize: vertical; font-family: Consolas, monospace; }
         .btn { display: inline-block; background: var(--accent); color: #08111d; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 800; text-decoration: none; cursor: pointer; }
         .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
         .command-output { margin-top: 12px; padding: 12px; background: #020617; color: #86efac; font-family: Consolas, monospace; font-size: 0.82rem; border-radius: 8px; white-space: pre-wrap; display: none; }
@@ -108,11 +110,15 @@
                 <label for="hr-task-name">HR engine task name (optional)</label>
                 <input id="hr-task-name" type="text" placeholder="Optional Windows Task Scheduler name">
             </div>
+            <div class="field field--full">
+                <label for="injured-list">Manual injured list exclusions (optional)</label>
+                <textarea id="injured-list" placeholder="One player per line, or separate names with commas."></textarea>
+            </div>
         </div>
         <div class="btn-row">
             <button class="btn" onclick="generateSettingsCommand()">Generate Settings Command</button>
         </div>
-        <p class="hint">The generated command updates `data/system_settings.json` and `data/system_settings.js`. Use the optional task names if you also want ready-to-copy `schtasks` sync commands.</p>
+        <p class="hint">The generated command updates `data/system_settings.json` and `data/system_settings.js`, including the optional injured-list exclusions used by the HR and HRR+ models.</p>
         <div id="settings-output" class="command-output"></div>
     </div>
 
@@ -144,6 +150,9 @@
         taskScheduler: {
             mastercontroller_task_name: '',
             hr_engine_job_task_name: ''
+        },
+        playerExclusions: {
+            injured_list: []
         }
     };
 
@@ -173,12 +182,24 @@
         `).join('');
     }
 
+    function formatNameList(names) {
+        const items = Array.isArray(names)
+            ? names.map((name) => String(name || '').trim()).filter(Boolean)
+            : [];
+        return items.length ? items.join(', ') : 'Not set';
+    }
+
     function populateSettingsForm() {
         const settings = getSettings();
+        const injuredList = Array.isArray(settings.playerExclusions?.injured_list)
+            ? settings.playerExclusions.injured_list.map((name) => String(name || '').trim()).filter(Boolean)
+            : [];
+
         document.getElementById('master-interval').value = settings.jobIntervals?.mastercontroller_minutes ?? 60;
         document.getElementById('hr-interval').value = settings.jobIntervals?.hr_engine_job_minutes ?? 30;
         document.getElementById('master-task-name').value = settings.taskScheduler?.mastercontroller_task_name ?? '';
         document.getElementById('hr-task-name').value = settings.taskScheduler?.hr_engine_job_task_name ?? '';
+        document.getElementById('injured-list').value = injuredList.join('\n');
 
         const updated = settings.updated_at_utc ? new Date(settings.updated_at_utc).toLocaleString() : 'Not saved yet';
         document.getElementById('settings-summary').innerHTML = `
@@ -187,6 +208,7 @@
                 <li><strong>HR engine interval:</strong> ${settings.jobIntervals?.hr_engine_job_minutes ?? 30} minutes</li>
                 <li><strong>MasterController task:</strong> ${settings.taskScheduler?.mastercontroller_task_name || 'Not set'}</li>
                 <li><strong>HR engine task:</strong> ${settings.taskScheduler?.hr_engine_job_task_name || 'Not set'}</li>
+                <li><strong>Manual injured list:</strong> ${injuredList.length ? `${injuredList.length} player(s) — ${formatNameList(injuredList)}` : 'Not set'}</li>
                 <li><strong>Last saved:</strong> ${updated}</li>
             </ul>
         `;
@@ -197,7 +219,15 @@
         const hr = document.getElementById('hr-interval').value || '30';
         const masterTask = document.getElementById('master-task-name').value.trim();
         const hrTask = document.getElementById('hr-task-name').value.trim();
+        const injuredRaw = document.getElementById('injured-list').value || '';
         const out = document.getElementById('settings-output');
+        const existingInjuredList = Array.isArray(getSettings().playerExclusions?.injured_list)
+            ? getSettings().playerExclusions.injured_list.map((name) => String(name || '').trim()).filter(Boolean)
+            : [];
+        const injuredNames = injuredRaw
+            .split(/\r?\n|,|;|\|/)
+            .map((value) => value.trim())
+            .filter((value, index, arr) => value && arr.findIndex((item) => item.toLowerCase() === value.toLowerCase()) === index);
 
         const cmdParts = [
             'python python/update_system_settings.py',
@@ -207,6 +237,12 @@
 
         if (masterTask) cmdParts.push(`--master-task-name "${masterTask}"`);
         if (hrTask) cmdParts.push(`--hr-task-name "${hrTask}"`);
+        if (injuredNames.length) {
+            const injuredArg = injuredNames.map((name) => name.replace(/"/g, '\\"')).join('|');
+            cmdParts.push(`--injured-list "${injuredArg}"`);
+        } else if (existingInjuredList.length) {
+            cmdParts.push('--clear-injured-list');
+        }
 
         const lines = [
             'Run this from the repo root to save the settings:',
@@ -217,6 +253,12 @@
             `python MasterController.py --loop --interval ${master}`,
             `python python/hr_engine_job.py --loop --interval ${hr}`
         ];
+
+        if (injuredNames.length) {
+            lines.push('', `Manual injured exclusions (${injuredNames.length}): ${injuredNames.join(', ')}`);
+        } else if (existingInjuredList.length) {
+            lines.push('', 'Manual injured exclusions will be cleared.');
+        }
 
         if (masterTask || hrTask) {
             lines.push('', 'Optional Task Scheduler sync commands:');

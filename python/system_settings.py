@@ -23,6 +23,9 @@ DEFAULT_SETTINGS: dict[str, Any] = {
         "mastercontroller_task_name": "",
         "hr_engine_job_task_name": "",
     },
+    "playerExclusions": {
+        "injured_list": [],
+    },
 }
 
 
