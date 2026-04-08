@@ -49,6 +49,14 @@ class RegressionSiteChecks(unittest.TestCase):
         self.assertIn("../data/todays_hrs.js", text)
         self.assertIn('data-nav="daily"', text)
 
+    def test_daily_homers_page_labels_stale_feed_explicitly(self):
+        text = read_text(SITE_DIR / "DailyHomers.html")
+        self.assertIn("Latest available (", text)
+        self.assertIn("Showing latest available results for", text)
+        self.assertIn("Latest available Statcast feed", text)
+        self.assertIn("No home runs recorded yet for", text)
+        self.assertIn("function isCurrentHrFeedDate", text)
+
     def test_lineups_page_uses_starting_lineups_data(self):
         text = read_text(SITE_DIR / "StartingLineups.html")
         self.assertIn("../data/starting_lineups.js", text)
