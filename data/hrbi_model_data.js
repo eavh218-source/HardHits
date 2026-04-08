@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 15:52 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 17:41 UTC)
 
 const hrbiModelUpdateDate = "2026-04-08";
-const hrbiModelLastRunTime = "11:37 AM ET";
+const hrbiModelLastRunTime = "11:52 AM ET";
 const hrbiModelData = [
   {
     "date": "2026-04-08",

@@ -2,7 +2,7 @@
   "site": "stable",
   "repo_root": "C:\\code\\HardHits",
   "homepage": "site/HardHits.html",
-  "generated_at_utc": "2026-04-08T15:37:22Z",
+  "generated_at_utc": "2026-04-08T14:37:22Z",
   "status": "degraded",
   "jobs": {
     "mastercontroller": {
@@ -16,7 +16,7 @@
       "label": "Live HR + lineups refresh",
       "success": true,
       "detail": "Live HR results, starting lineups, and SQL refresh completed successfully.",
-      "last_run_utc": "2026-04-08T15:37:22Z",
+      "last_run_utc": "2026-04-08T14:37:22Z",
       "log_file": "logs/hr_engine_job.log"
     }
   }
