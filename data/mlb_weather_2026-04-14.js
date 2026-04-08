@@ -1,5 +1,5 @@
 window.weatherUpdateDate_2026_04_14 = '2026-04-14';
-window.weatherLastCompleted_2026_04_14 = '6:00 AM ET';
+window.weatherLastCompleted_2026_04_14 = '11:19 AM ET';
 window.mlbWeatherData_2026_04_14 = [
   {
     "date": "2026-04-14",

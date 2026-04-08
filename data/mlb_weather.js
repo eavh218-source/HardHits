@@ -1,5 +1,5 @@
 const weatherUpdateDate = '2026-04-08';
-const weatherLastCompleted = '6:00 AM ET';
+const weatherLastCompleted = '11:19 AM ET';
 const mlbWeatherData = [
   {
     "date": "2026-04-08",
