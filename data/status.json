@@ -2,21 +2,21 @@
   "site": "stable",
   "repo_root": "C:\\code\\HardHits",
   "homepage": "site/HardHits.html",
-  "generated_at_utc": "2026-04-08T03:52:24Z",
-  "status": "healthy",
+  "generated_at_utc": "2026-04-08T14:37:22Z",
+  "status": "degraded",
   "jobs": {
     "mastercontroller": {
       "label": "Full dashboard refresh",
-      "success": true,
-      "detail": "All stable dashboard refresh and regression scripts completed successfully.",
-      "last_run_utc": "2026-04-07T11:04:07Z",
+      "success": false,
+      "detail": "Stable refresh scripts completed, but the SQL sync step failed. Check logs for details.",
+      "last_run_utc": "2026-04-08T10:42:17Z",
       "log_file": "logs/mastercontroller_job.log"
     },
     "hr_engine_job": {
       "label": "Live HR + lineups refresh",
       "success": true,
       "detail": "Live HR results, starting lineups, and SQL refresh completed successfully.",
-      "last_run_utc": "2026-04-08T03:52:24Z",
+      "last_run_utc": "2026-04-08T14:37:22Z",
       "log_file": "logs/hr_engine_job.log"
     }
   }

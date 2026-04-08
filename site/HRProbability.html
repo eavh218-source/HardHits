@@ -277,7 +277,32 @@
             return Number.isFinite(numericValue) ? `${numericValue}${suffix}` : 'N/A';
         }
 
-        const weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
+        const hardHitsApi = window.HardHitsApi || null;
+        let weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
+        const TEAM_CODE_ALIASES = {
+            ATH: ['ATH', 'OAK'], OAK: ['OAK', 'ATH'],
+            WSH: ['WSH', 'WAS'], WAS: ['WAS', 'WSH'],
+            SDP: ['SDP', 'SD'], SD: ['SD', 'SDP'],
+            TBR: ['TBR', 'TB'], TB: ['TB', 'TBR'],
+            KCR: ['KCR', 'KC'], KC: ['KC', 'KCR'],
+            SFG: ['SFG', 'SF'], SF: ['SF', 'SFG'],
+            CHW: ['CHW', 'CWS'], CWS: ['CWS', 'CHW']
+        };
+
+        async function loadApiWeather(dateStr) {
+            if (!hardHitsApi || !dateStr) {
+                return { date: dateStr || '', items: weatherRows };
+            }
+
+            const payload = await hardHitsApi.fetchJson(`/api/weather?date=${encodeURIComponent(dateStr)}`);
+            const items = Array.isArray(payload.items) ? payload.items : [];
+            if (items.length) {
+                weatherRows = items;
+                window.mlbWeatherData = items;
+                window.weatherUpdateDate = payload.date || dateStr;
+            }
+            return { date: payload.date || dateStr, items };
+        }
 
         function slugify(value) {
             return String(value ?? '')
@@ -286,19 +311,25 @@
                 .replace(/^-+|-+$/g, '') || 'ballpark';
         }
 
+        function getTeamCodeVariants(code) {
+            const normalized = String(code || '').trim().toUpperCase();
+            const variants = TEAM_CODE_ALIASES[normalized] || [normalized];
+            return new Set(variants.filter(Boolean));
+        }
+
         function getBallparkContext(player) {
             if (!player || !weatherRows.length) {
                 return null;
             }
 
             const playerDate = String(player.date || '').slice(0, 10);
-            const teamCode = String(player.team || '').trim().toUpperCase();
+            const teamCodes = getTeamCodeVariants(player.team);
 
             return weatherRows.find((row) => {
                 const rowDate = String(row.date || '').slice(0, 10);
                 const away = String(row.away_abbr || '').toUpperCase();
                 const home = String(row.home_abbr || '').toUpperCase();
-                return rowDate === playerDate && (away === teamCode || home === teamCode);
+                return rowDate === playerDate && (teamCodes.has(away) || teamCodes.has(home));
             }) || null;
         }
 
@@ -354,7 +385,15 @@
             document.body.style.overflow = '';
         }
 
-        function openPlayerModal(player) {
+        async function openPlayerModal(player) {
+            if (hardHitsApi && player && player.date) {
+                try {
+                    await loadApiWeather(String(player.date).slice(0, 10));
+                } catch (error) {
+                    console.warn('Unable to refresh weather from API, using static fallback:', error);
+                }
+            }
+
             const breakdown = player.breakdown || {};
             const opponent = player.opp_pitcher_full || player.opp_pitcher || 'TBD';
 

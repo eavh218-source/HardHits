@@ -1,5 +1,72 @@
 (function (global) {
-    const DEFAULT_API_BASE = global.HARDHITS_API_BASE_URL || 'http://127.0.0.1:8000';
+    const API_STORAGE_KEY = 'hardhits.apiBaseUrl';
+    const FALLBACK_API_BASE = 'http://127.0.0.1:8000';
+
+    function cleanBaseUrl(value) {
+        return String(value || '').trim().replace(/\/+$/, '');
+    }
+
+    function readQueryApiBase() {
+        try {
+            const params = new URLSearchParams(global.location && global.location.search ? global.location.search : '');
+            return cleanBaseUrl(params.get('api'));
+        } catch (error) {
+            return '';
+        }
+    }
+
+    function readStoredApiBase() {
+        try {
+            return cleanBaseUrl(global.localStorage ? global.localStorage.getItem(API_STORAGE_KEY) : '');
+        } catch (error) {
+            return '';
+        }
+    }
+
+    function sameOriginApiBase() {
+        try {
+            if (!global.location || !global.location.origin) {
+                return '';
+            }
+            return cleanBaseUrl(global.location.origin);
+        } catch (error) {
+            return '';
+        }
+    }
+
+    function resolveApiBaseUrl() {
+        const explicit = cleanBaseUrl(global.HARDHITS_API_BASE_URL);
+        if (explicit) {
+            return explicit;
+        }
+
+        const queryBase = readQueryApiBase();
+        if (queryBase) {
+            try {
+                if (global.localStorage) {
+                    global.localStorage.setItem(API_STORAGE_KEY, queryBase);
+                }
+            } catch (error) {
+                // ignore storage errors
+            }
+            return queryBase;
+        }
+
+        const storedBase = readStoredApiBase();
+        if (storedBase) {
+            return storedBase;
+        }
+
+        const host = String((global.location && global.location.hostname) || '').toLowerCase();
+        const originBase = sameOriginApiBase();
+        if (originBase && host && !host.endsWith('github.io')) {
+            return originBase;
+        }
+
+        return FALLBACK_API_BASE;
+    }
+
+    let apiBaseUrl = resolveApiBaseUrl();
 
     function easternDateString(offsetDays) {
         const formatter = new Intl.DateTimeFormat('en-CA', {
@@ -32,8 +99,28 @@
         }
     }
 
+    function setBaseUrl(nextBaseUrl, options) {
+        const cleaned = cleanBaseUrl(nextBaseUrl);
+        if (!cleaned) {
+            return apiBaseUrl;
+        }
+
+        apiBaseUrl = cleaned;
+        const persist = !options || options.persist !== false;
+        if (persist) {
+            try {
+                if (global.localStorage) {
+                    global.localStorage.setItem(API_STORAGE_KEY, cleaned);
+                }
+            } catch (error) {
+                // ignore storage errors
+            }
+        }
+        return apiBaseUrl;
+    }
+
     async function fetchJson(path, timeoutMs) {
-        const targetUrl = DEFAULT_API_BASE + path;
+        const normalizedPath = /^https?:\/\//i.test(String(path || '')) ? String(path) : apiBaseUrl + path;
         const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
         const timeout = window.setTimeout(function () {
             if (controller) {
@@ -42,7 +129,7 @@
         }, timeoutMs || 2500);
 
         try {
-            const response = await fetch(targetUrl, {
+            const response = await fetch(normalizedPath, {
                 headers: { 'Accept': 'application/json' },
                 signal: controller ? controller.signal : undefined,
             });
@@ -58,7 +145,10 @@
     }
 
     global.HardHitsApi = {
-        baseUrl: DEFAULT_API_BASE,
+        get baseUrl() {
+            return apiBaseUrl;
+        },
+        setBaseUrl: setBaseUrl,
         easternDateString: easternDateString,
         formatEtTime: formatEtTime,
         fetchJson: fetchJson,

@@ -1,6 +1,6 @@
-const hrModelTomorrowUpdateDate = '2026-04-09';
-const hrModelTomorrowLastRunTime = '6:08 AM ET';
-const hrModelTomorrowData = [
+window.hrModelUpdateDate_2026_04_09 = '2026-04-09';
+window.hrModelLastRunTime_2026_04_09 = '6:08 AM ET';
+window.hrModelData_2026_04_09 = [
   {
     "date": "2026-04-09",
     "name": "Amed Rosario",

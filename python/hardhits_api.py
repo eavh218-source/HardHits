@@ -327,6 +327,35 @@ def normalize_hrbi_result(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def normalize_weather_row(row: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "date": date_to_str(row.get("weather_date")),
+        "game_time_et": row.get("game_time_et") or "TBD",
+        "away_abbr": row.get("away_abbr"),
+        "home_abbr": row.get("home_abbr"),
+        "away_team": row.get("away_team"),
+        "home_team": row.get("home_team"),
+        "away_display": row.get("away_display") or row.get("away_team"),
+        "home_display": row.get("home_display") or row.get("home_team"),
+        "away_logo_url": row.get("away_logo_url"),
+        "home_logo_url": row.get("home_logo_url"),
+        "field_image_url": row.get("field_image_url"),
+        "weather_icon_url": row.get("weather_icon_url"),
+        "venue": row.get("venue"),
+        "wind_mph": safe_float(row.get("wind_mph")),
+        "wind_direction": row.get("wind_direction"),
+        "temperature_f": safe_float(row.get("temperature_f")),
+        "humidity_pct": safe_float(row.get("humidity_pct")),
+        "precip_pct": safe_float(row.get("precip_pct")),
+        "center_field_direction": row.get("center_field_direction"),
+        "wind_outlook": row.get("wind_outlook"),
+        "weather_score": safe_int(row.get("weather_score")),
+        "source": row.get("source_name") or row.get("source") or "covers",
+        "source_url": row.get("source_url"),
+        "imported_at_utc": iso_or_none(row.get("imported_at_utc")),
+    }
+
+
 def build_lineups(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     games: dict[tuple[str, str], dict[str, Any]] = {}
     for row in rows:
@@ -400,6 +429,7 @@ def api_meta() -> dict[str, Any]:
         "latest_hrbi_prediction_date": choose_date(None, "hrbi_model_predictions", "model_date"),
         "latest_hrbi_results_date": choose_date(None, "hrbi_results", "result_date"),
         "latest_lineup_date": choose_date(None, "starting_lineup_players", "lineup_date"),
+        "latest_weather_date": choose_date(None, "game_weather", "weather_date"),
     }
 
 
@@ -428,6 +458,7 @@ def api_status_freshness() -> dict[str, Any]:
         build_freshness_snapshot("HRR+ Summary", "hrbi_results_summary", "result_date"),
         build_freshness_snapshot("Live Home Runs", "live_home_runs", "update_date"),
         build_freshness_snapshot("Starting Lineups", "starting_lineup_players", "lineup_date"),
+        build_freshness_snapshot("Game Weather", "game_weather", "weather_date"),
     ]
     return {
         "status": "ok",
@@ -558,6 +589,26 @@ def hrbi_summary(
         "f1_score": safe_float(row.get("f1_score")),
         "source_file": row.get("source_file"),
     }
+
+
+@app.get("/api/weather/dates")
+def weather_dates() -> dict[str, Any]:
+    rows = query_rows(
+        "SELECT DISTINCT weather_date AS available_date FROM dbo.game_weather ORDER BY weather_date DESC"
+    )
+    return {"dates": [date_to_str(row.get("available_date")) for row in rows if row.get("available_date") is not None]}
+
+
+@app.get("/api/weather")
+def weather(
+    date: str | None = Query(default=None, description="Weather date (YYYY-MM-DD)"),
+) -> dict[str, Any]:
+    target_date = choose_date(date, "game_weather", "weather_date")
+    rows = query_rows(
+        "SELECT * FROM dbo.game_weather WHERE weather_date = ? ORDER BY game_time_et, home_abbr, away_abbr",
+        (target_date,),
+    )
+    return {"date": target_date, "count": len(rows), "items": [normalize_weather_row(row) for row in rows]}
 
 
 @app.get("/api/lineups")

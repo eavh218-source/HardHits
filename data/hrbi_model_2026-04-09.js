@@ -1,6 +1,6 @@
-const hrbiModelTomorrowUpdateDate = '2026-04-09';
-const hrbiModelTomorrowLastRunTime = '6:26 AM ET';
-const hrbiModelTomorrowData = [
+window.hrbiModelUpdateDate_2026_04_09 = '2026-04-09';
+window.hrbiModelLastRunTime_2026_04_09 = '6:26 AM ET';
+window.hrbiModelData_2026_04_09 = [
   {
     "date": "2026-04-09",
     "name": "Ronny Mauricio",
