@@ -2,7 +2,7 @@ const siteStatus = {
   "site": "stable",
   "repo_root": "C:\\code\\HardHits",
   "homepage": "site/HardHits.html",
-  "generated_at_utc": "2026-04-07T20:22:21Z",
+  "generated_at_utc": "2026-04-08T02:22:18Z",
   "status": "healthy",
   "jobs": {
     "mastercontroller": {
@@ -16,7 +16,7 @@ const siteStatus = {
       "label": "Live HR + lineups refresh",
       "success": true,
       "detail": "Live HR results, starting lineups, and SQL refresh completed successfully.",
-      "last_run_utc": "2026-04-07T20:22:21Z",
+      "last_run_utc": "2026-04-08T02:22:18Z",
       "log_file": "logs/hr_engine_job.log"
     }
   }

@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 20:31 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 02:36 UTC)
 
 const weatherUpdateDate = "2026-04-14";
-const weatherLastCompleted = "4:23 PM ET";
+const weatherLastCompleted = "10:24 PM ET";
 const mlbWeatherData = [
   {
     "date": "2026-04-14",

@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-07 20:31 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 02:36 UTC)
 
 window.weatherUpdateDate_2026_04_10 = "2026-04-10";
-window.weatherLastCompleted_2026_04_10 = "4:23 PM ET";
+window.weatherLastCompleted_2026_04_10 = "10:24 PM ET";
 window.mlbWeatherData_2026_04_10 = [
   {
     "date": "2026-04-10",
