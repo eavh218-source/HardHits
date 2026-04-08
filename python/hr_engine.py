@@ -36,6 +36,13 @@ EXPECTED_PA = {1: 4.5, 2: 4.5, 3: 4.0, 4: 4.0, 5: 4.0, 6: 3.5, 7: 3.5, 8: 3.5, 9
 
 PLAYER_INFO_CACHE = {}
 PITCHER_CONTEXT_CACHE = {}
+LINEUP_EXCLUSIONS_KEY = '__excluded_players__'
+LINEUP_EXCLUDED_IDS_KEY = '__excluded_player_ids__'
+LINEUP_META_KEYS = {LINEUP_EXCLUSIONS_KEY, LINEUP_EXCLUDED_IDS_KEY}
+
+
+def has_lineup_entries(lineup_context):
+    return any(key not in LINEUP_META_KEYS for key in lineup_context)
 
 
 def clamp(value, low=0.0, high=100.0):
@@ -118,7 +125,10 @@ def load_starting_lineups():
 
 
 def build_lineup_context(target_date):
-    context = {}
+    context = {
+        LINEUP_EXCLUSIONS_KEY: {},
+        LINEUP_EXCLUDED_IDS_KEY: set(),
+    }
 
     for game in load_starting_lineups():
         if str(game.get('date')) != target_date:
@@ -134,6 +144,19 @@ def build_lineup_context(target_date):
                     'expected_pa': EXPECTED_PA.get(slot, 3.5),
                     'status': 'Confirmed Starter',
                 }
+
+            for distinction in game.get(f'{side}_distinctions', []) or []:
+                if not distinction.get('exclude_from_models'):
+                    continue
+                player_name = normalize_name(distinction.get('name'))
+                if not player_name:
+                    continue
+                context[LINEUP_EXCLUSIONS_KEY][player_name] = {
+                    'status': distinction.get('status') or 'Unavailable',
+                    'status_code': distinction.get('status_code') or '',
+                }
+                if distinction.get('player_id') is not None:
+                    context[LINEUP_EXCLUDED_IDS_KEY].add(distinction.get('player_id'))
 
     return context
 
@@ -326,6 +349,15 @@ def build_probability_row(game, side, roster_player, lineup_context, bvp_data, t
 
     name = roster_player['person']['fullName']
     player_id = roster_player['person']['id']
+    excluded_players = lineup_context.get(LINEUP_EXCLUSIONS_KEY, {})
+    excluded_ids = lineup_context.get(LINEUP_EXCLUDED_IDS_KEY, set())
+    if player_id in excluded_ids or normalize_name(name) in excluded_players:
+        return None
+
+    roster_status = roster_player.get('status', {}) or {}
+    roster_status_code = str(roster_status.get('code') or '').strip().upper()
+    if roster_status_code and roster_status_code != 'A':
+        return None
 
     stats = get_advanced_hitter_metrics(player_id, reference_date=reference_date)
     if not stats or stats['max_ev'] <= 104:
@@ -337,7 +369,7 @@ def build_probability_row(game, side, roster_player, lineup_context, bvp_data, t
             park_factor_value = factor
             break
 
-    lineup_known = bool(lineup_context)
+    lineup_known = has_lineup_entries(lineup_context)
     lineup_default = {
         'slot': 'TBD',
         'expected_pa': 1.0 if lineup_known else 3.5,

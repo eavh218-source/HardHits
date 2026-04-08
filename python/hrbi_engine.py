@@ -66,6 +66,13 @@ EXPECTED_PA = {1: 4.6, 2: 4.5, 3: 4.2, 4: 4.1, 5: 4.0, 6: 3.8, 7: 3.7, 8: 3.5, 9
 
 PITCHER_ID_CACHE = {}
 PROFILE_CACHE = {}
+LINEUP_EXCLUSIONS_KEY = "__excluded_players__"
+LINEUP_EXCLUDED_IDS_KEY = "__excluded_player_ids__"
+LINEUP_META_KEYS = {LINEUP_EXCLUSIONS_KEY, LINEUP_EXCLUDED_IDS_KEY}
+
+
+def has_lineup_entries(lineup_context):
+    return any(key not in LINEUP_META_KEYS for key in lineup_context)
 
 
 def clamp(value, low=0.0, high=100.0):
@@ -146,7 +153,10 @@ def load_starting_lineups(target_date=None):
 
 def build_lineup_context(target_date):
     games = load_starting_lineups(target_date)
-    context = {}
+    context = {
+        LINEUP_EXCLUSIONS_KEY: {},
+        LINEUP_EXCLUDED_IDS_KEY: set(),
+    }
 
     for game in games:
         if str(game.get("date")) != target_date:
@@ -165,6 +175,19 @@ def build_lineup_context(target_date):
                     "rbi_slot_score": LINEUP_RBI_SCORE.get(slot, 62),
                     "team": team_name,
                 }
+
+            for distinction in game.get(f"{side}_distinctions", []) or []:
+                if not distinction.get("exclude_from_models"):
+                    continue
+                player_name = normalize_name(distinction.get("name"))
+                if not player_name:
+                    continue
+                context[LINEUP_EXCLUSIONS_KEY][player_name] = {
+                    "status": distinction.get("status") or "Unavailable",
+                    "status_code": distinction.get("status_code") or "",
+                }
+                if distinction.get("player_id") is not None:
+                    context[LINEUP_EXCLUDED_IDS_KEY].add(distinction.get("player_id"))
 
     return context
 
@@ -415,6 +438,16 @@ def build_player_row(game, side, roster_player, lineup_context):
     name = roster_player["person"]["fullName"]
     player_id = roster_player["person"]["id"]
     if roster_player["position"].get("code") == "1":
+        return None
+
+    excluded_players = lineup_context.get(LINEUP_EXCLUSIONS_KEY, {})
+    excluded_ids = lineup_context.get(LINEUP_EXCLUDED_IDS_KEY, set())
+    if player_id in excluded_ids or normalize_name(name) in excluded_players:
+        return None
+
+    roster_status = roster_player.get("status", {}) or {}
+    roster_status_code = str(roster_status.get("code") or "").strip().upper()
+    if roster_status_code and roster_status_code != "A":
         return None
 
     opp_pitcher = game.get("home_probable_pitcher" if side == "away" else "away_probable_pitcher") or "TBD"
