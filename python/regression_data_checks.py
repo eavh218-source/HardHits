@@ -10,7 +10,9 @@ import json
 import re
 import sys
 import unittest
+from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -44,6 +46,50 @@ def extract_string_assignment(text: str, name: str) -> str:
         if match:
             return match.group(1)
     raise AssertionError(f"Could not find string assignment for {name}")
+
+
+def current_eastern_datetime():
+    return datetime.now(ZoneInfo("America/New_York"))
+
+
+def allowed_today_feed_dates(now_et=None) -> set[str]:
+    now_et = now_et or current_eastern_datetime()
+    allowed = {now_et.date().isoformat()}
+    if now_et.hour < 5:
+        allowed.add((now_et.date() - timedelta(days=1)).isoformat())
+    return allowed
+
+
+def extract_entry_dates(items: list[dict]) -> set[str]:
+    dates = set()
+    for item in items:
+        for key in ("date", "game_date"):
+            value = item.get(key)
+            if isinstance(value, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+                dates.add(value)
+    return dates
+
+
+class RegressionDataHelperTests(unittest.TestCase):
+    def test_extract_json_assignment_supports_const_and_window(self):
+        text = 'const sample = [{"name": "A"}];\nwindow.other = {"ok": true};'
+        self.assertEqual(extract_json_assignment(text, "sample"), [{"name": "A"}])
+        self.assertEqual(extract_json_assignment(text, "other"), {"ok": True})
+
+    def test_extract_entry_dates_prefers_iso_date_fields(self):
+        items = [
+            {"date": "2026-04-08", "name": "Player A"},
+            {"game_date": "2026-04-08", "name": "Player B"},
+            {"date": "not-a-date", "name": "Ignored"},
+        ]
+        self.assertEqual(extract_entry_dates(items), {"2026-04-08"})
+
+    def test_allowed_today_feed_dates_allows_pre_dawn_grace_window(self):
+        at_2am = datetime(2026, 4, 8, 2, 0, tzinfo=ZoneInfo("America/New_York"))
+        self.assertEqual(allowed_today_feed_dates(at_2am), {"2026-04-08", "2026-04-07"})
+
+        at_noon = datetime(2026, 4, 8, 12, 0, tzinfo=ZoneInfo("America/New_York"))
+        self.assertEqual(allowed_today_feed_dates(at_noon), {"2026-04-08"})
 
 
 class RegressionDataChecks(unittest.TestCase):
@@ -86,15 +132,45 @@ class RegressionDataChecks(unittest.TestCase):
         text = read_text(DATA_DIR / "todays_hrs.js")
         update_date = extract_string_assignment(text, "hrUpdateDate")
         last_completed = extract_string_assignment(text, "hrLastCompleted")
+        feed_status = extract_string_assignment(text, "hrFeedStatus")
         data = extract_json_assignment(text, "todaysHRData")
 
         self.assertRegex(update_date, r"\d{4}-\d{2}-\d{2}")
         self.assertTrue(last_completed)
+        self.assertIn(feed_status, {"live", "pending"})
         self.assertIsInstance(data, list)
         if data:
             sample = data[0]
             for key in ["name", "team", "pitcher", "ev", "dist"]:
                 self.assertIn(key, sample)
+
+    def test_todays_home_run_feed_matches_update_date(self):
+        text = read_text(DATA_DIR / "todays_hrs.js")
+        update_date = extract_string_assignment(text, "hrUpdateDate")
+        data = extract_json_assignment(text, "todaysHRData")
+        entry_dates = extract_entry_dates(data)
+
+        if entry_dates:
+            self.assertEqual(
+                entry_dates,
+                {update_date},
+                f"todays_hrs.js mixes entry dates {sorted(entry_dates)} but hrUpdateDate={update_date}",
+            )
+
+    def test_todays_home_run_feed_is_current_for_today_view(self):
+        text = read_text(DATA_DIR / "todays_hrs.js")
+        update_date = extract_string_assignment(text, "hrUpdateDate")
+        now_et = current_eastern_datetime()
+        allowed_dates = allowed_today_feed_dates(now_et)
+
+        self.assertIn(
+            update_date,
+            allowed_dates,
+            (
+                "todays_hrs.js is stale for the Daily Homers today view: "
+                f"hrUpdateDate={update_date}, now_et={now_et.strftime('%Y-%m-%d %H:%M %Z')}"
+            ),
+        )
 
     def test_starting_lineups_shape(self):
         text = read_text(DATA_DIR / "starting_lineups.js")
@@ -180,6 +256,6 @@ class RegressionDataChecks(unittest.TestCase):
 
 if __name__ == "__main__":
     result = unittest.TextTestRunner(verbosity=2).run(
-        unittest.defaultTestLoader.loadTestsFromTestCase(RegressionDataChecks)
+        unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__])
     )
     sys.exit(0 if result.wasSuccessful() else 1)

@@ -1,6 +1,6 @@
 import requests
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from paths import DATA_DIR
@@ -80,38 +80,51 @@ def fetch_hr_data(date_str):
     
     return found_hrs
 
-# --- MAIN LOGIC ---
-now_et = datetime.now(ZoneInfo('America/New_York'))
-today = now_et.strftime('%Y-%m-%d')
-last_completed_time = now_et.strftime('%I:%M %p ET').lstrip('0')
-hr_list = fetch_hr_data(today)
-target_date = today
+def build_live_feed(now_et=None):
+    now_et = now_et or datetime.now(ZoneInfo('America/New_York'))
+    target_date = now_et.strftime('%Y-%m-%d')
+    last_completed_time = now_et.strftime('%I:%M %p ET').lstrip('0')
+    hr_list = fetch_hr_data(target_date)
+    feed_status = 'live' if hr_list else 'pending'
 
-# If no data for today, fetch yesterday's data
-if not hr_list:
-    yesterday = (datetime.now() - timedelta(1)).strftime('%Y-%m-%d')
-    print(f"\nNo data for today ({today}). Falling back to yesterday...")
-    hr_list = fetch_hr_data(yesterday)
-    target_date = yesterday
+    if not hr_list:
+        print(
+            f"\nNo completed home runs found for today ({target_date}) yet. "
+            "Writing an empty current-day live feed instead of backfilling a prior date."
+        )
 
-# --- EXPORT ---
-output_path = DATA_DIR / 'todays_hrs.js'
-dated_output_path = DATA_DIR / f"todays_hrs_{target_date}.js"
-dated_results_path = DATA_DIR / f"hr_results_{target_date}.js"
-date_key = target_date.replace('-', '_')
+    return target_date, last_completed_time, hr_list, feed_status
 
-with open(output_path, 'w', encoding='utf-8') as f:
-    f.write(f"const hrUpdateDate = '{target_date}';\n")
-    f.write(f"const hrLastCompleted = '{last_completed_time}';\n")
-    f.write(f"const todaysHRData = {json.dumps(hr_list, indent=2)};")
 
-with open(dated_output_path, 'w', encoding='utf-8') as f:
-    f.write(f"window.hrUpdateDate_{date_key} = '{target_date}';\n")
-    f.write(f"window.hrLastCompleted_{date_key} = '{last_completed_time}';\n")
-    f.write(f"window.todaysHRData_{date_key} = {json.dumps(hr_list, indent=2)};")
+def write_hr_exports(target_date, last_completed_time, hr_list, feed_status):
+    output_path = DATA_DIR / 'todays_hrs.js'
+    dated_output_path = DATA_DIR / f"todays_hrs_{target_date}.js"
+    dated_results_path = DATA_DIR / f"hr_results_{target_date}.js"
+    date_key = target_date.replace('-', '_')
 
-with open(dated_results_path, 'w', encoding='utf-8') as f:
-    f.write(f"window.hrResultsData_{date_key} = {json.dumps(hr_list, indent=2)};")
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(f"const hrUpdateDate = '{target_date}';\n")
+        f.write(f"const hrLastCompleted = '{last_completed_time}';\n")
+        f.write(f"const hrFeedStatus = '{feed_status}';\n")
+        f.write(f"const todaysHRData = {json.dumps(hr_list, indent=2)};")
 
-print(f"\nSUCCESS: Captured {len(hr_list)} entries for {target_date}.")
-print(f"Saved: {output_path.name}, {dated_output_path.name}, and {dated_results_path.name}")
+    with open(dated_output_path, 'w', encoding='utf-8') as f:
+        f.write(f"window.hrUpdateDate_{date_key} = '{target_date}';\n")
+        f.write(f"window.hrLastCompleted_{date_key} = '{last_completed_time}';\n")
+        f.write(f"window.hrFeedStatus_{date_key} = '{feed_status}';\n")
+        f.write(f"window.todaysHRData_{date_key} = {json.dumps(hr_list, indent=2)};")
+
+    with open(dated_results_path, 'w', encoding='utf-8') as f:
+        f.write(f"window.hrResultsData_{date_key} = {json.dumps(hr_list, indent=2)};")
+
+    print(f"\nSUCCESS: Captured {len(hr_list)} entries for {target_date} ({feed_status}).")
+    print(f"Saved: {output_path.name}, {dated_output_path.name}, and {dated_results_path.name}")
+
+
+def main():
+    target_date, last_completed_time, hr_list, feed_status = build_live_feed()
+    write_hr_exports(target_date, last_completed_time, hr_list, feed_status)
+
+
+if __name__ == '__main__':
+    main()

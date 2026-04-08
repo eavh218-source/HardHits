@@ -375,7 +375,9 @@
         if (liveDate) {
             const todayOption = document.createElement('option');
             todayOption.value = 'today';
-            todayOption.textContent = `Today (${formatDateForDisplay(liveDate)})`;
+            todayOption.textContent = isCurrentHrFeedDate(liveDate)
+                ? `Today (${formatDateForDisplay(liveDate)})`
+                : `Latest available (${formatDateForDisplay(liveDate)})`;
             dateSelect.appendChild(todayOption);
         }
 
@@ -394,9 +396,17 @@
             dateSummary.textContent = 'No historical data available';
         }
 
-        if (liveHrRows.length > 0 && liveDate) {
+        if (liveDate) {
             dateSelect.value = 'today';
-            dateSummary.textContent = `Showing current results for ${formatDateForDisplay(liveDate)}`;
+            if (liveHrRows.length > 0) {
+                dateSummary.textContent = isCurrentHrFeedDate(liveDate)
+                    ? `Showing current results for ${formatDateForDisplay(liveDate)}`
+                    : `Showing latest available results for ${formatDateForDisplay(liveDate)}`;
+            } else {
+                dateSummary.textContent = isCurrentHrFeedDate(liveDate)
+                    ? `No home runs recorded yet for ${formatDateForDisplay(liveDate)}`
+                    : `No live results available for ${formatDateForDisplay(liveDate)}`;
+            }
         } else if (availableHistoricalDates.length > 0) {
             const latestHistoricalDate = [...availableHistoricalDates].sort((a, b) => b.localeCompare(a))[0];
             dateSelect.value = latestHistoricalDate;
@@ -408,7 +418,9 @@
             if (selectedDate === 'today') {
                 currentDate = null;
                 dateSummary.textContent = liveDate
-                    ? `Showing current results for ${formatDateForDisplay(liveDate)}`
+                    ? (isCurrentHrFeedDate(liveDate)
+                        ? `Showing current results for ${formatDateForDisplay(liveDate)}`
+                        : `Showing latest available results for ${formatDateForDisplay(liveDate)}`)
                     : 'Showing current results';
                 loadDailyHomers();
             } else if (selectedDate) {
@@ -425,6 +437,23 @@
         const day = date.getDate();
         const year = date.getFullYear();
         return `${month} ${day}, ${year}`;
+    }
+
+    function getCurrentEasternDateString() {
+        const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/New_York',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        }).formatToParts(new Date());
+        const values = Object.fromEntries(
+            parts.filter(part => part.type !== 'literal').map(part => [part.type, part.value])
+        );
+        return `${values.year}-${values.month}-${values.day}`;
+    }
+
+    function isCurrentHrFeedDate(dateStr = (typeof hrUpdateDate !== 'undefined' ? hrUpdateDate : '')) {
+        return Boolean(dateStr) && dateStr === getCurrentEasternDateString();
     }
 
     async function loadHistoricalResults(dateStr) {
@@ -505,14 +534,18 @@
 
     function buildLiveLabel(dateStr) {
         const liveDate = dateStr || hrUpdateDate;
+        const labelPrefix = isCurrentHrFeedDate(liveDate)
+            ? 'Statcast Live'
+            : 'Latest available Statcast feed';
         const lastCompleted = (typeof hrLastCompleted !== 'undefined' && hrLastCompleted)
             ? ` • Last completed ${hrLastCompleted}`
             : '';
-        return `Statcast Live: ${liveDate}${lastCompleted}`;
+        return `${labelPrefix}: ${liveDate}${lastCompleted}`;
     }
 
     function loadDailyHomers() {
         const contentArea = document.getElementById('content-area');
+        const summaryContainer = document.getElementById('summary-container');
         const liveRows = Array.isArray(window.todaysHRData) ? window.todaysHRData : liveHrRows;
         const modelRows = Array.isArray(window.hrModelData) ? window.hrModelData : liveModelRows;
         const liveDate = typeof hrUpdateDate !== 'undefined'
@@ -527,15 +560,23 @@
             document.getElementById('date-label').innerText = buildLiveLabel(liveDate);
         }
 
+        const noDataMessage = liveDate
+            ? (isCurrentHrFeedDate(liveDate)
+                ? `No home runs recorded yet for ${formatDateForDisplay(liveDate)}.`
+                : `No live home run results are available for ${formatDateForDisplay(liveDate)}.`)
+            : 'No Data Found';
+
         if (currentView === 'table') {
             if (!liveRows.length) {
-                contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">No Data Found</h2></div>';
+                summaryContainer.innerHTML = '';
+                contentArea.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">${noDataMessage}</h2></div>`;
                 return;
             }
             renderTableView(liveRows, modelRows);
         } else {
             if (!liveRows.length) {
-                contentArea.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">No Data Found</h2></div>';
+                summaryContainer.innerHTML = '';
+                contentArea.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;"><h2 style="color: var(--text-muted)">${noDataMessage}</h2></div>`;
                 return;
             }
             renderCardView(liveRows, modelRows);
@@ -762,7 +803,11 @@
         initializeDateSelector();
 
         const currentRows = Array.isArray(window.todaysHRData) ? window.todaysHRData : liveHrRows;
-        if (currentRows.length > 0) {
+        const liveDate = typeof hrUpdateDate !== 'undefined'
+            ? hrUpdateDate
+            : (currentRows[0] && currentRows[0].date ? currentRows[0].date : '');
+
+        if (liveDate) {
             currentDate = null;
             loadDailyHomers();
         } else if (availableHistoricalDates.length === 0) {
