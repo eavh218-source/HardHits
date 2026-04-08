@@ -1703,3 +1703,10 @@ subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Micr
 2026-04-07 23:42:50,866 | INFO | Starting starting-lineups refresh
 2026-04-07 23:42:57,072 | INFO | Starting-lineups refresh completed successfully
 2026-04-07 23:42:57,072 | INFO | Next run scheduled for 2026-04-08 12:12:44 AM
+2026-04-07 23:52:01,072 | INFO | Starting HR results refresh
+2026-04-07 23:52:07,522 | INFO | HR results refresh completed successfully
+2026-04-07 23:52:07,522 | INFO | Starting starting-lineups refresh
+2026-04-07 23:52:14,000 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 23:52:14,000 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 23:52:24,333 | INFO | SQL data sync completed successfully
+2026-04-07 23:52:24,427 | INFO | Next run scheduled for 2026-04-08 12:07:01 AM

@@ -1,5 +1,5 @@
 const lineupUpdateDate = '2026-04-07';
-const lineupLastCompleted = '11:42 PM ET';
+const lineupLastCompleted = '11:52 PM ET';
 const startingLineups = [
   {
     "date": "2026-04-07",
@@ -11,7 +11,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -633,
+    "minutes_to_first_pitch": -643,
     "away_lineup": [
       {
         "slot": 1,
@@ -153,7 +153,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -513,
+    "minutes_to_first_pitch": -523,
     "away_lineup": [
       {
         "slot": 1,
@@ -295,7 +295,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -453,
+    "minutes_to_first_pitch": -463,
     "away_lineup": [
       {
         "slot": 1,
@@ -437,7 +437,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -303,
+    "minutes_to_first_pitch": -313,
     "away_lineup": [
       {
         "slot": 1,
@@ -579,7 +579,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -303,
+    "minutes_to_first_pitch": -313,
     "away_lineup": [
       {
         "slot": 1,
@@ -721,7 +721,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -303,
+    "minutes_to_first_pitch": -313,
     "away_lineup": [
       {
         "slot": 1,
@@ -863,7 +863,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -298,
+    "minutes_to_first_pitch": -308,
     "away_lineup": [
       {
         "slot": 1,
@@ -1005,7 +1005,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -298,
+    "minutes_to_first_pitch": -308,
     "away_lineup": [
       {
         "slot": 1,
@@ -1147,7 +1147,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -278,
+    "minutes_to_first_pitch": -288,
     "away_lineup": [
       {
         "slot": 1,
@@ -1289,7 +1289,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -276,
+    "minutes_to_first_pitch": -286,
     "away_lineup": [
       {
         "slot": 1,
@@ -1431,7 +1431,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -243,
+    "minutes_to_first_pitch": -253,
     "away_lineup": [
       {
         "slot": 1,
@@ -1573,7 +1573,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -218,
+    "minutes_to_first_pitch": -228,
     "away_lineup": [
       {
         "slot": 1,
@@ -1715,7 +1715,7 @@ const startingLineups = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -183,
+    "minutes_to_first_pitch": -193,
     "away_lineup": [
       {
         "slot": 1,
@@ -1857,7 +1857,7 @@ const startingLineups = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live",
-    "minutes_to_first_pitch": -125,
+    "minutes_to_first_pitch": -135,
     "away_lineup": [
       {
         "slot": 1,
@@ -1917,10 +1917,10 @@ const startingLineups = [
       },
       {
         "slot": 9,
-        "name": "Jorge Mateo",
-        "position": "SS",
-        "jersey": "2",
-        "player_id": 622761
+        "name": "Mike Yastrzemski",
+        "position": "PH",
+        "jersey": "18",
+        "player_id": 573262
       }
     ],
     "home_lineup": [
@@ -1999,7 +1999,7 @@ const startingLineups = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live",
-    "minutes_to_first_pitch": -118,
+    "minutes_to_first_pitch": -128,
     "away_lineup": [
       {
         "slot": 1,
