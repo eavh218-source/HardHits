@@ -2121,3 +2121,223 @@ subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Micr
 2026-04-08 10:42:55,059 | INFO | Starting starting-lineups refresh
 2026-04-08 10:42:56,022 | INFO | Starting-lineups refresh completed successfully
 2026-04-08 10:42:56,022 | INFO | Next run scheduled for 2026-04-08 11:12:47 AM
+2026-04-08 10:52:04,123 | INFO | Starting HR results refresh
+2026-04-08 10:52:10,784 | INFO | HR results refresh completed successfully
+2026-04-08 10:52:10,784 | INFO | Starting starting-lineups refresh
+2026-04-08 10:52:11,667 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 10:52:11,667 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 10:52:15,187 | INFO | SQL data sync completed successfully
+2026-04-08 10:52:15,268 | INFO | Next run scheduled for 2026-04-08 11:07:04 AM
+2026-04-08 11:07:04,123 | INFO | Starting HR results refresh
+2026-04-08 11:07:10,814 | INFO | HR results refresh completed successfully
+2026-04-08 11:07:10,814 | INFO | Starting starting-lineups refresh
+2026-04-08 11:07:11,721 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 11:07:11,721 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 11:07:17,602 | INFO | SQL data sync completed successfully
+2026-04-08 11:07:17,698 | INFO | Next run scheduled for 2026-04-08 11:22:04 AM
+2026-04-08 11:12:47,702 | INFO | Starting HR results refresh
+2026-04-08 11:12:54,685 | INFO | HR results refresh completed successfully
+2026-04-08 11:12:54,685 | INFO | Starting starting-lineups refresh
+2026-04-08 11:12:55,955 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 11:12:55,955 | INFO | Next run scheduled for 2026-04-08 11:42:47 AM
+2026-04-08 11:22:04,126 | INFO | Starting HR results refresh
+2026-04-08 11:22:10,534 | INFO | HR results refresh completed successfully
+2026-04-08 11:22:10,534 | INFO | Starting starting-lineups refresh
+2026-04-08 11:22:11,746 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 11:22:11,746 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 11:22:21,981 | INFO | SQL data sync completed successfully
+2026-04-08 11:22:22,074 | INFO | Next run scheduled for 2026-04-08 11:37:04 AM
+2026-04-08 11:37:04,127 | INFO | Starting HR results refresh
+2026-04-08 11:37:10,607 | INFO | HR results refresh completed successfully
+2026-04-08 11:37:10,607 | INFO | Starting starting-lineups refresh
+2026-04-08 11:37:12,156 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 11:37:12,156 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 11:37:22,732 | INFO | SQL data sync completed successfully
+2026-04-08 11:37:22,823 | INFO | Next run scheduled for 2026-04-08 11:52:04 AM
+2026-04-08 11:42:47,704 | INFO | Starting HR results refresh
+2026-04-08 11:42:55,435 | INFO | HR results refresh completed successfully
+2026-04-08 11:42:55,435 | INFO | Starting starting-lineups refresh
+2026-04-08 11:42:57,082 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 11:42:57,082 | INFO | Next run scheduled for 2026-04-08 12:12:47 PM
+2026-04-08 11:52:04,129 | INFO | Starting HR results refresh
+2026-04-08 11:52:10,898 | INFO | HR results refresh completed successfully
+2026-04-08 11:52:10,898 | INFO | Starting starting-lineups refresh
+2026-04-08 11:52:12,527 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 11:52:12,527 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 11:52:27,613 | INFO | SQL data sync completed successfully
+2026-04-08 11:52:27,715 | INFO | Next run scheduled for 2026-04-08 12:07:04 PM
+2026-04-08 12:07:04,130 | INFO | Starting HR results refresh
+2026-04-08 12:07:10,878 | INFO | HR results refresh completed successfully
+2026-04-08 12:07:10,878 | INFO | Starting starting-lineups refresh
+2026-04-08 12:07:13,867 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 12:07:13,867 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 12:07:14,217 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 12:07:14,307 | INFO | Next run scheduled for 2026-04-08 12:22:04 PM
+2026-04-08 12:12:47,708 | INFO | Starting HR results refresh
+2026-04-08 12:12:54,449 | INFO | HR results refresh completed successfully
+2026-04-08 12:12:54,449 | INFO | Starting starting-lineups refresh
+2026-04-08 12:12:57,338 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 12:12:57,338 | INFO | Next run scheduled for 2026-04-08 12:42:47 PM
+2026-04-08 12:22:04,144 | INFO | Starting HR results refresh
+2026-04-08 12:22:12,440 | INFO | HR results refresh completed successfully
+2026-04-08 12:22:12,440 | INFO | Starting starting-lineups refresh
+2026-04-08 12:22:15,901 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 12:22:15,902 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 12:22:16,343 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 12:22:16,451 | INFO | Next run scheduled for 2026-04-08 12:37:04 PM
+2026-04-08 12:37:04,145 | INFO | Starting HR results refresh
+2026-04-08 12:37:12,773 | INFO | HR results refresh completed successfully
+2026-04-08 12:37:12,773 | INFO | Starting starting-lineups refresh
+2026-04-08 12:37:29,434 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 12:37:29,434 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 12:37:29,875 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 12:37:29,965 | INFO | Next run scheduled for 2026-04-08 12:52:04 PM
+2026-04-08 12:42:47,718 | INFO | Starting HR results refresh
+2026-04-08 12:42:57,473 | INFO | HR results refresh completed successfully
+2026-04-08 12:42:57,473 | INFO | Starting starting-lineups refresh
+2026-04-08 12:43:17,283 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 12:43:17,283 | INFO | Next run scheduled for 2026-04-08 01:12:47 PM
+2026-04-08 12:52:04,146 | INFO | Starting HR results refresh
+2026-04-08 12:52:13,437 | INFO | HR results refresh completed successfully
+2026-04-08 12:52:13,437 | INFO | Starting starting-lineups refresh
+2026-04-08 12:52:29,555 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 12:52:29,555 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 12:52:30,672 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 12:52:30,769 | INFO | Next run scheduled for 2026-04-08 01:07:04 PM
+2026-04-08 13:07:04,148 | INFO | Starting HR results refresh
+2026-04-08 13:07:11,457 | INFO | HR results refresh completed successfully
+2026-04-08 13:07:11,457 | INFO | Starting starting-lineups refresh
+2026-04-08 13:07:25,074 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 13:07:25,074 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 13:07:25,416 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 13:07:25,499 | INFO | Next run scheduled for 2026-04-08 01:22:04 PM
+2026-04-08 13:12:47,728 | INFO | Starting HR results refresh
+2026-04-08 13:12:55,550 | INFO | HR results refresh completed successfully
+2026-04-08 13:12:55,550 | INFO | Starting starting-lineups refresh
+2026-04-08 13:13:09,591 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 13:13:09,591 | INFO | Next run scheduled for 2026-04-08 01:42:47 PM
+2026-04-08 13:22:04,150 | INFO | Starting HR results refresh
+2026-04-08 13:22:11,808 | INFO | HR results refresh completed successfully
+2026-04-08 13:22:11,808 | INFO | Starting starting-lineups refresh
+2026-04-08 13:22:25,382 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 13:22:25,382 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 13:22:25,725 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 13:22:25,807 | INFO | Next run scheduled for 2026-04-08 01:37:04 PM
+2026-04-08 13:37:04,152 | INFO | Starting HR results refresh
+2026-04-08 13:37:11,907 | INFO | HR results refresh completed successfully
+2026-04-08 13:37:11,907 | INFO | Starting starting-lineups refresh
+2026-04-08 13:37:26,387 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 13:37:26,387 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 13:37:26,727 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 13:37:26,816 | INFO | Next run scheduled for 2026-04-08 01:52:04 PM
+2026-04-08 13:42:47,731 | INFO | Starting HR results refresh
+2026-04-08 13:42:55,719 | INFO | HR results refresh completed successfully
+2026-04-08 13:42:55,719 | INFO | Starting starting-lineups refresh
+2026-04-08 13:43:09,892 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 13:43:09,892 | INFO | Next run scheduled for 2026-04-08 02:12:47 PM
+2026-04-08 13:52:04,153 | INFO | Starting HR results refresh
+2026-04-08 13:52:12,916 | INFO | HR results refresh completed successfully
+2026-04-08 13:52:12,916 | INFO | Starting starting-lineups refresh
+2026-04-08 13:52:26,902 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 13:52:26,902 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 13:52:27,266 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 13:52:27,365 | INFO | Next run scheduled for 2026-04-08 02:07:04 PM
+2026-04-08 14:07:04,155 | INFO | Starting HR results refresh
+2026-04-08 14:07:13,131 | INFO | HR results refresh completed successfully
+2026-04-08 14:07:13,131 | INFO | Starting starting-lineups refresh
+2026-04-08 14:07:27,406 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 14:07:27,406 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 14:07:27,780 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 14:07:27,871 | INFO | Next run scheduled for 2026-04-08 02:22:04 PM
+2026-04-08 14:12:47,732 | INFO | Starting HR results refresh
+2026-04-08 14:13:01,006 | INFO | HR results refresh completed successfully
+2026-04-08 14:13:01,006 | INFO | Starting starting-lineups refresh
+2026-04-08 14:13:25,109 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 14:13:25,109 | INFO | Next run scheduled for 2026-04-08 02:42:47 PM
+2026-04-08 14:22:04,155 | INFO | Starting HR results refresh
+2026-04-08 14:22:06,776 | INFO | HR results refresh completed successfully
+2026-04-08 14:22:06,776 | INFO | Starting starting-lineups refresh
+2026-04-08 14:22:23,435 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 14:22:23,435 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 14:22:23,821 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    )
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+    return
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-08 14:22:23,907 | INFO | Next run scheduled for 2026-04-08 02:37:04 PM

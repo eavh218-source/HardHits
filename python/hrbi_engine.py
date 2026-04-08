@@ -12,6 +12,7 @@ from get_mlb_weather import get_weather_score_for_game
 from hrbi_live import live_hrbi_probability
 from load_to_sqlserver import get_sql_sync_blocker, sync_to_sql_from_environment
 from paths import DATA_DIR
+from system_settings import load_system_settings
 
 PARK_HITS_FACTORS = {
     "Boston Red Sox": 1.07,
@@ -152,12 +153,34 @@ def load_starting_lineups(target_date=None):
     return []
 
 
+def load_manual_injured_list():
+    try:
+        settings = load_system_settings()
+        raw_names = ((settings.get("playerExclusions") or {}).get("injured_list") or [])
+    except Exception as exc:
+        print(f"Warning: failed to load manual injured list from settings: {exc}")
+        return set()
+
+    excluded_names = set()
+    for name in raw_names:
+        normalized = normalize_name(name)
+        if normalized:
+            excluded_names.add(normalized)
+    return excluded_names
+
+
 def build_lineup_context(target_date):
     games = load_starting_lineups(target_date)
     context = {
         LINEUP_EXCLUSIONS_KEY: {},
         LINEUP_EXCLUDED_IDS_KEY: set(),
     }
+
+    for player_name in load_manual_injured_list():
+        context[LINEUP_EXCLUSIONS_KEY][player_name] = {
+            "status": "Manual injured list",
+            "status_code": "SETTINGS",
+        }
 
     for game in games:
         if str(game.get("date")) != target_date:
