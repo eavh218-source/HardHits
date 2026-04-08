@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:34 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:53 UTC)
 
 const hrModelTomorrowUpdateDate = "2026-04-08";
-const hrModelTomorrowLastRunTime = "11:22 PM ET";
+const hrModelTomorrowLastRunTime = "11:52 PM ET";
 const hrModelTomorrowData = [
   {
     "date": "2026-04-08",
@@ -16,7 +16,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 62,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 1.74,
     "ev_trend_label": "Stable",
@@ -35,7 +35,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 62.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -54,7 +54,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 62,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 3.98,
     "ev_trend_label": "Heating Up",
@@ -73,7 +73,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 62.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -92,7 +92,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 1.5,
     "ev_trend_label": "Stable",
@@ -111,7 +111,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -130,7 +130,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -2.92,
     "ev_trend_label": "Cooling Off",
@@ -149,7 +149,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -168,7 +168,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 10.26,
     "ev_trend_label": "Heating Up",
@@ -187,7 +187,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -206,7 +206,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 58,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -0.96,
     "ev_trend_label": "Stable",
@@ -225,7 +225,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 58.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -244,7 +244,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 58,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 2.05,
     "ev_trend_label": "Heating Up",
@@ -263,7 +263,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 58.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -282,7 +282,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 2.12,
     "ev_trend_label": "Heating Up",
@@ -301,7 +301,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -320,7 +320,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 0.07,
     "ev_trend_label": "Stable",
@@ -339,7 +339,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -358,7 +358,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 62,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 0.2,
     "ev_trend_label": "Stable",
@@ -377,7 +377,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 62.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -396,7 +396,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 4.39,
     "ev_trend_label": "Heating Up",
@@ -415,7 +415,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -434,7 +434,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 62,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 0.78,
     "ev_trend_label": "Stable",
@@ -453,7 +453,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 62.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -472,7 +472,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -1.55,
     "ev_trend_label": "Stable",
@@ -491,7 +491,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -510,7 +510,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 62,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -1.66,
     "ev_trend_label": "Stable",
@@ -529,7 +529,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 62.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -548,7 +548,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -2.49,
     "ev_trend_label": "Cooling Off",
@@ -567,7 +567,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -586,7 +586,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 0.16,
     "ev_trend_label": "Stable",
@@ -605,7 +605,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -624,7 +624,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 1.74,
     "ev_trend_label": "Stable",
@@ -643,7 +643,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -662,7 +662,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 62,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -0.21,
     "ev_trend_label": "Stable",
@@ -681,7 +681,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 62.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -700,7 +700,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -5.82,
     "ev_trend_label": "Cooling Off",
@@ -719,7 +719,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -738,7 +738,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -0.48,
     "ev_trend_label": "Stable",
@@ -757,7 +757,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -776,7 +776,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -0.52,
     "ev_trend_label": "Stable",
@@ -795,7 +795,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -814,7 +814,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -0.55,
     "ev_trend_label": "Stable",
@@ -833,7 +833,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -852,7 +852,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -3.11,
     "ev_trend_label": "Cooling Off",
@@ -871,7 +871,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -890,7 +890,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 42,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 0.0,
     "ev_trend_label": "Stable",
@@ -909,7 +909,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 42.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -919,7 +919,7 @@ const hrModelTomorrowData = [
     "date": "2026-04-08",
     "name": "Jake Mangum",
     "team": "PIT",
-    "probability": 2.6,
+    "probability": 2.5,
     "breakdown": {
       "Power": 0,
       "Form": 0,
@@ -928,7 +928,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 58,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": 0.4,
     "ev_trend_label": "Stable",
@@ -947,7 +947,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 58.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,
@@ -966,7 +966,7 @@ const hrModelTomorrowData = [
       "Pitcher": 16,
       "Platoon": 62,
       "History": 50,
-      "Weather": 46
+      "Weather": 44
     },
     "ev_trend_val": -4.63,
     "ev_trend_label": "Cooling Off",
@@ -985,7 +985,7 @@ const hrModelTomorrowData = [
     "pitcher_fb_rate": 0.0,
     "starter_context": 50.0,
     "platoon_advantage": 62.0,
-    "weather_boost": 46.0,
+    "weather_boost": 44.0,
     "park_factor": "Neutral",
     "bvp_boost": 0.0,
     "h2h_score": 50.0,

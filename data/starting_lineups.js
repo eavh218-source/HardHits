@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:34 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:53 UTC)
 
 const lineupUpdateDate = "2026-04-07";
-const lineupLastCompleted = "11:22 PM ET";
+const lineupLastCompleted = "11:52 PM ET";
 const startingLineups = [
   {
     "date": "2026-04-07",
@@ -269,8 +269,8 @@ const startingLineups = [
       },
       {
         "slot": 9,
-        "name": "Jorge Mateo",
-        "position": "SS"
+        "name": "Mike Yastrzemski",
+        "position": "PH"
       }
     ],
     "home_lineup": [
@@ -291,7 +291,7 @@ const startingLineups = [
       },
       {
         "slot": 4,
-        "name": "Jorge Soler",
+        "name": "Jeimer Candelario",
         "position": "DH"
       },
       {
@@ -1260,7 +1260,7 @@ const startingLineups = [
       },
       {
         "slot": 7,
-        "name": "Jerar Encarnacion",
+        "name": "Jung Hoo Lee",
         "position": "RF"
       },
       {
@@ -1270,7 +1270,7 @@ const startingLineups = [
       },
       {
         "slot": 9,
-        "name": "Jared Oliva",
+        "name": "Harrison Bader",
         "position": "CF"
       }
     ]

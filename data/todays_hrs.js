@@ -1,7 +1,7 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:34 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 03:53 UTC)
 
 const hrUpdateDate = "2026-04-07";
-const hrLastCompleted = "11:22 PM ET";
+const hrLastCompleted = "11:52 PM ET";
 const todaysHRData = [
   {
     "date": "2026-04-07",

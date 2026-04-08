@@ -1,5 +1,5 @@
 window.lineupUpdateDate_2026_04_07 = '2026-04-07';
-window.lineupLastCompleted_2026_04_07 = '11:22 PM ET';
+window.lineupLastCompleted_2026_04_07 = '11:52 PM ET';
 window.startingLineups_2026_04_07 = [
   {
     "date": "2026-04-07",
@@ -11,7 +11,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -613,
+    "minutes_to_first_pitch": -643,
     "away_lineup": [
       {
         "slot": 1,
@@ -153,7 +153,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -493,
+    "minutes_to_first_pitch": -523,
     "away_lineup": [
       {
         "slot": 1,
@@ -295,7 +295,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -433,
+    "minutes_to_first_pitch": -463,
     "away_lineup": [
       {
         "slot": 1,
@@ -437,7 +437,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -283,
+    "minutes_to_first_pitch": -313,
     "away_lineup": [
       {
         "slot": 1,
@@ -579,7 +579,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -283,
+    "minutes_to_first_pitch": -313,
     "away_lineup": [
       {
         "slot": 1,
@@ -721,7 +721,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -283,
+    "minutes_to_first_pitch": -313,
     "away_lineup": [
       {
         "slot": 1,
@@ -863,7 +863,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -278,
+    "minutes_to_first_pitch": -308,
     "away_lineup": [
       {
         "slot": 1,
@@ -1005,7 +1005,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -278,
+    "minutes_to_first_pitch": -308,
     "away_lineup": [
       {
         "slot": 1,
@@ -1147,7 +1147,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -258,
+    "minutes_to_first_pitch": -288,
     "away_lineup": [
       {
         "slot": 1,
@@ -1289,7 +1289,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -256,
+    "minutes_to_first_pitch": -286,
     "away_lineup": [
       {
         "slot": 1,
@@ -1431,7 +1431,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -223,
+    "minutes_to_first_pitch": -253,
     "away_lineup": [
       {
         "slot": 1,
@@ -1573,7 +1573,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -198,
+    "minutes_to_first_pitch": -228,
     "away_lineup": [
       {
         "slot": 1,
@@ -1715,7 +1715,7 @@ window.startingLineups_2026_04_07 = [
     "status": "Final",
     "eligible": true,
     "reason": "game is final",
-    "minutes_to_first_pitch": -163,
+    "minutes_to_first_pitch": -193,
     "away_lineup": [
       {
         "slot": 1,
@@ -1857,7 +1857,7 @@ window.startingLineups_2026_04_07 = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live",
-    "minutes_to_first_pitch": -105,
+    "minutes_to_first_pitch": -135,
     "away_lineup": [
       {
         "slot": 1,
@@ -1917,10 +1917,10 @@ window.startingLineups_2026_04_07 = [
       },
       {
         "slot": 9,
-        "name": "Jorge Mateo",
-        "position": "SS",
-        "jersey": "2",
-        "player_id": 622761
+        "name": "Mike Yastrzemski",
+        "position": "PH",
+        "jersey": "18",
+        "player_id": 573262
       }
     ],
     "home_lineup": [
@@ -1947,10 +1947,10 @@ window.startingLineups_2026_04_07 = [
       },
       {
         "slot": 4,
-        "name": "Jorge Soler",
+        "name": "Jeimer Candelario",
         "position": "DH",
-        "jersey": "12",
-        "player_id": 624585
+        "jersey": "46",
+        "player_id": 600869
       },
       {
         "slot": 5,
@@ -1999,7 +1999,7 @@ window.startingLineups_2026_04_07 = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live",
-    "minutes_to_first_pitch": -98,
+    "minutes_to_first_pitch": -128,
     "away_lineup": [
       {
         "slot": 1,
@@ -2110,10 +2110,10 @@ window.startingLineups_2026_04_07 = [
       },
       {
         "slot": 7,
-        "name": "Jerar Encarnacion",
+        "name": "Jung Hoo Lee",
         "position": "RF",
-        "jersey": "19",
-        "player_id": 666464
+        "jersey": "51",
+        "player_id": 808982
       },
       {
         "slot": 8,
@@ -2124,10 +2124,10 @@ window.startingLineups_2026_04_07 = [
       },
       {
         "slot": 9,
-        "name": "Jared Oliva",
+        "name": "Harrison Bader",
         "position": "CF",
-        "jersey": "56",
-        "player_id": 666931
+        "jersey": "9",
+        "player_id": 664056
       }
     ]
   }
