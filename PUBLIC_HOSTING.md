@@ -6,7 +6,9 @@ The stable site is currently verified locally from `c:\code\HardHits`.
 
 - Homepage: `http://localhost:8000/`
 - Status endpoint: `http://localhost:8000/status`
-- Starter script: `run_public_site.bat`
+- API proxy: `http://localhost:8000/api/*` → local HardHits API on `127.0.0.1:8010`
+- Site starter script: `run_public_site.bat`
+- API starter script: `run_hardhits_api.bat`
 - Tunnel script: `run_public_tunnel.bat`
 
 ## Primary stable public URL
@@ -17,17 +19,22 @@ The stable site is currently verified locally from `c:\code\HardHits`.
 
 ### Working temporary public path (available now)
 
-1. Start the local stable site server:
+1. Start the local HardHits API:
+   ```bat
+   cd /d C:\code\HardHits
+   run_hardhits_api.bat
+   ```
+2. Start the local stable site server:
    ```bat
    cd /d C:\code\HardHits
    run_public_site.bat
    ```
-2. Start the temporary public tunnel:
+3. Start the temporary public tunnel:
    ```bat
    cd /d C:\code\HardHits
    run_public_tunnel_temp.bat
    ```
-3. Share the generated `https://*.loca.lt` URL while that terminal remains open.
+4. Share the generated `https://*.loca.lt` URL while that terminal remains open. The tunneled site now serves `/api/*` through the local proxy, so weather and model data stay API-backed.
 
 ### Longer-term Cloudflare path
 
@@ -48,7 +55,8 @@ The stable site is currently verified locally from `c:\code\HardHits`.
 
 ## Notes
 
-- The site is static and should continue to be served from the stable repo only.
+- The public site continues to serve from the stable repo, but `/api/*` is now proxied to the local FastAPI backend so the tunnel/live URL can use dynamic weather and model data.
+- GitHub Pages remains a static host; to point the Pages URL at a public API directly, use `?api=https://your-public-api-host` or set `window.HARDHITS_API_BASE_URL`.
 - `MasterController.py` and `python/hr_engine_job.py` now update `data/status.json` and `data/status.js` after their runs.
 - `site/HardHits.html` reads the status artifact and shows a refresh-health banner.
 - GitHub Pages is now the preferred stable public endpoint and should remain the public stable URL unless explicitly changed.

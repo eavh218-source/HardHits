@@ -459,6 +459,21 @@
             return imported ? hardHitsApi.formatEtTime(imported) : '';
         }
 
+        async function loadApiWeather(dateStr) {
+            if (!hardHitsApi || !dateStr) {
+                return { date: dateStr || '', items: weatherRows };
+            }
+
+            const payload = await hardHitsApi.fetchJson(`/api/weather?date=${encodeURIComponent(dateStr)}`);
+            const items = Array.isArray(payload.items) ? payload.items : [];
+            if (items.length) {
+                weatherRows = items;
+                window.mlbWeatherData = items;
+                window.weatherUpdateDate = payload.date || dateStr;
+            }
+            return { date: payload.date || dateStr, items };
+        }
+
         async function bootstrapApiData() {
             if (!hardHitsApi) {
                 return false;
@@ -502,6 +517,7 @@
                     window.hrbiHistoricalDates = historicalDates;
                 }
 
+                await loadApiWeather((predictionPayload && predictionPayload.date) || todayStr).catch(() => null);
                 return players.length > 0 || latestResults.length > 0;
             } catch (error) {
                 console.warn('HardHits API unavailable, using static HRR+ bundle:', error);
@@ -686,7 +702,15 @@
             document.body.style.overflow = '';
         }
 
-        function openModal(player) {
+        async function openModal(player) {
+            if (hardHitsApi && player && player.date) {
+                try {
+                    await loadApiWeather(String(player.date).slice(0, 10));
+                } catch (error) {
+                    console.warn('Unable to refresh weather from API, using static fallback:', error);
+                }
+            }
+
             const showPitcherHistory = Number(player.vs_starter_ab || 0) > 0;
             const lastFiveSummary = Number(player.last_5_ab || 0) > 0
                 ? (player.last_5_avg_display || 'N/A') + ' (' + (player.last_5_hits || 0) + ' H / ' + (player.last_5_ab || 0) + ' AB)'

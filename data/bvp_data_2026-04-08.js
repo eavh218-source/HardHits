@@ -20,7 +20,7 @@ window.dailyMatchups_2026_04_08 = [
     "date": "2026-04-08",
     "time": "1:35 PM ET",
     "away_abbr": "MIL",
-    "away_p": "Patrick",
+    "away_p": "Drohan",
     "home_abbr": "BOS",
     "home_p": "Gray"
   },
@@ -54,7 +54,7 @@ window.dailyMatchups_2026_04_08 = [
     "away_abbr": "HOU",
     "away_p": "Javier",
     "home_abbr": "COL",
-    "home_p": "TBD"
+    "home_p": "Lorenzen"
   },
   {
     "date": "2026-04-08",
@@ -84,7 +84,7 @@ window.dailyMatchups_2026_04_08 = [
     "date": "2026-04-08",
     "time": "4:10 PM ET",
     "away_abbr": "ARI",
-    "away_p": "TBD",
+    "away_p": "Nelson",
     "home_abbr": "NYM",
     "home_p": "Peterson"
   },
@@ -92,7 +92,7 @@ window.dailyMatchups_2026_04_08 = [
     "date": "2026-04-08",
     "time": "6:40 PM ET",
     "away_abbr": "CHC",
-    "away_p": "TBD",
+    "away_p": "Rea",
     "home_abbr": "TBR",
     "home_p": "Boyle"
   },
@@ -131,6 +131,16 @@ window.bvpData_2026_04_08 = [
     "distance": 446,
     "events": "Home Run",
     "game_date": "2023-06-26"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Ronny Mauricio",
+    "launch_speed": 112.4,
+    "distance": 440,
+    "events": "Home Run",
+    "game_date": "2023-09-12"
   },
   {
     "date": "2026-04-08",
@@ -224,6 +234,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Francisco Alvarez",
+    "launch_speed": 99.2,
+    "distance": 408,
+    "events": "Home Run",
+    "game_date": "2023-07-06"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Mitch Keller",
     "opponent_team": "San Diego Padres",
     "batter_name": "Gavin Sheets",
@@ -274,6 +294,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Colin Rea",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Jake Fraley",
+    "launch_speed": 101.9,
+    "distance": 400,
+    "events": "Home Run",
+    "game_date": "2025-05-30"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "MacKenzie Gore",
     "opponent_team": "Seattle Mariners",
     "batter_name": "J.P. Crawford",
@@ -284,6 +314,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Michael Lorenzen",
+    "opponent_team": "Houston Astros",
+    "batter_name": "Isaac Paredes",
+    "launch_speed": 104.7,
+    "distance": 398,
+    "events": "Home Run",
+    "game_date": "2025-05-14"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Bryan Woo",
     "opponent_team": "Texas Rangers",
     "batter_name": "Wyatt Langford",
@@ -291,6 +331,26 @@ window.bvpData_2026_04_08 = [
     "distance": 396,
     "events": "Home Run",
     "game_date": "2024-09-22"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Francisco Lindor",
+    "launch_speed": 103.6,
+    "distance": 396,
+    "events": "Home Run",
+    "game_date": "2024-08-29"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Colin Rea",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Cedric Mullins",
+    "launch_speed": 101.0,
+    "distance": 396,
+    "events": "Home Run",
+    "game_date": "2024-04-14"
   },
   {
     "date": "2026-04-08",
@@ -331,6 +391,16 @@ window.bvpData_2026_04_08 = [
     "distance": 392,
     "events": "Home Run",
     "game_date": "2025-08-14"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Colin Rea",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Jake Fraley",
+    "launch_speed": 98.9,
+    "distance": 391,
+    "events": "Home Run",
+    "game_date": "2023-06-03"
   },
   {
     "date": "2026-04-08",
@@ -464,6 +534,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Colin Rea",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Richie Palacios",
+    "launch_speed": 101.3,
+    "distance": 367,
+    "events": "Home Run",
+    "game_date": "2023-09-19"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Bailey Ober",
     "opponent_team": "Detroit Tigers",
     "batter_name": "Spencer Torkelson",
@@ -514,6 +594,26 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Luis Robert",
+    "launch_speed": 101.7,
+    "distance": 357,
+    "events": "Home Run",
+    "game_date": "2025-06-24"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Colin Rea",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Junior Caminero",
+    "launch_speed": 106.8,
+    "distance": 355,
+    "events": "Double",
+    "game_date": "2025-09-13"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Cole Ragans",
     "opponent_team": "Cleveland Guardians",
     "batter_name": "Jos\u00e9 Ram\u00edrez",
@@ -531,6 +631,16 @@ window.bvpData_2026_04_08 = [
     "distance": 354,
     "events": "Home Run",
     "game_date": "2025-07-08"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Michael Lorenzen",
+    "opponent_team": "Houston Astros",
+    "batter_name": "Christian Walker",
+    "launch_speed": 102.8,
+    "distance": 352,
+    "events": "Double",
+    "game_date": "2023-06-09"
   },
   {
     "date": "2026-04-08",
@@ -624,6 +734,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Francisco Lindor",
+    "launch_speed": 101.5,
+    "distance": 337,
+    "events": "Field Out",
+    "game_date": "2025-05-05"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "MacKenzie Gore",
     "opponent_team": "Seattle Mariners",
     "batter_name": "Julio Rodr\u00edguez",
@@ -634,6 +754,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Tyrone Taylor",
+    "launch_speed": 102.8,
+    "distance": 331,
+    "events": "Triple",
+    "game_date": "2025-05-05"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Brady Singer",
     "opponent_team": "Miami Marlins",
     "batter_name": "Agust\u00edn Ram\u00edrez",
@@ -641,6 +771,16 @@ window.bvpData_2026_04_08 = [
     "distance": 330,
     "events": "Field Out",
     "game_date": "2025-07-07"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Francisco Alvarez",
+    "launch_speed": 115.0,
+    "distance": 329,
+    "events": "Field Out",
+    "game_date": "2025-05-05"
   },
   {
     "date": "2026-04-08",
@@ -774,6 +914,26 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Colin Rea",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Jake Fraley",
+    "launch_speed": 102.5,
+    "distance": 271,
+    "events": "Single",
+    "game_date": "2023-06-03"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Colin Rea",
+    "opponent_team": "Tampa Bay Rays",
+    "batter_name": "Jake Fraley",
+    "launch_speed": 110.2,
+    "distance": 265,
+    "events": "Single",
+    "game_date": "2023-07-24"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Bryan Woo",
     "opponent_team": "Texas Rangers",
     "batter_name": "Josh Smith",
@@ -814,16 +974,6 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
-    "pitcher_name": "Chad Patrick",
-    "opponent_team": "Boston Red Sox",
-    "batter_name": "Jarren Duran",
-    "launch_speed": 117.7,
-    "distance": 237,
-    "events": "Double",
-    "game_date": "2025-05-26"
-  },
-  {
-    "date": "2026-04-08",
     "pitcher_name": "Cole Ragans",
     "opponent_team": "Cleveland Guardians",
     "batter_name": "Austin Hedges",
@@ -831,6 +981,16 @@ window.bvpData_2026_04_08 = [
     "distance": 236,
     "events": "Single",
     "game_date": "2025-04-13"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Bo Bichette",
+    "launch_speed": 104.7,
+    "distance": 230,
+    "events": "Single",
+    "game_date": "2023-07-14"
   },
   {
     "date": "2026-04-08",
@@ -974,13 +1134,13 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
-    "pitcher_name": "Cole Ragans",
-    "opponent_team": "Cleveland Guardians",
-    "batter_name": "Gabriel Arias",
-    "launch_speed": 108.7,
-    "distance": 160,
-    "events": "Field Out",
-    "game_date": "2024-06-29"
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Francisco Lindor",
+    "launch_speed": 110.3,
+    "distance": 162,
+    "events": "Single",
+    "game_date": "2023-09-12"
   },
   {
     "date": "2026-04-08",
@@ -1194,6 +1354,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Michael Lorenzen",
+    "opponent_team": "Houston Astros",
+    "batter_name": "Carlos Correa",
+    "launch_speed": 101.8,
+    "distance": 78,
+    "events": "Field Out",
+    "game_date": "2025-04-07"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "David Peterson",
     "opponent_team": "Arizona Diamondbacks",
     "batter_name": "Gabriel Moreno",
@@ -1201,6 +1371,16 @@ window.bvpData_2026_04_08 = [
     "distance": 74,
     "events": "Field Out",
     "game_date": "2025-04-29"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Michael Lorenzen",
+    "opponent_team": "Houston Astros",
+    "batter_name": "Jake Meyers",
+    "launch_speed": 101.5,
+    "distance": 73,
+    "events": "Field Out",
+    "game_date": "2025-05-14"
   },
   {
     "date": "2026-04-08",
@@ -1221,6 +1401,16 @@ window.bvpData_2026_04_08 = [
     "distance": 69,
     "events": "Single",
     "game_date": "2025-06-10"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Francisco Lindor",
+    "launch_speed": 105.2,
+    "distance": 66,
+    "events": "Triple",
+    "game_date": "2023-07-06"
   },
   {
     "date": "2026-04-08",
@@ -1274,6 +1464,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Michael Lorenzen",
+    "opponent_team": "Houston Astros",
+    "batter_name": "Carlos Correa",
+    "launch_speed": 104.5,
+    "distance": 45,
+    "events": "Grounded Into Double Play",
+    "game_date": "2023-06-25"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Bailey Ober",
     "opponent_team": "Detroit Tigers",
     "batter_name": "Matt Vierling",
@@ -1294,6 +1494,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Bo Bichette",
+    "launch_speed": 101.8,
+    "distance": 40,
+    "events": "Field Out",
+    "game_date": "2023-07-14"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Will Warren",
     "opponent_team": "Athletics",
     "batter_name": "Brent Rooker",
@@ -1311,6 +1521,16 @@ window.bvpData_2026_04_08 = [
     "distance": 36,
     "events": "Single",
     "game_date": "2025-09-15"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Ryne Nelson",
+    "opponent_team": "New York Mets",
+    "batter_name": "Bo Bichette",
+    "launch_speed": 101.6,
+    "distance": 35,
+    "events": "Field Out",
+    "game_date": "2025-06-19"
   },
   {
     "date": "2026-04-08",
@@ -1341,6 +1561,16 @@ window.bvpData_2026_04_08 = [
     "distance": 28,
     "events": "Single",
     "game_date": "2025-09-13"
+  },
+  {
+    "date": "2026-04-08",
+    "pitcher_name": "Michael Lorenzen",
+    "opponent_team": "Houston Astros",
+    "batter_name": "Yainer Diaz",
+    "launch_speed": 106.0,
+    "distance": 26,
+    "events": "Field Out",
+    "game_date": "2025-05-14"
   },
   {
     "date": "2026-04-08",
@@ -1504,6 +1734,16 @@ window.bvpData_2026_04_08 = [
   },
   {
     "date": "2026-04-08",
+    "pitcher_name": "Michael Lorenzen",
+    "opponent_team": "Houston Astros",
+    "batter_name": "Yainer Diaz",
+    "launch_speed": 101.3,
+    "distance": 11,
+    "events": "Field Out",
+    "game_date": "2025-05-14"
+  },
+  {
+    "date": "2026-04-08",
     "pitcher_name": "Aaron Nola",
     "opponent_team": "San Francisco Giants",
     "batter_name": "Rafael Devers",
@@ -1511,16 +1751,6 @@ window.bvpData_2026_04_08 = [
     "distance": 11,
     "events": "Grounded Into Double Play",
     "game_date": "2024-06-13"
-  },
-  {
-    "date": "2026-04-08",
-    "pitcher_name": "David Peterson",
-    "opponent_team": "Arizona Diamondbacks",
-    "batter_name": "Carlos Santana",
-    "launch_speed": 101.9,
-    "distance": 10,
-    "events": "Field Out",
-    "game_date": "2025-08-06"
   },
   {
     "date": "2026-04-08",

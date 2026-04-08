@@ -1,5 +1,5 @@
-const bvpTomorrowDate = '2026-04-09';
-const tomorrowMatchups = [
+window.bvpDate_2026_04_09 = '2026-04-09';
+window.dailyMatchups_2026_04_09 = [
   {
     "date": "2026-04-09",
     "time": "12:10 PM ET",
@@ -49,7 +49,7 @@ const tomorrowMatchups = [
     "home_p": "V\u00e1squez"
   }
 ];
-const bvpTomorrowData = [
+window.bvpData_2026_04_09 = [
   {
     "date": "2026-04-09",
     "pitcher_name": "Ryan Weathers",

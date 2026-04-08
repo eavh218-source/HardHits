@@ -601,3 +601,1523 @@
 2026-04-06 13:12:48,715 | INFO | Starting starting-lineups refresh
 2026-04-06 13:12:49,386 | INFO | Starting-lineups refresh completed successfully
 2026-04-06 13:12:49,386 | INFO | Next run scheduled for 2026-04-06 01:42:41 PM
+2026-04-06 13:42:41,440 | INFO | Starting HR results refresh
+2026-04-06 13:42:49,411 | INFO | HR results refresh completed successfully
+2026-04-06 13:42:49,411 | INFO | Starting starting-lineups refresh
+2026-04-06 13:42:50,112 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 13:42:50,112 | INFO | Next run scheduled for 2026-04-06 02:12:41 PM
+2026-04-06 14:12:41,442 | INFO | Starting HR results refresh
+2026-04-06 14:12:48,801 | INFO | HR results refresh completed successfully
+2026-04-06 14:12:48,801 | INFO | Starting starting-lineups refresh
+2026-04-06 14:12:49,837 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 14:12:49,837 | INFO | Next run scheduled for 2026-04-06 02:42:41 PM
+2026-04-06 14:42:41,448 | INFO | Starting HR results refresh
+2026-04-06 14:42:48,411 | INFO | HR results refresh completed successfully
+2026-04-06 14:42:48,411 | INFO | Starting starting-lineups refresh
+2026-04-06 14:42:49,346 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 14:42:49,346 | INFO | Next run scheduled for 2026-04-06 03:12:41 PM
+2026-04-06 15:12:41,456 | INFO | Starting HR results refresh
+2026-04-06 15:12:49,441 | INFO | HR results refresh completed successfully
+2026-04-06 15:12:49,441 | INFO | Starting starting-lineups refresh
+2026-04-06 15:12:50,422 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 15:12:50,422 | INFO | Next run scheduled for 2026-04-06 03:42:41 PM
+2026-04-06 15:42:41,463 | INFO | Starting HR results refresh
+2026-04-06 15:42:49,426 | INFO | HR results refresh completed successfully
+2026-04-06 15:42:49,426 | INFO | Starting starting-lineups refresh
+2026-04-06 15:42:50,343 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 15:42:50,344 | INFO | Next run scheduled for 2026-04-06 04:12:41 PM
+2026-04-06 16:12:41,464 | INFO | Starting HR results refresh
+2026-04-06 16:12:49,462 | INFO | HR results refresh completed successfully
+2026-04-06 16:12:49,462 | INFO | Starting starting-lineups refresh
+2026-04-06 16:12:50,671 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 16:12:50,671 | INFO | Next run scheduled for 2026-04-06 04:42:41 PM
+2026-04-06 16:42:41,469 | INFO | Starting HR results refresh
+2026-04-06 16:42:49,373 | INFO | HR results refresh completed successfully
+2026-04-06 16:42:49,373 | INFO | Starting starting-lineups refresh
+2026-04-06 16:42:51,458 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 16:42:51,458 | INFO | Next run scheduled for 2026-04-06 05:12:41 PM
+2026-04-06 17:12:41,475 | INFO | Starting HR results refresh
+2026-04-06 17:12:42,460 | INFO | HR results refresh completed successfully
+2026-04-06 17:12:42,460 | INFO | Starting starting-lineups refresh
+2026-04-06 17:12:45,826 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 17:12:45,826 | INFO | Next run scheduled for 2026-04-06 05:42:41 PM
+2026-04-06 17:42:41,483 | INFO | Starting HR results refresh
+2026-04-06 17:42:42,440 | INFO | HR results refresh completed successfully
+2026-04-06 17:42:42,440 | INFO | Starting starting-lineups refresh
+2026-04-06 17:42:46,202 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 17:42:46,202 | INFO | Next run scheduled for 2026-04-06 06:12:41 PM
+2026-04-06 18:12:41,484 | INFO | Starting HR results refresh
+2026-04-06 18:12:43,109 | INFO | HR results refresh completed successfully
+2026-04-06 18:12:43,109 | INFO | Starting starting-lineups refresh
+2026-04-06 18:12:47,160 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 18:12:47,160 | INFO | Next run scheduled for 2026-04-06 06:42:41 PM
+2026-04-06 18:42:41,487 | INFO | Starting HR results refresh
+2026-04-06 18:42:44,069 | INFO | HR results refresh completed successfully
+2026-04-06 18:42:44,069 | INFO | Starting starting-lineups refresh
+2026-04-06 18:42:48,263 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 18:42:48,263 | INFO | Next run scheduled for 2026-04-06 07:12:41 PM
+2026-04-06 19:12:41,489 | INFO | Starting HR results refresh
+2026-04-06 19:12:44,547 | INFO | HR results refresh completed successfully
+2026-04-06 19:12:44,547 | INFO | Starting starting-lineups refresh
+2026-04-06 19:12:48,975 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 19:12:48,975 | INFO | Next run scheduled for 2026-04-06 07:42:41 PM
+2026-04-06 19:42:41,492 | INFO | Starting HR results refresh
+2026-04-06 19:42:45,837 | INFO | HR results refresh completed successfully
+2026-04-06 19:42:45,837 | INFO | Starting starting-lineups refresh
+2026-04-06 19:42:51,220 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 19:42:51,220 | INFO | Next run scheduled for 2026-04-06 08:12:41 PM
+2026-04-06 20:12:41,496 | INFO | Starting HR results refresh
+2026-04-06 20:12:45,831 | INFO | HR results refresh completed successfully
+2026-04-06 20:12:45,831 | INFO | Starting starting-lineups refresh
+2026-04-06 20:12:51,234 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 20:12:51,234 | INFO | Next run scheduled for 2026-04-06 08:42:41 PM
+2026-04-06 20:42:41,497 | INFO | Starting HR results refresh
+2026-04-06 20:42:47,183 | INFO | HR results refresh completed successfully
+2026-04-06 20:42:47,191 | INFO | Starting starting-lineups refresh
+2026-04-06 20:42:55,413 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 20:42:55,415 | INFO | Next run scheduled for 2026-04-06 09:12:41 PM
+2026-04-06 21:12:41,498 | INFO | Starting HR results refresh
+2026-04-06 21:12:48,376 | INFO | HR results refresh completed successfully
+2026-04-06 21:12:48,376 | INFO | Starting starting-lineups refresh
+2026-04-06 21:12:56,165 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 21:12:56,165 | INFO | Next run scheduled for 2026-04-06 09:42:41 PM
+2026-04-06 21:42:41,502 | INFO | Starting HR results refresh
+2026-04-06 21:42:46,955 | INFO | HR results refresh completed successfully
+2026-04-06 21:42:46,955 | INFO | Starting starting-lineups refresh
+2026-04-06 21:42:52,502 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 21:42:52,502 | INFO | Next run scheduled for 2026-04-06 10:12:41 PM
+2026-04-06 21:48:02,097 | INFO | Starting HR results refresh
+2026-04-06 21:48:11,168 | INFO | HR results refresh completed successfully
+2026-04-06 21:48:11,169 | INFO | Starting starting-lineups refresh
+2026-04-06 21:48:19,063 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 21:48:19,063 | INFO | Starting SQL live-data sync
+2026-04-06 21:48:19,935 | INFO | SQL live-data sync completed successfully
+2026-04-06 21:48:38,144 | INFO | Continuous mode enabled for HR results + lineups + SQL sync; interval=15 minutes
+2026-04-06 21:48:38,144 | INFO | Starting HR results refresh
+2026-04-06 21:48:44,149 | INFO | HR results refresh completed successfully
+2026-04-06 21:48:44,149 | INFO | Starting starting-lineups refresh
+2026-04-06 21:48:50,980 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 21:48:50,988 | INFO | Starting SQL live-data sync
+2026-04-06 21:48:51,816 | INFO | SQL live-data sync completed successfully
+2026-04-06 21:48:51,982 | INFO | Next run scheduled for 2026-04-06 10:03:38 PM
+2026-04-06 22:03:38,150 | INFO | Starting HR results refresh
+2026-04-06 22:03:43,534 | INFO | HR results refresh completed successfully
+2026-04-06 22:03:43,534 | INFO | Starting starting-lineups refresh
+2026-04-06 22:03:48,989 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 22:03:48,990 | INFO | Starting SQL live-data sync
+2026-04-06 22:03:49,410 | INFO | SQL live-data sync completed successfully
+2026-04-06 22:03:49,506 | INFO | Next run scheduled for 2026-04-06 10:18:38 PM
+2026-04-06 22:12:41,505 | INFO | Starting HR results refresh
+2026-04-06 22:12:46,867 | INFO | HR results refresh completed successfully
+2026-04-06 22:12:46,867 | INFO | Starting starting-lineups refresh
+2026-04-06 22:12:52,309 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 22:12:52,309 | INFO | Next run scheduled for 2026-04-06 10:42:41 PM
+2026-04-06 22:18:38,151 | INFO | Starting HR results refresh
+2026-04-06 22:18:43,529 | INFO | HR results refresh completed successfully
+2026-04-06 22:18:43,529 | INFO | Starting starting-lineups refresh
+2026-04-06 22:18:49,003 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 22:18:49,003 | INFO | Starting SQL live-data sync
+2026-04-06 22:18:49,362 | INFO | SQL live-data sync completed successfully
+2026-04-06 22:18:49,453 | INFO | Next run scheduled for 2026-04-06 10:33:38 PM
+2026-04-06 22:33:38,151 | INFO | Starting HR results refresh
+2026-04-06 22:33:43,612 | INFO | HR results refresh completed successfully
+2026-04-06 22:33:43,614 | INFO | Starting starting-lineups refresh
+2026-04-06 22:33:49,094 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 22:33:49,094 | INFO | Starting SQL live-data sync
+2026-04-06 22:33:49,447 | INFO | SQL live-data sync completed successfully
+2026-04-06 22:33:49,534 | INFO | Next run scheduled for 2026-04-06 10:48:38 PM
+2026-04-06 22:42:41,506 | INFO | Starting HR results refresh
+2026-04-06 22:42:46,920 | INFO | HR results refresh completed successfully
+2026-04-06 22:42:46,920 | INFO | Starting starting-lineups refresh
+2026-04-06 22:42:52,400 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 22:42:52,400 | INFO | Next run scheduled for 2026-04-06 11:12:41 PM
+2026-04-06 22:48:38,152 | INFO | Starting HR results refresh
+2026-04-06 22:48:43,617 | INFO | HR results refresh completed successfully
+2026-04-06 22:48:43,618 | INFO | Starting starting-lineups refresh
+2026-04-06 22:48:49,101 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 22:48:49,101 | INFO | Starting SQL live-data sync
+2026-04-06 22:48:49,424 | INFO | SQL live-data sync completed successfully
+2026-04-06 22:48:49,507 | INFO | Next run scheduled for 2026-04-06 11:03:38 PM
+2026-04-06 23:03:38,153 | INFO | Starting HR results refresh
+2026-04-06 23:03:43,634 | INFO | HR results refresh completed successfully
+2026-04-06 23:03:43,634 | INFO | Starting starting-lineups refresh
+2026-04-06 23:03:49,189 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 23:03:49,190 | INFO | Starting SQL live-data sync
+2026-04-06 23:03:49,500 | INFO | SQL live-data sync completed successfully
+2026-04-06 23:03:49,587 | INFO | Next run scheduled for 2026-04-06 11:18:38 PM
+2026-04-06 23:12:41,508 | INFO | Starting HR results refresh
+2026-04-06 23:12:47,420 | INFO | HR results refresh completed successfully
+2026-04-06 23:12:47,420 | INFO | Starting starting-lineups refresh
+2026-04-06 23:12:52,821 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 23:12:52,821 | INFO | Next run scheduled for 2026-04-06 11:42:41 PM
+2026-04-06 23:18:38,154 | INFO | Starting HR results refresh
+2026-04-06 23:18:43,790 | INFO | HR results refresh completed successfully
+2026-04-06 23:18:43,790 | INFO | Starting starting-lineups refresh
+2026-04-06 23:18:49,387 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 23:18:49,387 | INFO | Starting SQL live-data sync
+2026-04-06 23:18:49,756 | INFO | SQL live-data sync completed successfully
+2026-04-06 23:18:49,847 | INFO | Next run scheduled for 2026-04-06 11:33:38 PM
+2026-04-06 23:33:38,155 | INFO | Starting HR results refresh
+2026-04-06 23:33:43,939 | INFO | HR results refresh completed successfully
+2026-04-06 23:33:43,939 | INFO | Starting starting-lineups refresh
+2026-04-06 23:33:49,518 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 23:33:49,518 | INFO | Starting SQL live-data sync
+2026-04-06 23:33:49,828 | INFO | SQL live-data sync completed successfully
+2026-04-06 23:33:49,909 | INFO | Next run scheduled for 2026-04-06 11:48:38 PM
+2026-04-06 23:42:41,510 | INFO | Starting HR results refresh
+2026-04-06 23:42:47,052 | INFO | HR results refresh completed successfully
+2026-04-06 23:42:47,052 | INFO | Starting starting-lineups refresh
+2026-04-06 23:42:52,698 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 23:42:52,698 | INFO | Next run scheduled for 2026-04-07 12:12:41 AM
+2026-04-06 23:48:38,156 | INFO | Starting HR results refresh
+2026-04-06 23:48:43,549 | INFO | HR results refresh completed successfully
+2026-04-06 23:48:43,549 | INFO | Starting starting-lineups refresh
+2026-04-06 23:48:48,973 | INFO | Starting-lineups refresh completed successfully
+2026-04-06 23:48:48,973 | INFO | Starting SQL live-data sync
+2026-04-06 23:48:49,290 | INFO | SQL live-data sync completed successfully
+2026-04-06 23:48:49,371 | INFO | Next run scheduled for 2026-04-07 12:03:38 AM
+2026-04-07 00:03:38,157 | INFO | Starting HR results refresh
+2026-04-07 00:03:44,104 | INFO | HR results refresh completed successfully
+2026-04-07 00:03:44,104 | INFO | Starting starting-lineups refresh
+2026-04-07 00:03:44,709 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 00:03:44,709 | INFO | Starting SQL live-data sync
+2026-04-07 00:03:44,922 | INFO | SQL live-data sync completed successfully
+2026-04-07 00:03:45,009 | INFO | Next run scheduled for 2026-04-07 12:18:38 AM
+2026-04-07 00:12:41,511 | INFO | Starting HR results refresh
+2026-04-07 00:12:47,405 | INFO | HR results refresh completed successfully
+2026-04-07 00:12:47,405 | INFO | Starting starting-lineups refresh
+2026-04-07 00:12:47,958 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 00:12:47,958 | INFO | Next run scheduled for 2026-04-07 12:42:41 AM
+2026-04-07 00:18:38,158 | INFO | Starting HR results refresh
+2026-04-07 00:18:44,101 | INFO | HR results refresh completed successfully
+2026-04-07 00:18:44,101 | INFO | Starting starting-lineups refresh
+2026-04-07 00:18:44,707 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 00:18:44,707 | INFO | Starting SQL live-data sync
+2026-04-07 00:18:44,936 | INFO | SQL live-data sync completed successfully
+2026-04-07 00:18:45,025 | INFO | Next run scheduled for 2026-04-07 12:33:38 AM
+2026-04-07 00:33:38,159 | INFO | Starting HR results refresh
+2026-04-07 00:33:43,978 | INFO | HR results refresh completed successfully
+2026-04-07 00:33:43,978 | INFO | Starting starting-lineups refresh
+2026-04-07 00:33:44,547 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 00:33:44,549 | INFO | Starting SQL live-data sync
+2026-04-07 00:33:44,766 | INFO | SQL live-data sync completed successfully
+2026-04-07 00:33:44,853 | INFO | Next run scheduled for 2026-04-07 12:48:38 AM
+2026-04-07 00:42:41,513 | INFO | Starting HR results refresh
+2026-04-07 00:42:47,411 | INFO | HR results refresh completed successfully
+2026-04-07 00:42:47,411 | INFO | Starting starting-lineups refresh
+2026-04-07 00:42:48,025 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 00:42:48,027 | INFO | Next run scheduled for 2026-04-07 01:12:41 AM
+2026-04-07 00:48:38,160 | INFO | Starting HR results refresh
+2026-04-07 00:48:44,030 | INFO | HR results refresh completed successfully
+2026-04-07 00:48:44,030 | INFO | Starting starting-lineups refresh
+2026-04-07 00:48:44,582 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 00:48:44,582 | INFO | Starting SQL live-data sync
+2026-04-07 00:48:44,783 | INFO | SQL live-data sync completed successfully
+2026-04-07 00:48:44,868 | INFO | Next run scheduled for 2026-04-07 01:03:38 AM
+2026-04-07 01:03:38,161 | INFO | Starting HR results refresh
+2026-04-07 01:03:44,166 | INFO | HR results refresh completed successfully
+2026-04-07 01:03:44,166 | INFO | Starting starting-lineups refresh
+2026-04-07 01:03:44,726 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 01:03:44,726 | INFO | Starting SQL live-data sync
+2026-04-07 01:03:44,972 | INFO | SQL live-data sync completed successfully
+2026-04-07 01:03:45,056 | INFO | Next run scheduled for 2026-04-07 01:18:38 AM
+2026-04-07 01:12:41,513 | INFO | Starting HR results refresh
+2026-04-07 01:12:47,281 | INFO | HR results refresh completed successfully
+2026-04-07 01:12:47,281 | INFO | Starting starting-lineups refresh
+2026-04-07 01:12:47,837 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 01:12:47,837 | INFO | Next run scheduled for 2026-04-07 01:42:41 AM
+2026-04-07 01:18:38,163 | INFO | Starting HR results refresh
+2026-04-07 01:18:44,505 | INFO | HR results refresh completed successfully
+2026-04-07 01:18:44,506 | INFO | Starting starting-lineups refresh
+2026-04-07 01:18:45,067 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 01:18:45,067 | INFO | Starting SQL live-data sync
+2026-04-07 01:18:45,272 | INFO | SQL live-data sync completed successfully
+2026-04-07 01:18:45,359 | INFO | Next run scheduled for 2026-04-07 01:33:38 AM
+2026-04-07 01:33:38,164 | INFO | Starting HR results refresh
+2026-04-07 01:33:43,917 | INFO | HR results refresh completed successfully
+2026-04-07 01:33:43,917 | INFO | Starting starting-lineups refresh
+2026-04-07 01:33:44,461 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 01:33:44,461 | INFO | Starting SQL live-data sync
+2026-04-07 01:33:44,680 | INFO | SQL live-data sync completed successfully
+2026-04-07 01:33:44,774 | INFO | Next run scheduled for 2026-04-07 01:48:38 AM
+2026-04-07 01:42:41,514 | INFO | Starting HR results refresh
+2026-04-07 01:42:47,388 | INFO | HR results refresh completed successfully
+2026-04-07 01:42:47,388 | INFO | Starting starting-lineups refresh
+2026-04-07 01:42:48,016 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 01:42:48,017 | INFO | Next run scheduled for 2026-04-07 02:12:41 AM
+2026-04-07 01:48:38,165 | INFO | Starting HR results refresh
+2026-04-07 01:48:43,948 | INFO | HR results refresh completed successfully
+2026-04-07 01:48:43,949 | INFO | Starting starting-lineups refresh
+2026-04-07 01:48:44,509 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 01:48:44,509 | INFO | Starting SQL live-data sync
+2026-04-07 01:48:44,706 | INFO | SQL live-data sync completed successfully
+2026-04-07 01:48:44,793 | INFO | Next run scheduled for 2026-04-07 02:03:38 AM
+2026-04-07 02:03:38,165 | INFO | Starting HR results refresh
+2026-04-07 02:03:43,958 | INFO | HR results refresh completed successfully
+2026-04-07 02:03:43,959 | INFO | Starting starting-lineups refresh
+2026-04-07 02:03:44,537 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 02:03:44,537 | INFO | Starting SQL live-data sync
+2026-04-07 02:03:44,735 | INFO | SQL live-data sync completed successfully
+2026-04-07 02:03:44,823 | INFO | Next run scheduled for 2026-04-07 02:18:38 AM
+2026-04-07 02:12:41,514 | INFO | Starting HR results refresh
+2026-04-07 02:12:47,268 | INFO | HR results refresh completed successfully
+2026-04-07 02:12:47,268 | INFO | Starting starting-lineups refresh
+2026-04-07 02:12:47,833 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 02:12:47,833 | INFO | Next run scheduled for 2026-04-07 02:42:41 AM
+2026-04-07 02:18:38,166 | INFO | Starting HR results refresh
+2026-04-07 02:18:43,909 | INFO | HR results refresh completed successfully
+2026-04-07 02:18:43,909 | INFO | Starting starting-lineups refresh
+2026-04-07 02:18:44,492 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 02:18:44,493 | INFO | Starting SQL live-data sync
+2026-04-07 02:18:44,703 | INFO | SQL live-data sync completed successfully
+2026-04-07 02:18:44,790 | INFO | Next run scheduled for 2026-04-07 02:33:38 AM
+2026-04-07 02:33:38,168 | INFO | Starting HR results refresh
+2026-04-07 02:33:43,850 | INFO | HR results refresh completed successfully
+2026-04-07 02:33:43,850 | INFO | Starting starting-lineups refresh
+2026-04-07 02:33:44,398 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 02:33:44,398 | INFO | Starting SQL live-data sync
+2026-04-07 02:33:44,613 | INFO | SQL live-data sync completed successfully
+2026-04-07 02:33:44,700 | INFO | Next run scheduled for 2026-04-07 02:48:38 AM
+2026-04-07 02:42:41,515 | INFO | Starting HR results refresh
+2026-04-07 02:42:47,192 | INFO | HR results refresh completed successfully
+2026-04-07 02:42:47,192 | INFO | Starting starting-lineups refresh
+2026-04-07 02:42:47,722 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 02:42:47,722 | INFO | Next run scheduled for 2026-04-07 03:12:41 AM
+2026-04-07 02:48:38,169 | INFO | Starting HR results refresh
+2026-04-07 02:48:43,951 | INFO | HR results refresh completed successfully
+2026-04-07 02:48:43,951 | INFO | Starting starting-lineups refresh
+2026-04-07 02:48:44,495 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 02:48:44,495 | INFO | Starting SQL live-data sync
+2026-04-07 02:48:44,698 | INFO | SQL live-data sync completed successfully
+2026-04-07 02:48:44,783 | INFO | Next run scheduled for 2026-04-07 03:03:38 AM
+2026-04-07 03:03:38,170 | INFO | Starting HR results refresh
+2026-04-07 03:03:43,963 | INFO | HR results refresh completed successfully
+2026-04-07 03:03:43,964 | INFO | Starting starting-lineups refresh
+2026-04-07 03:03:44,528 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 03:03:44,528 | INFO | Starting SQL live-data sync
+2026-04-07 03:03:44,748 | INFO | SQL live-data sync completed successfully
+2026-04-07 03:03:44,843 | INFO | Next run scheduled for 2026-04-07 03:18:38 AM
+2026-04-07 03:12:41,516 | INFO | Starting HR results refresh
+2026-04-07 03:12:47,352 | INFO | HR results refresh completed successfully
+2026-04-07 03:12:47,353 | INFO | Starting starting-lineups refresh
+2026-04-07 03:12:47,917 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 03:12:47,917 | INFO | Next run scheduled for 2026-04-07 03:42:41 AM
+2026-04-07 03:18:38,171 | INFO | Starting HR results refresh
+2026-04-07 03:18:44,085 | INFO | HR results refresh completed successfully
+2026-04-07 03:18:44,085 | INFO | Starting starting-lineups refresh
+2026-04-07 03:18:44,637 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 03:18:44,637 | INFO | Starting SQL live-data sync
+2026-04-07 03:18:44,867 | INFO | SQL live-data sync completed successfully
+2026-04-07 03:18:44,951 | INFO | Next run scheduled for 2026-04-07 03:33:38 AM
+2026-04-07 03:33:38,172 | INFO | Starting HR results refresh
+2026-04-07 03:33:44,022 | INFO | HR results refresh completed successfully
+2026-04-07 03:33:44,022 | INFO | Starting starting-lineups refresh
+2026-04-07 03:33:44,591 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 03:33:44,591 | INFO | Starting SQL live-data sync
+2026-04-07 03:33:44,788 | INFO | SQL live-data sync completed successfully
+2026-04-07 03:33:44,881 | INFO | Next run scheduled for 2026-04-07 03:48:38 AM
+2026-04-07 03:42:41,517 | INFO | Starting HR results refresh
+2026-04-07 03:42:47,223 | INFO | HR results refresh completed successfully
+2026-04-07 03:42:47,224 | INFO | Starting starting-lineups refresh
+2026-04-07 03:42:47,792 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 03:42:47,792 | INFO | Next run scheduled for 2026-04-07 04:12:41 AM
+2026-04-07 03:48:38,173 | INFO | Starting HR results refresh
+2026-04-07 03:48:43,869 | INFO | HR results refresh completed successfully
+2026-04-07 03:48:43,869 | INFO | Starting starting-lineups refresh
+2026-04-07 03:48:44,447 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 03:48:44,447 | INFO | Starting SQL live-data sync
+2026-04-07 03:48:44,649 | INFO | SQL live-data sync completed successfully
+2026-04-07 03:48:44,743 | INFO | Next run scheduled for 2026-04-07 04:03:38 AM
+2026-04-07 04:03:38,175 | INFO | Starting HR results refresh
+2026-04-07 04:03:43,938 | INFO | HR results refresh completed successfully
+2026-04-07 04:03:43,938 | INFO | Starting starting-lineups refresh
+2026-04-07 04:03:44,528 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 04:03:44,528 | INFO | Starting SQL live-data sync
+2026-04-07 04:03:44,746 | INFO | SQL live-data sync completed successfully
+2026-04-07 04:03:44,847 | INFO | Next run scheduled for 2026-04-07 04:18:38 AM
+2026-04-07 04:12:41,519 | INFO | Starting HR results refresh
+2026-04-07 04:12:47,463 | INFO | HR results refresh completed successfully
+2026-04-07 04:12:47,464 | INFO | Starting starting-lineups refresh
+2026-04-07 04:12:48,019 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 04:12:48,019 | INFO | Next run scheduled for 2026-04-07 04:42:41 AM
+2026-04-07 04:18:38,176 | INFO | Starting HR results refresh
+2026-04-07 04:18:43,988 | INFO | HR results refresh completed successfully
+2026-04-07 04:18:43,988 | INFO | Starting starting-lineups refresh
+2026-04-07 04:18:44,530 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 04:18:44,530 | INFO | Starting SQL live-data sync
+2026-04-07 04:18:44,749 | INFO | SQL live-data sync completed successfully
+2026-04-07 04:18:44,842 | INFO | Next run scheduled for 2026-04-07 04:33:38 AM
+2026-04-07 04:33:38,177 | INFO | Starting HR results refresh
+2026-04-07 04:33:43,896 | INFO | HR results refresh completed successfully
+2026-04-07 04:33:43,896 | INFO | Starting starting-lineups refresh
+2026-04-07 04:33:44,451 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 04:33:44,453 | INFO | Starting SQL live-data sync
+2026-04-07 04:33:44,672 | INFO | SQL live-data sync completed successfully
+2026-04-07 04:33:44,769 | INFO | Next run scheduled for 2026-04-07 04:48:38 AM
+2026-04-07 04:42:41,520 | INFO | Starting HR results refresh
+2026-04-07 04:42:47,300 | INFO | HR results refresh completed successfully
+2026-04-07 04:42:47,301 | INFO | Starting starting-lineups refresh
+2026-04-07 04:42:47,830 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 04:42:47,830 | INFO | Next run scheduled for 2026-04-07 05:12:41 AM
+2026-04-07 04:48:38,179 | INFO | Starting HR results refresh
+2026-04-07 04:48:43,982 | INFO | HR results refresh completed successfully
+2026-04-07 04:48:43,983 | INFO | Starting starting-lineups refresh
+2026-04-07 04:48:44,535 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 04:48:44,535 | INFO | Starting SQL live-data sync
+2026-04-07 04:48:44,738 | INFO | SQL live-data sync completed successfully
+2026-04-07 04:48:44,830 | INFO | Next run scheduled for 2026-04-07 05:03:38 AM
+2026-04-07 05:03:38,180 | INFO | Starting HR results refresh
+2026-04-07 05:03:43,869 | INFO | HR results refresh completed successfully
+2026-04-07 05:03:43,869 | INFO | Starting starting-lineups refresh
+2026-04-07 05:03:44,432 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 05:03:44,432 | INFO | Starting SQL live-data sync
+2026-04-07 05:03:44,632 | INFO | SQL live-data sync completed successfully
+2026-04-07 05:03:44,725 | INFO | Next run scheduled for 2026-04-07 05:18:38 AM
+2026-04-07 05:12:41,522 | INFO | Starting HR results refresh
+2026-04-07 05:12:47,239 | INFO | HR results refresh completed successfully
+2026-04-07 05:12:47,239 | INFO | Starting starting-lineups refresh
+2026-04-07 05:12:47,810 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 05:12:47,810 | INFO | Next run scheduled for 2026-04-07 05:42:41 AM
+2026-04-07 05:18:38,181 | INFO | Starting HR results refresh
+2026-04-07 05:18:44,109 | INFO | HR results refresh completed successfully
+2026-04-07 05:18:44,109 | INFO | Starting starting-lineups refresh
+2026-04-07 05:18:44,653 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 05:18:44,653 | INFO | Starting SQL live-data sync
+2026-04-07 05:18:44,923 | INFO | SQL live-data sync completed successfully
+2026-04-07 05:18:45,008 | INFO | Next run scheduled for 2026-04-07 05:33:38 AM
+2026-04-07 05:33:38,182 | INFO | Starting HR results refresh
+2026-04-07 05:33:44,018 | INFO | HR results refresh completed successfully
+2026-04-07 05:33:44,018 | INFO | Starting starting-lineups refresh
+2026-04-07 05:33:44,609 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 05:33:44,609 | INFO | Starting SQL live-data sync
+2026-04-07 05:33:44,815 | INFO | SQL live-data sync completed successfully
+2026-04-07 05:33:44,904 | INFO | Next run scheduled for 2026-04-07 05:48:38 AM
+2026-04-07 05:42:41,522 | INFO | Starting HR results refresh
+2026-04-07 05:42:47,261 | INFO | HR results refresh completed successfully
+2026-04-07 05:42:47,261 | INFO | Starting starting-lineups refresh
+2026-04-07 05:42:47,821 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 05:42:47,821 | INFO | Next run scheduled for 2026-04-07 06:12:41 AM
+2026-04-07 05:48:38,184 | INFO | Starting HR results refresh
+2026-04-07 05:48:43,925 | INFO | HR results refresh completed successfully
+2026-04-07 05:48:43,925 | INFO | Starting starting-lineups refresh
+2026-04-07 05:48:44,484 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 05:48:44,484 | INFO | Starting SQL live-data sync
+2026-04-07 05:48:44,691 | INFO | SQL live-data sync completed successfully
+2026-04-07 05:48:44,779 | INFO | Next run scheduled for 2026-04-07 06:03:38 AM
+2026-04-07 06:03:38,185 | INFO | Starting HR results refresh
+2026-04-07 06:03:44,126 | INFO | HR results refresh completed successfully
+2026-04-07 06:03:44,126 | INFO | Starting starting-lineups refresh
+2026-04-07 06:03:44,692 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 06:03:44,694 | INFO | Starting SQL live-data sync
+2026-04-07 06:03:44,892 | INFO | SQL live-data sync completed successfully
+2026-04-07 06:03:44,976 | INFO | Next run scheduled for 2026-04-07 06:18:38 AM
+2026-04-07 06:12:41,523 | INFO | Starting HR results refresh
+2026-04-07 06:12:47,697 | INFO | HR results refresh completed successfully
+2026-04-07 06:12:47,697 | INFO | Starting starting-lineups refresh
+2026-04-07 06:12:48,303 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 06:12:48,303 | INFO | Next run scheduled for 2026-04-07 06:42:41 AM
+2026-04-07 06:18:38,187 | INFO | Starting HR results refresh
+2026-04-07 06:18:44,749 | INFO | HR results refresh completed successfully
+2026-04-07 06:18:44,749 | INFO | Starting starting-lineups refresh
+2026-04-07 06:18:45,332 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 06:18:45,332 | INFO | Starting SQL live-data sync
+2026-04-07 06:18:45,567 | INFO | SQL live-data sync completed successfully
+2026-04-07 06:18:45,673 | INFO | Next run scheduled for 2026-04-07 06:33:38 AM
+2026-04-07 06:33:38,189 | INFO | Starting HR results refresh
+2026-04-07 06:33:44,618 | INFO | HR results refresh completed successfully
+2026-04-07 06:33:44,618 | INFO | Starting starting-lineups refresh
+2026-04-07 06:33:45,158 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 06:33:45,158 | INFO | Starting SQL live-data sync
+2026-04-07 06:33:45,376 | INFO | SQL live-data sync completed successfully
+2026-04-07 06:33:45,471 | INFO | Next run scheduled for 2026-04-07 06:48:38 AM
+2026-04-07 06:42:41,525 | INFO | Starting HR results refresh
+2026-04-07 06:42:48,107 | INFO | HR results refresh completed successfully
+2026-04-07 06:42:48,107 | INFO | Starting starting-lineups refresh
+2026-04-07 06:42:48,716 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 06:42:48,717 | INFO | Next run scheduled for 2026-04-07 07:12:41 AM
+2026-04-07 06:48:38,191 | INFO | Starting HR results refresh
+2026-04-07 06:48:44,906 | INFO | HR results refresh completed successfully
+2026-04-07 06:48:44,906 | INFO | Starting starting-lineups refresh
+2026-04-07 06:48:45,520 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 06:48:45,520 | INFO | Starting SQL live-data sync
+2026-04-07 06:48:45,714 | INFO | SQL live-data sync completed successfully
+2026-04-07 06:48:45,802 | INFO | Next run scheduled for 2026-04-07 07:03:38 AM
+2026-04-07 07:03:38,191 | INFO | Starting HR results refresh
+2026-04-07 07:03:44,856 | INFO | HR results refresh completed successfully
+2026-04-07 07:03:44,856 | INFO | Starting starting-lineups refresh
+2026-04-07 07:03:45,463 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 07:03:45,463 | INFO | Starting SQL live-data sync
+2026-04-07 07:03:45,661 | INFO | SQL live-data sync completed successfully
+2026-04-07 07:03:45,751 | INFO | Next run scheduled for 2026-04-07 07:18:38 AM
+2026-04-07 07:12:41,526 | INFO | Starting HR results refresh
+2026-04-07 07:12:47,359 | INFO | HR results refresh completed successfully
+2026-04-07 07:12:47,359 | INFO | Starting starting-lineups refresh
+2026-04-07 07:12:47,935 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 07:12:47,935 | INFO | Next run scheduled for 2026-04-07 07:42:41 AM
+2026-04-07 07:18:38,193 | INFO | Starting HR results refresh
+2026-04-07 07:18:44,110 | INFO | HR results refresh completed successfully
+2026-04-07 07:18:44,110 | INFO | Starting starting-lineups refresh
+2026-04-07 07:18:44,667 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 07:18:44,667 | INFO | Starting SQL live-data sync
+2026-04-07 07:18:44,872 | INFO | SQL live-data sync completed successfully
+2026-04-07 07:18:44,961 | INFO | Next run scheduled for 2026-04-07 07:33:38 AM
+2026-04-07 07:33:38,193 | INFO | Starting HR results refresh
+2026-04-07 07:33:43,994 | INFO | HR results refresh completed successfully
+2026-04-07 07:33:43,994 | INFO | Starting starting-lineups refresh
+2026-04-07 07:33:44,591 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 07:33:44,592 | INFO | Starting SQL live-data sync
+2026-04-07 07:33:44,791 | INFO | SQL live-data sync completed successfully
+2026-04-07 07:33:44,879 | INFO | Next run scheduled for 2026-04-07 07:48:38 AM
+2026-04-07 07:42:41,527 | INFO | Starting HR results refresh
+2026-04-07 07:42:47,205 | INFO | HR results refresh completed successfully
+2026-04-07 07:42:47,206 | INFO | Starting starting-lineups refresh
+2026-04-07 07:42:47,758 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 07:42:47,758 | INFO | Next run scheduled for 2026-04-07 08:12:41 AM
+2026-04-07 07:48:38,195 | INFO | Starting HR results refresh
+2026-04-07 07:48:43,968 | INFO | HR results refresh completed successfully
+2026-04-07 07:48:43,970 | INFO | Starting starting-lineups refresh
+2026-04-07 07:48:44,564 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 07:48:44,564 | INFO | Starting SQL live-data sync
+2026-04-07 07:48:44,764 | INFO | SQL live-data sync completed successfully
+2026-04-07 07:48:44,856 | INFO | Next run scheduled for 2026-04-07 08:03:38 AM
+2026-04-07 08:03:38,197 | INFO | Starting HR results refresh
+2026-04-07 08:03:43,884 | INFO | HR results refresh completed successfully
+2026-04-07 08:03:43,884 | INFO | Starting starting-lineups refresh
+2026-04-07 08:03:44,483 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 08:03:44,483 | INFO | Starting SQL live-data sync
+2026-04-07 08:03:44,691 | INFO | SQL live-data sync completed successfully
+2026-04-07 08:03:44,780 | INFO | Next run scheduled for 2026-04-07 08:18:38 AM
+2026-04-07 08:12:44,473 | INFO | Starting HR results refresh
+2026-04-07 08:12:50,239 | INFO | HR results refresh completed successfully
+2026-04-07 08:12:50,240 | INFO | Starting starting-lineups refresh
+2026-04-07 08:12:50,793 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 08:12:50,793 | INFO | Next run scheduled for 2026-04-07 08:42:44 AM
+2026-04-07 08:18:41,142 | INFO | Starting HR results refresh
+2026-04-07 08:18:46,897 | INFO | HR results refresh completed successfully
+2026-04-07 08:18:46,897 | INFO | Starting starting-lineups refresh
+2026-04-07 08:18:47,496 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 08:18:47,496 | INFO | Starting SQL live-data sync
+2026-04-07 08:18:47,704 | INFO | SQL live-data sync completed successfully
+2026-04-07 08:18:47,791 | INFO | Next run scheduled for 2026-04-07 08:33:41 AM
+2026-04-07 08:33:41,143 | INFO | Starting HR results refresh
+2026-04-07 08:33:46,872 | INFO | HR results refresh completed successfully
+2026-04-07 08:33:46,872 | INFO | Starting starting-lineups refresh
+2026-04-07 08:33:47,437 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 08:33:47,437 | INFO | Starting SQL live-data sync
+2026-04-07 08:33:47,682 | INFO | SQL live-data sync completed successfully
+2026-04-07 08:33:47,768 | INFO | Next run scheduled for 2026-04-07 08:48:41 AM
+2026-04-07 08:42:44,473 | INFO | Starting HR results refresh
+2026-04-07 08:42:50,220 | INFO | HR results refresh completed successfully
+2026-04-07 08:42:50,220 | INFO | Starting starting-lineups refresh
+2026-04-07 08:42:50,786 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 08:42:50,786 | INFO | Next run scheduled for 2026-04-07 09:12:44 AM
+2026-04-07 08:48:41,145 | INFO | Starting HR results refresh
+2026-04-07 08:48:46,913 | INFO | HR results refresh completed successfully
+2026-04-07 08:48:46,913 | INFO | Starting starting-lineups refresh
+2026-04-07 08:48:47,451 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 08:48:47,451 | INFO | Starting SQL live-data sync
+2026-04-07 08:48:47,663 | INFO | SQL live-data sync completed successfully
+2026-04-07 08:48:47,752 | INFO | Next run scheduled for 2026-04-07 09:03:41 AM
+2026-04-07 09:03:41,146 | INFO | Starting HR results refresh
+2026-04-07 09:03:46,876 | INFO | HR results refresh completed successfully
+2026-04-07 09:03:46,876 | INFO | Starting starting-lineups refresh
+2026-04-07 09:03:47,427 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 09:03:47,429 | INFO | Starting SQL live-data sync
+2026-04-07 09:03:47,668 | INFO | SQL live-data sync completed successfully
+2026-04-07 09:03:47,758 | INFO | Next run scheduled for 2026-04-07 09:18:41 AM
+2026-04-07 09:12:44,475 | INFO | Starting HR results refresh
+2026-04-07 09:12:50,333 | INFO | HR results refresh completed successfully
+2026-04-07 09:12:50,333 | INFO | Starting starting-lineups refresh
+2026-04-07 09:12:50,876 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 09:12:50,876 | INFO | Next run scheduled for 2026-04-07 09:42:44 AM
+2026-04-07 09:18:41,147 | INFO | Starting HR results refresh
+2026-04-07 09:18:46,897 | INFO | HR results refresh completed successfully
+2026-04-07 09:18:46,897 | INFO | Starting starting-lineups refresh
+2026-04-07 09:18:47,444 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 09:18:47,444 | INFO | Starting SQL live-data sync
+2026-04-07 09:18:47,651 | INFO | SQL live-data sync completed successfully
+2026-04-07 09:18:47,772 | INFO | Next run scheduled for 2026-04-07 09:33:41 AM
+2026-04-07 09:33:41,148 | INFO | Starting HR results refresh
+2026-04-07 09:33:46,887 | INFO | HR results refresh completed successfully
+2026-04-07 09:33:46,887 | INFO | Starting starting-lineups refresh
+2026-04-07 09:33:47,434 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 09:33:47,434 | INFO | Starting SQL live-data sync
+2026-04-07 09:33:47,622 | INFO | SQL live-data sync completed successfully
+2026-04-07 09:33:47,711 | INFO | Next run scheduled for 2026-04-07 09:48:41 AM
+2026-04-07 09:42:44,476 | INFO | Starting HR results refresh
+2026-04-07 09:42:50,174 | INFO | HR results refresh completed successfully
+2026-04-07 09:42:50,176 | INFO | Starting starting-lineups refresh
+2026-04-07 09:42:50,749 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 09:42:50,749 | INFO | Next run scheduled for 2026-04-07 10:12:44 AM
+2026-04-07 09:48:41,149 | INFO | Starting HR results refresh
+2026-04-07 09:48:47,234 | INFO | HR results refresh completed successfully
+2026-04-07 09:48:47,234 | INFO | Starting starting-lineups refresh
+2026-04-07 09:48:47,809 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 09:48:47,809 | INFO | Starting SQL live-data sync
+2026-04-07 09:48:48,000 | INFO | SQL live-data sync completed successfully
+2026-04-07 09:48:48,086 | INFO | Next run scheduled for 2026-04-07 10:03:41 AM
+2026-04-07 10:03:41,150 | INFO | Starting HR results refresh
+2026-04-07 10:03:46,918 | INFO | HR results refresh completed successfully
+2026-04-07 10:03:46,918 | INFO | Starting starting-lineups refresh
+2026-04-07 10:03:47,479 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 10:03:47,480 | INFO | Starting SQL live-data sync
+2026-04-07 10:03:47,670 | INFO | SQL live-data sync completed successfully
+2026-04-07 10:03:47,754 | INFO | Next run scheduled for 2026-04-07 10:18:41 AM
+2026-04-07 10:12:44,477 | INFO | Starting HR results refresh
+2026-04-07 10:12:50,334 | INFO | HR results refresh completed successfully
+2026-04-07 10:12:50,334 | INFO | Starting starting-lineups refresh
+2026-04-07 10:12:50,901 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 10:12:50,901 | INFO | Next run scheduled for 2026-04-07 10:42:44 AM
+2026-04-07 10:18:41,151 | INFO | Starting HR results refresh
+2026-04-07 10:18:46,935 | INFO | HR results refresh completed successfully
+2026-04-07 10:18:46,935 | INFO | Starting starting-lineups refresh
+2026-04-07 10:18:47,482 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 10:18:47,482 | INFO | Starting SQL live-data sync
+2026-04-07 10:18:47,672 | INFO | SQL live-data sync completed successfully
+2026-04-07 10:18:47,760 | INFO | Next run scheduled for 2026-04-07 10:33:41 AM
+2026-04-07 10:33:41,153 | INFO | Starting HR results refresh
+2026-04-07 10:33:46,887 | INFO | HR results refresh completed successfully
+2026-04-07 10:33:46,888 | INFO | Starting starting-lineups refresh
+2026-04-07 10:33:47,434 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 10:33:47,434 | INFO | Starting SQL live-data sync
+2026-04-07 10:33:47,629 | INFO | SQL live-data sync completed successfully
+2026-04-07 10:33:47,713 | INFO | Next run scheduled for 2026-04-07 10:48:41 AM
+2026-04-07 10:42:44,479 | INFO | Starting HR results refresh
+2026-04-07 10:42:50,364 | INFO | HR results refresh completed successfully
+2026-04-07 10:42:50,364 | INFO | Starting starting-lineups refresh
+2026-04-07 10:42:50,939 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 10:42:50,939 | INFO | Next run scheduled for 2026-04-07 11:12:44 AM
+2026-04-07 10:48:41,155 | INFO | Starting HR results refresh
+2026-04-07 10:48:47,070 | INFO | HR results refresh completed successfully
+2026-04-07 10:48:47,070 | INFO | Starting starting-lineups refresh
+2026-04-07 10:48:47,664 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 10:48:47,664 | INFO | Starting SQL live-data sync
+2026-04-07 10:48:47,855 | INFO | SQL live-data sync completed successfully
+2026-04-07 10:48:47,940 | INFO | Next run scheduled for 2026-04-07 11:03:41 AM
+2026-04-07 11:03:41,156 | INFO | Starting HR results refresh
+2026-04-07 11:03:46,914 | INFO | HR results refresh completed successfully
+2026-04-07 11:03:46,914 | INFO | Starting starting-lineups refresh
+2026-04-07 11:03:47,473 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 11:03:47,473 | INFO | Starting SQL live-data sync
+2026-04-07 11:03:47,722 | INFO | SQL live-data sync completed successfully
+2026-04-07 11:03:47,809 | INFO | Next run scheduled for 2026-04-07 11:18:41 AM
+2026-04-07 11:12:44,480 | INFO | Starting HR results refresh
+2026-04-07 11:12:50,352 | INFO | HR results refresh completed successfully
+2026-04-07 11:12:50,352 | INFO | Starting starting-lineups refresh
+2026-04-07 11:12:51,227 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 11:12:51,227 | INFO | Next run scheduled for 2026-04-07 11:42:44 AM
+2026-04-07 11:18:41,157 | INFO | Starting HR results refresh
+2026-04-07 11:18:47,003 | INFO | HR results refresh completed successfully
+2026-04-07 11:18:47,003 | INFO | Starting starting-lineups refresh
+2026-04-07 11:18:47,873 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 11:18:47,873 | INFO | Starting SQL live-data sync
+2026-04-07 11:18:48,102 | INFO | SQL live-data sync completed successfully
+2026-04-07 11:18:48,194 | INFO | Next run scheduled for 2026-04-07 11:33:41 AM
+2026-04-07 11:33:41,158 | INFO | Starting HR results refresh
+2026-04-07 11:33:46,910 | INFO | HR results refresh completed successfully
+2026-04-07 11:33:46,910 | INFO | Starting starting-lineups refresh
+2026-04-07 11:33:47,792 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 11:33:47,793 | INFO | Starting SQL live-data sync
+2026-04-07 11:33:48,005 | INFO | SQL live-data sync completed successfully
+2026-04-07 11:33:48,095 | INFO | Next run scheduled for 2026-04-07 11:48:41 AM
+2026-04-07 11:42:44,481 | INFO | Starting HR results refresh
+2026-04-07 11:42:50,241 | INFO | HR results refresh completed successfully
+2026-04-07 11:42:50,241 | INFO | Starting starting-lineups refresh
+2026-04-07 11:42:51,104 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 11:42:51,104 | INFO | Next run scheduled for 2026-04-07 12:12:44 PM
+2026-04-07 11:48:41,158 | INFO | Starting HR results refresh
+2026-04-07 11:48:47,098 | INFO | HR results refresh completed successfully
+2026-04-07 11:48:47,098 | INFO | Starting starting-lineups refresh
+2026-04-07 11:48:47,967 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 11:48:47,967 | INFO | Starting SQL live-data sync
+2026-04-07 11:48:48,186 | INFO | SQL live-data sync completed successfully
+2026-04-07 11:48:48,274 | INFO | Next run scheduled for 2026-04-07 12:03:41 PM
+2026-04-07 12:03:41,159 | INFO | Starting HR results refresh
+2026-04-07 12:03:48,383 | INFO | HR results refresh completed successfully
+2026-04-07 12:03:48,383 | INFO | Starting starting-lineups refresh
+2026-04-07 12:03:49,344 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:03:49,344 | INFO | Starting SQL live-data sync
+2026-04-07 12:03:49,660 | INFO | SQL live-data sync completed successfully
+2026-04-07 12:03:49,749 | INFO | Next run scheduled for 2026-04-07 12:18:41 PM
+2026-04-07 12:06:13,227 | INFO | Starting HR results refresh
+2026-04-07 12:06:19,353 | INFO | HR results refresh completed successfully
+2026-04-07 12:06:19,354 | INFO | Starting starting-lineups refresh
+2026-04-07 12:06:20,536 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:06:20,536 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 12:06:31,711 | INFO | SQL data sync completed successfully
+2026-04-07 12:07:00,937 | INFO | Continuous mode enabled for HR results + lineups + SQL sync; interval=15 minutes
+2026-04-07 12:07:00,937 | INFO | Starting HR results refresh
+2026-04-07 12:07:07,773 | INFO | HR results refresh completed successfully
+2026-04-07 12:07:07,774 | INFO | Starting starting-lineups refresh
+2026-04-07 12:07:09,026 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:07:09,027 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 12:07:15,041 | INFO | SQL data sync completed successfully
+2026-04-07 12:07:15,168 | INFO | Next run scheduled for 2026-04-07 12:22:00 PM
+2026-04-07 12:12:44,483 | INFO | Starting HR results refresh
+2026-04-07 12:12:50,517 | INFO | HR results refresh completed successfully
+2026-04-07 12:12:50,518 | INFO | Starting starting-lineups refresh
+2026-04-07 12:12:51,454 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:12:51,454 | INFO | Next run scheduled for 2026-04-07 12:42:44 PM
+2026-04-07 12:22:00,938 | INFO | Starting HR results refresh
+2026-04-07 12:22:07,898 | INFO | HR results refresh completed successfully
+2026-04-07 12:22:07,898 | INFO | Starting starting-lineups refresh
+2026-04-07 12:22:08,784 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:22:08,784 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 12:22:12,905 | INFO | SQL data sync completed successfully
+2026-04-07 12:22:12,992 | INFO | Next run scheduled for 2026-04-07 12:37:00 PM
+2026-04-07 12:37:00,940 | INFO | Starting HR results refresh
+2026-04-07 12:37:06,658 | INFO | HR results refresh completed successfully
+2026-04-07 12:37:06,658 | INFO | Starting starting-lineups refresh
+2026-04-07 12:37:07,568 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:37:07,568 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 12:37:10,823 | INFO | SQL data sync completed successfully
+2026-04-07 12:37:10,900 | INFO | Next run scheduled for 2026-04-07 12:52:00 PM
+2026-04-07 12:42:44,483 | INFO | Starting HR results refresh
+2026-04-07 12:42:50,376 | INFO | HR results refresh completed successfully
+2026-04-07 12:42:50,376 | INFO | Starting starting-lineups refresh
+2026-04-07 12:42:51,304 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:42:51,304 | INFO | Next run scheduled for 2026-04-07 01:12:44 PM
+2026-04-07 12:52:00,942 | INFO | Starting HR results refresh
+2026-04-07 12:52:07,095 | INFO | HR results refresh completed successfully
+2026-04-07 12:52:07,096 | INFO | Starting starting-lineups refresh
+2026-04-07 12:52:07,962 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 12:52:07,962 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 12:52:11,092 | INFO | SQL data sync completed successfully
+2026-04-07 12:52:11,174 | INFO | Next run scheduled for 2026-04-07 01:07:00 PM
+2026-04-07 13:07:00,943 | INFO | Starting HR results refresh
+2026-04-07 13:07:07,228 | INFO | HR results refresh completed successfully
+2026-04-07 13:07:07,229 | INFO | Starting starting-lineups refresh
+2026-04-07 13:07:08,084 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 13:07:08,084 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 13:07:11,761 | INFO | SQL data sync completed successfully
+2026-04-07 13:07:11,843 | INFO | Next run scheduled for 2026-04-07 01:22:00 PM
+2026-04-07 13:12:44,485 | INFO | Starting HR results refresh
+2026-04-07 13:12:50,724 | INFO | HR results refresh completed successfully
+2026-04-07 13:12:50,724 | INFO | Starting starting-lineups refresh
+2026-04-07 13:12:51,938 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 13:12:51,938 | INFO | Next run scheduled for 2026-04-07 01:42:44 PM
+2026-04-07 13:22:00,944 | INFO | Starting HR results refresh
+2026-04-07 13:22:07,595 | INFO | HR results refresh completed successfully
+2026-04-07 13:22:07,595 | INFO | Starting starting-lineups refresh
+2026-04-07 13:22:08,973 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 13:22:08,974 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 13:22:12,727 | INFO | SQL data sync completed successfully
+2026-04-07 13:22:12,837 | INFO | Next run scheduled for 2026-04-07 01:37:00 PM
+2026-04-07 13:37:00,945 | INFO | Starting HR results refresh
+2026-04-07 13:37:02,015 | INFO | HR results refresh completed successfully
+2026-04-07 13:37:02,015 | INFO | Starting starting-lineups refresh
+2026-04-07 13:37:03,347 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 13:37:03,347 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 13:37:16,645 | INFO | SQL data sync completed successfully
+2026-04-07 13:37:16,750 | INFO | Next run scheduled for 2026-04-07 01:52:00 PM
+2026-04-07 13:42:44,485 | INFO | Starting HR results refresh
+2026-04-07 13:42:45,418 | INFO | HR results refresh completed successfully
+2026-04-07 13:42:45,419 | INFO | Starting starting-lineups refresh
+2026-04-07 13:42:46,709 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 13:42:46,709 | INFO | Next run scheduled for 2026-04-07 02:12:44 PM
+2026-04-07 13:52:00,946 | INFO | Starting HR results refresh
+2026-04-07 13:52:01,899 | INFO | HR results refresh completed successfully
+2026-04-07 13:52:01,899 | INFO | Starting starting-lineups refresh
+2026-04-07 13:52:03,188 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 13:52:03,188 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 13:52:06,500 | INFO | SQL data sync completed successfully
+2026-04-07 13:52:06,586 | INFO | Next run scheduled for 2026-04-07 02:07:00 PM
+2026-04-07 14:07:00,947 | INFO | Starting HR results refresh
+2026-04-07 14:07:01,992 | INFO | HR results refresh completed successfully
+2026-04-07 14:07:01,992 | INFO | Starting starting-lineups refresh
+2026-04-07 14:07:03,435 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 14:07:03,435 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 14:07:05,858 | ERROR | Scheduled refresh failed
+Traceback (most recent call last):
+  File "C:\code\HardHits\python\hr_engine_job.py", line 144, in run_once
+    logging.info("Starting-lineups refresh completed successfully")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\code\HardHits\python\hr_engine_job.py", line 121, in sync_live_data_to_sql
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\eavh2\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe', 'C:\\code\\HardHits\\python\\load_to_sqlserver.py', '--server', 'localhost\\SQLEXPRESS', '--database', 'HardHits', '--driver', 'ODBC Driver 18 for SQL Server', '--tables', 'hr_model_predictions', 'hr_results', 'hrbi_model_predictions', 'hrbi_results', 'hrbi_results_summary', 'live_home_runs', 'starting_lineup_players', '--trusted-connection']' returned non-zero exit status 1.
+2026-04-07 14:07:06,004 | INFO | Next run scheduled for 2026-04-07 02:22:00 PM
+2026-04-07 14:12:44,487 | INFO | Starting HR results refresh
+2026-04-07 14:12:45,505 | INFO | HR results refresh completed successfully
+2026-04-07 14:12:45,505 | INFO | Starting starting-lineups refresh
+2026-04-07 14:12:47,461 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 14:12:47,462 | INFO | Next run scheduled for 2026-04-07 02:42:44 PM
+2026-04-07 14:22:00,949 | INFO | Starting HR results refresh
+2026-04-07 14:22:01,914 | INFO | HR results refresh completed successfully
+2026-04-07 14:22:01,914 | INFO | Starting starting-lineups refresh
+2026-04-07 14:22:03,562 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 14:22:03,562 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 14:22:06,659 | INFO | SQL data sync completed successfully
+2026-04-07 14:22:06,746 | INFO | Next run scheduled for 2026-04-07 02:37:00 PM
+2026-04-07 14:37:00,950 | INFO | Starting HR results refresh
+2026-04-07 14:37:01,948 | INFO | HR results refresh completed successfully
+2026-04-07 14:37:01,948 | INFO | Starting starting-lineups refresh
+2026-04-07 14:37:03,652 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 14:37:03,652 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 14:37:07,040 | INFO | SQL data sync completed successfully
+2026-04-07 14:37:07,140 | INFO | Next run scheduled for 2026-04-07 02:52:00 PM
+2026-04-07 14:42:44,488 | INFO | Starting HR results refresh
+2026-04-07 14:42:45,464 | INFO | HR results refresh completed successfully
+2026-04-07 14:42:45,464 | INFO | Starting starting-lineups refresh
+2026-04-07 14:42:47,158 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 14:42:47,158 | INFO | Next run scheduled for 2026-04-07 03:12:44 PM
+2026-04-07 14:52:00,952 | INFO | Starting HR results refresh
+2026-04-07 14:52:02,003 | INFO | HR results refresh completed successfully
+2026-04-07 14:52:02,003 | INFO | Starting starting-lineups refresh
+2026-04-07 14:52:03,771 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 14:52:03,773 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 14:52:07,986 | INFO | SQL data sync completed successfully
+2026-04-07 14:52:08,109 | INFO | Next run scheduled for 2026-04-07 03:07:00 PM
+2026-04-07 15:07:00,953 | INFO | Starting HR results refresh
+2026-04-07 15:07:02,493 | INFO | HR results refresh completed successfully
+2026-04-07 15:07:02,494 | INFO | Starting starting-lineups refresh
+2026-04-07 15:07:04,380 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 15:07:04,380 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 15:07:09,849 | INFO | SQL data sync completed successfully
+2026-04-07 15:07:10,003 | INFO | Next run scheduled for 2026-04-07 03:22:00 PM
+2026-04-07 15:12:44,489 | INFO | Starting HR results refresh
+2026-04-07 15:12:45,783 | INFO | HR results refresh completed successfully
+2026-04-07 15:12:45,783 | INFO | Starting starting-lineups refresh
+2026-04-07 15:12:47,449 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 15:12:47,449 | INFO | Next run scheduled for 2026-04-07 03:42:44 PM
+2026-04-07 15:22:00,954 | INFO | Starting HR results refresh
+2026-04-07 15:22:02,211 | INFO | HR results refresh completed successfully
+2026-04-07 15:22:02,211 | INFO | Starting starting-lineups refresh
+2026-04-07 15:22:03,941 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 15:22:03,941 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 15:22:07,476 | INFO | SQL data sync completed successfully
+2026-04-07 15:22:07,568 | INFO | Next run scheduled for 2026-04-07 03:37:00 PM
+2026-04-07 15:37:00,957 | INFO | Starting HR results refresh
+2026-04-07 15:37:02,753 | INFO | HR results refresh completed successfully
+2026-04-07 15:37:02,754 | INFO | Starting starting-lineups refresh
+2026-04-07 15:37:04,697 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 15:37:04,697 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 15:37:23,513 | INFO | SQL data sync completed successfully
+2026-04-07 15:37:23,739 | INFO | Next run scheduled for 2026-04-07 03:52:00 PM
+2026-04-07 15:42:44,490 | INFO | Starting HR results refresh
+2026-04-07 15:42:45,920 | INFO | HR results refresh completed successfully
+2026-04-07 15:42:45,921 | INFO | Starting starting-lineups refresh
+2026-04-07 15:42:47,867 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 15:42:47,867 | INFO | Next run scheduled for 2026-04-07 04:12:44 PM
+2026-04-07 15:52:00,957 | INFO | Starting HR results refresh
+2026-04-07 15:52:02,843 | INFO | HR results refresh completed successfully
+2026-04-07 15:52:02,843 | INFO | Starting starting-lineups refresh
+2026-04-07 15:52:04,678 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 15:52:04,680 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 15:52:08,217 | INFO | SQL data sync completed successfully
+2026-04-07 15:52:08,322 | INFO | Next run scheduled for 2026-04-07 04:07:00 PM
+2026-04-07 16:07:00,960 | INFO | Starting HR results refresh
+2026-04-07 16:07:03,152 | INFO | HR results refresh completed successfully
+2026-04-07 16:07:03,153 | INFO | Starting starting-lineups refresh
+2026-04-07 16:07:05,137 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 16:07:05,137 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 16:07:09,584 | INFO | SQL data sync completed successfully
+2026-04-07 16:07:09,711 | INFO | Next run scheduled for 2026-04-07 04:22:00 PM
+2026-04-07 16:12:44,505 | INFO | Starting HR results refresh
+2026-04-07 16:12:46,257 | INFO | HR results refresh completed successfully
+2026-04-07 16:12:46,257 | INFO | Starting starting-lineups refresh
+2026-04-07 16:12:48,206 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 16:12:48,212 | INFO | Next run scheduled for 2026-04-07 04:42:44 PM
+2026-04-07 16:22:00,960 | INFO | Starting HR results refresh
+2026-04-07 16:22:02,917 | INFO | HR results refresh completed successfully
+2026-04-07 16:22:02,917 | INFO | Starting starting-lineups refresh
+2026-04-07 16:22:05,081 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 16:22:05,081 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 16:22:21,066 | INFO | SQL data sync completed successfully
+2026-04-07 16:22:21,172 | INFO | Next run scheduled for 2026-04-07 04:37:00 PM
+2026-04-07 16:37:00,970 | INFO | Starting HR results refresh
+2026-04-07 16:37:02,637 | INFO | HR results refresh completed successfully
+2026-04-07 16:37:02,637 | INFO | Starting starting-lineups refresh
+2026-04-07 16:37:04,289 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 16:37:04,289 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 16:37:08,021 | INFO | SQL data sync completed successfully
+2026-04-07 16:37:08,110 | INFO | Next run scheduled for 2026-04-07 04:52:00 PM
+2026-04-07 16:42:44,504 | INFO | Starting HR results refresh
+2026-04-07 16:42:46,220 | INFO | HR results refresh completed successfully
+2026-04-07 16:42:46,220 | INFO | Starting starting-lineups refresh
+2026-04-07 16:42:48,924 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 16:42:48,924 | INFO | Next run scheduled for 2026-04-07 05:12:44 PM
+2026-04-07 16:52:00,971 | INFO | Starting HR results refresh
+2026-04-07 16:52:02,683 | INFO | HR results refresh completed successfully
+2026-04-07 16:52:02,683 | INFO | Starting starting-lineups refresh
+2026-04-07 16:52:06,207 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 16:52:06,207 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 16:52:10,113 | INFO | SQL data sync completed successfully
+2026-04-07 16:52:10,195 | INFO | Next run scheduled for 2026-04-07 05:07:00 PM
+2026-04-07 17:07:00,973 | INFO | Starting HR results refresh
+2026-04-07 17:07:02,677 | INFO | HR results refresh completed successfully
+2026-04-07 17:07:02,677 | INFO | Starting starting-lineups refresh
+2026-04-07 17:07:06,696 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 17:07:06,696 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 17:07:10,820 | INFO | SQL data sync completed successfully
+2026-04-07 17:07:10,898 | INFO | Next run scheduled for 2026-04-07 05:22:00 PM
+2026-04-07 17:12:44,507 | INFO | Starting HR results refresh
+2026-04-07 17:12:46,198 | INFO | HR results refresh completed successfully
+2026-04-07 17:12:46,198 | INFO | Starting starting-lineups refresh
+2026-04-07 17:12:50,286 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 17:12:50,287 | INFO | Next run scheduled for 2026-04-07 05:42:44 PM
+2026-04-07 17:22:00,978 | INFO | Starting HR results refresh
+2026-04-07 17:22:02,732 | INFO | HR results refresh completed successfully
+2026-04-07 17:22:02,732 | INFO | Starting starting-lineups refresh
+2026-04-07 17:22:06,794 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 17:22:06,794 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 17:22:17,045 | INFO | SQL data sync completed successfully
+2026-04-07 17:22:17,136 | INFO | Next run scheduled for 2026-04-07 05:37:00 PM
+2026-04-07 17:37:00,979 | INFO | Starting HR results refresh
+2026-04-07 17:37:02,629 | INFO | HR results refresh completed successfully
+2026-04-07 17:37:02,629 | INFO | Starting starting-lineups refresh
+2026-04-07 17:37:06,687 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 17:37:06,687 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 17:37:16,484 | INFO | SQL data sync completed successfully
+2026-04-07 17:37:16,577 | INFO | Next run scheduled for 2026-04-07 05:52:00 PM
+2026-04-07 17:42:44,507 | INFO | Starting HR results refresh
+2026-04-07 17:42:46,144 | INFO | HR results refresh completed successfully
+2026-04-07 17:42:46,144 | INFO | Starting starting-lineups refresh
+2026-04-07 17:42:50,546 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 17:42:50,547 | INFO | Next run scheduled for 2026-04-07 06:12:44 PM
+2026-04-07 17:52:00,980 | INFO | Starting HR results refresh
+2026-04-07 17:52:02,674 | INFO | HR results refresh completed successfully
+2026-04-07 17:52:02,674 | INFO | Starting starting-lineups refresh
+2026-04-07 17:52:06,951 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 17:52:06,951 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 17:52:16,418 | INFO | SQL data sync completed successfully
+2026-04-07 17:52:16,502 | INFO | Next run scheduled for 2026-04-07 06:07:00 PM
+2026-04-07 18:07:00,981 | INFO | Starting HR results refresh
+2026-04-07 18:07:02,731 | INFO | HR results refresh completed successfully
+2026-04-07 18:07:02,731 | INFO | Starting starting-lineups refresh
+2026-04-07 18:07:07,408 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 18:07:07,409 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 18:07:17,580 | INFO | SQL data sync completed successfully
+2026-04-07 18:07:17,682 | INFO | Next run scheduled for 2026-04-07 06:22:00 PM
+2026-04-07 18:12:44,508 | INFO | Starting HR results refresh
+2026-04-07 18:12:46,208 | INFO | HR results refresh completed successfully
+2026-04-07 18:12:46,208 | INFO | Starting starting-lineups refresh
+2026-04-07 18:12:51,016 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 18:12:51,016 | INFO | Next run scheduled for 2026-04-07 06:42:44 PM
+2026-04-07 18:22:00,982 | INFO | Starting HR results refresh
+2026-04-07 18:22:03,650 | INFO | HR results refresh completed successfully
+2026-04-07 18:22:03,650 | INFO | Starting starting-lineups refresh
+2026-04-07 18:22:08,383 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 18:22:08,383 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 18:22:18,056 | INFO | SQL data sync completed successfully
+2026-04-07 18:22:18,157 | INFO | Next run scheduled for 2026-04-07 06:37:00 PM
+2026-04-07 18:37:00,984 | INFO | Starting HR results refresh
+2026-04-07 18:37:04,325 | INFO | HR results refresh completed successfully
+2026-04-07 18:37:04,325 | INFO | Starting starting-lineups refresh
+2026-04-07 18:37:09,033 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 18:37:09,033 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 18:37:19,320 | INFO | SQL data sync completed successfully
+2026-04-07 18:37:19,405 | INFO | Next run scheduled for 2026-04-07 06:52:00 PM
+2026-04-07 18:42:44,511 | INFO | Starting HR results refresh
+2026-04-07 18:42:48,229 | INFO | HR results refresh completed successfully
+2026-04-07 18:42:48,230 | INFO | Starting starting-lineups refresh
+2026-04-07 18:42:53,214 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 18:42:53,214 | INFO | Next run scheduled for 2026-04-07 07:12:44 PM
+2026-04-07 18:52:00,994 | INFO | Starting HR results refresh
+2026-04-07 18:52:05,066 | INFO | HR results refresh completed successfully
+2026-04-07 18:52:05,066 | INFO | Starting starting-lineups refresh
+2026-04-07 18:52:10,097 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 18:52:10,098 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 18:52:20,317 | INFO | SQL data sync completed successfully
+2026-04-07 18:52:20,393 | INFO | Next run scheduled for 2026-04-07 07:07:00 PM
+2026-04-07 19:07:01,010 | INFO | Starting HR results refresh
+2026-04-07 19:07:05,120 | INFO | HR results refresh completed successfully
+2026-04-07 19:07:05,120 | INFO | Starting starting-lineups refresh
+2026-04-07 19:07:10,127 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 19:07:10,127 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 19:07:20,009 | INFO | SQL data sync completed successfully
+2026-04-07 19:07:20,110 | INFO | Next run scheduled for 2026-04-07 07:22:01 PM
+2026-04-07 19:12:44,511 | INFO | Starting HR results refresh
+2026-04-07 19:12:48,752 | INFO | HR results refresh completed successfully
+2026-04-07 19:12:48,752 | INFO | Starting starting-lineups refresh
+2026-04-07 19:12:53,934 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 19:12:53,934 | INFO | Next run scheduled for 2026-04-07 07:42:44 PM
+2026-04-07 19:22:01,011 | INFO | Starting HR results refresh
+2026-04-07 19:22:05,730 | INFO | HR results refresh completed successfully
+2026-04-07 19:22:05,730 | INFO | Starting starting-lineups refresh
+2026-04-07 19:22:11,204 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 19:22:11,204 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 19:22:21,016 | INFO | SQL data sync completed successfully
+2026-04-07 19:22:21,116 | INFO | Next run scheduled for 2026-04-07 07:37:01 PM
+2026-04-07 19:37:01,013 | INFO | Starting HR results refresh
+2026-04-07 19:37:06,123 | INFO | HR results refresh completed successfully
+2026-04-07 19:37:06,123 | INFO | Starting starting-lineups refresh
+2026-04-07 19:37:11,638 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 19:37:11,638 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 19:37:21,555 | INFO | SQL data sync completed successfully
+2026-04-07 19:37:21,641 | INFO | Next run scheduled for 2026-04-07 07:52:01 PM
+2026-04-07 19:42:44,512 | INFO | Starting HR results refresh
+2026-04-07 19:42:49,126 | INFO | HR results refresh completed successfully
+2026-04-07 19:42:49,126 | INFO | Starting starting-lineups refresh
+2026-04-07 19:42:54,809 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 19:42:54,809 | INFO | Next run scheduled for 2026-04-07 08:12:44 PM
+2026-04-07 19:52:01,014 | INFO | Starting HR results refresh
+2026-04-07 19:52:06,005 | INFO | HR results refresh completed successfully
+2026-04-07 19:52:06,005 | INFO | Starting starting-lineups refresh
+2026-04-07 19:52:12,347 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 19:52:12,348 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 19:52:22,540 | INFO | SQL data sync completed successfully
+2026-04-07 19:52:22,614 | INFO | Next run scheduled for 2026-04-07 08:07:01 PM
+2026-04-07 20:07:01,027 | INFO | Starting HR results refresh
+2026-04-07 20:07:06,119 | INFO | HR results refresh completed successfully
+2026-04-07 20:07:06,119 | INFO | Starting starting-lineups refresh
+2026-04-07 20:07:12,277 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 20:07:12,277 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 20:07:22,616 | INFO | SQL data sync completed successfully
+2026-04-07 20:07:22,726 | INFO | Next run scheduled for 2026-04-07 08:22:01 PM
+2026-04-07 20:12:44,521 | INFO | Starting HR results refresh
+2026-04-07 20:12:49,734 | INFO | HR results refresh completed successfully
+2026-04-07 20:12:49,734 | INFO | Starting starting-lineups refresh
+2026-04-07 20:12:56,015 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 20:12:56,015 | INFO | Next run scheduled for 2026-04-07 08:42:44 PM
+2026-04-07 20:22:01,028 | INFO | Starting HR results refresh
+2026-04-07 20:22:06,444 | INFO | HR results refresh completed successfully
+2026-04-07 20:22:06,445 | INFO | Starting starting-lineups refresh
+2026-04-07 20:22:12,513 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 20:22:12,513 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 20:22:16,274 | INFO | SQL data sync completed successfully
+2026-04-07 20:22:16,359 | INFO | Next run scheduled for 2026-04-07 08:37:01 PM
+2026-04-07 20:37:01,029 | INFO | Starting HR results refresh
+2026-04-07 20:37:06,353 | INFO | HR results refresh completed successfully
+2026-04-07 20:37:06,353 | INFO | Starting starting-lineups refresh
+2026-04-07 20:37:12,502 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 20:37:12,502 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 20:37:16,032 | INFO | SQL data sync completed successfully
+2026-04-07 20:37:16,117 | INFO | Next run scheduled for 2026-04-07 08:52:01 PM
+2026-04-07 20:42:44,527 | INFO | Starting HR results refresh
+2026-04-07 20:42:49,915 | INFO | HR results refresh completed successfully
+2026-04-07 20:42:49,915 | INFO | Starting starting-lineups refresh
+2026-04-07 20:42:55,971 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 20:42:55,971 | INFO | Next run scheduled for 2026-04-07 09:12:44 PM
+2026-04-07 20:52:01,030 | INFO | Starting HR results refresh
+2026-04-07 20:52:06,405 | INFO | HR results refresh completed successfully
+2026-04-07 20:52:06,407 | INFO | Starting starting-lineups refresh
+2026-04-07 20:52:12,519 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 20:52:12,519 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 20:52:15,968 | INFO | SQL data sync completed successfully
+2026-04-07 20:52:16,053 | INFO | Next run scheduled for 2026-04-07 09:07:01 PM
+2026-04-07 21:07:01,031 | INFO | Starting HR results refresh
+2026-04-07 21:07:06,521 | INFO | HR results refresh completed successfully
+2026-04-07 21:07:06,521 | INFO | Starting starting-lineups refresh
+2026-04-07 21:07:12,558 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 21:07:12,558 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 21:07:16,795 | INFO | SQL data sync completed successfully
+2026-04-07 21:07:16,878 | INFO | Next run scheduled for 2026-04-07 09:22:01 PM
+2026-04-07 21:12:44,541 | INFO | Starting HR results refresh
+2026-04-07 21:12:50,754 | INFO | HR results refresh completed successfully
+2026-04-07 21:12:50,754 | INFO | Starting starting-lineups refresh
+2026-04-07 21:12:57,038 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 21:12:57,038 | INFO | Next run scheduled for 2026-04-07 09:42:44 PM
+2026-04-07 21:22:01,032 | INFO | Starting HR results refresh
+2026-04-07 21:22:06,676 | INFO | HR results refresh completed successfully
+2026-04-07 21:22:06,676 | INFO | Starting starting-lineups refresh
+2026-04-07 21:22:12,748 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 21:22:12,749 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 21:22:16,770 | INFO | SQL data sync completed successfully
+2026-04-07 21:22:16,854 | INFO | Next run scheduled for 2026-04-07 09:37:01 PM
+2026-04-07 21:37:01,033 | INFO | Starting HR results refresh
+2026-04-07 21:37:07,149 | INFO | HR results refresh completed successfully
+2026-04-07 21:37:07,150 | INFO | Starting starting-lineups refresh
+2026-04-07 21:37:13,267 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 21:37:13,267 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 21:37:16,933 | INFO | SQL data sync completed successfully
+2026-04-07 21:37:17,018 | INFO | Next run scheduled for 2026-04-07 09:52:01 PM
+2026-04-07 21:42:44,546 | INFO | Starting HR results refresh
+2026-04-07 21:42:50,754 | INFO | HR results refresh completed successfully
+2026-04-07 21:42:50,754 | INFO | Starting starting-lineups refresh
+2026-04-07 21:42:57,115 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 21:42:57,115 | INFO | Next run scheduled for 2026-04-07 10:12:44 PM
+2026-04-07 21:52:01,034 | INFO | Starting HR results refresh
+2026-04-07 21:52:07,153 | INFO | HR results refresh completed successfully
+2026-04-07 21:52:07,155 | INFO | Starting starting-lineups refresh
+2026-04-07 21:52:13,338 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 21:52:13,338 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 21:52:17,442 | INFO | SQL data sync completed successfully
+2026-04-07 21:52:17,527 | INFO | Next run scheduled for 2026-04-07 10:07:01 PM
+2026-04-07 22:07:01,036 | INFO | Starting HR results refresh
+2026-04-07 22:07:07,298 | INFO | HR results refresh completed successfully
+2026-04-07 22:07:07,298 | INFO | Starting starting-lineups refresh
+2026-04-07 22:07:13,506 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 22:07:13,506 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 22:07:17,690 | INFO | SQL data sync completed successfully
+2026-04-07 22:07:17,769 | INFO | Next run scheduled for 2026-04-07 10:22:01 PM
+2026-04-07 22:12:44,552 | INFO | Starting HR results refresh
+2026-04-07 22:12:50,827 | INFO | HR results refresh completed successfully
+2026-04-07 22:12:50,827 | INFO | Starting starting-lineups refresh
+2026-04-07 22:12:57,219 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 22:12:57,219 | INFO | Next run scheduled for 2026-04-07 10:42:44 PM
+2026-04-07 22:22:01,043 | INFO | Starting HR results refresh
+2026-04-07 22:22:07,651 | INFO | HR results refresh completed successfully
+2026-04-07 22:22:07,651 | INFO | Starting starting-lineups refresh
+2026-04-07 22:22:14,214 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 22:22:14,214 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 22:22:18,170 | INFO | SQL data sync completed successfully
+2026-04-07 22:22:18,267 | INFO | Next run scheduled for 2026-04-07 10:37:01 PM
+2026-04-07 22:37:01,045 | INFO | Starting HR results refresh
+2026-04-07 22:37:07,335 | INFO | HR results refresh completed successfully
+2026-04-07 22:37:07,335 | INFO | Starting starting-lineups refresh
+2026-04-07 22:37:13,668 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 22:37:13,668 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 22:37:18,095 | INFO | SQL data sync completed successfully
+2026-04-07 22:37:18,218 | INFO | Next run scheduled for 2026-04-07 10:52:01 PM
+2026-04-07 22:42:44,553 | INFO | Starting HR results refresh
+2026-04-07 22:42:51,309 | INFO | HR results refresh completed successfully
+2026-04-07 22:42:51,309 | INFO | Starting starting-lineups refresh
+2026-04-07 22:42:58,102 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 22:42:58,102 | INFO | Next run scheduled for 2026-04-07 11:12:44 PM
+2026-04-07 22:52:01,046 | INFO | Starting HR results refresh
+2026-04-07 22:52:07,287 | INFO | HR results refresh completed successfully
+2026-04-07 22:52:07,289 | INFO | Starting starting-lineups refresh
+2026-04-07 22:52:13,596 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 22:52:13,596 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 22:52:19,374 | INFO | SQL data sync completed successfully
+2026-04-07 22:52:19,450 | INFO | Next run scheduled for 2026-04-07 11:07:01 PM
+2026-04-07 23:07:01,059 | INFO | Starting HR results refresh
+2026-04-07 23:07:07,299 | INFO | HR results refresh completed successfully
+2026-04-07 23:07:07,299 | INFO | Starting starting-lineups refresh
+2026-04-07 23:07:13,517 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 23:07:13,517 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 23:07:23,358 | INFO | SQL data sync completed successfully
+2026-04-07 23:07:23,447 | INFO | Next run scheduled for 2026-04-07 11:22:01 PM
+2026-04-07 23:12:44,554 | INFO | Starting HR results refresh
+2026-04-07 23:12:50,926 | INFO | HR results refresh completed successfully
+2026-04-07 23:12:50,926 | INFO | Starting starting-lineups refresh
+2026-04-07 23:12:57,392 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 23:12:57,392 | INFO | Next run scheduled for 2026-04-07 11:42:44 PM
+2026-04-07 23:22:01,060 | INFO | Starting HR results refresh
+2026-04-07 23:22:07,296 | INFO | HR results refresh completed successfully
+2026-04-07 23:22:07,296 | INFO | Starting starting-lineups refresh
+2026-04-07 23:22:13,550 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 23:22:13,552 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 23:22:23,296 | INFO | SQL data sync completed successfully
+2026-04-07 23:22:23,385 | INFO | Next run scheduled for 2026-04-07 11:37:01 PM
+2026-04-07 23:37:01,072 | INFO | Starting HR results refresh
+2026-04-07 23:37:07,508 | INFO | HR results refresh completed successfully
+2026-04-07 23:37:07,508 | INFO | Starting starting-lineups refresh
+2026-04-07 23:37:13,871 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 23:37:13,872 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 23:37:17,173 | INFO | SQL data sync completed successfully
+2026-04-07 23:37:17,256 | INFO | Next run scheduled for 2026-04-07 11:52:01 PM
+2026-04-07 23:42:44,555 | INFO | Starting HR results refresh
+2026-04-07 23:42:50,866 | INFO | HR results refresh completed successfully
+2026-04-07 23:42:50,866 | INFO | Starting starting-lineups refresh
+2026-04-07 23:42:57,072 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 23:42:57,072 | INFO | Next run scheduled for 2026-04-08 12:12:44 AM
+2026-04-07 23:52:01,072 | INFO | Starting HR results refresh
+2026-04-07 23:52:07,522 | INFO | HR results refresh completed successfully
+2026-04-07 23:52:07,522 | INFO | Starting starting-lineups refresh
+2026-04-07 23:52:14,000 | INFO | Starting-lineups refresh completed successfully
+2026-04-07 23:52:14,000 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-07 23:52:24,333 | INFO | SQL data sync completed successfully
+2026-04-07 23:52:24,427 | INFO | Next run scheduled for 2026-04-08 12:07:01 AM
+2026-04-08 00:07:01,073 | INFO | Starting HR results refresh
+2026-04-08 00:07:08,771 | INFO | HR results refresh completed successfully
+2026-04-08 00:07:08,771 | INFO | Starting starting-lineups refresh
+2026-04-08 00:07:09,440 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 00:07:09,442 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 00:07:19,170 | INFO | SQL data sync completed successfully
+2026-04-08 00:07:19,261 | INFO | Next run scheduled for 2026-04-08 12:22:01 AM
+2026-04-08 00:12:44,567 | INFO | Starting HR results refresh
+2026-04-08 00:12:51,296 | INFO | HR results refresh completed successfully
+2026-04-08 00:12:51,296 | INFO | Starting starting-lineups refresh
+2026-04-08 00:12:51,894 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 00:12:51,894 | INFO | Next run scheduled for 2026-04-08 12:42:44 AM
+2026-04-08 00:22:01,075 | INFO | Starting HR results refresh
+2026-04-08 00:22:08,124 | INFO | HR results refresh completed successfully
+2026-04-08 00:22:08,124 | INFO | Starting starting-lineups refresh
+2026-04-08 00:22:08,700 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 00:22:08,700 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 00:22:12,333 | INFO | SQL data sync completed successfully
+2026-04-08 00:22:12,428 | INFO | Next run scheduled for 2026-04-08 12:37:01 AM
+2026-04-08 00:37:01,076 | INFO | Starting HR results refresh
+2026-04-08 00:37:07,793 | INFO | HR results refresh completed successfully
+2026-04-08 00:37:07,793 | INFO | Starting starting-lineups refresh
+2026-04-08 00:37:08,360 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 00:37:08,360 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 00:37:11,262 | INFO | SQL data sync completed successfully
+2026-04-08 00:37:11,346 | INFO | Next run scheduled for 2026-04-08 12:52:01 AM
+2026-04-08 00:42:44,571 | INFO | Starting HR results refresh
+2026-04-08 00:42:51,157 | INFO | HR results refresh completed successfully
+2026-04-08 00:42:51,157 | INFO | Starting starting-lineups refresh
+2026-04-08 00:42:51,701 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 00:42:51,701 | INFO | Next run scheduled for 2026-04-08 01:12:44 AM
+2026-04-08 00:52:01,077 | INFO | Starting HR results refresh
+2026-04-08 00:52:07,702 | INFO | HR results refresh completed successfully
+2026-04-08 00:52:07,702 | INFO | Starting starting-lineups refresh
+2026-04-08 00:52:08,239 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 00:52:08,239 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 00:52:12,263 | INFO | SQL data sync completed successfully
+2026-04-08 00:52:12,362 | INFO | Next run scheduled for 2026-04-08 01:07:01 AM
+2026-04-08 01:07:01,078 | INFO | Starting HR results refresh
+2026-04-08 01:07:07,813 | INFO | HR results refresh completed successfully
+2026-04-08 01:07:07,813 | INFO | Starting starting-lineups refresh
+2026-04-08 01:07:08,361 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 01:07:08,361 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 01:07:15,486 | INFO | SQL data sync completed successfully
+2026-04-08 01:07:15,590 | INFO | Next run scheduled for 2026-04-08 01:22:01 AM
+2026-04-08 01:12:44,577 | INFO | Starting HR results refresh
+2026-04-08 01:12:51,460 | INFO | HR results refresh completed successfully
+2026-04-08 01:12:51,461 | INFO | Starting starting-lineups refresh
+2026-04-08 01:12:52,001 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 01:12:52,001 | INFO | Next run scheduled for 2026-04-08 01:42:44 AM
+2026-04-08 01:22:01,079 | INFO | Starting HR results refresh
+2026-04-08 01:22:07,804 | INFO | HR results refresh completed successfully
+2026-04-08 01:22:07,804 | INFO | Starting starting-lineups refresh
+2026-04-08 01:22:08,363 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 01:22:08,364 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 01:22:11,718 | INFO | SQL data sync completed successfully
+2026-04-08 01:22:11,806 | INFO | Next run scheduled for 2026-04-08 01:37:01 AM
+2026-04-08 01:37:01,081 | INFO | Starting HR results refresh
+2026-04-08 01:37:07,631 | INFO | HR results refresh completed successfully
+2026-04-08 01:37:07,633 | INFO | Starting starting-lineups refresh
+2026-04-08 01:37:08,193 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 01:37:08,195 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 01:37:14,715 | INFO | SQL data sync completed successfully
+2026-04-08 01:37:14,801 | INFO | Next run scheduled for 2026-04-08 01:52:01 AM
+2026-04-08 01:42:44,584 | INFO | Starting HR results refresh
+2026-04-08 01:42:51,123 | INFO | HR results refresh completed successfully
+2026-04-08 01:42:51,123 | INFO | Starting starting-lineups refresh
+2026-04-08 01:42:51,653 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 01:42:51,653 | INFO | Next run scheduled for 2026-04-08 02:12:44 AM
+2026-04-08 01:52:01,082 | INFO | Starting HR results refresh
+2026-04-08 01:52:07,789 | INFO | HR results refresh completed successfully
+2026-04-08 01:52:07,789 | INFO | Starting starting-lineups refresh
+2026-04-08 01:52:08,345 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 01:52:08,345 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 01:52:15,356 | INFO | SQL data sync completed successfully
+2026-04-08 01:52:15,440 | INFO | Next run scheduled for 2026-04-08 02:07:01 AM
+2026-04-08 02:07:01,084 | INFO | Starting HR results refresh
+2026-04-08 02:07:07,735 | INFO | HR results refresh completed successfully
+2026-04-08 02:07:07,735 | INFO | Starting starting-lineups refresh
+2026-04-08 02:07:08,301 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 02:07:08,301 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 02:07:13,626 | INFO | SQL data sync completed successfully
+2026-04-08 02:07:13,721 | INFO | Next run scheduled for 2026-04-08 02:22:01 AM
+2026-04-08 02:12:44,592 | INFO | Starting HR results refresh
+2026-04-08 02:12:51,506 | INFO | HR results refresh completed successfully
+2026-04-08 02:12:51,506 | INFO | Starting starting-lineups refresh
+2026-04-08 02:12:52,059 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 02:12:52,059 | INFO | Next run scheduled for 2026-04-08 02:42:44 AM
+2026-04-08 02:22:01,084 | INFO | Starting HR results refresh
+2026-04-08 02:22:07,752 | INFO | HR results refresh completed successfully
+2026-04-08 02:22:07,752 | INFO | Starting starting-lineups refresh
+2026-04-08 02:22:08,313 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 02:22:08,313 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 02:22:15,291 | INFO | SQL data sync completed successfully
+2026-04-08 02:22:15,376 | INFO | Next run scheduled for 2026-04-08 02:37:01 AM
+2026-04-08 02:37:01,085 | INFO | Starting HR results refresh
+2026-04-08 02:37:07,713 | INFO | HR results refresh completed successfully
+2026-04-08 02:37:07,713 | INFO | Starting starting-lineups refresh
+2026-04-08 02:37:08,307 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 02:37:08,307 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 02:37:15,377 | INFO | SQL data sync completed successfully
+2026-04-08 02:37:15,462 | INFO | Next run scheduled for 2026-04-08 02:52:01 AM
+2026-04-08 02:42:44,600 | INFO | Starting HR results refresh
+2026-04-08 02:42:51,171 | INFO | HR results refresh completed successfully
+2026-04-08 02:42:51,171 | INFO | Starting starting-lineups refresh
+2026-04-08 02:42:51,723 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 02:42:51,723 | INFO | Next run scheduled for 2026-04-08 03:12:44 AM
+2026-04-08 02:52:01,087 | INFO | Starting HR results refresh
+2026-04-08 02:52:07,534 | INFO | HR results refresh completed successfully
+2026-04-08 02:52:07,534 | INFO | Starting starting-lineups refresh
+2026-04-08 02:52:08,104 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 02:52:08,104 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 02:52:14,676 | INFO | SQL data sync completed successfully
+2026-04-08 02:52:14,761 | INFO | Next run scheduled for 2026-04-08 03:07:01 AM
+2026-04-08 03:07:01,088 | INFO | Starting HR results refresh
+2026-04-08 03:07:07,878 | INFO | HR results refresh completed successfully
+2026-04-08 03:07:07,878 | INFO | Starting starting-lineups refresh
+2026-04-08 03:07:08,454 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 03:07:08,454 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 03:07:15,172 | INFO | SQL data sync completed successfully
+2026-04-08 03:07:15,256 | INFO | Next run scheduled for 2026-04-08 03:22:01 AM
+2026-04-08 03:12:44,603 | INFO | Starting HR results refresh
+2026-04-08 03:12:51,324 | INFO | HR results refresh completed successfully
+2026-04-08 03:12:51,324 | INFO | Starting starting-lineups refresh
+2026-04-08 03:12:51,876 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 03:12:51,876 | INFO | Next run scheduled for 2026-04-08 03:42:44 AM
+2026-04-08 03:22:01,089 | INFO | Starting HR results refresh
+2026-04-08 03:22:07,824 | INFO | HR results refresh completed successfully
+2026-04-08 03:22:07,824 | INFO | Starting starting-lineups refresh
+2026-04-08 03:22:08,382 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 03:22:08,382 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 03:22:15,435 | INFO | SQL data sync completed successfully
+2026-04-08 03:22:15,519 | INFO | Next run scheduled for 2026-04-08 03:37:01 AM
+2026-04-08 03:37:01,090 | INFO | Starting HR results refresh
+2026-04-08 03:37:07,596 | INFO | HR results refresh completed successfully
+2026-04-08 03:37:07,596 | INFO | Starting starting-lineups refresh
+2026-04-08 03:37:08,138 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 03:37:08,138 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 03:37:15,262 | INFO | SQL data sync completed successfully
+2026-04-08 03:37:15,348 | INFO | Next run scheduled for 2026-04-08 03:52:01 AM
+2026-04-08 03:42:44,605 | INFO | Starting HR results refresh
+2026-04-08 03:42:51,404 | INFO | HR results refresh completed successfully
+2026-04-08 03:42:51,404 | INFO | Starting starting-lineups refresh
+2026-04-08 03:42:51,959 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 03:42:51,959 | INFO | Next run scheduled for 2026-04-08 04:12:44 AM
+2026-04-08 03:52:01,091 | INFO | Starting HR results refresh
+2026-04-08 03:52:07,734 | INFO | HR results refresh completed successfully
+2026-04-08 03:52:07,734 | INFO | Starting starting-lineups refresh
+2026-04-08 03:52:08,288 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 03:52:08,288 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 03:52:15,892 | INFO | SQL data sync completed successfully
+2026-04-08 03:52:15,981 | INFO | Next run scheduled for 2026-04-08 04:07:01 AM
+2026-04-08 04:07:01,092 | INFO | Starting HR results refresh
+2026-04-08 04:07:07,777 | INFO | HR results refresh completed successfully
+2026-04-08 04:07:07,777 | INFO | Starting starting-lineups refresh
+2026-04-08 04:07:08,361 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 04:07:08,361 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 04:07:15,930 | INFO | SQL data sync completed successfully
+2026-04-08 04:07:16,027 | INFO | Next run scheduled for 2026-04-08 04:22:01 AM
+2026-04-08 04:12:44,606 | INFO | Starting HR results refresh
+2026-04-08 04:12:51,257 | INFO | HR results refresh completed successfully
+2026-04-08 04:12:51,257 | INFO | Starting starting-lineups refresh
+2026-04-08 04:12:51,806 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 04:12:51,806 | INFO | Next run scheduled for 2026-04-08 04:42:44 AM
+2026-04-08 04:22:01,093 | INFO | Starting HR results refresh
+2026-04-08 04:22:07,597 | INFO | HR results refresh completed successfully
+2026-04-08 04:22:07,597 | INFO | Starting starting-lineups refresh
+2026-04-08 04:22:08,170 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 04:22:08,170 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 04:22:15,249 | INFO | SQL data sync completed successfully
+2026-04-08 04:22:15,335 | INFO | Next run scheduled for 2026-04-08 04:37:01 AM
+2026-04-08 04:37:01,094 | INFO | Starting HR results refresh
+2026-04-08 04:37:07,594 | INFO | HR results refresh completed successfully
+2026-04-08 04:37:07,594 | INFO | Starting starting-lineups refresh
+2026-04-08 04:37:08,210 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 04:37:08,210 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 04:37:15,490 | INFO | SQL data sync completed successfully
+2026-04-08 04:37:15,576 | INFO | Next run scheduled for 2026-04-08 04:52:01 AM
+2026-04-08 04:42:44,614 | INFO | Starting HR results refresh
+2026-04-08 04:42:51,425 | INFO | HR results refresh completed successfully
+2026-04-08 04:42:51,425 | INFO | Starting starting-lineups refresh
+2026-04-08 04:42:51,992 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 04:42:51,992 | INFO | Next run scheduled for 2026-04-08 05:12:44 AM
+2026-04-08 04:52:01,095 | INFO | Starting HR results refresh
+2026-04-08 04:52:07,631 | INFO | HR results refresh completed successfully
+2026-04-08 04:52:07,631 | INFO | Starting starting-lineups refresh
+2026-04-08 04:52:08,210 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 04:52:08,210 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 04:52:15,782 | INFO | SQL data sync completed successfully
+2026-04-08 04:52:15,871 | INFO | Next run scheduled for 2026-04-08 05:07:01 AM
+2026-04-08 05:07:01,096 | INFO | Starting HR results refresh
+2026-04-08 05:07:07,719 | INFO | HR results refresh completed successfully
+2026-04-08 05:07:07,719 | INFO | Starting starting-lineups refresh
+2026-04-08 05:07:08,282 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 05:07:08,290 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 05:07:15,238 | INFO | SQL data sync completed successfully
+2026-04-08 05:07:15,334 | INFO | Next run scheduled for 2026-04-08 05:22:01 AM
+2026-04-08 05:12:44,627 | INFO | Starting HR results refresh
+2026-04-08 05:12:51,371 | INFO | HR results refresh completed successfully
+2026-04-08 05:12:51,371 | INFO | Starting starting-lineups refresh
+2026-04-08 05:12:51,923 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 05:12:51,923 | INFO | Next run scheduled for 2026-04-08 05:42:44 AM
+2026-04-08 05:22:01,099 | INFO | Starting HR results refresh
+2026-04-08 05:22:07,841 | INFO | HR results refresh completed successfully
+2026-04-08 05:22:07,841 | INFO | Starting starting-lineups refresh
+2026-04-08 05:22:08,412 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 05:22:08,412 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 05:22:15,633 | INFO | SQL data sync completed successfully
+2026-04-08 05:22:15,728 | INFO | Next run scheduled for 2026-04-08 05:37:01 AM
+2026-04-08 05:37:01,100 | INFO | Starting HR results refresh
+2026-04-08 05:37:07,721 | INFO | HR results refresh completed successfully
+2026-04-08 05:37:07,721 | INFO | Starting starting-lineups refresh
+2026-04-08 05:37:08,289 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 05:37:08,289 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 05:37:16,869 | INFO | SQL data sync completed successfully
+2026-04-08 05:37:16,959 | INFO | Next run scheduled for 2026-04-08 05:52:01 AM
+2026-04-08 05:42:44,639 | INFO | Starting HR results refresh
+2026-04-08 05:42:51,347 | INFO | HR results refresh completed successfully
+2026-04-08 05:42:51,347 | INFO | Starting starting-lineups refresh
+2026-04-08 05:42:51,917 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 05:42:51,917 | INFO | Next run scheduled for 2026-04-08 06:12:44 AM
+2026-04-08 05:52:01,101 | INFO | Starting HR results refresh
+2026-04-08 05:52:07,567 | INFO | HR results refresh completed successfully
+2026-04-08 05:52:07,567 | INFO | Starting starting-lineups refresh
+2026-04-08 05:52:08,129 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 05:52:08,130 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 05:52:16,649 | INFO | SQL data sync completed successfully
+2026-04-08 05:52:16,737 | INFO | Next run scheduled for 2026-04-08 06:07:01 AM
+2026-04-08 06:07:01,102 | INFO | Starting HR results refresh
+2026-04-08 06:07:07,806 | INFO | HR results refresh completed successfully
+2026-04-08 06:07:07,806 | INFO | Starting starting-lineups refresh
+2026-04-08 06:07:08,366 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 06:07:08,367 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 06:07:17,000 | INFO | SQL data sync completed successfully
+2026-04-08 06:07:17,084 | INFO | Next run scheduled for 2026-04-08 06:22:01 AM
+2026-04-08 06:12:44,645 | INFO | Starting HR results refresh
+2026-04-08 06:12:51,585 | INFO | HR results refresh completed successfully
+2026-04-08 06:12:51,585 | INFO | Starting starting-lineups refresh
+2026-04-08 06:12:52,134 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 06:12:52,134 | INFO | Next run scheduled for 2026-04-08 06:42:44 AM
+2026-04-08 06:22:01,103 | INFO | Starting HR results refresh
+2026-04-08 06:22:08,269 | INFO | HR results refresh completed successfully
+2026-04-08 06:22:08,269 | INFO | Starting starting-lineups refresh
+2026-04-08 06:22:08,831 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 06:22:08,831 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 06:22:15,413 | INFO | SQL data sync completed successfully
+2026-04-08 06:22:15,514 | INFO | Next run scheduled for 2026-04-08 06:37:01 AM
+2026-04-08 06:37:01,106 | INFO | Starting HR results refresh
+2026-04-08 06:37:08,611 | INFO | HR results refresh completed successfully
+2026-04-08 06:37:08,611 | INFO | Starting starting-lineups refresh
+2026-04-08 06:37:09,220 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 06:37:09,227 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 06:37:17,890 | INFO | SQL data sync completed successfully
+2026-04-08 06:37:18,017 | INFO | Next run scheduled for 2026-04-08 06:52:01 AM
+2026-04-08 06:42:44,658 | INFO | Starting HR results refresh
+2026-04-08 06:42:51,263 | INFO | HR results refresh completed successfully
+2026-04-08 06:42:51,263 | INFO | Starting starting-lineups refresh
+2026-04-08 06:42:51,804 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 06:42:51,804 | INFO | Next run scheduled for 2026-04-08 07:12:44 AM
+2026-04-08 06:52:01,107 | INFO | Starting HR results refresh
+2026-04-08 06:52:07,673 | INFO | HR results refresh completed successfully
+2026-04-08 06:52:07,673 | INFO | Starting starting-lineups refresh
+2026-04-08 06:52:08,235 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 06:52:08,235 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 06:52:17,949 | INFO | SQL data sync completed successfully
+2026-04-08 06:52:18,033 | INFO | Next run scheduled for 2026-04-08 07:07:01 AM
+2026-04-08 07:07:01,108 | INFO | Starting HR results refresh
+2026-04-08 07:07:07,533 | INFO | HR results refresh completed successfully
+2026-04-08 07:07:07,533 | INFO | Starting starting-lineups refresh
+2026-04-08 07:07:08,060 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 07:07:08,060 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 07:07:17,838 | INFO | SQL data sync completed successfully
+2026-04-08 07:07:17,931 | INFO | Next run scheduled for 2026-04-08 07:22:01 AM
+2026-04-08 07:12:44,672 | INFO | Starting HR results refresh
+2026-04-08 07:12:51,312 | INFO | HR results refresh completed successfully
+2026-04-08 07:12:51,312 | INFO | Starting starting-lineups refresh
+2026-04-08 07:12:51,864 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 07:12:51,866 | INFO | Next run scheduled for 2026-04-08 07:42:44 AM
+2026-04-08 07:22:01,109 | INFO | Starting HR results refresh
+2026-04-08 07:22:07,680 | INFO | HR results refresh completed successfully
+2026-04-08 07:22:07,680 | INFO | Starting starting-lineups refresh
+2026-04-08 07:22:08,229 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 07:22:08,229 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 07:22:17,588 | INFO | SQL data sync completed successfully
+2026-04-08 07:22:17,674 | INFO | Next run scheduled for 2026-04-08 07:37:01 AM
+2026-04-08 07:37:01,111 | INFO | Starting HR results refresh
+2026-04-08 07:37:07,714 | INFO | HR results refresh completed successfully
+2026-04-08 07:37:07,714 | INFO | Starting starting-lineups refresh
+2026-04-08 07:37:08,264 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 07:37:08,264 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 07:37:18,011 | INFO | SQL data sync completed successfully
+2026-04-08 07:37:18,102 | INFO | Next run scheduled for 2026-04-08 07:52:01 AM
+2026-04-08 07:42:44,674 | INFO | Starting HR results refresh
+2026-04-08 07:42:51,238 | INFO | HR results refresh completed successfully
+2026-04-08 07:42:51,238 | INFO | Starting starting-lineups refresh
+2026-04-08 07:42:51,792 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 07:42:51,792 | INFO | Next run scheduled for 2026-04-08 08:12:44 AM
+2026-04-08 07:52:01,112 | INFO | Starting HR results refresh
+2026-04-08 07:52:07,775 | INFO | HR results refresh completed successfully
+2026-04-08 07:52:07,775 | INFO | Starting starting-lineups refresh
+2026-04-08 07:52:08,343 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 07:52:08,343 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 07:52:17,911 | INFO | SQL data sync completed successfully
+2026-04-08 07:52:17,998 | INFO | Next run scheduled for 2026-04-08 08:07:01 AM
+2026-04-08 08:07:04,081 | INFO | Starting HR results refresh
+2026-04-08 08:07:10,666 | INFO | HR results refresh completed successfully
+2026-04-08 08:07:10,666 | INFO | Starting starting-lineups refresh
+2026-04-08 08:07:11,266 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 08:07:11,266 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 08:07:19,367 | INFO | SQL data sync completed successfully
+2026-04-08 08:07:19,463 | INFO | Next run scheduled for 2026-04-08 08:22:04 AM
+2026-04-08 08:12:47,646 | INFO | Starting HR results refresh
+2026-04-08 08:12:54,361 | INFO | HR results refresh completed successfully
+2026-04-08 08:12:54,361 | INFO | Starting starting-lineups refresh
+2026-04-08 08:12:54,920 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 08:12:54,920 | INFO | Next run scheduled for 2026-04-08 08:42:47 AM
+2026-04-08 08:22:04,082 | INFO | Starting HR results refresh
+2026-04-08 08:22:10,838 | INFO | HR results refresh completed successfully
+2026-04-08 08:22:10,838 | INFO | Starting starting-lineups refresh
+2026-04-08 08:22:11,416 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 08:22:11,416 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 08:22:15,713 | INFO | SQL data sync completed successfully
+2026-04-08 08:22:15,805 | INFO | Next run scheduled for 2026-04-08 08:37:04 AM
+2026-04-08 08:37:04,083 | INFO | Starting HR results refresh
+2026-04-08 08:37:10,674 | INFO | HR results refresh completed successfully
+2026-04-08 08:37:10,674 | INFO | Starting starting-lineups refresh
+2026-04-08 08:37:11,251 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 08:37:11,251 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 08:37:14,580 | INFO | SQL data sync completed successfully
+2026-04-08 08:37:14,669 | INFO | Next run scheduled for 2026-04-08 08:52:04 AM
+2026-04-08 08:42:47,649 | INFO | Starting HR results refresh
+2026-04-08 08:42:54,533 | INFO | HR results refresh completed successfully
+2026-04-08 08:42:54,533 | INFO | Starting starting-lineups refresh
+2026-04-08 08:42:55,069 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 08:42:55,069 | INFO | Next run scheduled for 2026-04-08 09:12:47 AM
+2026-04-08 08:52:04,086 | INFO | Starting HR results refresh
+2026-04-08 08:52:10,676 | INFO | HR results refresh completed successfully
+2026-04-08 08:52:10,676 | INFO | Starting starting-lineups refresh
+2026-04-08 08:52:11,213 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 08:52:11,213 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 08:52:15,037 | INFO | SQL data sync completed successfully
+2026-04-08 08:52:15,124 | INFO | Next run scheduled for 2026-04-08 09:07:04 AM
+2026-04-08 09:07:04,087 | INFO | Starting HR results refresh
+2026-04-08 09:07:10,613 | INFO | HR results refresh completed successfully
+2026-04-08 09:07:10,613 | INFO | Starting starting-lineups refresh
+2026-04-08 09:07:11,155 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 09:07:11,155 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 09:07:14,804 | INFO | SQL data sync completed successfully
+2026-04-08 09:07:14,900 | INFO | Next run scheduled for 2026-04-08 09:22:04 AM
+2026-04-08 09:12:47,664 | INFO | Starting HR results refresh
+2026-04-08 09:12:54,634 | INFO | HR results refresh completed successfully
+2026-04-08 09:12:54,634 | INFO | Starting starting-lineups refresh
+2026-04-08 09:12:55,166 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 09:12:55,166 | INFO | Next run scheduled for 2026-04-08 09:42:47 AM
+2026-04-08 09:22:04,087 | INFO | Starting HR results refresh
+2026-04-08 09:22:10,748 | INFO | HR results refresh completed successfully
+2026-04-08 09:22:10,748 | INFO | Starting starting-lineups refresh
+2026-04-08 09:22:11,321 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 09:22:11,321 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 09:22:15,231 | INFO | SQL data sync completed successfully
+2026-04-08 09:22:15,327 | INFO | Next run scheduled for 2026-04-08 09:37:04 AM
+2026-04-08 09:37:04,098 | INFO | Starting HR results refresh
+2026-04-08 09:37:10,744 | INFO | HR results refresh completed successfully
+2026-04-08 09:37:10,744 | INFO | Starting starting-lineups refresh
+2026-04-08 09:37:11,284 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 09:37:11,284 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 09:37:15,072 | INFO | SQL data sync completed successfully
+2026-04-08 09:37:15,151 | INFO | Next run scheduled for 2026-04-08 09:52:04 AM
+2026-04-08 09:42:47,678 | INFO | Starting HR results refresh
+2026-04-08 09:42:54,471 | INFO | HR results refresh completed successfully
+2026-04-08 09:42:54,475 | INFO | Starting starting-lineups refresh
+2026-04-08 09:42:55,007 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 09:42:55,007 | INFO | Next run scheduled for 2026-04-08 10:12:47 AM
+2026-04-08 09:52:04,107 | INFO | Starting HR results refresh
+2026-04-08 09:52:10,607 | INFO | HR results refresh completed successfully
+2026-04-08 09:52:10,607 | INFO | Starting starting-lineups refresh
+2026-04-08 09:52:11,148 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 09:52:11,148 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 09:52:14,881 | INFO | SQL data sync completed successfully
+2026-04-08 09:52:14,996 | INFO | Next run scheduled for 2026-04-08 10:07:04 AM
+2026-04-08 10:07:04,108 | INFO | Starting HR results refresh
+2026-04-08 10:07:10,683 | INFO | HR results refresh completed successfully
+2026-04-08 10:07:10,683 | INFO | Starting starting-lineups refresh
+2026-04-08 10:07:11,231 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 10:07:11,231 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 10:07:15,172 | INFO | SQL data sync completed successfully
+2026-04-08 10:07:15,251 | INFO | Next run scheduled for 2026-04-08 10:22:04 AM
+2026-04-08 10:12:47,692 | INFO | Starting HR results refresh
+2026-04-08 10:12:54,716 | INFO | HR results refresh completed successfully
+2026-04-08 10:12:54,716 | INFO | Starting starting-lineups refresh
+2026-04-08 10:12:55,321 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 10:12:55,321 | INFO | Next run scheduled for 2026-04-08 10:42:47 AM
+2026-04-08 10:22:04,119 | INFO | Starting HR results refresh
+2026-04-08 10:22:10,632 | INFO | HR results refresh completed successfully
+2026-04-08 10:22:10,632 | INFO | Starting starting-lineups refresh
+2026-04-08 10:22:11,162 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 10:22:11,162 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 10:22:20,991 | INFO | SQL data sync completed successfully
+2026-04-08 10:22:21,082 | INFO | Next run scheduled for 2026-04-08 10:37:04 AM
+2026-04-08 10:37:04,121 | INFO | Starting HR results refresh
+2026-04-08 10:37:10,767 | INFO | HR results refresh completed successfully
+2026-04-08 10:37:10,767 | INFO | Starting starting-lineups refresh
+2026-04-08 10:37:11,743 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 10:37:11,743 | INFO | Starting SQL data sync for predictions, results, and live tables
+2026-04-08 10:37:22,166 | INFO | SQL data sync completed successfully
+2026-04-08 10:37:22,267 | INFO | Next run scheduled for 2026-04-08 10:52:04 AM
+2026-04-08 10:42:47,700 | INFO | Starting HR results refresh
+2026-04-08 10:42:55,059 | INFO | HR results refresh completed successfully
+2026-04-08 10:42:55,059 | INFO | Starting starting-lineups refresh
+2026-04-08 10:42:56,022 | INFO | Starting-lineups refresh completed successfully
+2026-04-08 10:42:56,022 | INFO | Next run scheduled for 2026-04-08 11:12:47 AM
