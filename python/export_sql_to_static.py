@@ -780,7 +780,9 @@ def export_site_data_from_sql(args: argparse.Namespace) -> list[Path]:
     latest_hrbi_results_date = hrbi_result_dates[-1] if hrbi_result_dates else None
     latest_live_date = live_dates[-1] if live_dates else None
     latest_lineup_date = lineup_dates[-1] if lineup_dates else None
-    latest_weather_date = weather_dates[-1] if weather_dates else None
+    # Keep weather aligned with the active model slate date so page matchup joins resolve.
+    weather_anchor_date = today_model_date or latest_hrbi_model_date or today_str
+    latest_weather_date = pick_best_date(weather_dates, weather_anchor_date)
 
     if today_model_date:
         today_source_rows = [row for row in hr_model_rows if to_date_str(row.get("model_date")) == today_model_date]
