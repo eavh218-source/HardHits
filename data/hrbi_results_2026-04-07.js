@@ -1,6 +1,6 @@
 // Exported from HardHits SQL Server for GitHub Pages (2026-04-08 15:43 UTC)
 
-const hrbiResultsData = [
+window.hrbiResultsData_2026_04_07 = [
   {
     "date": "2026-04-07",
     "name": "Bobby Witt Jr.",
@@ -366,7 +366,7 @@ const hrbiResultsData = [
     "classification": "Loss"
   }
 ];
-const hrbiResultsSummary = {
+window.hrbiResultsSummary_2026_04_07 = {
   "date": "2026-04-07",
   "wins": 1,
   "losses": 25,

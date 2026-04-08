@@ -1,5 +1,5 @@
 window.hrUpdateDate_2026_04_07 = '2026-04-07';
-window.hrLastCompleted_2026_04_07 = '11:52 PM ET';
+window.hrLastCompleted_2026_04_07 = '11:42 AM ET';
 window.todaysHRData_2026_04_07 = [
   {
     "date": "2026-04-07",
@@ -254,6 +254,21 @@ window.todaysHRData_2026_04_07 = [
     "launch_angle": 21.0,
     "distance": 366.0,
     "dist": 366.0,
+    "status": "\ud83c\udfaf HOME RUN"
+  },
+  {
+    "date": "2026-04-07",
+    "batter": "Ozzie Albies",
+    "name": "Ozzie Albies",
+    "batter_team": "Atlanta Braves",
+    "team": "Atlanta Braves",
+    "pitcher": "Shaun Anderson",
+    "pitcher_team": "Los Angeles Angels",
+    "exit_velo": 101.8,
+    "ev": 101.8,
+    "launch_angle": 38.0,
+    "distance": 379.0,
+    "dist": 379.0,
     "status": "\ud83c\udfaf HOME RUN"
   }
 ];

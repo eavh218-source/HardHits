@@ -1,182 +1,182 @@
 [
     {
-        "pitcher_name": "Noah Cameron",
-        "pitcher_id": 702070,
-        "pitcher_team": "KC",
-        "opponent_team": "CLE"
-    },
-    {
-        "pitcher_name": "Gavin Williams",
-        "pitcher_id": 668909,
-        "pitcher_team": "CLE",
-        "opponent_team": "KC"
-    },
-    {
-        "pitcher_name": "Trevor Rogers",
-        "pitcher_id": 669432,
-        "pitcher_team": "BAL",
-        "opponent_team": "CWS"
-    },
-    {
-        "pitcher_name": "Shane Smith",
-        "pitcher_id": 681343,
-        "pitcher_team": "CWS",
-        "opponent_team": "BAL"
-    },
-    {
-        "pitcher_name": "Zac Gallen",
-        "pitcher_id": 668678,
-        "pitcher_team": "AZ",
-        "opponent_team": "NYM"
-    },
-    {
-        "pitcher_name": "Freddy Peralta",
-        "pitcher_id": 642547,
-        "pitcher_team": "NYM",
-        "opponent_team": "AZ"
-    },
-    {
-        "pitcher_name": "Nick Pivetta",
-        "pitcher_id": 601713,
+        "pitcher_name": "Michael King",
+        "pitcher_id": 650633,
         "pitcher_team": "SD",
         "opponent_team": "PIT"
     },
     {
-        "pitcher_name": "Paul Skenes",
-        "pitcher_id": 694973,
+        "pitcher_name": "Mitch Keller",
+        "pitcher_id": 656605,
         "pitcher_team": "PIT",
         "opponent_team": "SD"
     },
     {
-        "pitcher_name": "Javier Assad",
-        "pitcher_id": 665871,
-        "pitcher_team": "CHC",
-        "opponent_team": "TB"
+        "pitcher_name": "Cole Ragans",
+        "pitcher_id": 666142,
+        "pitcher_team": "KC",
+        "opponent_team": "CLE"
     },
     {
-        "pitcher_name": "Drew Rasmussen",
-        "pitcher_id": 656876,
-        "pitcher_team": "TB",
-        "opponent_team": "CHC"
+        "pitcher_name": "Joey Cantillo",
+        "pitcher_id": 676282,
+        "pitcher_team": "CLE",
+        "opponent_team": "KC"
     },
     {
-        "pitcher_name": "Andrew Abbott",
-        "pitcher_id": 671096,
-        "pitcher_team": "CIN",
-        "opponent_team": "MIA"
-    },
-    {
-        "pitcher_name": "Sandy Alcantara",
-        "pitcher_id": 645261,
-        "pitcher_team": "MIA",
-        "opponent_team": "CIN"
-    },
-    {
-        "pitcher_name": "Matthew Liberatore",
-        "pitcher_id": 669461,
-        "pitcher_team": "STL",
-        "opponent_team": "WSH"
-    },
-    {
-        "pitcher_name": "Cade Cavalli",
-        "pitcher_id": 676917,
-        "pitcher_team": "WSH",
-        "opponent_team": "STL"
-    },
-    {
-        "pitcher_name": "Jacob Misiorowski",
-        "pitcher_id": 694819,
+        "pitcher_name": "Shane Drohan",
+        "pitcher_id": 675660,
         "pitcher_team": "MIL",
         "opponent_team": "BOS"
     },
     {
-        "pitcher_name": "Garrett Crochet",
-        "pitcher_id": 676979,
+        "pitcher_name": "Sonny Gray",
+        "pitcher_id": 543243,
         "pitcher_team": "BOS",
         "opponent_team": "MIL"
     },
     {
-        "pitcher_name": "Aaron Civale",
-        "pitcher_id": 650644,
-        "pitcher_team": "ATH",
-        "opponent_team": "NYY"
+        "pitcher_name": "Kyle Bradish",
+        "pitcher_id": 680694,
+        "pitcher_team": "BAL",
+        "opponent_team": "CWS"
     },
     {
-        "pitcher_name": "Cam Schlittler",
-        "pitcher_id": 693645,
-        "pitcher_team": "NYY",
-        "opponent_team": "ATH"
+        "pitcher_name": "Sean Burke",
+        "pitcher_id": 680732,
+        "pitcher_team": "CWS",
+        "opponent_team": "BAL"
     },
     {
-        "pitcher_name": "Yoshinobu Yamamoto",
-        "pitcher_id": 808967,
-        "pitcher_team": "LAD",
-        "opponent_team": "TOR"
-    },
-    {
-        "pitcher_name": "Kevin Gausman",
-        "pitcher_id": 592332,
-        "pitcher_team": "TOR",
-        "opponent_team": "LAD"
-    },
-    {
-        "pitcher_name": "Tarik Skubal",
-        "pitcher_id": 669373,
-        "pitcher_team": "DET",
-        "opponent_team": "MIN"
-    },
-    {
-        "pitcher_name": "Taj Bradley",
-        "pitcher_id": 671737,
-        "pitcher_team": "MIN",
-        "opponent_team": "DET"
-    },
-    {
-        "pitcher_name": "George Kirby",
-        "pitcher_id": 669923,
+        "pitcher_name": "Bryan Woo",
+        "pitcher_id": 693433,
         "pitcher_team": "SEA",
         "opponent_team": "TEX"
     },
     {
-        "pitcher_name": "Nathan Eovaldi",
-        "pitcher_id": 543135,
+        "pitcher_name": "MacKenzie Gore",
+        "pitcher_id": 669022,
         "pitcher_team": "TEX",
         "opponent_team": "SEA"
     },
     {
-        "pitcher_name": "Mike Burrows",
-        "pitcher_id": 681347,
+        "pitcher_name": "Shohei Ohtani",
+        "pitcher_id": 660271,
+        "pitcher_team": "LAD",
+        "opponent_team": "TOR"
+    },
+    {
+        "pitcher_name": "Dylan Cease",
+        "pitcher_id": 656302,
+        "pitcher_team": "TOR",
+        "opponent_team": "LAD"
+    },
+    {
+        "pitcher_name": "Cristian Javier",
+        "pitcher_id": 664299,
         "pitcher_team": "HOU",
         "opponent_team": "COL"
     },
     {
-        "pitcher_name": "Kyle Freeland",
-        "pitcher_id": 607536,
+        "pitcher_name": "Michael Lorenzen",
+        "pitcher_id": 547179,
         "pitcher_team": "COL",
         "opponent_team": "HOU"
     },
     {
-        "pitcher_name": "Reynaldo L\u00f3pez",
-        "pitcher_id": 625643,
-        "pitcher_team": "ATL",
-        "opponent_team": "LAA"
-    },
-    {
-        "pitcher_name": "Yusei Kikuchi",
-        "pitcher_id": 579328,
-        "pitcher_team": "LAA",
-        "opponent_team": "ATL"
-    },
-    {
-        "pitcher_name": "Cristopher S\u00e1nchez",
-        "pitcher_id": 650911,
+        "pitcher_name": "Aaron Nola",
+        "pitcher_id": 605400,
         "pitcher_team": "PHI",
         "opponent_team": "SF"
     },
     {
-        "pitcher_name": "Robbie Ray",
-        "pitcher_id": 592662,
+        "pitcher_name": "Tyler Mahle",
+        "pitcher_id": 641816,
         "pitcher_team": "SF",
         "opponent_team": "PHI"
+    },
+    {
+        "pitcher_name": "Michael McGreevy",
+        "pitcher_id": 700241,
+        "pitcher_team": "STL",
+        "opponent_team": "WSH"
+    },
+    {
+        "pitcher_name": "Miles Mikolas",
+        "pitcher_id": 571945,
+        "pitcher_team": "WSH",
+        "opponent_team": "STL"
+    },
+    {
+        "pitcher_name": "Grant Holmes",
+        "pitcher_id": 656550,
+        "pitcher_team": "ATL",
+        "opponent_team": "LAA"
+    },
+    {
+        "pitcher_name": "Reid Detmers",
+        "pitcher_id": 672282,
+        "pitcher_team": "LAA",
+        "opponent_team": "ATL"
+    },
+    {
+        "pitcher_name": "Ryne Nelson",
+        "pitcher_id": 669194,
+        "pitcher_team": "AZ",
+        "opponent_team": "NYM"
+    },
+    {
+        "pitcher_name": "David Peterson",
+        "pitcher_id": 656849,
+        "pitcher_team": "NYM",
+        "opponent_team": "AZ"
+    },
+    {
+        "pitcher_name": "Colin Rea",
+        "pitcher_id": 607067,
+        "pitcher_team": "CHC",
+        "opponent_team": "TB"
+    },
+    {
+        "pitcher_name": "Joe Boyle",
+        "pitcher_id": 671212,
+        "pitcher_team": "TB",
+        "opponent_team": "CHC"
+    },
+    {
+        "pitcher_name": "Brady Singer",
+        "pitcher_id": 663903,
+        "pitcher_team": "CIN",
+        "opponent_team": "MIA"
+    },
+    {
+        "pitcher_name": "Eury P\u00e9rez",
+        "pitcher_id": 691587,
+        "pitcher_team": "MIA",
+        "opponent_team": "CIN"
+    },
+    {
+        "pitcher_name": "Luis Severino",
+        "pitcher_id": 622663,
+        "pitcher_team": "ATH",
+        "opponent_team": "NYY"
+    },
+    {
+        "pitcher_name": "Will Warren",
+        "pitcher_id": 701542,
+        "pitcher_team": "NYY",
+        "opponent_team": "ATH"
+    },
+    {
+        "pitcher_name": "Framber Valdez",
+        "pitcher_id": 664285,
+        "pitcher_team": "DET",
+        "opponent_team": "MIN"
+    },
+    {
+        "pitcher_name": "Bailey Ober",
+        "pitcher_id": 641927,
+        "pitcher_team": "MIN",
+        "opponent_team": "DET"
     }
 ]

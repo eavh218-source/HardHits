@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/site-nav.css?v=stable-20260408-modalfix">
     <script src="../data/hr_model_data.js?v=stable-20260408-modalfix"></script>
     <script src="../data/mlb_weather.js?v=stable-20260408-modalfix"></script>
+    <script src="../data/mlb_teams.js?v=stable-20260408-modalfix"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,6 +32,96 @@
 
         .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+
+        .filter-panel {
+            margin: 0 0 24px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.86);
+            overflow: hidden;
+        }
+
+        .filter-panel summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            font-weight: 800;
+        }
+
+        .filter-panel summary::-webkit-details-marker { display: none; }
+
+        .filter-panel-body {
+            padding: 0 16px 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .filter-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin: 14px 0 12px;
+        }
+
+        .filter-summary-pill,
+        .filter-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(2, 6, 23, 0.7);
+            color: var(--text);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 8px 12px;
+        }
+
+        .filter-action-btn {
+            cursor: pointer;
+        }
+
+        .filter-action-btn:hover {
+            border-color: #475569;
+            color: var(--gold);
+        }
+
+        .team-filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .team-filter-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(2, 6, 23, 0.42);
+            font-size: 0.78rem;
+        }
+
+        .team-filter-chip input {
+            accent-color: var(--accent);
+            margin: 0;
+        }
+
+        .team-filter-meta {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .team-filter-meta small {
+            color: var(--text-dim);
+            font-size: 0.68rem;
+        }
 
         .card { 
             background: var(--card); 
@@ -249,6 +340,19 @@
         <p style="color: var(--gold); margin: 8px 0 0; font-size: 0.9rem; font-weight: 700;">Click any player card for a deeper breakdown.</p>
     </div>
 
+    <details class="filter-panel" open>
+        <summary>
+            <span>Team Filters</span>
+            <span id="team-filter-summary" class="filter-summary-pill">All teams</span>
+        </summary>
+        <div class="filter-panel-body">
+            <div class="filter-toolbar">
+                <button id="team-filter-toggle" class="filter-action-btn" type="button">All selected • Clear all</button>
+            </div>
+            <div id="team-filter-options" class="team-filter-grid"></div>
+        </div>
+    </details>
+
     <div id="dashboard" class="grid"></div>
 </div>
 
@@ -265,6 +369,9 @@
         const modal = document.getElementById('player-modal');
         const modalContent = document.getElementById('player-modal-content');
         const closeModalBtn = document.getElementById('close-player-modal');
+        const teamFilterOptions = document.getElementById('team-filter-options');
+        const teamFilterToggle = document.getElementById('team-filter-toggle');
+        const teamFilterSummary = document.getElementById('team-filter-summary');
 
         function safeText(value) {
             return String(value ?? '').replace(/[&<>"']/g, function (char) {
@@ -277,7 +384,34 @@
             return Number.isFinite(numericValue) ? `${numericValue}${suffix}` : 'N/A';
         }
 
-        const weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
+        const hardHitsApi = window.HardHitsApi || null;
+        let weatherRows = (typeof mlbWeatherData !== 'undefined' && Array.isArray(mlbWeatherData)) ? mlbWeatherData : [];
+        const allPlayers = (typeof hrModelData !== 'undefined' && Array.isArray(hrModelData)) ? hrModelData : [];
+        let visiblePlayers = [];
+        const TEAM_CODE_ALIASES = {
+            ATH: ['ATH', 'OAK'], OAK: ['OAK', 'ATH'],
+            WSH: ['WSH', 'WAS'], WAS: ['WAS', 'WSH'],
+            SDP: ['SDP', 'SD'], SD: ['SD', 'SDP'],
+            TBR: ['TBR', 'TB'], TB: ['TB', 'TBR'],
+            KCR: ['KCR', 'KC'], KC: ['KC', 'KCR'],
+            SFG: ['SFG', 'SF'], SF: ['SF', 'SFG'],
+            CHW: ['CHW', 'CWS'], CWS: ['CWS', 'CHW']
+        };
+
+        async function loadApiWeather(dateStr) {
+            if (!hardHitsApi || !dateStr) {
+                return { date: dateStr || '', items: weatherRows };
+            }
+
+            const payload = await hardHitsApi.fetchJson(`/api/weather?date=${encodeURIComponent(dateStr)}`);
+            const items = Array.isArray(payload.items) ? payload.items : [];
+            if (items.length) {
+                weatherRows = items;
+                window.mlbWeatherData = items;
+                window.weatherUpdateDate = payload.date || dateStr;
+            }
+            return { date: payload.date || dateStr, items };
+        }
 
         function slugify(value) {
             return String(value ?? '')
@@ -286,19 +420,100 @@
                 .replace(/^-+|-+$/g, '') || 'ballpark';
         }
 
+        function getTeamCodeVariants(code) {
+            const normalized = String(code || '').trim().toUpperCase();
+            const variants = TEAM_CODE_ALIASES[normalized] || [normalized];
+            return new Set(variants.filter(Boolean));
+        }
+
+        function normalizeTeamCode(value) {
+            return String(value || '').trim().toUpperCase();
+        }
+
+        function buildAvailableTeams() {
+            if (Array.isArray(window.mlbTeamTable) && window.mlbTeamTable.length) {
+                return window.mlbTeamTable.slice().sort((a, b) => String(a.abbr || '').localeCompare(String(b.abbr || '')));
+            }
+
+            const seen = new Map();
+            allPlayers.forEach((player) => {
+                const code = normalizeTeamCode(player.team);
+                if (!code || seen.has(code)) {
+                    return;
+                }
+                seen.set(code, { abbr: code, team: code, league: '', division: '' });
+            });
+            return Array.from(seen.values()).sort((a, b) => String(a.abbr || '').localeCompare(String(b.abbr || '')));
+        }
+
+        const availableTeams = buildAvailableTeams();
+        const selectedTeams = new Set(availableTeams.map((team) => normalizeTeamCode(team.abbr)));
+
+        function getFilteredPlayers(rows) {
+            return (rows || []).filter((player) => selectedTeams.has(normalizeTeamCode(player.team)));
+        }
+
+        function updateTeamFilterState() {
+            const total = availableTeams.length;
+            const selectedCount = selectedTeams.size;
+            if (teamFilterSummary) {
+                teamFilterSummary.textContent = total && selectedCount === total
+                    ? `All teams (${selectedCount}/${total})`
+                    : `${selectedCount}/${total} selected`;
+            }
+            if (teamFilterToggle) {
+                teamFilterToggle.textContent = total && selectedCount === total
+                    ? `All selected (${selectedCount}/${total}) • Clear all`
+                    : `${selectedCount}/${total} selected • Select all`;
+            }
+        }
+
+        function renderTeamFilterOptions() {
+            if (!teamFilterOptions) {
+                return;
+            }
+
+            teamFilterOptions.innerHTML = availableTeams.map((team) => {
+                const abbr = normalizeTeamCode(team.abbr);
+                const subLabel = [team.league, team.division].filter(Boolean).join(' ');
+                return `
+                    <label class="team-filter-chip" title="${safeText(team.team || abbr)}">
+                        <input type="checkbox" value="${safeText(abbr)}" ${selectedTeams.has(abbr) ? 'checked' : ''}>
+                        <span class="team-filter-meta">
+                            <strong>${safeText(abbr)}</strong>
+                            <small>${safeText(subLabel || (team.team || ''))}</small>
+                        </span>
+                    </label>
+                `;
+            }).join('');
+
+            Array.from(teamFilterOptions.querySelectorAll('input[type="checkbox"]')).forEach((input) => {
+                input.addEventListener('change', () => {
+                    const code = normalizeTeamCode(input.value);
+                    if (input.checked) {
+                        selectedTeams.add(code);
+                    } else {
+                        selectedTeams.delete(code);
+                    }
+                    updateTeamFilterState();
+                    renderDashboard();
+                });
+            });
+        }
+
         function getBallparkContext(player) {
             if (!player || !weatherRows.length) {
                 return null;
             }
 
             const playerDate = String(player.date || '').slice(0, 10);
-            const teamCode = String(player.team || '').trim().toUpperCase();
+            const teamCodes = getTeamCodeVariants(player.team);
 
             return weatherRows.find((row) => {
                 const rowDate = String(row.date || '').slice(0, 10);
                 const away = String(row.away_abbr || '').toUpperCase();
                 const home = String(row.home_abbr || '').toUpperCase();
-                return rowDate === playerDate && (away === teamCode || home === teamCode);
+                return rowDate === playerDate && (teamCodes.has(away) || teamCodes.has(home));
             }) || null;
         }
 
@@ -354,7 +569,15 @@
             document.body.style.overflow = '';
         }
 
-        function openPlayerModal(player) {
+        async function openPlayerModal(player) {
+            if (hardHitsApi && player && player.date) {
+                try {
+                    await loadApiWeather(String(player.date).slice(0, 10));
+                } catch (error) {
+                    console.warn('Unable to refresh weather from API, using static fallback:', error);
+                }
+            }
+
             const breakdown = player.breakdown || {};
             const opponent = player.opp_pitcher_full || player.opp_pitcher || 'TBD';
 
@@ -416,7 +639,7 @@
 
         function getPlayerFromCard(card) {
             const index = Number(card.getAttribute('data-player-index'));
-            return Number.isInteger(index) && hrModelData[index] ? hrModelData[index] : null;
+            return Number.isInteger(index) && visiblePlayers[index] ? visiblePlayers[index] : null;
         }
 
         closeModalBtn.addEventListener('click', closeModal);
@@ -431,102 +654,134 @@
             }
         });
 
-        if (typeof hrModelData === 'undefined' || hrModelData.length === 0) {
-            dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
-                <h2 style="color: var(--text-dim)">No Data Found</h2>
-                <p>Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/hr_model_data.js</code>.</p>
-            </div>`;
-            return;
+        function renderDashboard() {
+            if (!allPlayers.length) {
+                dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
+                    <h2 style="color: var(--text-dim)">No Data Found</h2>
+                    <p>Run <code>python python/hr_engine.py</code> from the repo root to generate <code>data/hr_model_data.js</code>.</p>
+                </div>`;
+                return;
+            }
+
+            visiblePlayers = getFilteredPlayers(allPlayers);
+            if (!visiblePlayers.length) {
+                const emptyTitle = selectedTeams.size === 0 ? '0 teams selected' : 'No matching teams on this slate';
+                const emptyMessage = selectedTeams.size === 0
+                    ? 'Use the team filter above to select one or more clubs.'
+                    : 'The selected teams do not have any player cards in the current HR probability slate.';
+                dash.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; border: 2px dashed var(--border); border-radius: 30px;">
+                    <h2 style="color: var(--text-dim)">${safeText(emptyTitle)}</h2>
+                    <p>${safeText(emptyMessage)}</p>
+                </div>`;
+                return;
+            }
+
+            dash.innerHTML = visiblePlayers.map((p, index) => {
+                const isElite = p.probability >= 8.5;
+                const isSolid = p.probability >= 5.5 && p.probability < 8.5;
+                const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
+                const trendClass = p.ev_trend_val > 1.5 ? 'hot-trend' : 'neutral-trend';
+
+                return `
+                    <article class="card card--interactive ${tierClass}" data-player-index="${index}" tabindex="0" role="button" aria-label="Open HR details for ${safeText(p.name)}" title="Click for full player breakdown">
+                        <div class="card-header">
+                            <div class="header-main">
+                                <span class="team-tag">${safeText(p.team)}</span>
+                                <h2 class="player-name">${safeText(p.name)}</h2>
+                                <span class="trend-badge ${trendClass}">${safeText(p.ev_trend_label)}</span>
+                            </div>
+                            <div class="score-box">
+                                <span class="score-val">${safeText(String(p.probability))}%</span>
+                                <span class="score-label">PROB</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-section">
+                            <span class="breakdown-title">Signal Heatmap</span>
+                            <div class="breakdown-grid">
+                                <div class="b-item">
+                                    <span class="b-label">POWER</span>
+                                    <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Power}%; background: var(--accent);"></div></div>
+                                </div>
+                                <div class="b-item">
+                                    <span class="b-label">FORM</span>
+                                    <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Form}%; background: var(--emerald);"></div></div>
+                                </div>
+                                <div class="b-item">
+                                    <span class="b-label">TREND</span>
+                                    <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Trend}%; background: var(--gold);"></div></div>
+                                </div>
+                                <div class="b-item">
+                                    <span class="b-label">PARK</span>
+                                    <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Park}%; background: var(--sky);"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-section">
+                            <div class="stat-group">
+                                <div class="stat-line">
+                                    <span class="stat-label">Max Exit Velocity</span>
+                                    <span class="stat-value">${safeText(formatMetric(p.max_ev, ' MPH'))}</span>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill" style="width:${p.max_ev_pct}%; background: var(--accent);"></div></div>
+                            </div>
+
+                            <div class="stat-group" style="margin-top:15px;">
+                                <div class="stat-line">
+                                    <span class="stat-label">Fly Ball EV (Avg)</span>
+                                    <span class="stat-value">${safeText(formatMetric(p.fb_ev, ' MPH'))}</span>
+                                </div>
+                                <div class="progress-track"><div class="progress-fill" style="width:${p.fb_ev_pct}%; background: var(--gold);"></div></div>
+                            </div>
+                        </div>
+
+                        <footer class="card-footer">
+                            <div class="pitcher-info">vs <span style="color:white">${safeText(p.opp_pitcher || 'TBD')}</span></div>
+                            <div class="park-info">${safeText(p.park_factor || 'Neutral')}</div>
+                        </footer>
+                    </article>
+                `;
+            }).join('');
+
+            Array.from(dash.querySelectorAll('.card--interactive')).forEach((card) => {
+                card.addEventListener('click', () => {
+                    const player = getPlayerFromCard(card);
+                    if (player) {
+                        openPlayerModal(player);
+                    }
+                });
+
+                card.addEventListener('keydown', (event) => {
+                    if (event.key !== 'Enter' && event.key !== ' ') {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const player = getPlayerFromCard(card);
+                    if (player) {
+                        openPlayerModal(player);
+                    }
+                });
+            });
         }
 
-        dash.innerHTML = hrModelData.map((p, index) => {
-            const isElite = p.probability >= 8.5;
-            const isSolid = p.probability >= 5.5 && p.probability < 8.5;
-            const tierClass = isElite ? 'elite' : (isSolid ? 'solid' : '');
-            const trendClass = p.ev_trend_val > 1.5 ? 'hot-trend' : 'neutral-trend';
-
-            return `
-                <article class="card card--interactive ${tierClass}" data-player-index="${index}" tabindex="0" role="button" aria-label="Open HR details for ${safeText(p.name)}" title="Click for full player breakdown">
-                    <div class="card-header">
-                        <div class="header-main">
-                            <span class="team-tag">${safeText(p.team)}</span>
-                            <h2 class="player-name">${safeText(p.name)}</h2>
-                            <span class="trend-badge ${trendClass}">${safeText(p.ev_trend_label)}</span>
-                        </div>
-                        <div class="score-box">
-                            <span class="score-val">${safeText(String(p.probability))}%</span>
-                            <span class="score-label">PROB</span>
-                        </div>
-                    </div>
-
-                    <div class="breakdown-section">
-                        <span class="breakdown-title">Signal Heatmap</span>
-                        <div class="breakdown-grid">
-                            <div class="b-item">
-                                <span class="b-label">POWER</span>
-                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Power}%; background: var(--accent);"></div></div>
-                            </div>
-                            <div class="b-item">
-                                <span class="b-label">FORM</span>
-                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Form}%; background: var(--emerald);"></div></div>
-                            </div>
-                            <div class="b-item">
-                                <span class="b-label">TREND</span>
-                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Trend}%; background: var(--gold);"></div></div>
-                            </div>
-                            <div class="b-item">
-                                <span class="b-label">PARK</span>
-                                <div class="b-track"><div class="b-fill" style="width:${p.breakdown.Park}%; background: var(--sky);"></div></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="stats-section">
-                        <div class="stat-group">
-                            <div class="stat-line">
-                                <span class="stat-label">Max Exit Velocity</span>
-                                <span class="stat-value">${safeText(formatMetric(p.max_ev, ' MPH'))}</span>
-                            </div>
-                            <div class="progress-track"><div class="progress-fill" style="width:${p.max_ev_pct}%; background: var(--accent);"></div></div>
-                        </div>
-
-                        <div class="stat-group" style="margin-top:15px;">
-                            <div class="stat-line">
-                                <span class="stat-label">Fly Ball EV (Avg)</span>
-                                <span class="stat-value">${safeText(formatMetric(p.fb_ev, ' MPH'))}</span>
-                            </div>
-                            <div class="progress-track"><div class="progress-fill" style="width:${p.fb_ev_pct}%; background: var(--gold);"></div></div>
-                        </div>
-                    </div>
-
-                    <footer class="card-footer">
-                        <div class="pitcher-info">vs <span style="color:white">${safeText(p.opp_pitcher || 'TBD')}</span></div>
-                        <div class="park-info">${safeText(p.park_factor || 'Neutral')}</div>
-                    </footer>
-                </article>
-            `;
-        }).join('');
-
-        Array.from(dash.querySelectorAll('.card--interactive')).forEach((card) => {
-            card.addEventListener('click', () => {
-                const player = getPlayerFromCard(card);
-                if (player) {
-                    openPlayerModal(player);
+        if (teamFilterToggle) {
+            teamFilterToggle.addEventListener('click', () => {
+                if (selectedTeams.size === availableTeams.length) {
+                    selectedTeams.clear();
+                } else {
+                    availableTeams.forEach((team) => selectedTeams.add(normalizeTeamCode(team.abbr)));
                 }
+                updateTeamFilterState();
+                renderTeamFilterOptions();
+                renderDashboard();
             });
+        }
 
-            card.addEventListener('keydown', (event) => {
-                if (event.key !== 'Enter' && event.key !== ' ') {
-                    return;
-                }
-
-                event.preventDefault();
-                const player = getPlayerFromCard(card);
-                if (player) {
-                    openPlayerModal(player);
-                }
-            });
-        });
+        updateTeamFilterState();
+        renderTeamFilterOptions();
+        renderDashboard();
     });
 </script>
 <script src="../assets/site-nav.js?v=stable-20260406-admingear" defer></script>

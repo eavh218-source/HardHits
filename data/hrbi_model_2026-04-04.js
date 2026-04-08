@@ -1,4 +1,4 @@
-// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 04:05 UTC)
+// Exported from HardHits SQL Server for GitHub Pages (2026-04-08 15:43 UTC)
 
 window.hrbiModelData_2026_04_04 = [
   {
@@ -3238,7 +3238,7 @@ window.hrbiModelData_2026_04_04 = [
     "vs_starter_ab": 0,
     "vs_starter_hr": 0,
     "vs_starter_rbi": 0,
-    "opp_pitcher": "Seth Lugo",
+    "opp_pitcher": "Luinder Avila",
     "avg_ev": 81.7,
     "recent_avg_ev": 73.0,
     "avg_launch_angle": 7.2,
@@ -3286,7 +3286,7 @@ window.hrbiModelData_2026_04_04 = [
     "vs_starter_ab": 0,
     "vs_starter_hr": 0,
     "vs_starter_rbi": 0,
-    "opp_pitcher": "Luinder Avila",
+    "opp_pitcher": "Seth Lugo",
     "avg_ev": 81.7,
     "recent_avg_ev": 73.0,
     "avg_launch_angle": 7.2,
