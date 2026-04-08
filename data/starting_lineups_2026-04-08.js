@@ -1,5 +1,5 @@
 window.lineupUpdateDate_2026_04_08 = '2026-04-08';
-window.lineupLastCompleted_2026_04_08 = '2:22 PM ET';
+window.lineupLastCompleted_2026_04_08 = '4:13 PM ET';
 window.startingLineups_2026_04_08 = [
   {
     "date": "2026-04-08",
@@ -10,10 +10,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 135,
     "home_team_id": 134,
     "game_time_et": "12:35 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live \u2014 still checking for lineup changes",
-    "minutes_to_first_pitch": -108,
+    "reason": "game is final \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -218,
     "away_lineup": [
       {
         "slot": 1,
@@ -38,10 +38,10 @@ window.startingLineups_2026_04_08 = [
       },
       {
         "slot": 4,
-        "name": "Gavin Sheets",
+        "name": "Ty France",
         "position": "1B",
-        "jersey": "30",
-        "player_id": 657757
+        "jersey": "25",
+        "player_id": 664034
       },
       {
         "slot": 5,
@@ -59,10 +59,10 @@ window.startingLineups_2026_04_08 = [
       },
       {
         "slot": 7,
-        "name": "Nick Castellanos",
+        "name": "Bryce Johnson",
         "position": "DH",
-        "jersey": "21",
-        "player_id": 592206
+        "jersey": "29",
+        "player_id": 669369
       },
       {
         "slot": 8,
@@ -111,23 +111,23 @@ window.startingLineups_2026_04_08 = [
       {
         "slot": 5,
         "name": "Nick Yorke",
-        "position": "3B",
+        "position": "1B",
         "jersey": "38",
         "player_id": 694377
       },
       {
         "slot": 6,
         "name": "Nick Gonzales",
-        "position": "SS",
+        "position": "3B",
         "jersey": "3",
         "player_id": 693304
       },
       {
         "slot": 7,
-        "name": "Spencer Horwitz",
-        "position": "1B",
-        "jersey": "2",
-        "player_id": 687462
+        "name": "Konnor Griffin",
+        "position": "SS",
+        "jersey": "6",
+        "player_id": 804606
       },
       {
         "slot": 8,
@@ -531,10 +531,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 118,
     "home_team_id": 114,
     "game_time_et": "1:10 PM ET",
-    "status": "In Progress",
+    "status": "Final",
     "eligible": true,
-    "reason": "game is live \u2014 still checking for lineup changes",
-    "minutes_to_first_pitch": -73,
+    "reason": "game is final \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -183,
     "away_lineup": [
       {
         "slot": 1,
@@ -594,10 +594,10 @@ window.startingLineups_2026_04_08 = [
       },
       {
         "slot": 9,
-        "name": "Michael Massey",
+        "name": "Isaac Collins",
         "position": "LF",
-        "jersey": "19",
-        "player_id": 686681
+        "jersey": "1",
+        "player_id": 686555
       }
     ],
     "home_lineup": [
@@ -624,10 +624,10 @@ window.startingLineups_2026_04_08 = [
       },
       {
         "slot": 4,
-        "name": "David Fry",
+        "name": "Kyle Manzardo",
         "position": "DH",
-        "jersey": "6",
-        "player_id": 681807
+        "jersey": "9",
+        "player_id": 700932
       },
       {
         "slot": 5,
@@ -1028,7 +1028,7 @@ window.startingLineups_2026_04_08 = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live \u2014 still checking for lineup changes",
-    "minutes_to_first_pitch": -48,
+    "minutes_to_first_pitch": -158,
     "away_lineup": [
       {
         "slot": 1,
@@ -1053,10 +1053,10 @@ window.startingLineups_2026_04_08 = [
       },
       {
         "slot": 4,
-        "name": "Jake Bauers",
-        "position": "1B",
-        "jersey": "9",
-        "player_id": 641343
+        "name": "Luis Matos",
+        "position": "LF",
+        "jersey": "21",
+        "player_id": 682641
       },
       {
         "slot": 5,
@@ -1075,7 +1075,7 @@ window.startingLineups_2026_04_08 = [
       {
         "slot": 7,
         "name": "Brandon Lockridge",
-        "position": "LF",
+        "position": "1B",
         "jersey": "20",
         "player_id": 663604
       },
@@ -1594,7 +1594,7 @@ window.startingLineups_2026_04_08 = [
     "status": "In Progress",
     "eligible": true,
     "reason": "game is live \u2014 still checking for lineup changes",
-    "minutes_to_first_pitch": -13,
+    "minutes_to_first_pitch": -123,
     "away_lineup": [
       {
         "slot": 1,
@@ -2220,10 +2220,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 136,
     "home_team_id": 140,
     "game_time_et": "2:35 PM ET",
-    "status": "Warmup",
+    "status": "In Progress",
     "eligible": true,
     "reason": "game is live \u2014 still checking for lineup changes",
-    "minutes_to_first_pitch": 12,
+    "minutes_to_first_pitch": -98,
     "away_lineup": [
       {
         "slot": 1,
@@ -2732,10 +2732,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 119,
     "home_team_id": 141,
     "game_time_et": "3:07 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within lineup watch window (0.7 hours to first pitch)",
-    "minutes_to_first_pitch": 44,
+    "reason": "game is live \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -66,
     "away_lineup": [
       {
         "slot": 1,
@@ -3379,10 +3379,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 117,
     "home_team_id": 115,
     "game_time_et": "3:10 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within lineup watch window (0.8 hours to first pitch)",
-    "minutes_to_first_pitch": 47,
+    "reason": "game is live \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -63,
     "away_lineup": [
       {
         "slot": 1,
@@ -3429,16 +3429,16 @@ window.startingLineups_2026_04_08 = [
       {
         "slot": 7,
         "name": "Joey Loperfido",
-        "position": "LF",
+        "position": "CF",
         "jersey": "10",
         "player_id": 694388
       },
       {
         "slot": 8,
-        "name": "Jake Meyers",
-        "position": "CF",
-        "jersey": "6",
-        "player_id": 676694
+        "name": "Brice Matthews",
+        "position": "LF",
+        "jersey": "0",
+        "player_id": 694728
       },
       {
         "slot": 9,
@@ -3945,10 +3945,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 143,
     "home_team_id": 137,
     "game_time_et": "3:45 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within lineup watch window (1.4 hours to first pitch)",
-    "minutes_to_first_pitch": 82,
+    "reason": "game is live \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -28,
     "away_lineup": [
       {
         "slot": 1,
@@ -4198,9 +4198,9 @@ window.startingLineups_2026_04_08 = [
         "exclude_from_models": false
       },
       {
-        "name": "Yoniel Curet",
-        "player_id": 692414,
-        "position": "P",
+        "name": "Steward Berroa",
+        "player_id": 672642,
+        "position": "RF",
         "status_code": "RM",
         "status": "Reassigned to Minors",
         "injury_related": false,
@@ -4484,10 +4484,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 138,
     "home_team_id": 120,
     "game_time_et": "4:05 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within lineup watch window (1.7 hours to first pitch)",
-    "minutes_to_first_pitch": 102,
+    "reason": "game is live \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -8,
     "away_lineup": [
       {
         "slot": 1,
@@ -4978,10 +4978,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 144,
     "home_team_id": 108,
     "game_time_et": "4:07 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within lineup watch window (1.7 hours to first pitch)",
-    "minutes_to_first_pitch": 104,
+    "reason": "game is live \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -6,
     "away_lineup": [
       {
         "slot": 1,
@@ -5173,6 +5173,15 @@ window.startingLineups_2026_04_08 = [
         "position": "P",
         "status_code": "D60",
         "status": "Injured 60-Day",
+        "injury_related": true,
+        "exclude_from_models": true
+      },
+      {
+        "name": "Reynaldo L\u00f3pez",
+        "player_id": 625643,
+        "position": "P",
+        "status_code": "SU",
+        "status": "Suspended # days",
         "injury_related": true,
         "exclude_from_models": true
       },
@@ -5487,6 +5496,15 @@ window.startingLineups_2026_04_08 = [
         "exclude_from_models": true
       },
       {
+        "name": "Reynaldo L\u00f3pez",
+        "player_id": 625643,
+        "position": "P",
+        "status_code": "SU",
+        "status": "Suspended # days",
+        "injury_related": true,
+        "exclude_from_models": true
+      },
+      {
         "name": "Sean Murphy",
         "player_id": 669221,
         "position": "C",
@@ -5598,10 +5616,10 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 109,
     "home_team_id": 121,
     "game_time_et": "4:10 PM ET",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "eligible": true,
-    "reason": "within lineup watch window (1.8 hours to first pitch)",
-    "minutes_to_first_pitch": 107,
+    "reason": "game is live \u2014 still checking for lineup changes",
+    "minutes_to_first_pitch": -3,
     "away_lineup": [
       {
         "slot": 1,
@@ -6245,12 +6263,140 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 112,
     "home_team_id": 139,
     "game_time_et": "6:40 PM ET",
-    "status": "Scheduled",
-    "eligible": false,
-    "reason": "too early (257 minutes to first pitch; watch starts 210 minutes before game time)",
-    "minutes_to_first_pitch": 257,
-    "away_lineup": [],
-    "home_lineup": [],
+    "status": "Pre-Game",
+    "eligible": true,
+    "reason": "within lineup watch window (2.5 hours to first pitch)",
+    "minutes_to_first_pitch": 147,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Nico Hoerner",
+        "position": "2B",
+        "jersey": "2",
+        "player_id": 663538
+      },
+      {
+        "slot": 2,
+        "name": "Michael Busch",
+        "position": "1B",
+        "jersey": "29",
+        "player_id": 683737
+      },
+      {
+        "slot": 3,
+        "name": "Alex Bregman",
+        "position": "3B",
+        "jersey": "3",
+        "player_id": 608324
+      },
+      {
+        "slot": 4,
+        "name": "Pete Crow-Armstrong",
+        "position": "CF",
+        "jersey": "4",
+        "player_id": 691718
+      },
+      {
+        "slot": 5,
+        "name": "Carson Kelly",
+        "position": "C",
+        "jersey": "15",
+        "player_id": 608348
+      },
+      {
+        "slot": 6,
+        "name": "Mois\u00e9s Ballesteros",
+        "position": "DH",
+        "jersey": "25",
+        "player_id": 694208
+      },
+      {
+        "slot": 7,
+        "name": "Dansby Swanson",
+        "position": "SS",
+        "jersey": "7",
+        "player_id": 621020
+      },
+      {
+        "slot": 8,
+        "name": "Michael Conforto",
+        "position": "LF",
+        "jersey": "20",
+        "player_id": 624424
+      },
+      {
+        "slot": 9,
+        "name": "Matt Shaw",
+        "position": "RF",
+        "jersey": "6",
+        "player_id": 807713
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Yandy D\u00edaz",
+        "position": "DH",
+        "jersey": "2",
+        "player_id": 650490
+      },
+      {
+        "slot": 2,
+        "name": "Jonathan Aranda",
+        "position": "1B",
+        "jersey": "8",
+        "player_id": 666018
+      },
+      {
+        "slot": 3,
+        "name": "Jake Fraley",
+        "position": "RF",
+        "jersey": "17",
+        "player_id": 641584
+      },
+      {
+        "slot": 4,
+        "name": "Junior Caminero",
+        "position": "3B",
+        "jersey": "13",
+        "player_id": 691406
+      },
+      {
+        "slot": 5,
+        "name": "Chandler Simpson",
+        "position": "LF",
+        "jersey": "14",
+        "player_id": 802415
+      },
+      {
+        "slot": 6,
+        "name": "Ben Williamson",
+        "position": "2B",
+        "jersey": "15",
+        "player_id": 810938
+      },
+      {
+        "slot": 7,
+        "name": "Hunter Feduccia",
+        "position": "C",
+        "jersey": "9",
+        "player_id": 676439
+      },
+      {
+        "slot": 8,
+        "name": "Jonny DeLuca",
+        "position": "CF",
+        "jersey": "21",
+        "player_id": 676356
+      },
+      {
+        "slot": 9,
+        "name": "Taylor Walls",
+        "position": "SS",
+        "jersey": "6",
+        "player_id": 670764
+      }
+    ],
     "away_distinctions": [
       {
         "name": "Cade Horton",
@@ -6408,6 +6554,15 @@ window.startingLineups_2026_04_08 = [
     ],
     "home_distinctions": [
       {
+        "name": "Drew Rasmussen",
+        "player_id": 656876,
+        "position": "P",
+        "status_code": "PL",
+        "status": "Paternity List",
+        "injury_related": true,
+        "exclude_from_models": true
+      },
+      {
         "name": "Edwin Uceta",
         "player_id": 670955,
         "position": "P",
@@ -6510,15 +6665,6 @@ window.startingLineups_2026_04_08 = [
         "name": "Jadher Areinamo",
         "player_id": 699130,
         "position": "2B",
-        "status_code": "RM",
-        "status": "Reassigned to Minors",
-        "injury_related": false,
-        "exclude_from_models": false
-      },
-      {
-        "name": "Jesse Scholtens",
-        "player_id": 669947,
-        "position": "P",
         "status_code": "RM",
         "status": "Reassigned to Minors",
         "injury_related": false,
@@ -6628,6 +6774,15 @@ window.startingLineups_2026_04_08 = [
     ],
     "home_injuries": [
       {
+        "name": "Drew Rasmussen",
+        "player_id": 656876,
+        "position": "P",
+        "status_code": "PL",
+        "status": "Paternity List",
+        "injury_related": true,
+        "exclude_from_models": true
+      },
+      {
         "name": "Edwin Uceta",
         "player_id": 670955,
         "position": "P",
@@ -6692,12 +6847,140 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 113,
     "home_team_id": 146,
     "game_time_et": "6:40 PM ET",
-    "status": "Scheduled",
-    "eligible": false,
-    "reason": "too early (257 minutes to first pitch; watch starts 210 minutes before game time)",
-    "minutes_to_first_pitch": 257,
-    "away_lineup": [],
-    "home_lineup": [],
+    "status": "Pre-Game",
+    "eligible": true,
+    "reason": "within lineup watch window (2.5 hours to first pitch)",
+    "minutes_to_first_pitch": 147,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "TJ Friedl",
+        "position": "CF",
+        "jersey": "29",
+        "player_id": 670770
+      },
+      {
+        "slot": 2,
+        "name": "Matt McLain",
+        "position": "2B",
+        "jersey": "9",
+        "player_id": 680574
+      },
+      {
+        "slot": 3,
+        "name": "Elly De La Cruz",
+        "position": "SS",
+        "jersey": "44",
+        "player_id": 682829
+      },
+      {
+        "slot": 4,
+        "name": "Sal Stewart",
+        "position": "1B",
+        "jersey": "27",
+        "player_id": 701398
+      },
+      {
+        "slot": 5,
+        "name": "Eugenio Su\u00e1rez",
+        "position": "DH",
+        "jersey": "28",
+        "player_id": 553993
+      },
+      {
+        "slot": 6,
+        "name": "Will Benson",
+        "position": "LF",
+        "jersey": "30",
+        "player_id": 666181
+      },
+      {
+        "slot": 7,
+        "name": "Tyler Stephenson",
+        "position": "C",
+        "jersey": "37",
+        "player_id": 663886
+      },
+      {
+        "slot": 8,
+        "name": "Noelvi Marte",
+        "position": "RF",
+        "jersey": "4",
+        "player_id": 682622
+      },
+      {
+        "slot": 9,
+        "name": "Ke'Bryan Hayes",
+        "position": "3B",
+        "jersey": "3",
+        "player_id": 663647
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Jakob Marsee",
+        "position": "CF",
+        "jersey": "87",
+        "player_id": 805300
+      },
+      {
+        "slot": 2,
+        "name": "Xavier Edwards",
+        "position": "2B",
+        "jersey": "9",
+        "player_id": 669364
+      },
+      {
+        "slot": 3,
+        "name": "Agust\u00edn Ram\u00edrez",
+        "position": "DH",
+        "jersey": "50",
+        "player_id": 682663
+      },
+      {
+        "slot": 4,
+        "name": "Liam Hicks",
+        "position": "C",
+        "jersey": "34",
+        "player_id": 689414
+      },
+      {
+        "slot": 5,
+        "name": "Otto Lopez",
+        "position": "SS",
+        "jersey": "6",
+        "player_id": 672640
+      },
+      {
+        "slot": 6,
+        "name": "Owen Caissie",
+        "position": "RF",
+        "jersey": "17",
+        "player_id": 683357
+      },
+      {
+        "slot": 7,
+        "name": "Connor Norby",
+        "position": "1B",
+        "jersey": "1",
+        "player_id": 681393
+      },
+      {
+        "slot": 8,
+        "name": "Griffin Conine",
+        "position": "LF",
+        "jersey": "18",
+        "player_id": 665052
+      },
+      {
+        "slot": 9,
+        "name": "Graham Pauley",
+        "position": "3B",
+        "jersey": "21",
+        "player_id": 688363
+      }
+    ],
     "away_distinctions": [
       {
         "name": "Caleb Ferguson",
@@ -7094,12 +7377,140 @@ window.startingLineups_2026_04_08 = [
     "away_team_id": 133,
     "home_team_id": 147,
     "game_time_et": "7:05 PM ET",
-    "status": "Scheduled",
-    "eligible": false,
-    "reason": "too early (282 minutes to first pitch; watch starts 210 minutes before game time)",
-    "minutes_to_first_pitch": 282,
-    "away_lineup": [],
-    "home_lineup": [],
+    "status": "Pre-Game",
+    "eligible": true,
+    "reason": "within lineup watch window (2.9 hours to first pitch)",
+    "minutes_to_first_pitch": 172,
+    "away_lineup": [
+      {
+        "slot": 1,
+        "name": "Nick Kurtz",
+        "position": "1B",
+        "jersey": "16",
+        "player_id": 701762
+      },
+      {
+        "slot": 2,
+        "name": "Shea Langeliers",
+        "position": "C",
+        "jersey": "23",
+        "player_id": 669127
+      },
+      {
+        "slot": 3,
+        "name": "Tyler Soderstrom",
+        "position": "LF",
+        "jersey": "21",
+        "player_id": 691016
+      },
+      {
+        "slot": 4,
+        "name": "Brent Rooker",
+        "position": "DH",
+        "jersey": "25",
+        "player_id": 667670
+      },
+      {
+        "slot": 5,
+        "name": "Jacob Wilson",
+        "position": "SS",
+        "jersey": "5",
+        "player_id": 805779
+      },
+      {
+        "slot": 6,
+        "name": "Lawrence Butler",
+        "position": "CF",
+        "jersey": "4",
+        "player_id": 671732
+      },
+      {
+        "slot": 7,
+        "name": "Max Muncy",
+        "position": "3B",
+        "jersey": "3",
+        "player_id": 691777
+      },
+      {
+        "slot": 8,
+        "name": "Jeff McNeil",
+        "position": "2B",
+        "jersey": "22",
+        "player_id": 643446
+      },
+      {
+        "slot": 9,
+        "name": "Carlos Cortes",
+        "position": "RF",
+        "jersey": "26",
+        "player_id": 666126
+      }
+    ],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Trent Grisham",
+        "position": "CF",
+        "jersey": "12",
+        "player_id": 663757
+      },
+      {
+        "slot": 2,
+        "name": "Aaron Judge",
+        "position": "RF",
+        "jersey": "99",
+        "player_id": 592450
+      },
+      {
+        "slot": 3,
+        "name": "Cody Bellinger",
+        "position": "LF",
+        "jersey": "35",
+        "player_id": 641355
+      },
+      {
+        "slot": 4,
+        "name": "Ben Rice",
+        "position": "1B",
+        "jersey": "22",
+        "player_id": 700250
+      },
+      {
+        "slot": 5,
+        "name": "Giancarlo Stanton",
+        "position": "DH",
+        "jersey": "27",
+        "player_id": 519317
+      },
+      {
+        "slot": 6,
+        "name": "Jazz Chisholm Jr.",
+        "position": "2B",
+        "jersey": "13",
+        "player_id": 665862
+      },
+      {
+        "slot": 7,
+        "name": "J.C. Escarra",
+        "position": "C",
+        "jersey": "25",
+        "player_id": 641555
+      },
+      {
+        "slot": 8,
+        "name": "Amed Rosario",
+        "position": "3B",
+        "jersey": "14",
+        "player_id": 642708
+      },
+      {
+        "slot": 9,
+        "name": "Ryan McMahon",
+        "position": "SS",
+        "jersey": "19",
+        "player_id": 641857
+      }
+    ],
     "away_distinctions": [
       {
         "name": "Gunnar Hoglund",
@@ -7425,11 +7836,75 @@ window.startingLineups_2026_04_08 = [
     "home_team_id": 142,
     "game_time_et": "7:40 PM ET",
     "status": "Pre-Game",
-    "eligible": false,
-    "reason": "too early (317 minutes to first pitch; watch starts 210 minutes before game time)",
-    "minutes_to_first_pitch": 317,
+    "eligible": true,
+    "reason": "within lineup watch window (3.5 hours to first pitch)",
+    "minutes_to_first_pitch": 207,
     "away_lineup": [],
-    "home_lineup": [],
+    "home_lineup": [
+      {
+        "slot": 1,
+        "name": "Byron Buxton",
+        "position": "CF",
+        "jersey": "25",
+        "player_id": 621439
+      },
+      {
+        "slot": 2,
+        "name": "Austin Martin",
+        "position": "LF",
+        "jersey": "16",
+        "player_id": 668885
+      },
+      {
+        "slot": 3,
+        "name": "Luke Keaschall",
+        "position": "2B",
+        "jersey": "15",
+        "player_id": 807712
+      },
+      {
+        "slot": 4,
+        "name": "Ryan Jeffers",
+        "position": "C",
+        "jersey": "27",
+        "player_id": 680777
+      },
+      {
+        "slot": 5,
+        "name": "Victor Caratini",
+        "position": "1B",
+        "jersey": "37",
+        "player_id": 605170
+      },
+      {
+        "slot": 6,
+        "name": "Josh Bell",
+        "position": "DH",
+        "jersey": "56",
+        "player_id": 605137
+      },
+      {
+        "slot": 7,
+        "name": "Matt Wallner",
+        "position": "RF",
+        "jersey": "38",
+        "player_id": 670242
+      },
+      {
+        "slot": 8,
+        "name": "Royce Lewis",
+        "position": "3B",
+        "jersey": "23",
+        "player_id": 668904
+      },
+      {
+        "slot": 9,
+        "name": "Brooks Lee",
+        "position": "SS",
+        "jersey": "22",
+        "player_id": 686797
+      }
+    ],
     "away_distinctions": [
       {
         "name": "Bailey Horn",
