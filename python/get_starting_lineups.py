@@ -1,4 +1,7 @@
-"""Fetch starting lineups for MLB matchups once they are within 2 hours of first pitch.
+"""Fetch starting lineups for MLB matchups starting 3.5 hours before first pitch.
+
+The refresh keeps polling during the pregame window and after first pitch so late
+lineup changes can still be detected on subsequent runs.
 
 Usage:
     python python/get_starting_lineups.py
@@ -22,6 +25,21 @@ from paths import DATA_DIR
 EASTERN = ZoneInfo("America/New_York")
 SCHEDULE_URL = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date}"
 LIVE_FEED_URL = "https://statsapi.mlb.com/api/v1.1/game/{game_pk}/feed/live"
+ROSTER_URL = "https://statsapi.mlb.com/api/v1/teams/{team_id}/roster?rosterType=40Man&date={date}"
+LINEUP_WATCH_WINDOW_MINUTES = 210  # 3.5 hours before first pitch
+ACTIVE_STATUS_CODES = {"A"}
+UNAVAILABLE_STATUS_KEYWORDS = (
+    "injured",
+    "bereavement",
+    "paternity",
+    "restricted",
+    "suspended",
+    "inactive",
+    "day-to-day",
+    "doubtful",
+    "medical",
+    "rehab",
+)
 TEAM_MAP = {
     "Arizona Diamondbacks": "ARI", "Atlanta Braves": "ATL", "Baltimore Orioles": "BAL",
     "Boston Red Sox": "BOS", "Chicago Cubs": "CHC", "Chicago White Sox": "CHW",
@@ -61,6 +79,62 @@ def get_team_abbr(team_name: str) -> str:
     return TEAM_MAP.get(team_name, team_name[:3].upper() if team_name else "TBD")
 
 
+def is_unavailable_status(status_code: str | None, status_description: str | None) -> bool:
+    code = str(status_code or "").strip().upper()
+    description = str(status_description or "").strip().lower()
+
+    if not code or code in ACTIVE_STATUS_CODES:
+        return False
+
+    if code.startswith("D"):
+        return True
+
+    return any(keyword in description for keyword in UNAVAILABLE_STATUS_KEYWORDS)
+
+
+def fetch_team_distinctions(team_id: int | None, team_name: str, target_date: str) -> tuple[list[dict], list[dict]]:
+    if not team_id:
+        return [], []
+
+    try:
+        response = requests.get(ROSTER_URL.format(team_id=team_id, date=target_date), timeout=30)
+        response.raise_for_status()
+        roster = response.json().get("roster", []) or []
+    except Exception as exc:
+        print(f"   ⚠️ Failed to fetch roster distinctions for {team_name}: {exc}")
+        return [], []
+
+    distinctions = []
+    unavailable = []
+
+    for player in roster:
+        status = player.get("status", {}) or {}
+        status_code = str(status.get("code") or "").strip()
+        status_description = str(status.get("description") or "").strip()
+        if not status_code or status_code in ACTIVE_STATUS_CODES:
+            continue
+
+        person = player.get("person", {}) or {}
+        position = player.get("position", {}) or {}
+        injury_related = is_unavailable_status(status_code, status_description)
+        entry = {
+            "name": person.get("fullName", "Unknown"),
+            "player_id": person.get("id"),
+            "position": position.get("abbreviation", ""),
+            "status_code": status_code,
+            "status": status_description or "Unavailable",
+            "injury_related": injury_related,
+            "exclude_from_models": injury_related,
+        }
+        distinctions.append(entry)
+        if injury_related:
+            unavailable.append(entry)
+
+    distinctions.sort(key=lambda item: (not item.get("injury_related"), item.get("name") or ""))
+    unavailable.sort(key=lambda item: item.get("name") or "")
+    return distinctions, unavailable
+
+
 def extract_lineup(team_boxscore: dict) -> list[dict]:
     players = team_boxscore.get("players", {})
     batting_order = team_boxscore.get("battingOrder", []) or []
@@ -97,15 +171,16 @@ def should_fetch_lineup(game_time_et: datetime | None, abstract_state: str, now:
     minutes_to_first_pitch = int((game_time_et - now).total_seconds() // 60)
 
     if abstract_state != "Preview":
-        return True, f"game is {abstract_state.lower()}", minutes_to_first_pitch
+        return True, f"game is {abstract_state.lower()} — still checking for lineup changes", minutes_to_first_pitch
 
     if minutes_to_first_pitch < 0:
-        return True, "scheduled first pitch has passed", minutes_to_first_pitch
+        return True, "scheduled first pitch has passed — still checking for lineup changes", minutes_to_first_pitch
 
-    if minutes_to_first_pitch <= 120:
-        return True, f"within {minutes_to_first_pitch} minutes of first pitch", minutes_to_first_pitch
+    if minutes_to_first_pitch <= LINEUP_WATCH_WINDOW_MINUTES:
+        hours_to_first_pitch = round(minutes_to_first_pitch / 60, 1)
+        return True, f"within lineup watch window ({hours_to_first_pitch} hours to first pitch)", minutes_to_first_pitch
 
-    return False, f"too early ({minutes_to_first_pitch} minutes to first pitch)", minutes_to_first_pitch
+    return False, f"too early ({minutes_to_first_pitch} minutes to first pitch; watch starts 210 minutes before game time)", minutes_to_first_pitch
 
 
 def fetch_lineups_for_today() -> list[dict]:
@@ -127,6 +202,8 @@ def fetch_lineups_for_today() -> list[dict]:
         home = teams.get("home", {}).get("team", {})
         away_name = away.get("name", "Away")
         home_name = home.get("name", "Home")
+        away_team_id = away.get("id")
+        home_team_id = home.get("id")
         away_abbr = get_team_abbr(away_name)
         home_abbr = get_team_abbr(home_name)
 
@@ -135,12 +212,17 @@ def fetch_lineups_for_today() -> list[dict]:
         detailed_state = game.get("status", {}).get("detailedState", "Unknown")
         eligible, reason, minutes_to_first_pitch = should_fetch_lineup(game_time, abstract_state, current_time)
 
+        away_distinctions, away_injuries = fetch_team_distinctions(away_team_id, away_name, today)
+        home_distinctions, home_injuries = fetch_team_distinctions(home_team_id, home_name, today)
+
         entry = {
             "date": today,
             "game_pk": game_pk,
             "matchup": f"{away_abbr} @ {home_abbr}",
             "away_team": away_name,
             "home_team": home_name,
+            "away_team_id": away_team_id,
+            "home_team_id": home_team_id,
             "game_time_et": format_et(game_time),
             "status": detailed_state,
             "eligible": eligible,
@@ -148,6 +230,10 @@ def fetch_lineups_for_today() -> list[dict]:
             "minutes_to_first_pitch": minutes_to_first_pitch,
             "away_lineup": [],
             "home_lineup": [],
+            "away_distinctions": away_distinctions,
+            "home_distinctions": home_distinctions,
+            "away_injuries": away_injuries,
+            "home_injuries": home_injuries,
         }
 
         if not eligible:
@@ -175,6 +261,13 @@ def fetch_lineups_for_today() -> list[dict]:
                 )
             else:
                 print("   ⏱️ Lineups not posted yet")
+
+            distinction_count = len(away_distinctions) + len(home_distinctions)
+            unavailable_count = len(away_injuries) + len(home_injuries)
+            if distinction_count:
+                print(
+                    f"   🏥 Distinctions tracked: {distinction_count} total · {unavailable_count} injury/unavailable"
+                )
         except Exception as exc:
             entry["reason"] = f"fetch failed: {exc}"
             print(f"   ❌ Failed to fetch lineup: {exc}")
