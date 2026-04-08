@@ -17,6 +17,7 @@ if str(PY) not in sys.path:
     sys.path.insert(0, str(PY))
 
 load_system_settings = importlib.import_module("system_settings").load_system_settings
+sync_to_sql_from_environment = importlib.import_module("load_to_sqlserver").sync_to_sql_from_environment
 
 
 def run_script(script_name: str) -> bool:
@@ -34,6 +35,20 @@ def run_script(script_name: str) -> bool:
         return False
     except Exception as e:
         print(f"[WARN] Unexpected error: {e}\n")
+        return False
+
+
+def sync_generated_data_to_sql() -> bool:
+    print("--- Starting: SQL data sync ---")
+    try:
+        synced = sync_to_sql_from_environment()
+        if not synced:
+            print("[ERROR] SQL data sync is disabled or not fully configured.\n")
+            return False
+        print("--- Finished: SQL data sync successfully ---\n")
+        return True
+    except Exception as e:
+        print(f"[ERROR] Error running SQL data sync: {e}\n")
         return False
 
 
@@ -105,9 +120,7 @@ def run_update_cycle() -> bool:
         "update_projects.py",
         # 8. Sync stable system settings JSON -> JS for admin/scheduler tooling
         "update_system_settings.py",
-        # 9. Write the latest generated data into SQL Server
-        "load_to_sqlserver.py",
-        # 10. Run lightweight regression checks after the refresh completes
+        # 9. Run lightweight regression checks after the refresh completes
         "run_regression_suite.py",
     ]
     successful_runs = []
@@ -117,11 +130,18 @@ def run_update_cycle() -> bool:
             successful_runs.append(script)
 
     print("---------------------------------------")
-    all_ok = len(successful_runs) == len(scripts_to_run)
+    scripts_ok = len(successful_runs) == len(scripts_to_run)
+    sql_ok = sync_generated_data_to_sql() if scripts_ok else False
+    all_ok = scripts_ok and sql_ok
+
     if all_ok:
         detail = "All stable dashboard refresh, SQL sync, and regression scripts completed successfully."
-        print("[OK] All dashboards are now up to date.")
+        print("[OK] All dashboards and SQL tables are now up to date.")
         write_site_status(True, detail)
+    elif scripts_ok:
+        detail = "Stable refresh scripts completed, but the SQL sync step failed. Check logs for details."
+        print("[WARN] Update Incomplete: refresh scripts passed, but SQL sync failed.")
+        write_site_status(False, detail)
     else:
         failed_count = len(scripts_to_run) - len(successful_runs)
         detail = f"{failed_count} stable refresh script(s) failed. Check logs for details."

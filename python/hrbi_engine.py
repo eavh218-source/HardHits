@@ -10,6 +10,7 @@ import statsapi
 
 from get_mlb_weather import get_weather_score_for_game
 from hrbi_live import live_hrbi_probability
+from load_to_sqlserver import get_sql_sync_blocker, sync_to_sql_from_environment
 from paths import DATA_DIR
 
 PARK_HITS_FACTORS = {
@@ -602,6 +603,14 @@ def save_probability_payload(
     return dated_output
 
 
+def sync_predictions_to_sql() -> None:
+    synced = sync_to_sql_from_environment(["hrbi_model_predictions"])
+    if not synced:
+        blocker = get_sql_sync_blocker() or "Unknown SQL sync configuration problem."
+        raise RuntimeError(f"Cannot sync hrbi_model_predictions to SQL: {blocker}")
+    print("[OK] SQL sync completed for hrbi_model_predictions")
+
+
 def run_hrbi_model(max_games=None, target_date=None):
     print("--- H+R+RBI Probability Engine (stable) ---")
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -643,6 +652,8 @@ def run_hrbi_model(max_games=None, target_date=None):
             print(f"Saved historical file: {output.name}")
 
         print(f"Success: {len(payload)} players scored for {target_date}.")
+        if not smoke_mode:
+            sync_predictions_to_sql()
         return
 
     print(f"Building today's H+R+RBI predictions for {today}")
@@ -682,6 +693,7 @@ def run_hrbi_model(max_games=None, target_date=None):
             "Saved: hrbi_model_data.js, "
             f"{today_output.name}, hrbi_model_tomorrow.js, and {tomorrow_output.name}"
         )
+        sync_predictions_to_sql()
 
 
 def parse_args():

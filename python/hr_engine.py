@@ -9,6 +9,7 @@ import pybaseball as pb
 import statsapi
 
 from get_mlb_weather import get_weather_score_for_game
+from load_to_sqlserver import get_sql_sync_blocker, sync_to_sql_from_environment
 from paths import DATA_DIR
 
 # Unified HR model configuration from CALCULATION_LOGIC.md
@@ -479,6 +480,14 @@ def save_probability_payload(
     return dated_output
 
 
+def sync_predictions_to_sql() -> None:
+    synced = sync_to_sql_from_environment(["hr_model_predictions"])
+    if not synced:
+        blocker = get_sql_sync_blocker() or "Unknown SQL sync configuration problem."
+        raise RuntimeError(f"Cannot sync hr_model_predictions to SQL: {blocker}")
+    print("[OK] SQL sync completed for hr_model_predictions")
+
+
 def run_probability_model(max_games=None):
     print('--- ⚾ HR Probability Engine (Unified) ---')
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -522,6 +531,7 @@ def run_probability_model(max_games=None):
         print(f"Smoke test mode: wrote limited dated files {today_output.name} and {tomorrow_output.name} without overwriting the live site bundles.")
     else:
         print(f"Saved: hr_model_data.js, {today_output.name}, hr_model_tomorrow.js, and {tomorrow_output.name}")
+        sync_predictions_to_sql()
 
 
 def parse_args():

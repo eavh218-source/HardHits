@@ -260,8 +260,6 @@ def collect_game_weather_rows() -> list[dict[str, Any]]:
     data = parse_named_assignment(read_text(path), "mlbWeatherData")
     rows: list[dict[str, Any]] = []
     for item in data:
-        if not item.get("away_abbr") or not item.get("home_abbr"):
-            continue
         rows.append({
             "weather_date": item.get("date"),
             "game_time_et": item.get("game_time_et"),
@@ -314,6 +312,60 @@ DATASET_ORDER = [
 ]
 
 
+def is_sql_sync_enabled() -> bool:
+    return os.getenv("HARDHITS_SQL_SYNC", "1").strip().lower() not in {"0", "false", "no", "off"}
+
+
+def get_sql_sync_blocker() -> str | None:
+    if not is_sql_sync_enabled():
+        return "HARDHITS_SQL_SYNC is disabled (set HARDHITS_SQL_SYNC=1 to enable SQL writes)."
+
+    server = os.getenv("HARDHITS_SQL_SERVER", "localhost\\SQLEXPRESS").strip()
+    database = os.getenv("HARDHITS_SQL_DATABASE", "HardHits").strip()
+    if not server or not database:
+        return "Missing SQL connection settings: HARDHITS_SQL_SERVER and HARDHITS_SQL_DATABASE are required."
+    return None
+
+
+def build_env_sql_args(selected_tables: Iterable[str] | None = None, dry_run: bool = False) -> argparse.Namespace | None:
+    blocker = get_sql_sync_blocker()
+    if blocker:
+        return None
+
+    server = os.getenv("HARDHITS_SQL_SERVER", "localhost\\SQLEXPRESS").strip()
+    database = os.getenv("HARDHITS_SQL_DATABASE", "HardHits").strip()
+    driver = os.getenv("HARDHITS_SQL_DRIVER", "ODBC Driver 18 for SQL Server").strip() or "ODBC Driver 18 for SQL Server"
+    username = os.getenv("HARDHITS_SQL_USERNAME", "").strip()
+    password = os.getenv("HARDHITS_SQL_PASSWORD", "")
+    trusted = os.getenv("HARDHITS_SQL_TRUSTED_CONNECTION", "1").strip().lower() in {"1", "true", "yes", "on"}
+
+    return argparse.Namespace(
+        dry_run=dry_run,
+        server=server,
+        database=database,
+        username=username,
+        password=password,
+        driver=driver,
+        trusted_connection=trusted or (not username and not password),
+        tables=list(selected_tables or DATASET_ORDER),
+    )
+
+
+def sync_to_sql_from_environment(selected_tables: Iterable[str] | None = None, dry_run: bool = False) -> bool:
+    args = build_env_sql_args(selected_tables=selected_tables, dry_run=dry_run)
+    if args is None:
+        return False
+
+    selected = args.tables or DATASET_ORDER
+    datasets = collect_all_datasets(selected)
+    if dry_run:
+        print_dry_run_summary(datasets, selected)
+        return True
+
+    load_to_sql_server(args, datasets, selected)
+    return True
+
+
 def collect_all_datasets(selected_tables: Iterable[str] | None = None) -> dict[str, list[dict[str, Any]]]:
     requested = set(selected_tables or DATASET_ORDER)
     datasets: dict[str, list[dict[str, Any]]] = {name: [] for name in DATASET_ORDER}
@@ -360,9 +412,9 @@ def require_pyodbc():
 
 
 def build_connection_string(args: argparse.Namespace) -> str:
-    driver = args.driver or os.getenv("HARDHITS_SQL_DRIVER", "ODBC Driver 18 for SQL Server")
-    server = args.server or os.getenv("HARDHITS_SQL_SERVER", "localhost\\SQLEXPRESS")
-    database = args.database or os.getenv("HARDHITS_SQL_DATABASE", "HardHits")
+    driver = args.driver or os.getenv("HARDHITS_SQL_DRIVER", "ODBC Driver 17 for SQL Server")
+    server = args.server or os.getenv("HARDHITS_SQL_SERVER", "")
+    database = args.database or os.getenv("HARDHITS_SQL_DATABASE", "")
     username = args.username or os.getenv("HARDHITS_SQL_USERNAME", "")
     password = args.password or os.getenv("HARDHITS_SQL_PASSWORD", "")
 
@@ -441,8 +493,8 @@ def load_to_sql_server(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Load HardHits generated data into SQL Server.")
     parser.add_argument("--dry-run", action="store_true", help="Parse all supported data files and print row counts without connecting.")
-    parser.add_argument("--server", default="", help="SQL Server host or host\\instance. Defaults to localhost\\SQLEXPRESS.")
-    parser.add_argument("--database", default="", help="Target database name. Defaults to HardHits.")
+    parser.add_argument("--server", default="", help="SQL Server host or host\\instance.")
+    parser.add_argument("--database", default="", help="Target database name.")
     parser.add_argument("--username", default="", help="SQL login username (omit for trusted connection).")
     parser.add_argument("--password", default="", help="SQL login password.")
     parser.add_argument("--driver", default="", help="ODBC driver name. Defaults to ODBC Driver 17 for SQL Server.")

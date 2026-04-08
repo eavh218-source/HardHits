@@ -83,16 +83,16 @@ def write_root_files() -> None:
 
 
 def maybe_export_sql_pages_data() -> None:
-    if os.getenv("HARDHITS_PAGES_USE_SQL", "").strip().lower() not in {"1", "true", "yes", "on"}:
+    if os.getenv("HARDHITS_PAGES_USE_SQL", "1").strip().lower() in {"0", "false", "no", "off"}:
         return
 
     sql_args = argparse.Namespace(
-        server=os.getenv("HARDHITS_SQL_SERVER", ""),
-        database=os.getenv("HARDHITS_SQL_DATABASE", ""),
+        server=os.getenv("HARDHITS_SQL_SERVER", "localhost\\SQLEXPRESS"),
+        database=os.getenv("HARDHITS_SQL_DATABASE", "HardHits"),
         username=os.getenv("HARDHITS_SQL_USERNAME", ""),
         password=os.getenv("HARDHITS_SQL_PASSWORD", ""),
         driver=os.getenv("HARDHITS_SQL_DRIVER", "ODBC Driver 18 for SQL Server"),
-        trusted_connection=os.getenv("HARDHITS_SQL_TRUSTED_CONNECTION", "").strip().lower() in {"1", "true", "yes", "on"},
+        trusted_connection=os.getenv("HARDHITS_SQL_TRUSTED_CONNECTION", "1").strip().lower() in {"1", "true", "yes", "on"},
         output_dir=str(OUTPUT_DIR / "data"),
     )
 

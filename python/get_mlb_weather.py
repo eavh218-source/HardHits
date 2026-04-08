@@ -79,41 +79,6 @@ ABBR_ALIASES = {
     "SF": "SFG",
     "TB": "TBR",
     "WSN": "WSH",
-    "WAS": "WSH",
-}
-
-DISPLAY_NAME_TO_ABBR = {
-    "Arizona": "ARI",
-    "Atlanta": "ATL",
-    "Baltimore": "BAL",
-    "Boston": "BOS",
-    "Chi. Cubs": "CHC",
-    "Chi. White Sox": "CHW",
-    "Cincinnati": "CIN",
-    "Cleveland": "CLE",
-    "Colorado": "COL",
-    "Detroit": "DET",
-    "Houston": "HOU",
-    "Kansas City": "KCR",
-    "LA Angels": "LAA",
-    "LA Dodgers": "LAD",
-    "Miami": "MIA",
-    "Milwaukee": "MIL",
-    "Minnesota": "MIN",
-    "NY Mets": "NYM",
-    "NY Yankees": "NYY",
-    "Athletics": "ATH",
-    "Philadelphia": "PHI",
-    "Pittsburgh": "PIT",
-    "San Diego": "SDP",
-    "San Francisco": "SFG",
-    "Seattle": "SEA",
-    "St. Louis": "STL",
-    "Tampa Bay": "TBR",
-    "Texas": "TEX",
-    "Toronto": "TOR",
-    "Washington": "WSH",
-    "WAS": "WSH",
 }
 
 TEAM_TO_ABBR = {team: abbr for abbr, team in ABBR_TO_TEAM.items()}
@@ -220,15 +185,6 @@ def normalize_abbr(value: str | None) -> str | None:
         return None
     cleaned = str(value).strip().upper()
     return ABBR_ALIASES.get(cleaned, cleaned)
-
-
-def infer_abbr_from_display(display_name: str | None) -> str | None:
-    if not display_name:
-        return None
-    cleaned = str(display_name).strip()
-    if cleaned in DISPLAY_NAME_TO_ABBR:
-        return DISPLAY_NAME_TO_ABBR[cleaned]
-    return team_to_abbr(cleaned)
 
 
 def team_to_abbr(team_name: str | None) -> str | None:
@@ -411,10 +367,6 @@ def extract_entries_from_html(html: str) -> list[dict]:
         time_node = node.select_one(".covers-CoversWeatherPage-time")
         left_logo = node.select_one(".covers-CoversWeather-teamLogoLeft")
         right_logo = node.select_one(".covers-CoversWeather-teamLogoRight")
-        if not away_abbr and left_logo:
-            away_abbr = infer_abbr_from_display(str(left_logo.get("alt") or ""))
-        if not home_abbr and right_logo:
-            home_abbr = infer_abbr_from_display(str(right_logo.get("alt") or ""))
         field_image = node.select_one(".covers-coversweather-fieldIcon")
         weather_image = node.select_one(".covers-CoversWeatherPage-weatherImg")
         wind_icon = node.select_one(".covers-coversweather-windDirectionIcon")

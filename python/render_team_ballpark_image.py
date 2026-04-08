@@ -40,6 +40,8 @@ COVERS_DIR = OUTPUT_DIR / "covers"
 TEAM_DIR = COVERS_DIR / "teams"
 BALLPARK_DIR = COVERS_DIR / "ballparks"
 WEATHER_JSON = DATA_DIR / "mlb_weather.json"
+IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"}
+MAX_GENERATED_IMAGES = 50
 
 TEAM_COLORS = {
     "ARI": ("#A71930", "#E3D4AD"),
@@ -174,6 +176,42 @@ def load_asset_image(path_value: str | None, max_size: tuple[int, int] | None = 
         return image
     except Exception:
         return None
+
+
+def iter_generated_images() -> list[Path]:
+    return [
+        path
+        for path in OUTPUT_DIR.rglob("*")
+        if path.is_file() and path.suffix.lower() in IMAGE_EXTENSIONS
+    ]
+
+
+def count_generated_images() -> int:
+    return len(iter_generated_images())
+
+
+def prune_generated_images(limit: int = MAX_GENERATED_IMAGES) -> list[Path]:
+    images = sorted(iter_generated_images(), key=lambda path: (path.stat().st_mtime, str(path)))
+    protected = {
+        OUTPUT_DIR / "mlb_team_ballparks_latest.svg",
+        OUTPUT_DIR / "mlb_team_ballparks_latest.png",
+    }
+    removable = [
+        path
+        for path in images
+        if path not in protected and path.parent == OUTPUT_DIR and path.name.startswith("mlb_team_ballparks_")
+    ]
+
+    removed: list[Path] = []
+    while len(images) > limit and removable:
+        candidate = removable.pop(0)
+        try:
+            candidate.unlink()
+            removed.append(candidate)
+            images.remove(candidate)
+        except Exception:
+            continue
+    return removed
 
 
 def draw_badge(cx: int, cy: int, abbr: str, primary: str, secondary: str, text_color: str = "#ffffff") -> str:
@@ -411,6 +449,12 @@ def main() -> int:
 
     print(f"✅ Saved image: {dated_path}")
     print(f"✅ Saved image: {latest_path}")
+
+    removed = prune_generated_images(limit=MAX_GENERATED_IMAGES)
+    current_count = count_generated_images()
+    if removed:
+        print(f"🧹 Pruned {len(removed)} older slate image(s) to stay within {MAX_GENERATED_IMAGES} total generated images.")
+    print(f"📦 Generated image inventory: {current_count}/{MAX_GENERATED_IMAGES}")
     return 0
 
 
